@@ -97,9 +97,17 @@ public class RightPanel extends JPanel implements ActionListener, MouseListener,
 	public void mouseDragged(MouseEvent e) {
 		e.getComponent().setLocation(e.getX() + e.getComponent().getX(), 
 				 e.getY() + e.getComponent().getY());
-		isMoved = true;
-		destinationX = e.getX() + e.getComponent().getX();
-		destinationY = e.getY() + e.getComponent().getY();
+		for(int i = 0; i < this.connections.size(); i++) {
+        	Connection finishedconnection = connections.get(i);
+        	if(finishedconnection.getSourceButton() == e.getComponent().hashCode()) {
+        		finishedconnection.setSourceX(finishedconnection.getSourceX()+e.getX());
+        		finishedconnection.setSourceY(finishedconnection.getSourceY()+e.getY());
+        	}
+        	else if(finishedconnection.getDestButton() == e.getComponent().hashCode()) {
+        		finishedconnection.setDestX(finishedconnection.getDestX()+e.getX());
+        		finishedconnection.setDestY(finishedconnection.getDestY()+e.getY());
+        	}
+        }
 		this.repaint();
 	}
 
