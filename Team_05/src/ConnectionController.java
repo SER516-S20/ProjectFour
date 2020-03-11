@@ -9,7 +9,7 @@ import javax.swing.JButton;
 
 public class ConnectionController extends RightPanel implements MouseListener{
 	private static Connection tempconnection;
-	private static List<Connection> connections = new ArrayList<Connection>();
+	private static List<Connection> connections;
 	private ButtonBox buttonBox;
 	public ConnectionController(ButtonBox buttonBox) {
 		this.buttonBox = buttonBox;
@@ -28,6 +28,7 @@ public class ConnectionController extends RightPanel implements MouseListener{
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
+		connections = super.updateConnection();
 		Object obj = e.getComponent().getParent();
 		int width = e.getComponent().getParent().getWidth()/2;
 		int buttonx = e.getComponent().getLocation().x;

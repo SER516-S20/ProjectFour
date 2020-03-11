@@ -25,7 +25,7 @@ public class RightPanel extends JPanel implements ActionListener, MouseListener,
 	//TriangleButton temptri = null;
 	//RectangleButton temrect = null;
 	private Connection tempconnection = null;
-	private static List<Connection> connections = new ArrayList<Connection>();
+	protected static List<Connection> connections = new ArrayList<Connection>();
 	private static int originX, originY, destinationX, destinationY;
 	private static boolean isMoved = false;
 	private ValuePane vPane;
@@ -143,6 +143,12 @@ public class RightPanel extends JPanel implements ActionListener, MouseListener,
 				}
 			}
 		}
+		if(e.getButton() == MouseEvent.BUTTON3) {
+			this.remove(e.getComponent());
+			connections.removeIf(n->(n.getSourceButton()==e.getComponent().hashCode()));
+			connections.removeIf(n->(n.getDestButton()==e.getComponent().hashCode()));
+			this.repaint();
+		}
 	}
 
 	@Override
@@ -169,6 +175,9 @@ public class RightPanel extends JPanel implements ActionListener, MouseListener,
 	}
 	public void setConnection(Connection tempconnection) {
 		connections.add(tempconnection);
+	}
+	public List<Connection> updateConnection() {
+		return connections;
 	}
     public void paint(Graphics g) {
     	super.paint(g);
