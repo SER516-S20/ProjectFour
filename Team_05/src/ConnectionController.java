@@ -9,7 +9,7 @@ import javax.swing.JButton;
 
 public class ConnectionController extends RightPanel implements MouseListener{
 	private static Connection tempconnection;
-	private static List<Connection> connections;
+	private static List<Connection> connections = new ArrayList<Connection>();
 	private ButtonBox buttonBox;
 	public ConnectionController(ButtonBox buttonBox) {
 		this.buttonBox = buttonBox;
@@ -28,7 +28,6 @@ public class ConnectionController extends RightPanel implements MouseListener{
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
-		connections = super.updateConnection();
 		Object obj = e.getComponent().getParent();
 		int width = e.getComponent().getParent().getWidth()/2;
 		int buttonx = e.getComponent().getLocation().x;
@@ -36,11 +35,13 @@ public class ConnectionController extends RightPanel implements MouseListener{
 		int tempy = e.getComponent().getParent().getLocation().y + e.getComponent().getLocation().y+5;
 		boolean selected = false;
 		if(buttonx > width) {
-			for(int i=0; i < connections.size(); i++) {
-				Connection c = connections.get(i);
-				if(tempx == c.getSourceX() && tempy == c.getSourceY()) {
-					selected = true;
-					tempconnection = null;
+			if(!obj.getClass().toString().equalsIgnoreCase("class BarButtonBox")) {
+				for(int i=0; i < connections.size(); i++) {
+					Connection c = connections.get(i);
+					if(tempx == c.getSourceX() && tempy == c.getSourceY()) {
+						selected = true;
+						tempconnection = null;
+					}
 				}
 			}
 			if(!selected) {
@@ -61,11 +62,13 @@ public class ConnectionController extends RightPanel implements MouseListener{
 			}
 		}
 		else{
-			for(int i=0; i < connections.size(); i++) {
-				Connection c = connections.get(i);
-				if(tempx == c.getDestX() && tempy == c.getDestY()) {
-					selected = true;
-					tempconnection = null;
+			if(!obj.getClass().toString().equalsIgnoreCase("class BarButtonBox")) {
+				for(int i=0; i < connections.size(); i++) {
+					Connection c = connections.get(i);
+					if(tempx == c.getDestX() && tempy == c.getDestY()) {
+						selected = true;
+						tempconnection = null;
+					}
 				}
 			}
 			if(!selected) {
@@ -91,29 +94,5 @@ public class ConnectionController extends RightPanel implements MouseListener{
 			tempconnection = null;
 			e.getComponent().getParent().getParent().repaint();
 		}
-		
-//			RectangleButton btn = (RectangleButton)obj;
-//			Point []points = btn.getPointsPosition();
-//			if(jX == points[0].x || jX == points[2].x) {
-//				if(jY >= points[0].y && jY <= points[1].y) {
-//					if(tempconnection == null) {
-//						tempconnection = new Connection();
-//						tempconnection.setSourceX(btn.getBounds().x+jX);
-//						tempconnection.setSourceY(btn.getBounds().y+jY);
-//					}
-//					else if (tempconnection != null) {
-//						tempconnection.setDestX(btn.getBounds().x+jX);
-//						tempconnection.setDestY(btn.getBounds().y+jY);
-//						rightpanel.setConnection(tempconnection);
-//						connections.add(tempconnection);
-//						tempconnection = null;
-//					}
-//					else {
-//						tempconnection = null;
-//					}
-//				}
-//			}
-//		}
-
 	}
 }

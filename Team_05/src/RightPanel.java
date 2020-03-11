@@ -119,7 +119,6 @@ public class RightPanel extends JPanel implements ActionListener, MouseListener,
 	
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		
 		//System.out.println("=====" + e.getSource().getClass().getName() + ", " + e.getX() + ", " + e.getY());
 		if(e.getSource().equals(this)) {
 			Box instance = Box.getInstance();
