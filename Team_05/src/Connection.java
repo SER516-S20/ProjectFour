@@ -3,18 +3,18 @@ import javax.swing.JButton;
 public class Connection {
 	private int sourceX, sourceY, destX, destY;
 	private String buttonBox;
-	private Object sourceButton;
-	private Object destButton;
-	public void setSourceButton(Object obj) {
-		
+	private Integer sourceButton;
+	private Integer destButton;
+	public void setSourceButton(int sourceButton2) {
+		sourceButton = sourceButton2;
 	}
-	public Object getSourceButton() {
+	public Integer getSourceButton() {
 		return sourceButton;
 	}
-	public void setDestButton(Object sourceButton) {
-		
+	public void setDestButton(int destButton2) {
+		destButton = destButton2;
 	}
-	public Object getDestButton() {
+	public Integer getDestButton() {
 		return destButton;
 	}
 	public int getSourceX() {

@@ -28,111 +28,69 @@ public class ConnectionController extends RightPanel implements MouseListener{
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
-		System.out.println("=====get into the dot button mouse click event=======");
-		Object obj = e.getComponent();
+		Object obj = e.getComponent().getParent();
 		int width = e.getComponent().getParent().getWidth()/2;
 		int buttonx = e.getComponent().getLocation().x;
 		int tempx = e.getComponent().getParent().getLocation().x + e.getComponent().getLocation().x+5;
 		int tempy = e.getComponent().getParent().getLocation().y + e.getComponent().getLocation().y+5;
-		System.out.println("=====x: " + tempx + "=====y: " + tempy + "========");
+		boolean selected = false;
 		if(buttonx > width) {
-			if(tempconnection == null) {
-				tempconnection = new Connection();
-				tempconnection.setSourceX(tempx);
-				tempconnection.setSourceY(tempy);
-				tempconnection.setSourceButton(obj);
+			for(int i=0; i < connections.size(); i++) {
+				Connection c = connections.get(i);
+				if(tempx == c.getSourceX() && tempy == c.getSourceY()) {
+					selected = true;
+					tempconnection = null;
+				}
+			}
+			if(!selected) {
+				if(tempconnection == null) {
+					tempconnection = new Connection();
+					tempconnection.setSourceX(tempx);
+					tempconnection.setSourceY(tempy);
+					tempconnection.setSourceButton(obj.hashCode());
+				}
+				else if(tempconnection != null && tempconnection.getSourceButton() == null && tempconnection.getDestButton() != obj.hashCode()){
+					tempconnection.setSourceX(tempx);
+					tempconnection.setSourceY(tempy);
+					tempconnection.setSourceButton(obj.hashCode());
+				}
+				else {
+					tempconnection = null;
+				}
 			}
 		}
-		else if(buttonx < width){
-			if(tempconnection != null) {
-				tempconnection.setDestX(tempx);
-				tempconnection.setDestY(tempy);
-				tempconnection.setDestButton(obj);
-				connections.add(tempconnection);
-				super.setConnection(tempconnection);
-				tempconnection = null;
-				//get the right panel component and repaint it.
-				e.getComponent().getParent().getParent().repaint();
+		else{
+			for(int i=0; i < connections.size(); i++) {
+				Connection c = connections.get(i);
+				if(tempx == c.getDestX() && tempy == c.getDestY()) {
+					selected = true;
+					tempconnection = null;
+				}
+			}
+			if(!selected) {
+				if(tempconnection == null) {
+					tempconnection = new Connection();
+					tempconnection.setDestX(tempx);
+					tempconnection.setDestY(tempy);
+					tempconnection.setDestButton(obj.hashCode());
+				}
+				else if(tempconnection != null && tempconnection.getDestButton() == null && tempconnection.getSourceButton() != obj.hashCode()){
+					tempconnection.setDestX(tempx);
+					tempconnection.setDestY(tempy);
+					tempconnection.setDestButton(obj.hashCode());
+				}
+				else {
+					tempconnection = null;
+				}
 			}
 		}
-		else {
+		if(tempconnection != null && tempconnection.getSourceButton() != null && tempconnection.getDestButton() != null) {
+			connections.add(tempconnection);
+			super.setConnection(tempconnection);
 			tempconnection = null;
+			e.getComponent().getParent().getParent().repaint();
 		}
-//		Object obj = e.getSource();
-//		Box instance = Box.getInstance();
-//		int jX = e.getX();
-//		int jY = e.getY();
-//		boolean selected = false;
-//		if(obj instanceof RoundButton) {
-//			RoundButton btn = (RoundButton)obj;
-//			if(jX>=btn.getCenterPoint().x-3 && jX <= btn.getCenterPoint().x+3 && jY >= btn.getCenterPoint().y-3 && jY <= btn.getCenterPoint().y+3) {
-//				for(int i=0; i < connections.size(); i++) {
-//					Connection c = connections.get(i);
-//					if(btn.getBounds().getCenterX() == c.getSourceX() && btn.getBounds().getCenterY() == c.getSourceY()) {
-//						selected = true;
-//						tempconnection = null;
-//					}
-//					else if(btn.getBounds().getCenterX() == c.getDestX() && btn.getBounds().getCenterY() == c.getDestY()) {
-//						selected = true;
-//						tempconnection = null;
-//					}
-//				}
-//				if(!selected) {
-//					if(tempconnection == null) {
-//						tempconnection = new Connection();
-//						tempconnection.setSourceX((int)btn.getBounds().getCenterX());
-//						tempconnection.setSourceY((int)btn.getBounds().getCenterY());
-//					}
-//					else if (tempconnection != null) {
-//						tempconnection.setDestX((int)btn.getBounds().getCenterX());
-//						tempconnection.setDestY((int)btn.getBounds().getCenterY());
-//						rightpanel.setConnection(tempconnection);
-//						connections.add(tempconnection);
-//						tempconnection = null;
-//					}
-//					else {
-//						tempconnection = null;
-//					}
-//				}
-//			}
-//		}
-//		else if(obj instanceof TriangleButton) {
-//			TriangleButton btn = (TriangleButton)obj;
-//			Point []points = btn.getPointsPosition();
-//			for(int i = 0; i < 3; i++) {
-//				if(jX>=points[i].x-3 && jX <= points[i].x+3 && jY >= points[i].y-3 && jY <= points[i].y+3) {
-//					for(int j=0; j < connections.size(); j++) {
-//						Connection c = connections.get(j);
-//						if(btn.getBounds().x+points[i].x == c.getSourceX() && btn.getBounds().y+points[i].y == c.getSourceY()) {
-//							selected = true;
-//							tempconnection = null;
-//						}
-//						else if(btn.getBounds().x+points[i].x == c.getDestX() && btn.getBounds().y+points[i].y == c.getDestY()) {
-//							selected = true;
-//							tempconnection = null;
-//						}
-//					}
-//					if(!selected) {
-//						if(tempconnection == null) {
-//							tempconnection = new Connection();
-//							tempconnection.setSourceX(btn.getBounds().x+points[i].x);
-//							tempconnection.setSourceY(btn.getBounds().y+points[i].y);
-//						}
-//						else if (tempconnection != null) {
-//							tempconnection.setDestX(btn.getBounds().x+points[i].x);
-//							tempconnection.setDestY(btn.getBounds().y+points[i].y);
-//							rightpanel.setConnection(tempconnection);
-//							connections.add(tempconnection);
-//							tempconnection = null;
-//						}
-//						else {
-//							tempconnection = null;
-//						}
-//					}
-//				}
-//			}
-//		}
-//		else {
+		
 //			RectangleButton btn = (RectangleButton)obj;
 //			Point []points = btn.getPointsPosition();
 //			if(jX == points[0].x || jX == points[2].x) {
