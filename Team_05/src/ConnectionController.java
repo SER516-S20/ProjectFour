@@ -14,9 +14,8 @@ public class ConnectionController implements MouseListener {
 	}
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		// TODO Auto-generated method stub
-		Object obj = e.getComponent().getParent();
-		System.out.print("======"+connections.size()+"\n");
+		ButtonBox obj = (ButtonBox)e.getComponent().getParent();
+		System.out.println("======" + connections.size());
 		int width = e.getComponent().getParent().getWidth()/2;
 		int buttonx = e.getComponent().getLocation().x;
 		int tempx = e.getComponent().getParent().getLocation().x + e.getComponent().getLocation().x+5;
