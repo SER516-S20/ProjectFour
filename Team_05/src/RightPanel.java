@@ -90,7 +90,7 @@ public class RightPanel extends JPanel implements ActionListener, MouseListener,
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		System.out.println("....."+e.getSource());
+		//System.out.println("....."+e.getSource());
 	}
 	//Author:ShihYu Chang
 	@Override
