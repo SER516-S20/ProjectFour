@@ -21,6 +21,7 @@ public class ConnectionController implements MouseListener {
 		int tempx = e.getComponent().getParent().getLocation().x + e.getComponent().getLocation().x+5;
 		int tempy = e.getComponent().getParent().getLocation().y + e.getComponent().getLocation().y+5;
 		boolean selected = false;
+		
 		if(buttonx > width) {
 			if(!obj.getClass().toString().equalsIgnoreCase("class BarButtonBox")) {
 				for(int i=0; i < connections.size(); i++) {
