@@ -40,7 +40,7 @@ public class LeftPanel extends JPanel implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		String text  = e.getActionCommand();
 		Box instance = Box.getInstance();
-		instance.text = text;
+		instance.setText(text);
 		System.out.println("the pressed button is: " + text);
 	}
 }

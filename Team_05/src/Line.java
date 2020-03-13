@@ -35,7 +35,7 @@ public class Line extends JPanel{
         double dx = tip.x - tail.x;
         double theta = Math.atan2(dy, dx);
         double x, y, rho = theta + phi;
-        for(int j = 0; j < 2; j++) {
+        for(int i = 0; i < 2; i++) {
             x = tip.x - length * Math.cos(rho);
             y = tip.y - length * Math.sin(rho);
             g2.draw(new Line2D.Double(tip.x, tip.y, x, y));

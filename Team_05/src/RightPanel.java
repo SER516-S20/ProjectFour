@@ -1,6 +1,5 @@
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -37,7 +36,7 @@ public class RightPanel extends JPanel implements ActionListener, MouseListener,
 		ButtonBox btn = ButtonBoxFactory.buildButtonBox(btnCommand);
 		addActionAndMouseMotionListener(btn);
 		this.add(btn);
-		this.autoLocation(btn,x-btn.getPreferredSize().width/2,y-btn.getPreferredSize().height/2);
+		this.autoLocation(btn,x - btn.getPreferredSize().width / 2,y - btn.getPreferredSize().height / 2);
 		this.repaint();
 		
 	}
@@ -72,14 +71,14 @@ public class RightPanel extends JPanel implements ActionListener, MouseListener,
 		button.setSize(button.getPreferredSize());
 		button.setLocation(x, y);
 	}
-	
+	/*
 	private void updateHashCode(){
 		Hashtable<Integer, JButton> update = new Hashtable<Integer, JButton>();
 		for(JButton shape:shapes.values()) {
 			update.put(shape.hashCode(), shape);
 		}
 		shapes = update;
-	}
+	}*/
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -114,10 +113,10 @@ public class RightPanel extends JPanel implements ActionListener, MouseListener,
 	public void mouseClicked(MouseEvent e) {
 		if(e.getSource().equals(this)) {
 			Box instance = Box.getInstance();
-			if(instance.text == null) {
+			if(instance.getText() == null) {
 				return;
 			}
-			addButton(instance.text,e.getX(),e.getY());
+			addButton(instance.getText(),e.getX(),e.getY());
 			System.out.println("====" + this.getComponentCount());
 		}else {
 			if (e.getClickCount() == 2) {
