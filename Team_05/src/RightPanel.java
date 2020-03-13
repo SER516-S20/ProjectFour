@@ -73,9 +73,9 @@ public class RightPanel extends JPanel implements ActionListener, MouseListener,
 		
 	}
 	
-	private void autoLocation(ButtonBox button,int x, int y) {
+	private void autoLocation(ButtonBox button, int x, int y) {
 		Rectangle dimension = this.getBounds();
-		System.out.println("dimension: " + dimension);
+		//System.out.println("dimension: " + dimension);
 		button.setSize(button.getPreferredSize());
 		button.setLocation(x, y);
 	}
@@ -183,7 +183,7 @@ public class RightPanel extends JPanel implements ActionListener, MouseListener,
 	//Author:ShihYu Chang
     public void paint(Graphics g) {
     	super.paint(g);
-    	System.out.println("======get into the right panel paint method=====");
+    	//System.out.println("======get into the right panel paint method=====");
         for(int i = 0; i < this.connections.size(); i++) {
         	Connection finishedconnection = connections.get(i);
         	Line line = new Line();

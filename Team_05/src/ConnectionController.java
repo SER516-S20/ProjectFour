@@ -9,23 +9,13 @@ import java.util.List;
 
 import javax.swing.JButton;
 
-public class ConnectionController implements MouseListener,MouseMotionListener,ActionListener{
+public class ConnectionController implements MouseListener {
 	private static Connection tempconnection;
 	private static List<Connection> connections = new ArrayList<Connection>();
 	private RightPanel rightpanel = new RightPanel();
 	private ButtonBox buttonBox;
 	public ConnectionController(ButtonBox buttonBox) {
 		this.buttonBox = buttonBox;
-		
-	}
-	@Override
-	public void mouseDragged(MouseEvent e) {
-		// TODO Auto-generated method stub
-
-	}
-	@Override
-	public void mouseMoved(MouseEvent e) {
-		// TODO Auto-generated method stub
 		
 	}
 	@Override
@@ -120,11 +110,6 @@ public class ConnectionController implements MouseListener,MouseMotionListener,A
 	}
 	@Override
 	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-	@Override
-	public void actionPerformed(ActionEvent arg0) {
 		// TODO Auto-generated method stub
 		
 	}
