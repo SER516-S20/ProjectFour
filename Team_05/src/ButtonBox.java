@@ -11,6 +11,7 @@ public abstract class ButtonBox extends JPanel{
 	private final int labelWidth = 20;
 	private final int labelHeight =20;
 	private String title;
+	private int id;
 	private JLabel description;
 	private ValuePane vDialog;
 	private JButton []btnDots;
