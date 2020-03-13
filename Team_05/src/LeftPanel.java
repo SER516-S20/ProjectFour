@@ -1,11 +1,8 @@
-import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JButton;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 
 /**
  * @author Yijian Hu
@@ -44,8 +41,6 @@ public class LeftPanel extends JPanel implements ActionListener{
 		String text  = e.getActionCommand();
 		Box instance = Box.getInstance();
 		instance.text = text;
-		//dragArea.addButton(className);
 		System.out.println("the pressed button is: " + text);
-		
 	}
 }

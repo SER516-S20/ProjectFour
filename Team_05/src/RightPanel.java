@@ -6,7 +6,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
-import java.awt.geom.Line2D;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
@@ -21,16 +20,12 @@ public class RightPanel extends JPanel implements ActionListener, MouseListener,
 	private static final long serialVersionUID = 1L;
 	private Hashtable<Integer, JButton> shapes;
 	private Frame frame;
-	//RoundButton tempround = null;
-	//TriangleButton temptri = null;
-	//RectangleButton temrect = null;
 	private Connection tempconnection = null;
 	protected static List<Connection> connections = new ArrayList<Connection>();
 	private static int originX, originY, destinationX, destinationY;
 	private static boolean isMoved = false;
 	private ValuePane vPane;
-	//private TitledBorder titled;
-	boolean isAlreadyOneClick=false;
+	boolean isAlreadyOneClick = false;
 	public RightPanel() {
 		this.setBackground(Color.red);
 		shapes = new Hashtable<Integer, JButton>();
@@ -74,8 +69,6 @@ public class RightPanel extends JPanel implements ActionListener, MouseListener,
 	}
 	
 	private void autoLocation(ButtonBox button, int x, int y) {
-		Rectangle dimension = this.getBounds();
-		//System.out.println("dimension: " + dimension);
 		button.setSize(button.getPreferredSize());
 		button.setLocation(x, y);
 	}
@@ -119,7 +112,6 @@ public class RightPanel extends JPanel implements ActionListener, MouseListener,
 	
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		//System.out.println("=====" + e.getSource().getClass().getName() + ", " + e.getX() + ", " + e.getY());
 		if(e.getSource().equals(this)) {
 			Box instance = Box.getInstance();
 			if(instance.text == null) {
