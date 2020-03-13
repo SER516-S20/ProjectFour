@@ -25,8 +25,6 @@ public class Frame extends JFrame{
 	//private static final Color rBackground = new Color(240, 255, 255);
 	private RightPanel dragArea;
 	private LeftPanel btnContainer;
-//testing...
-//	private TitledBorder titled;
 	 
 	public Frame() {
 		this.setTitle(title);
@@ -63,15 +61,7 @@ public class Frame extends JFrame{
 	private JPanel createRightPanel() {
 		dragArea.setLocation(200, 0);
 		dragArea.setSize(600, 500);
-		dragArea.setBackground(Color.white);
-//testing...		
-//        titled = BorderFactory.createTitledBorder("123");
-//        dragArea.setBorder(titled);
-//        dragArea.setBorder(BorderFactory.createEmptyBorder(0,10,10,10));
-//        addCompForBorder(titled,
-//                "default titled border"
-//                + " (default just., default pos.)",
-//                dragArea);		
+		dragArea.setBackground(Color.white);		
 		return dragArea;
 	}
 	
@@ -79,16 +69,4 @@ public class Frame extends JFrame{
 		getContentPane().revalidate();
 		getContentPane().repaint();	
 	}
-//testing...
-//    void addCompForBorder(Border border,
-//            String description,
-//            Container container) {
-//    		JPanel comp = new JPanel(new GridLayout(1, 1), false);
-//    		JLabel label = new JLabel(description, JLabel.CENTER);
-//    		comp.add(label);
-//    		comp.setBorder(border);
-//
-//    		container.add(Box.createRigidArea(new Dimension(0, 10)));
-//    		container.add(comp);
-//    }
 }
