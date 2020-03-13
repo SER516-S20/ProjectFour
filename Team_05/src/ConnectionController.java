@@ -1,4 +1,6 @@
 import java.awt.Point;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
@@ -7,18 +9,19 @@ import java.util.List;
 
 import javax.swing.JButton;
 
-public class ConnectionController extends RightPanel implements MouseListener{
+public class ConnectionController implements MouseListener,MouseMotionListener,ActionListener{
 	private static Connection tempconnection;
 	private static List<Connection> connections = new ArrayList<Connection>();
+	private RightPanel rightpanel = new RightPanel();
 	private ButtonBox buttonBox;
 	public ConnectionController(ButtonBox buttonBox) {
 		this.buttonBox = buttonBox;
+		
 	}
 	@Override
 	public void mouseDragged(MouseEvent e) {
 		// TODO Auto-generated method stub
-		e.getComponent().setLocation(e.getX() + (int)e.getComponent().getX()-e.getComponent().getPreferredSize().width/2, 
-				 e.getY() + (int)e.getComponent().getY()-e.getComponent().getPreferredSize().height/2);
+
 	}
 	@Override
 	public void mouseMoved(MouseEvent e) {
@@ -29,6 +32,7 @@ public class ConnectionController extends RightPanel implements MouseListener{
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
 		Object obj = e.getComponent().getParent();
+		System.out.print("======"+connections.size()+"\n");
 		int width = e.getComponent().getParent().getWidth()/2;
 		int buttonx = e.getComponent().getLocation().x;
 		int tempx = e.getComponent().getParent().getLocation().x + e.getComponent().getLocation().x+5;
@@ -89,10 +93,39 @@ public class ConnectionController extends RightPanel implements MouseListener{
 			}
 		}
 		if(tempconnection != null && tempconnection.getSourceButton() != null && tempconnection.getDestButton() != null) {
+			System.out.print("=============\n"+tempconnection.getSourceX()+"\n");
+			System.out.print("=============\n"+tempconnection.getSourceY()+"\n");
+			
 			connections.add(tempconnection);
-			super.setConnection(tempconnection);
+			this.rightpanel.setConnection(tempconnection);
+			System.out.print("==============="+connections.get(0).getSourceX()+"\n");
 			tempconnection = null;
 			e.getComponent().getParent().getParent().repaint();
 		}
+	}
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		// TODO Auto-generated method stub
+		
 	}
 }

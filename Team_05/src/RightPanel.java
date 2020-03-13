@@ -92,7 +92,7 @@ public class RightPanel extends JPanel implements ActionListener, MouseListener,
 	public void actionPerformed(ActionEvent e) {
 		//System.out.println("....."+e.getSource());
 	}
-
+	//Author:ShihYu Chang
 	@Override
 	public void mouseDragged(MouseEvent e) {
 		e.getComponent().setLocation(e.getX() + e.getComponent().getX(), 
@@ -172,12 +172,15 @@ public class RightPanel extends JPanel implements ActionListener, MouseListener,
 		// TODO Auto-generated method stub
 		
 	}
+	//Author:ShihYu Chang
 	public void setConnection(Connection tempconnection) {
 		connections.add(tempconnection);
 	}
+	//Author:ShihYu Chang
 	public List<Connection> updateConnection() {
 		return connections;
 	}
+	//Author:ShihYu Chang
     public void paint(Graphics g) {
     	super.paint(g);
     	System.out.println("======get into the right panel paint method=====");
