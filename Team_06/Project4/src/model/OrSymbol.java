@@ -3,6 +3,7 @@ package model;
 import java.awt.Color;
 import java.awt.Graphics;
 
+import controller.Drag;
 import controller.ShapeMouseListener;
 import model.Shape.type;
 
@@ -14,6 +15,8 @@ public class OrSymbol extends Shape{
 			new ShapeMouseListener(this);
 			this.add(new ConnectorBar(getSize().width - 20, getSize().height * 1 / 4, type.OUTPUT));
 			this.add(new ConnectorBar(20, getSize().height * 1 / 4, type.INPUT));
+			new Drag(this);
+
 		}
 	}
 	

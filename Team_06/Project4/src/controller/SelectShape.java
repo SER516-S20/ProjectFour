@@ -33,8 +33,8 @@ public class SelectShape {
 		});
 	}
 	
-	public void release(RightPanel rightPanel) {
-		rightPanel.addMouseListener(new MouseAdapter(){
+	public void release(JPanel panel) {
+		panel.addMouseListener(new MouseAdapter(){
 			public void mousePressed(MouseEvent e){
 				JButton shape = new JButton();
 				int shapeNumber = Data.getInstance().getShapeNumber();
@@ -62,8 +62,8 @@ public class SelectShape {
 						break;
 				}
 				
-				rightPanel.add(shape);
-				rightPanel.repaint();
+				panel.add(shape);
+				panel.repaint();
 			}					
 		});
 	}

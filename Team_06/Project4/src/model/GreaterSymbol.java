@@ -1,6 +1,8 @@
 package model;
 import java.awt.Color;
 import java.awt.Graphics;
+
+import controller.Drag;
 import controller.ShapeMouseListener;
 
 public class GreaterSymbol extends Shape{
@@ -12,6 +14,8 @@ public class GreaterSymbol extends Shape{
 			this.add(new ConnectorDot(20, getSize().height * 3 / 4, type.INPUT));
 			this.add(new ConnectorDot(20, getSize().height * 1 / 4, type.INPUT));
 			this.add(new ConnectorDot(getSize().width - 20, getSize().height/2, type.OUTPUT));
+			new Drag(this);
+
 		}
 	}
 	

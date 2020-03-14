@@ -2,6 +2,7 @@ package model;
 import java.awt.Color;
 import java.awt.Graphics;
 
+import controller.Drag;
 import controller.ShapeMouseListener;
 import model.Shape.type;
 
@@ -13,6 +14,8 @@ public class MinusSymbol extends Shape{
 			new ShapeMouseListener(this);
 			this.add(new ConnectorDot(20, getSize().height / 2, type.INPUT));
 			this.add(new ConnectorDot(getSize().width - 20, getSize().height/2, type.OUTPUT));
+			new Drag(this);
+
 		}
 	}
 	

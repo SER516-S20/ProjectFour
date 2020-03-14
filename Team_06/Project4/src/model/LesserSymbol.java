@@ -2,6 +2,7 @@ package model;
 import java.awt.Color;
 import java.awt.Graphics;
 
+import controller.Drag;
 import controller.ShapeMouseListener;
 import model.Shape.type;
 
@@ -14,6 +15,8 @@ public class LesserSymbol extends Shape{
 			this.add(new ConnectorDot(getSize().width - 20, getSize().height * 3 / 4, type.OUTPUT));
 			this.add(new ConnectorDot(getSize().width - 20, getSize().height * 1 / 4, type.OUTPUT));
 			this.add(new ConnectorDot(20, getSize().height/2, type.INPUT));
+			new Drag(this);
+
 		}
 	}
 	

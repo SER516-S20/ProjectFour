@@ -2,6 +2,7 @@ package model;
 import java.awt.Color;
 import java.awt.Graphics;
 
+import controller.Drag;
 import controller.ShapeMouseListener;
 import model.Shape.type;
 
@@ -13,6 +14,8 @@ public class CloseParanthesis extends Shape{
 		if(rightPanel) {
 			new ShapeMouseListener(this);
 			this.add(new ConnectorDot(10, getSize().height/2, type.INPUT));
+			new Drag(this);
+
 		}
 	}
 	

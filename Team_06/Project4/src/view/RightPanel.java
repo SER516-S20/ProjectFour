@@ -20,9 +20,9 @@ public class RightPanel extends JPanel{
 	private static RightPanel single_instance = null;
 	boolean selected = false;
 
-	ArrayList<Point> circlePoints = new ArrayList<Point>();
-	ArrayList<Point> squarePoints = new ArrayList<Point>();
-	ArrayList<Point> trianglePoints = new ArrayList<Point>();
+	public ArrayList<Point> circlePoints = new ArrayList<Point>();
+	public ArrayList<Point> squarePoints = new ArrayList<Point>();
+	public ArrayList<Point> trianglePoints = new ArrayList<Point>();
 	
 	public static RightPanel getInstance(){
 		if (single_instance == null)
