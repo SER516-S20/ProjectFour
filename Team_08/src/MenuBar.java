@@ -9,12 +9,6 @@ import javax.swing.JMenuItem;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 
-/**
- * Adds a Menu bar with Compile, Load and Save options.
- * 
- * @author Kartik Mathpal
- * @version 1.0
- */
 public class MenuBar extends JMenuBar {
 
 	private static final long serialVersionUID = 1L;
@@ -24,8 +18,8 @@ public class MenuBar extends JMenuBar {
 	private final String SAVE = "Save";
 	private final String LOAD = "Load";
 	private final String MENU = "Menu";
-	private final String Compile = "Compile";
-	
+	private final String COMPILE = "compile";
+
 	MenuBar() {
 		menu = new JMenu(MENU);
 		menuBar = new JMenuBar();
@@ -35,10 +29,14 @@ public class MenuBar extends JMenuBar {
 		LoadFile loadFile = new LoadFile(LOAD);
 		load = loadFile;
 		load.addActionListener(loadFile);
+		CompileFile compileFile = new CompileFile(COMPILE);
+		compile = compileFile;
+		compile.addActionListener(compileFile);
 		menu.add(save);
 		menu.add(load);
+		menu.add(compile);
 		menuBar.add(menu);
-		
+
 		JButton NewTab = new JButton("  New Tab  ");
 		Border border = new LineBorder(Color.BLACK, 1);
 		NewTab.setBorder(border);
@@ -46,8 +44,8 @@ public class MenuBar extends JMenuBar {
 			public void actionPerformed(ActionEvent e) {
 				//TO DO: write action to create new tab
 				if (e.getActionCommand().equals("  New Tab  ")) {
-				      System.out.println("New Tab has been clicked");
-				    }
+					System.out.println("New Tab has been clicked");
+				}
 			}
 		});
 		menuBar.add(NewTab);
