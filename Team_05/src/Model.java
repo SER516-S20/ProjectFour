@@ -69,7 +69,26 @@ public class Model {
 		{
 			tabs.put(tab.getName(), tab);
 			added = true;
+			rightTabbedPane.add(tab);
 		}
 		return added;
+	}
+	
+	public void addWorkingAreaTab()
+	{
+		String init_name = "unnamedTab";
+		String name = init_name;
+		int count = 1;
+		if(tabs == null)
+		{
+			tabs = new Hashtable<String, WorkingAreaTab>();
+		}
+		while(tabs.containsKey(name))
+		{
+			name = init_name + Integer.toString(count);
+			count++;
+		}
+		WorkingAreaTab tab = new WorkingAreaTab(name);
+		addWorkingAreaTab(tab);
 	}
 }
