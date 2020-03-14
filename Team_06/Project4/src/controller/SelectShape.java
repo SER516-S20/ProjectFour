@@ -6,7 +6,6 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JButton;
 import javax.swing.JPanel;
-import view.RightPanel;
 import model.AtSymbol;
 import model.OpenParanthesis;
 import model.CloseParanthesis;
@@ -33,21 +32,21 @@ public class SelectShape {
 		});
 	}
 	
-	public void release(JPanel panel) {
+	public void release(JPanel panel, int tabNumber) {
 		panel.addMouseListener(new MouseAdapter(){
 			public void mousePressed(MouseEvent e){
 				JButton shape = new JButton();
 				int shapeNumber = Data.getInstance().getShapeNumber();
 				
 				switch(shapeNumber) {
-				case 1: if (!Data.getInstance().isOpenParaFlag()) {
+				case 1: if (!Data.getInstance().isOpenParaFlag(tabNumber)) {
 							shape = new OpenParanthesis(e.getX(), e.getY(), true);
-							Data.getInstance().setOpenParaFlag(true);
+							Data.getInstance().setOpenParaFlag(true,tabNumber);
 						}
 						break;
-				case 2: if ( !Data.getInstance().isCloseParaFlag()) {
+				case 2: if ( !Data.getInstance().isCloseParaFlag(tabNumber)) {
 							shape = new CloseParanthesis(e.getX(), e.getY(), true);
-							Data.getInstance().setCloseParaFlag(true);
+							Data.getInstance().setCloseParaFlag(true, tabNumber);
 						}
 						break;
 				case 3: shape = new LesserSymbol(e.getX(), e.getY(), true);

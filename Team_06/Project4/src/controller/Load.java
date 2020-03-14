@@ -7,9 +7,8 @@ import java.io.FileReader;
 import java.io.IOException;
 
 import javax.swing.JButton;
-import view.RightPanel;
 public class Load {
-	public void loadShapes(File fileContent, RightPanel rightPanel) {
+	public void loadShapes(File fileContent, NewTab rightPanel) {
 //		
 //		BufferedReader reader;
 //		JButton shape = new JButton();

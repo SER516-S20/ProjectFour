@@ -18,7 +18,7 @@ public class Menu extends JMenuBar{
 		JMenuItem save = new JMenuItem("Save");
 		JMenuItem open = new JMenuItem("Load");
 		
-		new FileManager(save, open, rightPanel);
+//		new FileManager(save, open, rightPanel);
 		new NewTab(NewTab,rightPanel);
 		
 		this.add(menu);

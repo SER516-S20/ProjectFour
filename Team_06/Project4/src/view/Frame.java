@@ -1,16 +1,16 @@
 package view;
 import javax.swing.*;
 import java.awt.*;
+import controller.NewTab;
 
 /**
  * @author Somesh
  * @since 02-19-2020
  */
-public class Frame extends JFrame
-{
+public class Frame extends JFrame {
 	LeftPanel leftPanel;
 	RightPanel rightPanel;
-	
+
 	Frame(){
 		
 		this.setTitle("Project");
@@ -36,7 +36,6 @@ public class Frame extends JFrame
 	public JSplitPane addPanels(){
 	    leftPanel = new LeftPanel();
 	    rightPanel = new RightPanel();
-	    rightPanel.setLayout(null);
 	    
 	    try{
 	        JSplitPane splitPane = new JSplitPane();

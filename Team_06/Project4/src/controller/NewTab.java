@@ -12,34 +12,33 @@ import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.event.ChangeListener;
 
+import model.Data;
 import view.RightPanel;
 
-public class NewTab {
+public class NewTab extends JPanel{
 	static int CountOfTabs = 1;
+	private int tabNumber = 0;
 
+	public NewTab(JMenu NewTab, RightPanel rightPanel) {
+		JTabbedPane jTabbedPane = new javax.swing.JTabbedPane();
+	    rightPanel.setLayout(null);
+	    jTabbedPane.setBounds(0,0,1300,1000); 
+			NewTab.addMouseListener(new MouseAdapter() { 
+		          public void mousePressed(MouseEvent e) {
+		        	Data.getInstance().addOpenParaFlag();
+		        	Data.getInstance().addCloseParaFlag();
+		        	JPanel panel = new JPanel();
+		        	panel.setLayout(null);
+				    jTabbedPane.addTab("tab " + CountOfTabs , panel);
+				    SelectShape selectShape = new SelectShape();
+					selectShape.release(panel, tabNumber);
+					tabNumber = CountOfTabs;
+				    CountOfTabs++;
+			        jTabbedPane.setSelectedIndex(jTabbedPane.getTabCount()-1);
+		          	}
+				});
 
-public NewTab(JMenu NewTab, RightPanel rightPanel){
-	JTabbedPane jTabbedPane = new javax.swing.JTabbedPane();
-    rightPanel.setLayout(null);
-    jTabbedPane.setBounds(0,0,1300,1000); 
-		NewTab.addMouseListener(new MouseAdapter() { 
-	          public void mousePressed(MouseEvent e) {   
-	        	JPanel panel = new JPanel();
-	        	panel.setLayout(null);
-			    jTabbedPane.addTab("tab " + CountOfTabs , panel);
-			    SelectShape selectShape = new SelectShape();
-				selectShape.release(panel);
-			    CountOfTabs++;
-		        jTabbedPane.setSelectedIndex(jTabbedPane.getTabCount()-1);
-			}
-			});
-        System.out.println("mom " + jTabbedPane.getTabCount());
-
-	    rightPanel.add(jTabbedPane);
-        int selectedIndex = jTabbedPane.getSelectedIndex();
-        
-        System.out.println("dad " + selectedIndex);
-        
-        
-}
+		    rightPanel.add(jTabbedPane);
+	        int selectedIndex = jTabbedPane.getSelectedIndex(); 
+	}	
 }

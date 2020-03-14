@@ -1,16 +1,17 @@
 package model;
 
+import java.util.ArrayList;
 
 public class Data {
 	private static Data dataObj;
 	private int shapeNumber;
-	private boolean openParaFlag;
-	private boolean closeParaFlag;
+	private ArrayList<Boolean> openParaFlagList;
+	private ArrayList<Boolean> closeParaFlagList;
 	
 	private Data () {
 		shapeNumber = 0;
-		openParaFlag = false;
-		closeParaFlag = false;
+		openParaFlagList = new ArrayList<Boolean>();
+		closeParaFlagList = new ArrayList<Boolean>();
 	};
 	
 	public static Data getInstance() {
@@ -28,22 +29,28 @@ public class Data {
 		this.shapeNumber = shapeNumber;
 	}
 
-	public boolean isOpenParaFlag() {
-		return openParaFlag;
+	public boolean isOpenParaFlag(int tabNumber) {
+		return openParaFlagList.get(tabNumber);
 	}
 
-	public void setOpenParaFlag(boolean openParaFlag) {
-		this.openParaFlag = openParaFlag;
+	public void setOpenParaFlag(boolean openParaFlag, int tabNumber) {
+		openParaFlagList.set(tabNumber, openParaFlag);
 	}
 
-	public boolean isCloseParaFlag() {
-		return closeParaFlag;
+	public boolean isCloseParaFlag(int tabNumber) {
+		return closeParaFlagList.get(tabNumber);
 	}
 
-	public void setCloseParaFlag(boolean closeParaFlag) {
-		this.closeParaFlag = closeParaFlag;
+	public void setCloseParaFlag(boolean closeParaFlag, int tabNumber) {
+		this.closeParaFlagList.set(tabNumber,closeParaFlag);
 	}
 	
+	public void addOpenParaFlag() {
+		openParaFlagList.add(false);
+	}
 	
+	public void addCloseParaFlag() {
+		closeParaFlagList.add(false);
+	}
 
 }

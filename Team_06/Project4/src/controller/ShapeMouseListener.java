@@ -8,7 +8,6 @@ import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
 import model.Shape;
-import view.RightPanel;
 
 /**
  * 
