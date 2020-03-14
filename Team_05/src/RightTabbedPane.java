@@ -1,4 +1,13 @@
+import java.util.Hashtable;
 
-public class RightTabbedPane {
+import javax.swing.JTabbedPane;
 
+public class RightTabbedPane extends JTabbedPane{
+	Hashtable<String,WorkingAreaTab> tabs;
+	
+	RightTabbedPane()
+	{
+		tabs = new Hashtable<String,WorkingAreaTab>();
+	}
+	
 }

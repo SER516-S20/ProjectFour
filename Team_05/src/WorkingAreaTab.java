@@ -7,5 +7,15 @@ public class WorkingAreaTab extends JPanel{
 	{
 		this.setLayout(null);
 	}
-
+	
+	WorkingAreaTab(String name)
+	{
+		this.name = name;
+		this.setLayout(null);
+	}
+	
+	public String getName()
+	{
+		return name;
+	}
 }

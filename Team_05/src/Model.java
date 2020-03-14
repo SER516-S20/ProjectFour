@@ -69,7 +69,7 @@ public class Model {
 		{
 			tabs.put(tab.getName(), tab);
 			added = true;
-			rightTabbedPane.add(tab);
+			rightTabbedPane.add(tab.getName(),tab);
 		}
 		return added;
 	}
