@@ -1,5 +1,3 @@
-import javax.swing.JButton;
-
 public class Connection {
 	private int sourceX, sourceY, destX, destY;
 	private Integer sourceButton;
