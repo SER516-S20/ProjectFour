@@ -15,14 +15,8 @@ public class MenuBar extends JMenuBar{
 	private FileManager fileManager;
 	private RightPanel rightPanel;
 	private Model model;
-	MenuBar()
-	{
-
-//		rightPanel = new RightPanel();
-//		
-	}
-	MenuBar(RightPanel rightPanel)
-	{
+	
+	MenuBar(RightPanel rightPanel) {
 		model = new Model();
 		this.rightPanel = rightPanel;
 	}
@@ -36,7 +30,7 @@ public class MenuBar extends JMenuBar{
 		itemSave.addActionListener(new ActionListener(){
 		public void actionPerformed(ActionEvent e) {
 				if(fileBrowser.browser("Save file")) {
-					//fileManager.save(fileBrowser.getCurrentFile(), model.getshapes());
+					fileManager.save(fileBrowser.getCurrentFile(), model.getshapes());
 				}
 			}
 		});
@@ -47,7 +41,7 @@ public class MenuBar extends JMenuBar{
 		public void actionPerformed(ActionEvent e) {
 			if(fileBrowser.browser("Open file")) {
 					ShapeInfo[] shapeList = fileManager.open(fileBrowser.getCurrentFile());
-					//rightPanel.load(shapeList);
+					rightPanel.load(shapeList);
 				}
 			}
 		});
