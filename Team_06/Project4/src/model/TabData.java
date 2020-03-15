@@ -74,5 +74,3 @@ public class TabData {
 		return shapeData;
 	}
 }
-
-

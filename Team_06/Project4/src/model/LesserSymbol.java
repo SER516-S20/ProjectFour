@@ -28,7 +28,7 @@ public class LesserSymbol extends Shape{
         else {
             g.setColor(getBackground());
         }
-        g.fillRect(0, 0, getSize().width, getSize().height);
+        //g.fillRect(0, 0, getSize().width, getSize().height);
         super.paintComponent(g);
     }
 	

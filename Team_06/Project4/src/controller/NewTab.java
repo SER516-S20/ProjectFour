@@ -17,20 +17,19 @@ import javax.swing.event.ChangeListener;
 import model.Data;
 import view.RightPanel;
 
-public class NewTab{
+public class NewTab {
 	private static NewTab newTabObj = null;
 	static int CountOfTabs = 1;
 	public int tabNumber = 0;
 	boolean DefaultStartTab = true;
 	public static JTabbedPane jTabbedPane = new javax.swing.JTabbedPane();
-	
     SelectShape selectShape = new SelectShape();
 	Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-	
+
+
 	private NewTab() {
 		
 	}
-	
 	public static NewTab getInstance() {
 		if (newTabObj == null) {
 			newTabObj = new NewTab();
@@ -60,7 +59,7 @@ public class NewTab{
 	
 	public JPanel createTab() {
 		Data.getInstance().addTabData();
-    	JPanel panel = new JPanel();
+    	RightPanel panel = new RightPanel();
 	    jTabbedPane.addTab("tab " + CountOfTabs , panel);
     	panel.setLayout(null);
 		selectShape.release(panel, tabNumber);
@@ -72,5 +71,6 @@ public class NewTab{
 	
 	public static int selectedTab() {
 		return jTabbedPane.getSelectedIndex();
-	}
+	}  
+
 }

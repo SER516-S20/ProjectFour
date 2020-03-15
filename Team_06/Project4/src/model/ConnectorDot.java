@@ -4,6 +4,8 @@ import java.awt.Graphics;
 
 import javax.swing.JButton;
 import javax.swing.border.EmptyBorder;
+
+import controller.DrawLine;
 import model.Shape.type;
 
 
@@ -13,14 +15,16 @@ import model.Shape.type;
  * @since 02-28-2020
  */
 
-public class ConnectorDot extends JButton {
+public class ConnectorDot extends Connector {
 	
-	type type;
+//	public boolean line = false;
 	
-	ConnectorDot(int x, int y, type output) {
-		this.type = output;
+	ConnectorDot(int x, int y, type t) {
+		super(t);
 		setBounds(x, y, 10, 10);
 	    setBorder(new EmptyBorder(10, 10, 0, 0));
+	    
+	    new DrawLine(this);
 	}
 	
 	@Override

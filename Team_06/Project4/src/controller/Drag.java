@@ -6,6 +6,7 @@ import java.awt.event.MouseMotionListener;
 
 import javax.swing.JButton;
 
+import view.RightPanel;
 
 /**
  * 
@@ -67,7 +68,8 @@ public class Drag{
 				
 				shape.setLocation(mouseX + deltaX, mouseY + deltaY);
 				
-				
+				RightPanel rightPanel = (RightPanel) e.getComponent().getParent();
+				rightPanel.repaint();
 				
 			}
 			
