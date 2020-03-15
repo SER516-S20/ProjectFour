@@ -27,8 +27,9 @@ public class Model {
 	 * this method is used to add a new connection to the collection
 	 */
 	public void addConnection(Connection conn) {
-		
+		connections.add(conn);
 	}
+	
 	public boolean updateConnectionList() {
 		return true;
 	}
@@ -37,7 +38,7 @@ public class Model {
 	 * get all the connections 
 	 */
 	public List<Connection> getConnectionCollection(){
-		return null;
+		return connections;
 	}
 	
 	public boolean isDotUsed(Point aDot) {

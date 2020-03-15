@@ -5,17 +5,17 @@ import java.util.List;
 
 public class ConnectionController implements MouseListener {
 	private static Connection tempconnection;
-	private static List<Connection> connections = new ArrayList<Connection>();
+	private List<Connection> connections;
+	private Model  model = new Model();
 	private RightPanel rightpanel = new RightPanel();
 	private ButtonBox buttonBox;
 	public ConnectionController(ButtonBox buttonBox) {
 		this.buttonBox = buttonBox;
-		
+		connections = model.getConnectionCollection();
 	}
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		ButtonBox obj = (ButtonBox)e.getComponent().getParent();
-		System.out.println("======" + connections.size());
 		int width = e.getComponent().getParent().getWidth()/2;
 		int buttonx = e.getComponent().getLocation().x;
 		int tempx = e.getComponent().getParent().getLocation().x + e.getComponent().getLocation().x+5;
@@ -80,8 +80,8 @@ public class ConnectionController implements MouseListener {
 			System.out.print("=============\n"+tempconnection.getSourceX()+"\n");
 			System.out.print("=============\n"+tempconnection.getSourceY()+"\n");
 			
-			connections.add(tempconnection);
-			this.rightpanel.setConnection(tempconnection);
+			model.addConnection(tempconnection);
+			this.rightpanel.setConnection();
 			System.out.print("==============="+connections.get(0).getSourceX()+"\n");
 			tempconnection = null;
 			e.getComponent().getParent().getParent().repaint();

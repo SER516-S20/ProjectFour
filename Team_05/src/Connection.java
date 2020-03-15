@@ -2,7 +2,6 @@ import javax.swing.JButton;
 
 public class Connection {
 	private int sourceX, sourceY, destX, destY;
-	private String buttonBox;
 	private Integer sourceButton;
 	private Integer destButton;
 	public void setSourceButton(int sourceButton2) {

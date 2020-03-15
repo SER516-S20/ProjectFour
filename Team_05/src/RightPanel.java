@@ -19,16 +19,15 @@ public class RightPanel extends JPanel implements ActionListener, MouseListener,
 	private static final long serialVersionUID = 1L;
 	private Hashtable<Integer, JButton> shapes;
 	private Frame frame;
-	private Connection tempconnection = null;
-	protected static List<Connection> connections = new ArrayList<Connection>();
-	private static int originX, originY, destinationX, destinationY;
-	private static boolean isMoved = false;
+	protected List<Connection> connections;
+	private Model  model = new Model();
 	private ValuePane vPane;
 	boolean isAlreadyOneClick = false;
 	public RightPanel() {
 		this.setBackground(Color.red);
 		shapes = new Hashtable<Integer, JButton>();
 		addMouseListener(this);
+		connections = model.getConnectionCollection();
 	}
 	
 	public void addButton(String btnCommand, int x, int y) {
@@ -38,8 +37,8 @@ public class RightPanel extends JPanel implements ActionListener, MouseListener,
 		this.add(btn);
 		this.autoLocation(btn,x - btn.getPreferredSize().width / 2,y - btn.getPreferredSize().height / 2);
 		this.repaint();
-		
 	}
+	
 	private void addActionAndMouseMotionListener(ButtonBox button) {
 		button.addMouseMotionListener(this);
 		button.addMouseListener(this);
@@ -149,7 +148,6 @@ public class RightPanel extends JPanel implements ActionListener, MouseListener,
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		// TODO Auto-generated method stub
-		isMoved = false;
 	}
 
 	@Override
@@ -164,13 +162,10 @@ public class RightPanel extends JPanel implements ActionListener, MouseListener,
 		
 	}
 	//Author:ShihYu Chang
-	public void setConnection(Connection tempconnection) {
-		connections.add(tempconnection);
+	public void setConnection() {
+		connections = model.getConnectionCollection();
 	}
-	//Author:ShihYu Chang
-	public List<Connection> updateConnection() {
-		return connections;
-	}
+
 	//Author:ShihYu Chang
     public void paint(Graphics g) {
     	super.paint(g);
