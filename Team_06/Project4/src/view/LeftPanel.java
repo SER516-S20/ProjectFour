@@ -7,6 +7,8 @@ import javax.swing.Box;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
+import controller.NewTab;
 import controller.SelectShape;
 /**
  * 

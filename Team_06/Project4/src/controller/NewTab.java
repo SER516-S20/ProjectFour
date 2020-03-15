@@ -1,5 +1,7 @@
 package controller;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -15,30 +17,60 @@ import javax.swing.event.ChangeListener;
 import model.Data;
 import view.RightPanel;
 
-public class NewTab extends JPanel{
+public class NewTab{
+	private static NewTab newTabObj = null;
 	static int CountOfTabs = 1;
-	private int tabNumber = 0;
+	public int tabNumber = 0;
+	boolean DefaultStartTab = true;
+	public static JTabbedPane jTabbedPane = new javax.swing.JTabbedPane();
+	
+    SelectShape selectShape = new SelectShape();
+	Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+	
+	private NewTab() {
+		
+	}
+	
+	public static NewTab getInstance() {
+		if (newTabObj == null) {
+			newTabObj = new NewTab();
+		}
+		return newTabObj;
+	}
+	public void initialize(JMenu NewTab, RightPanel rightPanel) {
+		rightPanel.setLayout(null);
+	    jTabbedPane.setBounds(0,0,screenSize.width*5/6,screenSize.height); 
 
-	public NewTab(JMenu NewTab, RightPanel rightPanel) {
-		JTabbedPane jTabbedPane = new javax.swing.JTabbedPane();
-	    rightPanel.setLayout(null);
-	    jTabbedPane.setBounds(0,0,1300,1000); 
+
+	    if(DefaultStartTab) {
+	    	createTab();
+		    DefaultStartTab = false;
+	    }
+	    
+	    
 			NewTab.addMouseListener(new MouseAdapter() { 
 		          public void mousePressed(MouseEvent e) {
-		        	Data.getInstance().addOpenParaFlag();
-		        	Data.getInstance().addCloseParaFlag();
-		        	JPanel panel = new JPanel();
-		        	panel.setLayout(null);
-				    jTabbedPane.addTab("tab " + CountOfTabs , panel);
-				    SelectShape selectShape = new SelectShape();
-					selectShape.release(panel, tabNumber);
-					tabNumber = CountOfTabs;
-				    CountOfTabs++;
-			        jTabbedPane.setSelectedIndex(jTabbedPane.getTabCount()-1);
+		        	 createTab();
 		          	}
 				});
 
 		    rightPanel.add(jTabbedPane);
-	        int selectedIndex = jTabbedPane.getSelectedIndex(); 
-	}	
+	
+	}
+	
+	public JPanel createTab() {
+		Data.getInstance().addTabData();
+    	JPanel panel = new JPanel();
+	    jTabbedPane.addTab("tab " + CountOfTabs , panel);
+    	panel.setLayout(null);
+		selectShape.release(panel, tabNumber);
+		tabNumber = CountOfTabs;
+	    CountOfTabs++;
+        jTabbedPane.setSelectedIndex(jTabbedPane.getTabCount()-1);
+        return panel;
+	}
+	
+	public static int selectedTab() {
+		return jTabbedPane.getSelectedIndex();
+	}
 }

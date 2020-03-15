@@ -13,6 +13,8 @@ import model.Data;
 import model.LesserSymbol;
 import model.GreaterSymbol;
 import model.OrSymbol;
+import model.Shape;
+import model.TabData;
 import model.MinusSymbol;
 
 /**
@@ -26,7 +28,10 @@ public class SelectShape {
 			@Override
 			public void actionPerformed(ActionEvent e){
 		        if (shape.isEnabled()){
-		        	Data.getInstance().setShapeNumber(shapeNumber);
+		        	int tabNumber = NewTab.selectedTab();
+		        	TabData tabData = Data.getInstance().getTab(tabNumber);
+		        	tabData.setShapeNumber(shapeNumber);
+		        	Data.getInstance().setTab(tabNumber, tabData);
 		        }				
 			}
 		});
@@ -35,18 +40,22 @@ public class SelectShape {
 	public void release(JPanel panel, int tabNumber) {
 		panel.addMouseListener(new MouseAdapter(){
 			public void mousePressed(MouseEvent e){
-				JButton shape = new JButton();
-				int shapeNumber = Data.getInstance().getShapeNumber();
+				Shape shape = new Shape("",0,0);
+				int shapeNumber = Data.getInstance().getTab(tabNumber).getShapeNumber();
 				
 				switch(shapeNumber) {
-				case 1: if (!Data.getInstance().isOpenParaFlag(tabNumber)) {
+				case 1: if (!Data.getInstance().getTab(tabNumber).isOpenParaFlag()) {
 							shape = new OpenParanthesis(e.getX(), e.getY(), true);
-							Data.getInstance().setOpenParaFlag(true,tabNumber);
+							TabData tabData = Data.getInstance().getTab(tabNumber);
+							tabData.setOpenParaFlag(true);
+							Data.getInstance().setTab(tabNumber, tabData);
 						}
 						break;
-				case 2: if ( !Data.getInstance().isCloseParaFlag(tabNumber)) {
+				case 2: if ( !Data.getInstance().getTab(tabNumber).isCloseParaFlag()) {
 							shape = new CloseParanthesis(e.getX(), e.getY(), true);
-							Data.getInstance().setCloseParaFlag(true, tabNumber);
+							TabData tabData = Data.getInstance().getTab(tabNumber);
+							tabData.setCloseParaFlag(true);
+							Data.getInstance().setTab(tabNumber, tabData);
 						}
 						break;
 				case 3: shape = new LesserSymbol(e.getX(), e.getY(), true);
@@ -60,8 +69,12 @@ public class SelectShape {
 				case 7: shape = new MinusSymbol(e.getX(), e.getY(), true);
 						break;
 				}
-				
+				Data.getInstance().getTab(tabNumber).setShapeCount();
+				int shapeCount = Data.getInstance().getTab(tabNumber).getShapeCount();
+				Data.getInstance().getTab(tabNumber).addShapeData(shapeNumber, shapeCount, e.getX(), e.getY());
+				shape.setShapeIndex(shapeCount);
 				panel.add(shape);
+				
 				panel.repaint();
 			}					
 		});

@@ -7,7 +7,9 @@ import javax.swing.border.EmptyBorder;
 public class Shape extends JButton{
 	protected String userInput;
 	protected enum type {INPUT, OUTPUT};
-	Shape(String label, int x, int y){
+	protected int shapeIndex;
+	
+	public Shape(String label, int x, int y){
 		super(label);
 		this.userInput = "";
 	    Dimension size = getPreferredSize();
@@ -23,6 +25,14 @@ public class Shape extends JButton{
 	}
 	public void setUserInput(String userInput) {
 		this.userInput = userInput;
+	}
+
+	public int getShapeIndex() {
+		return shapeIndex;
+	}
+
+	public void setShapeIndex(int shapeIndex) {
+		this.shapeIndex = shapeIndex;
 	}
 	
 }

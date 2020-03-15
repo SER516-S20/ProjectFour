@@ -7,6 +7,7 @@ import java.awt.event.MouseMotionListener;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
+import model.Data;
 import model.Shape;
 
 /**
@@ -77,9 +78,8 @@ public class ShapeMouseListener{
 				int deltaY = e.getYOnScreen() - screenY;
 				
 				shape.setLocation(mouseX + deltaX, mouseY + deltaY);
-				
-				
-				
+				int tabNumber = NewTab.selectedTab();
+				Data.getInstance().getTab(tabNumber).editShapeData(shape.getShapeIndex(), mouseX + deltaX, mouseY + deltaY);
 			}
 			
 
