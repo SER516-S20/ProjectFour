@@ -162,7 +162,7 @@ public class RightPanel extends JPanel implements ActionListener, MouseListener,
 		
 	}
 	//Author:ShihYu Chang
-	public void setConnection() {
+	public void updateConnection() {
 		connections = model.getConnectionCollection();
 	}
 
