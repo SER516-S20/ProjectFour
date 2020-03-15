@@ -1,10 +1,13 @@
 package model;
 
+import javax.swing.JButton;
+
 public class ShapeData{
 	private int shapeNumber;
 	private int index;
 	private int x;
 	private int y;
+	private Shape Shape;
 	
 	public int getShapeNumber() {
 		return shapeNumber;
@@ -31,5 +34,11 @@ public class ShapeData{
 		this.y = y;
 	}
 	
+	public Shape getShape() {
+		return Shape;
+	}
+	public void setShape(Shape shape) {
+		Shape = shape;
+	}
 	
 }

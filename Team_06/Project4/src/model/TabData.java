@@ -73,4 +73,14 @@ public class TabData {
 	public ArrayList<ShapeData> getShapeData() {
 		return shapeData;
 	}
+	
+	public void addShapeInstance(int index, Shape shape) {
+		ShapeData sd = shapeData.get(index);
+		sd.setShape(shape);
+	}
+	
+	public Shape getShapeInstance(int index, Shape shape) {
+		ShapeData sd = shapeData.get(index);
+		return sd.getShape();
+	}
 }

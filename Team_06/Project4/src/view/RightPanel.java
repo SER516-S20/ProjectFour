@@ -19,25 +19,17 @@ import model.Line;
  * @Description: Right Panel will have different shapes added which are selected in left panel.
  */
 public class RightPanel extends JPanel{
-	public int shapeNumber = 0;
+	//public int shapeNumber = 0;
 	private static RightPanel single_instance = null;
 	public boolean selected = false;
 	public Connector tempStartDot;
 
-	public ArrayList<Point> circlePoints = new ArrayList<Point>();
-	public ArrayList<Point> squarePoints = new ArrayList<Point>();
-	public ArrayList<Point> trianglePoints = new ArrayList<Point>();
 	public ArrayList<Line> lines = new ArrayList<Line>();
 	
 	public static RightPanel getInstance(){
 		if (single_instance == null)
 			single_instance = new RightPanel();
 		return single_instance;
-	}
-	
-	public RightPanel(){
-		SelectShape selectShape = new SelectShape();
-		//selectShape.release(this);
 	}
 	
 	@Override
@@ -48,13 +40,16 @@ public class RightPanel extends JPanel{
         final int ARR_SIZE = 4;
         for(Line l : lines) {
         	
-        	System.out.println(l.startDot.getX());
-        	System.out.println(l.startDot.getParent().getX());
-        	System.out.println(l.startDot.getY());
-        	System.out.println(l.startDot.getParent().getY());
+        	System.out.println("x1 - " + l.x1);
+        	System.out.println("x2 - " + l.startDot.getParent().getX());
+        	System.out.println("y1 - " + l.y1);
+        	System.out.println("y2 - " + l.startDot.getParent().getY());
         	
-        	g.drawLine(l.startDot.getX()+l.startDot.getParent().getX(), l.startDot.getY()+l.startDot.getParent().getY(), 
-        			l.endDot.getX()+l.endDot.getParent().getX(), l.endDot.getY()+l.endDot.getParent().getY());
+        	int x1 = l.x1 + l.startDot.getParent().getX(); 
+        	int y1 = l.y1 + l.startDot.getParent().getY(); 
+        	int x2 = l.x2 + l.endDot.getParent().getX();
+        	int y2 = l.y2 + l.endDot.getParent().getY();
+        	g.drawLine(x1, y1, x2, y2);
         }
         
         //g.fillOval(0, 0, getSize().width, getSize().height);
