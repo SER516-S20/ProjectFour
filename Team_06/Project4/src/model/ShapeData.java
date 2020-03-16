@@ -8,7 +8,14 @@ public class ShapeData{
 	private int x;
 	private int y;
 	private Shape Shape;
+	private String userIp;
 	
+	public String getUserIp() {
+		return userIp;
+	}
+	public void setUserIp(String userIp) {
+		this.userIp = userIp;
+	}
 	public int getShapeNumber() {
 		return shapeNumber;
 	}

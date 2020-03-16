@@ -8,6 +8,7 @@ public class TabData {
 	private boolean closeParaFlag;
 	private ArrayList<ShapeData> shapeData;
 	private int shapeCount;
+	private ArrayList<Line> lines;
 	
 	public TabData() {
 		this.shapeNumber = 0;
@@ -15,6 +16,7 @@ public class TabData {
 		this.closeParaFlag = false;
 		this.shapeData = new ArrayList<ShapeData>();
 		this.shapeCount = -1;
+		this.lines = new ArrayList<Line>();
 	}
 	
 	public boolean isOpenParaFlag() {
@@ -79,8 +81,26 @@ public class TabData {
 		sd.setShape(shape);
 	}
 	
-	public Shape getShapeInstance(int index, Shape shape) {
+	public Shape getShapeInstance(int index) {
 		ShapeData sd = shapeData.get(index);
 		return sd.getShape();
+	}
+
+	public ArrayList<Line> getLines() {
+		return lines;
+	}
+
+	public void addLines(Line line) {
+		this.lines.add(line);
+	}
+	
+	public void setShapeUserIp(int index, String userIp) {
+		ShapeData sd = shapeData.get(index);
+		sd.setUserIp(userIp);
+	}
+	
+	public String getShapeUserIp(int index) {
+		ShapeData sd = shapeData.get(index);
+		return sd.getUserIp();
 	}
 }

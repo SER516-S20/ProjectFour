@@ -30,19 +30,15 @@ public class ShapeMouseListener{
 			public void mouseClicked(MouseEvent e) {
 				if (e.getClickCount() == 2) {
 				    System.out.println("double clicked");
-				    String prevResponse = shape.getUserInput();
 				    String response = (String) JOptionPane.showInputDialog(null,
-				    		 "What is your name?",
+				    		 "Input",
 				    		 "Enter User Input",
-				    		 JOptionPane.QUESTION_MESSAGE, null,null, prevResponse);
-				    
-				    if (response == null) {
-				    	response = prevResponse;
-				    	System.out.println("Cancel is Pressed");
+				    		 JOptionPane.QUESTION_MESSAGE, null,null, shape.getUserInput());
+				    if(response != null) {
+				    	shape.setUserInput(response);
+					    int tabNumber = NewTab.selectedTab();
+					    Data.getInstance().getTab(tabNumber).setShapeUserIp(shape.getShapeIndex(), response);
 				    }
-				    
-				    shape.setUserInput(response);
-				    System.out.println("response "+response);
 				}
 			}
 

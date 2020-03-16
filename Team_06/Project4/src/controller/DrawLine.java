@@ -11,7 +11,9 @@ import javax.swing.JPanel;
 import model.Connector;
 import model.ConnectorBar;
 import model.ConnectorDot;
+import model.Data;
 import model.Line;
+import model.Shape;
 import view.RightPanel;
 
 
@@ -48,7 +50,7 @@ public class DrawLine{
 				}else if(tabbedPanel.selected && (dot instanceof ConnectorDot && !dot.line) || dot instanceof ConnectorBar) {
 					System.out.println("Second Click");
 					if(tabbedPanel.tempStartDot.type != dot.type) {
-						tabbedPanel.lines.add(new Line(tabbedPanel.tempStartDot, dot, tabbedPanel.tempStartDot.getX(),tabbedPanel.tempStartDot.getY(), dot.getX(),dot.getY()));
+						Data.getInstance().getTab(NewTab.selectedTab()).addLines(new Line((Shape)tabbedPanel.tempStartDot.getParent(), (Shape)dot.getParent(), tabbedPanel.tempStartDot.getX(),tabbedPanel.tempStartDot.getY(), dot.getX(), dot.getY()));
 						
 						tabbedPanel.tempStartDot.line = true;
 						dot.line = true;

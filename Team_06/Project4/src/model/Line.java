@@ -6,14 +6,14 @@ import java.awt.Graphics;
 import javax.swing.JComponent;
 
 public class Line extends JComponent{
-	public Connector startDot;
-	public Connector endDot;
+	public Shape startDot;
+	public Shape endDot;
 	public int x1;
 	public int y1;
 	public int x2;
 	public int y2;
 	
-	public Line(Connector startDot, Connector endDot, int x1, int y1, int x2, int y2) {
+	public Line(Shape startDot, Shape endDot, int x1, int y1, int x2, int y2) {
 		this.startDot = startDot;
 		this.endDot = endDot;
 		this.x1 = x1;

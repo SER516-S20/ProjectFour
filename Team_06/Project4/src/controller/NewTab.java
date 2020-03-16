@@ -17,6 +17,7 @@ import javax.swing.event.ChangeListener;
 import model.Data;
 import view.RightPanel;
 
+
 public class NewTab {
 	private static NewTab newTabObj = null;
 	static int CountOfTabs = 1;

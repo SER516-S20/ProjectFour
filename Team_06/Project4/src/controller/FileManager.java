@@ -23,6 +23,7 @@ import model.CloseParanthesis;
 import model.Data;
 import model.GreaterSymbol;
 import model.LesserSymbol;
+import model.Line;
 import model.MinusSymbol;
 import model.OpenParanthesis;
 import model.OrSymbol;
@@ -60,9 +61,16 @@ public class FileManager {
 	                	for(TabData tab : Data.getInstance().getTabList()){
 	                		for(ShapeData shape : tab.getShapeData()) {
 	                			fw.write(Data.getInstance().getTabList().indexOf(tab) +";"+ shape.getIndex() +";"+shape.getShapeNumber()+";"
-	                					        + shape.getX() + ";" + shape.getY() + ";" + System.lineSeparator());
-	                		} 
+	                					        + shape.getX() + ";" + shape.getY() + ";"+ shape.getUserIp() +";" + System.lineSeparator());
+	                		}
 	                    }
+	                	fw.write("-----" + 	System.lineSeparator());
+	                	for(TabData tab : Data.getInstance().getTabList()){
+	                		for(Line l : tab.getLines()) {
+	                			fw.write(Data.getInstance().getTabList().indexOf(tab) + ";" + l.startDot.getShapeIndex() + ";" +
+                					l.x1 + ";" + l.y1 + ";" + l.endDot.getShapeIndex() + ";" + l.x2 + ";" + l.y2 + ";" + System.lineSeparator());
+	                		}
+	                	}
 	                	fw.close();
 	                }
 	                catch (IOException e1) {
@@ -92,7 +100,7 @@ public class FileManager {
 		        
 				
 				BufferedReader reader;
-				
+				BufferedReader[] readerList;
 				
 				
 				try {
@@ -106,49 +114,84 @@ public class FileManager {
 					NewTab.getInstance().jTabbedPane.removeAll();
 					NewTab.getInstance().CountOfTabs = 1;
 					NewTab.getInstance().tabNumber = 0;
-		            
+					boolean isLine = false;
+					
 		            while(line != null) {
-		            	System.out.println(line);
-		            	String[] shapeInfo = line.split(";");
-		            	int tabNumber = Integer.parseInt(shapeInfo[0]);
-		            	int shapeIndex = Integer.parseInt(shapeInfo[1]);
-		            	int shapeNumber = Integer.parseInt(shapeInfo[2]);
-		            	int x = Integer.parseInt(shapeInfo[3]);
-		            	int y = Integer.parseInt(shapeInfo[4]);
-		            	Data data = Data.getInstance();
-		            	Shape shape = new Shape("",0,0);
 		            	
-		            	if(temp < tabNumber) {
-		            		data.addTabData();
-		            		tabData = data.getTab(tabNumber);
-		            		panel = NewTab.getInstance().createTab();
-		            		temp = tabNumber;
+		            	System.out.println(line);
+		            	if(line.equals("-----")) {
+		            		isLine = true;
+		            		line = reader.readLine();
+		            		System.out.println(line);
 		            	}
-		
-	            		tabData.addShapeData(shapeNumber, shapeIndex, x, y);
-	            		
-	            		switch(shapeNumber) {
-	            			case 1: shape = new OpenParanthesis(x, y, true);
-	            					tabData.setOpenParaFlag(true);
-	            					break;
-	            			case 2: shape = new CloseParanthesis(x, y, true);
-	            					tabData.setCloseParaFlag(true);
-	            					break;
-	            			case 3: shape = new LesserSymbol(x, y, true);
-	            					break;
-	            			case 4: shape = new GreaterSymbol(x, y, true);
-	            					break;
-	            			case 5: shape = new AtSymbol(x, y, true);
-	            					break;
-	            			case 6: shape = new OrSymbol(x, y, true);
-	            					break;
-	            			case 7: shape = new MinusSymbol(x, y, true);
-	            					break;
-	            		}
-	            		
-	            		panel.add(shape);
-	            		panel.repaint();
-	            		line = reader.readLine();
+		            	
+		            	if(!isLine) {
+		            		String[] shapeInfo = line.split(";");
+			            	int tabNumber = Integer.parseInt(shapeInfo[0]);
+			            	int shapeIndex = Integer.parseInt(shapeInfo[1]);
+			            	int shapeNumber = Integer.parseInt(shapeInfo[2]);
+			            	int x = Integer.parseInt(shapeInfo[3]);
+			            	int y = Integer.parseInt(shapeInfo[4]);
+			            	String userIp = shapeInfo[5];
+			            	Data data = Data.getInstance();
+			            	Shape shape = new Shape("",0,0);
+			            	
+			            	if(temp < tabNumber) {
+			            		data.addTabData();
+			            		tabData = data.getTab(tabNumber);
+			            		panel = NewTab.getInstance().createTab();
+			            		temp = tabNumber;
+			            	}
+			
+		            		tabData.addShapeData(shapeNumber, shapeIndex, x, y);
+		            		
+		            		switch(shapeNumber) {
+		            			case 1: shape = new OpenParanthesis(x, y, true);
+		            					tabData.setOpenParaFlag(true);
+		            					break;
+		            			case 2: shape = new CloseParanthesis(x, y, true);
+		            					tabData.setCloseParaFlag(true);
+		            					break;
+		            			case 3: shape = new LesserSymbol(x, y, true);
+		            					break;
+		            			case 4: shape = new GreaterSymbol(x, y, true);
+		            					break;
+		            			case 5: shape = new AtSymbol(x, y, true);
+		            					break;
+		            			case 6: shape = new OrSymbol(x, y, true);
+		            					break;
+		            			case 7: shape = new MinusSymbol(x, y, true);
+		            					break;
+		            		}
+		            		if(userIp.equals("null")) {
+		            			shape.setUserInput("");
+		            		}
+		            		else {
+		            			shape.setUserInput(userIp);
+		            		}
+		            		tabData.addShapeInstance(shapeIndex, shape);
+		            		panel.add(shape);
+		            		panel.repaint();
+		            		
+		            	}
+		            	else {
+		            		System.out.println(line);
+		            		String[] lineInfo = line.split(";");
+		            		int tabNumber = Integer.parseInt(lineInfo[0]);
+		            		
+		            		Shape startDot = Data.getInstance().getTab(tabNumber).getShapeInstance(Integer.parseInt(lineInfo[1]));
+		            		int x1 = Integer.parseInt(lineInfo[2]);
+		            		int y1 = Integer.parseInt(lineInfo[3]);
+		            		
+		            		Shape endDot = Data.getInstance().getTab(tabNumber).getShapeInstance(Integer.parseInt(lineInfo[4]));
+		            		int x2 = Integer.parseInt(lineInfo[5]);
+		            		int y2 = Integer.parseInt(lineInfo[6]);
+		            		
+		            		Data.getInstance().getTab(tabNumber).addLines(new Line(startDot,endDot,x1,y1,x2,y2));
+		            	}
+		            	panel.repaint();
+		            	line = reader.readLine();
+		            	
 		            }
 		        } 
 		        catch (IOException e1 ) {
