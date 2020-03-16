@@ -2,6 +2,8 @@ package view;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+
+import controller.Compile;
 import controller.FileManager;
 import controller.NewTab;
 /**
@@ -13,11 +15,12 @@ public class Menu extends JMenuBar{
 	Menu(RightPanel rightPanel){
 		JMenu menu = new JMenu("Menu");
 		JMenu newTab = new JMenu("New Space");
-		JMenu Compile = new JMenu("Compile");
+		JMenu compile = new JMenu("Compile");
 
 		JMenuItem save = new JMenuItem("Save");
 		JMenuItem open = new JMenuItem("Load");
 		
+		new Compile(compile);
 		new FileManager(save, open);
 		NewTab.getInstance().initialize(newTab, rightPanel);
 		
@@ -26,7 +29,7 @@ public class Menu extends JMenuBar{
 		menu.add(open); 
 		
 		this.add(newTab);
-		this.add(Compile);
+		this.add(compile);
  
 	}
 }

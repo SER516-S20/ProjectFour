@@ -4,6 +4,7 @@ import java.awt.Graphics;
 
 import controller.Drag;
 import controller.ShapeMouseListener;
+import model.Shape.type;
 
 public class GreaterSymbol extends Shape{
 	public GreaterSymbol(int x, int y, boolean rightPanel){
@@ -11,9 +12,17 @@ public class GreaterSymbol extends Shape{
 		
 		if(rightPanel) {
 			new ShapeMouseListener(this);
-			this.add(new ConnectorDot(20, getSize().height * 3 / 4, type.INPUT));
-			this.add(new ConnectorDot(20, getSize().height * 1 / 4, type.INPUT));
-			this.add(new ConnectorDot(getSize().width - 20, getSize().height/2, type.OUTPUT));
+			ConnectorDot leftTop = new ConnectorDot(20, getSize().height * 1 / 4, type.INPUT);
+			ConnectorDot leftBottom = new ConnectorDot(20, getSize().height * 3 / 4, type.INPUT);
+			ConnectorDot rightMiddle = new ConnectorDot(getSize().width - 20, getSize().height/2, type.OUTPUT);
+			
+			this.connectors.add(leftTop);
+			this.connectors.add(leftBottom);
+			this.connectors.add(rightMiddle);
+			
+			this.add(leftTop);
+			this.add(leftBottom);
+			this.add(rightMiddle);
 			new Drag(this);
 
 		}

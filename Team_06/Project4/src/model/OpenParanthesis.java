@@ -12,7 +12,11 @@ public class OpenParanthesis extends Shape{
 		
 		if(rightPanel) {
 			new ShapeMouseListener(this);
-			this.add(new ConnectorDot(getSize().width - 20, getSize().height/2, type.OUTPUT));
+			
+			ConnectorDot rightMiddle = new ConnectorDot(getSize().width - 20, getSize().height/2, type.OUTPUT);
+			
+			this.connectors.add(rightMiddle);
+			this.add(rightMiddle);
 			new Drag(this);
 
 		}

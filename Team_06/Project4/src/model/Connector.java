@@ -7,11 +7,11 @@ import model.Shape.type;
 
 public class Connector extends JButton{
 	public type type;
-	public boolean line;
+	public boolean lineFlag;
 	
 	Connector(type t){
 		this.type = t;
-		this.line = false;
+		this.lineFlag = false;
 	}
 
 }

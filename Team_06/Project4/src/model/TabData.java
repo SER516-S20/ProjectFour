@@ -9,7 +9,11 @@ public class TabData {
 	private ArrayList<ShapeData> shapeData;
 	private int shapeCount;
 	private ArrayList<Line> lines;
+	private ArrayList<Shape> shapes = new ArrayList<Shape>();
 	
+	
+	
+
 	public TabData() {
 		this.shapeNumber = 0;
 		this.openParaFlag = false;
@@ -49,6 +53,14 @@ public class TabData {
 
 	public void setShapeCount() {
 		this.shapeCount++;
+	}
+	
+	public ArrayList<Shape> getShapes() {
+		return shapes;
+	}
+
+	public void setShapes(ArrayList<Shape> shapes) {
+		this.shapes = shapes;
 	}
 	
 	public void addShapeData(int shapeNumber, int index, int x, int y) {
@@ -94,6 +106,8 @@ public class TabData {
 		this.lines.add(line);
 	}
 	
+	
+	
 	public void setShapeUserIp(int index, String userIp) {
 		ShapeData sd = shapeData.get(index);
 		sd.setUserIp(userIp);
@@ -102,5 +116,9 @@ public class TabData {
 	public String getShapeUserIp(int index) {
 		ShapeData sd = shapeData.get(index);
 		return sd.getUserIp();
+	}
+	
+	public void addShape(Shape shape) {
+		this.shapes.add(shape);
 	}
 }

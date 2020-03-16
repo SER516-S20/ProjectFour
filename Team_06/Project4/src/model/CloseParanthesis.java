@@ -13,7 +13,11 @@ public class CloseParanthesis extends Shape{
 		
 		if(rightPanel) {
 			new ShapeMouseListener(this);
-			this.add(new ConnectorDot(10, getSize().height/2, type.INPUT));
+			ConnectorDot leftMiddle = new ConnectorDot(10, getSize().height/2, type.INPUT);
+			
+			this.connectors.add(leftMiddle);
+			this.add(leftMiddle);
+			
 			new Drag(this);
 
 		}

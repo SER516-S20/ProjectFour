@@ -12,9 +12,18 @@ public class LesserSymbol extends Shape{
 		
 		if(rightPanel) {
 			new ShapeMouseListener(this);
-			this.add(new ConnectorDot(getSize().width - 20, getSize().height * 3 / 4, type.OUTPUT));
-			this.add(new ConnectorDot(getSize().width - 20, getSize().height * 1 / 4, type.OUTPUT));
-			this.add(new ConnectorDot(20, getSize().height/2, type.INPUT));
+			
+			ConnectorDot rightTop = new ConnectorDot(getSize().width - 20, getSize().height * 1 / 4, type.OUTPUT);
+			ConnectorDot rightBottom = new ConnectorDot(getSize().width - 20, getSize().height * 3 / 4, type.OUTPUT);
+			ConnectorDot leftMiddle = new ConnectorDot(20, getSize().height/2, type.INPUT);
+			
+			this.connectors.add(leftMiddle);
+			this.connectors.add(rightTop);
+			this.connectors.add(rightBottom);
+			
+			this.add(leftMiddle);
+			this.add(rightTop);
+			this.add(rightBottom);
 			new Drag(this);
 
 		}

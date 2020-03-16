@@ -44,35 +44,39 @@ public class SelectShape {
 				int shapeNumber = Data.getInstance().getTab(tabNumber).getShapeNumber();
 				
 				switch(shapeNumber) {
-				case 1: if (!Data.getInstance().getTab(tabNumber).isOpenParaFlag()) {
-							shape = new OpenParanthesis(e.getX(), e.getY(), true);
-							TabData tabData = Data.getInstance().getTab(tabNumber);
-							tabData.setOpenParaFlag(true);
-							Data.getInstance().setTab(tabNumber, tabData);
-						}
-						break;
-				case 2: if ( !Data.getInstance().getTab(tabNumber).isCloseParaFlag()) {
-							shape = new CloseParanthesis(e.getX(), e.getY(), true);
-							TabData tabData = Data.getInstance().getTab(tabNumber);
-							tabData.setCloseParaFlag(true);
-							Data.getInstance().setTab(tabNumber, tabData);
-						}
-						break;
-				case 3: shape = new LesserSymbol(e.getX(), e.getY(), true);
-						break;
-				case 4: shape = new GreaterSymbol(e.getX(), e.getY(), true);
-						break;
-				case 5: shape = new AtSymbol(e.getX(), e.getY(), true);
-						break;
-				case 6: shape = new OrSymbol(e.getX(), e.getY(), true);
-						break;
-				case 7: shape = new MinusSymbol(e.getX(), e.getY(), true);
-						break;
+					case 1: if (!Data.getInstance().getTab(tabNumber).isOpenParaFlag()) {
+								shape = new OpenParanthesis(e.getX(), e.getY(), true);
+								TabData tabData = Data.getInstance().getTab(tabNumber);
+								tabData.setOpenParaFlag(true);
+								Data.getInstance().setTab(tabNumber, tabData);
+							}
+							break;
+					case 2: if ( !Data.getInstance().getTab(tabNumber).isCloseParaFlag()) {
+								shape = new CloseParanthesis(e.getX(), e.getY(), true);
+								TabData tabData = Data.getInstance().getTab(tabNumber);
+								tabData.setCloseParaFlag(true);
+								Data.getInstance().setTab(tabNumber, tabData);
+							}
+							break;
+					case 3: shape = new LesserSymbol(e.getX(), e.getY(), true);
+							break;
+					case 4: shape = new GreaterSymbol(e.getX(), e.getY(), true);
+							break;
+					case 5: shape = new AtSymbol(e.getX(), e.getY(), true);
+							break;
+					case 6: shape = new OrSymbol(e.getX(), e.getY(), true);
+							break;
+					case 7: shape = new MinusSymbol(e.getX(), e.getY(), true);
+							break;
 				}
-				Data.getInstance().getTab(tabNumber).setShapeCount();
+				TabData tabData = Data.getInstance().getTab(tabNumber);
+				tabData.setShapeCount();
 				int shapeCount = Data.getInstance().getTab(tabNumber).getShapeCount();
 				Data.getInstance().getTab(tabNumber).addShapeData(shapeNumber, shapeCount, e.getX(), e.getY());
 				shape.setShapeIndex(shapeCount);
+				
+				tabData.addShape(shape);
+				Data.getInstance().setTab(tabNumber, tabData);
 				panel.add(shape);
 				
 				panel.repaint();

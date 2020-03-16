@@ -1,14 +1,19 @@
 package model;
 import java.awt.Dimension;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.border.EmptyBorder;
 
 public class Shape extends JButton{
 	protected String userInput;
-	protected enum type {INPUT, OUTPUT};
+	public enum type {INPUT, OUTPUT};
 	protected int shapeIndex;
 	
+	protected ArrayList <Connector> connectors = new ArrayList<Connector>();
+	
+	
+
 	public Shape(String label, int x, int y){
 		super(label);
 		this.userInput = "";
@@ -35,4 +40,11 @@ public class Shape extends JButton{
 		this.shapeIndex = shapeIndex;
 	}
 	
+	public ArrayList<Connector> getConnectors() {
+		return connectors;
+	}
+
+	public void setConnectors(ArrayList<Connector> connectors) {
+		this.connectors = connectors;
+	}
 }

@@ -3,6 +3,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Point;
+//import java.awt.Shape;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.Line2D;
 import java.util.ArrayList;
@@ -15,7 +16,10 @@ import controller.SelectShape;
 import model.Connector;
 import model.Data;
 import model.Line;
+import model.Shape;
+import model.ShapeData;
 import model.TabData;
+
 
 /**
  * @author: Suyog
@@ -40,16 +44,18 @@ public class RightPanel extends JPanel{
 	protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         g.setColor(Color.BLACK);
-        //System.out.println("Number of lines " + lines.size());
-        final int ARR_SIZE = 4;
-        TabData tabData = Data.getInstance().getTab(NewTab.selectedTab()); 
+        
+        int tabNumber = NewTab.selectedTab();
+        TabData tabData = Data.getInstance().getTab(tabNumber);
+        ArrayList<Shape> shapes = tabData.getShapes();
+        ArrayList<Line> lines = tabData.getLines();
+        
+        for(Line l : lines) {
         	
-        	for(Line l : tabData.getLines()) {
-        		System.out.println("*********************");
-        		System.out.println("x1 - " + l.x1);
-        		System.out.println("x2 - " + l.startDot.getX());
-	        	System.out.println("y1 - " + l.y1);
-	        	System.out.println("y2 - " + l.startDot.getY());
+//        	System.out.println("x1 - " + l.x1);
+//        	System.out.println("x2 - " + l.startDot.getParent().getX());
+//        	System.out.println("y1 - " + l.y1);
+//        	System.out.println("y2 - " + l.startDot.getParent().getY());
         	
 	        	int x1 = l.x1 + l.startDot.getX(); 
 	        	int y1 = l.y1 + l.startDot.getY(); 
@@ -57,7 +63,7 @@ public class RightPanel extends JPanel{
 	        	int y2 = l.y2 + l.endDot.getY();
 	        	g.drawLine(x1, y1, x2, y2);
         }
-    
+        
         //g.fillOval(0, 0, getSize().width, getSize().height);
         
     }

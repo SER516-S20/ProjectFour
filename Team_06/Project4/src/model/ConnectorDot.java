@@ -18,6 +18,7 @@ import model.Shape.type;
 public class ConnectorDot extends Connector {
 	
 //	public boolean line = false;
+	public Connector toConnector = null;
 	
 	ConnectorDot(int x, int y, type t) {
 		super(t);
@@ -27,10 +28,20 @@ public class ConnectorDot extends Connector {
 	    new DrawLine(this);
 	}
 	
+	public Connector getToConnector() {
+		return toConnector;
+	}
+
+	public void setToConnector(Connector toConnector) {
+		this.toConnector = toConnector;
+	}
+
+	
+	
 	@Override
     protected void paintComponent(Graphics g) {
         if (getModel().isArmed()) {
-            g.setColor(Color.lightGray);
+            g.setColor(Color.BLACK);
         } 
         else{
             g.setColor(Color.BLACK);
