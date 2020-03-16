@@ -40,7 +40,7 @@ public class Frame extends JFrame{
 		this.pack();
 		this.setLocationRelativeTo(null);
 		this.setLayout(null);
-		MenuBar menuBar = new MenuBar();
+		MenuBar menuBar = new MenuBar(dragArea);
 		this.setJMenuBar(menuBar.createMenuBar());
 		this.setVisible(true);
 	}

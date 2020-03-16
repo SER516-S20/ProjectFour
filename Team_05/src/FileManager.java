@@ -20,7 +20,7 @@ import org.w3c.dom.NodeList;
  */
 public class FileManager {
 	
-	public void save(File file, Hashtable<Integer, JButton> shapes) {
+	public void save(File file, Hashtable<Integer, ButtonBox> shapes) {
 		try {
 			DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
@@ -31,8 +31,13 @@ public class FileManager {
 				Element shape = doc.createElement("shape");
 				rootElement.appendChild(shape);
 				shape.setAttribute("id",Integer.toString(key));
-				JButton theShape = shapes.get(key);
+				ButtonBox theShape = shapes.get(key);
 				Element type = doc.createElement("type");
+				type.appendChild(doc.createTextNode(theShape.getToolTipText()));
+				Element position = doc.createElement("position");
+				position.appendChild(doc.createTextNode((theShape.getLocation().x + theShape.getPreferredSize().width / 2) + "," + (theShape.getLocation().y + theShape.getHeight() / 2)));
+				shape.appendChild(type);
+				shape.appendChild(position);
 				/*
 				if(theShape instanceof RoundButton) {
 					type.appendChild(doc.createTextNode("round"));

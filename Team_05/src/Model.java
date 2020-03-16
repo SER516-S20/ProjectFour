@@ -8,10 +8,19 @@ public class Model {
 	private static List<Connection> connections = new ArrayList<Connection>();
 	private static RightTabbedPane rightTabbedPane;
 	private static Hashtable<String, WorkingAreaTab> tabs;
+	private static Hashtable<Integer, ButtonBox> shapes;
 	
 	
 	public Model() {
-		
+		//shapes = new Hashtable<Integer, ButtonBox>();
+	}
+	
+	public void setshapes( Hashtable<Integer, ButtonBox> inshapes) {
+		this.shapes = inshapes;
+	}
+	
+	public Hashtable<Integer, ButtonBox> getshapes() {
+		return shapes;
 	}
 	
 	/*

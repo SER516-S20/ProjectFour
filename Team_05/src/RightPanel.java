@@ -17,15 +17,17 @@ import javax.swing.JPanel;
  */
 public class RightPanel extends JPanel implements ActionListener, MouseListener, MouseMotionListener{
 	private static final long serialVersionUID = 1L;
-	private Hashtable<Integer, JButton> shapes;
+	private Hashtable<Integer, ButtonBox> shapes;
 	private Frame frame;
 	protected List<Connection> connections;
-	private Model  model = new Model();
+	private Model model;
 	private ValuePane vPane;
+	
 	boolean isAlreadyOneClick = false;
 	public RightPanel() {
 		this.setBackground(Color.red);
-		shapes = new Hashtable<Integer, JButton>();
+		shapes = new Hashtable<Integer, ButtonBox>();
+		model = new Model();
 		addMouseListener(this);
 		connections = model.getConnectionCollection();
 	}
@@ -36,6 +38,9 @@ public class RightPanel extends JPanel implements ActionListener, MouseListener,
 		addActionAndMouseMotionListener(btn);
 		this.add(btn);
 		this.autoLocation(btn,x - btn.getPreferredSize().width / 2,y - btn.getPreferredSize().height / 2);
+		btn.setToolTipText(btnCommand);
+		shapes.put(btn.hashCode(),btn);
+		model.setshapes(shapes);
 		this.repaint();
 	}
 	
@@ -54,16 +59,15 @@ public class RightPanel extends JPanel implements ActionListener, MouseListener,
 		frame.contentRepaint();
 	}
 	
-	public Hashtable<Integer, JButton> getShapes() {
+	public Hashtable<Integer, ButtonBox> getShapes() {
 		return shapes;
 	}
 	
 	public void clear() {
-		for(JButton shape:shapes.values()) {
+		for(ButtonBox shape:shapes.values()) {
 			this.remove(shape);
 		}
 		shapes.clear();
-		
 	}
 	
 	private void autoLocation(ButtonBox button, int x, int y) {
@@ -117,6 +121,8 @@ public class RightPanel extends JPanel implements ActionListener, MouseListener,
 			}
 			addButton(instance.getText(),e.getX(),e.getY());
 			System.out.println("====" + this.getComponentCount());
+			System.out.println("e.getX() " + e.getX());
+			System.out.println("e.getY() " + e.getY());
 		}else {
 			if (e.getClickCount() == 2) {
 				Object source = e.getComponent();
@@ -177,5 +183,12 @@ public class RightPanel extends JPanel implements ActionListener, MouseListener,
         	line.setDest(finishedconnection.getDestX(), finishedconnection.getDestY());
         	line.draw(g);
         }
+    }
+    
+    public void load(ShapeInfo[] shapeinfo) {
+		this.clear();
+    	for(int i = 0; i < shapeinfo.length; i++) {
+    		addButton(shapeinfo[i].getType(),shapeinfo[i].getPosition().x,shapeinfo[i].getPosition().y);
+    	}
     }
 }
