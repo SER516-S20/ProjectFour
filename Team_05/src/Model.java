@@ -55,17 +55,29 @@ public class Model {
 		return true;
 	}
 	
-	public void setRightTabbedPane(RightTabbedPane rightTabbedPane)
+	public static void setRightTabbedPane(RightTabbedPane rightTabbedPane)
 	{
 		this.rightTabbedPane = rightTabbedPane;
 	}
 	
-	public RightTabbedPane getRightTabbedPane()
+	public static Hashtable<String, TabInfo> getTabs()
+	{
+		if(tabs == null)
+			tabs = new Hashtable<String, TabInfo>();
+		return tabs;
+	}
+	
+	public static void setTabs(Hashtable<String, TabInfo> tabTable)
+	{
+		tabs = tabTable;
+	}
+	
+	public static RightTabbedPane getRightTabbedPane()
 	{
 		return rightTabbedPane;
 	}
 	
-	public boolean addWorkingAreaTab(WorkingAreaTab tab)
+	public static boolean addWorkingAreaTab(WorkingAreaTab tab)
 	{
 		boolean added = false;
 		if(tabs == null)
@@ -85,7 +97,7 @@ public class Model {
 		return added;
 	}
 	
-	public void addWorkingAreaTab()
+	public static void addWorkingAreaTab()
 	{
 		String init_name = "unnamedTab";
 		String name = init_name;
@@ -103,7 +115,7 @@ public class Model {
 		addWorkingAreaTab(tab);
 	}
 	
-	public String getCurrentTabName()
+	public static String getCurrentTabName()
 	{
 		return ((WorkingAreaTab)rightTabbedPane.getSelectedComponent()).getName();
 	}
