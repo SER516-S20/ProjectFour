@@ -35,6 +35,7 @@ public class RightTabbedPaneController implements ActionListener, MouseListener,
 			tabs.put(tab.getName(), new TabInfo(tab));
 			added = true;
 			rightTabbedPane.add(tab.getName(),tab);
+			tab.addMouseListener(this);
 		}
 		return added;
 	}
@@ -60,6 +61,11 @@ public class RightTabbedPaneController implements ActionListener, MouseListener,
 	public String getCurrentTabName()
 	{
 		return ((WorkingAreaTab)rightTabbedPane.getSelectedComponent()).getName();
+	}
+	
+	public WorkingAreaTab getCurrentTab()
+	{
+		return (WorkingAreaTab)rightTabbedPane.getSelectedComponent();
 	}
 	
 	
