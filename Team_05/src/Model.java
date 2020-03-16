@@ -102,4 +102,9 @@ public class Model {
 		WorkingAreaTab tab = new WorkingAreaTab(name);
 		addWorkingAreaTab(tab);
 	}
+	
+	public String getCurrentTabName()
+	{
+		return ((WorkingAreaTab)rightTabbedPane.getSelectedComponent()).getName();
+	}
 }
