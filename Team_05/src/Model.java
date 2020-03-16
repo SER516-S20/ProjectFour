@@ -76,47 +76,4 @@ public class Model {
 	{
 		return rightTabbedPane;
 	}
-	
-	public static boolean addWorkingAreaTab(WorkingAreaTab tab)
-	{
-		boolean added = false;
-		if(tabs == null)
-		{
-			tabs = new Hashtable<String, TabInfo>();
-		}
-		if(tab.getName() == null)
-		{
-			added = false;
-		}
-		else if(!tabs.containsKey(tab.getName()))
-		{
-			tabs.put(tab.getName(), new TabInfo(tab));
-			added = true;
-			rightTabbedPane.add(tab.getName(),tab);
-		}
-		return added;
-	}
-	
-	public static void addWorkingAreaTab()
-	{
-		String init_name = "unnamedTab";
-		String name = init_name;
-		int count = 1;
-		if(tabs == null)
-		{
-			tabs = new Hashtable<String, TabInfo>();
-		}
-		while(tabs.containsKey(name))
-		{
-			name = init_name + Integer.toString(count);
-			count++;
-		}
-		WorkingAreaTab tab = new WorkingAreaTab(name);
-		addWorkingAreaTab(tab);
-	}
-	
-	public static String getCurrentTabName()
-	{
-		return ((WorkingAreaTab)rightTabbedPane.getSelectedComponent()).getName();
-	}
 }
