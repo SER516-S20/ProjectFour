@@ -7,7 +7,8 @@ import java.util.List;
 public class Model {
 	private static List<Connection> connections = new ArrayList<Connection>();
 	private static RightTabbedPane rightTabbedPane;
-	private static Hashtable<String, WorkingAreaTab> tabs;
+	private static Hashtable<String, TabInfo> tabs;
+	//private static Hashtable<String, Hashtable<Integer, ButtonBox>> shapes
 	private static Hashtable<Integer, ButtonBox> shapes;
 	
 	
@@ -69,7 +70,7 @@ public class Model {
 		boolean added = false;
 		if(tabs == null)
 		{
-			tabs = new Hashtable<String, WorkingAreaTab>();
+			tabs = new Hashtable<String, TabInfo>();
 		}
 		if(tab.getName() == null)
 		{
@@ -77,7 +78,7 @@ public class Model {
 		}
 		else if(!tabs.containsKey(tab.getName()))
 		{
-			tabs.put(tab.getName(), tab);
+			tabs.put(tab.getName(), new TabInfo(tab));
 			added = true;
 			rightTabbedPane.add(tab.getName(),tab);
 		}
@@ -91,7 +92,7 @@ public class Model {
 		int count = 1;
 		if(tabs == null)
 		{
-			tabs = new Hashtable<String, WorkingAreaTab>();
+			tabs = new Hashtable<String, TabInfo>();
 		}
 		while(tabs.containsKey(name))
 		{
