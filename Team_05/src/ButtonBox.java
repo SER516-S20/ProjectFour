@@ -58,4 +58,14 @@ public abstract class ButtonBox extends JPanel{
 		return vDialog;
 	}
 	abstract public void drawContent();
+	
+	public int getId()
+	{
+		return id;
+	}
+	
+	public void setId(int id)
+	{
+		this.id = id;
+	}
 }
