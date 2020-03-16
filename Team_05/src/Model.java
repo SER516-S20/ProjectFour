@@ -55,9 +55,9 @@ public class Model {
 		return true;
 	}
 	
-	public static void setRightTabbedPane(RightTabbedPane rightTabbedPane)
+	public static void setRightTabbedPane(RightTabbedPane tabbedPane)
 	{
-		this.rightTabbedPane = rightTabbedPane;
+		rightTabbedPane = tabbedPane;
 	}
 	
 	public static Hashtable<String, TabInfo> getTabs()
