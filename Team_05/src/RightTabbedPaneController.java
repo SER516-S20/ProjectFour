@@ -5,6 +5,8 @@ import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.util.Hashtable;
 
+import javax.swing.JPanel;
+
 public class RightTabbedPaneController implements ActionListener, MouseListener, MouseMotionListener{
 	private RightTabbedPane rightTabbedPane;
 	private Hashtable<String, TabInfo> tabs;
@@ -84,8 +86,7 @@ public class RightTabbedPaneController implements ActionListener, MouseListener,
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
