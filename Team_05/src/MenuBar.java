@@ -13,10 +13,10 @@ public class MenuBar extends JMenuBar{
 	private static final long serialVersionUID = 1L;
 	private FileBrowser fileBrowser;
 	private FileManager fileManager;
-	private RightPanel rightPanel;
+	private RightTabbedPane rightPanel;
 	private Model model;
 	
-	MenuBar(RightPanel rightPanel) {
+	MenuBar(RightTabbedPane rightPanel) {
 		model = new Model();
 		this.rightPanel = rightPanel;
 	}
@@ -40,8 +40,9 @@ public class MenuBar extends JMenuBar{
 		itemOpen.addActionListener(new ActionListener(){
 		public void actionPerformed(ActionEvent e) {
 			if(fileBrowser.browser("Open file")) {
-					ShapeInfo[] shapeList = fileManager.open(fileBrowser.getCurrentFile());
-					rightPanel.load(shapeList);
+					//ShapeInfo[] shapeList = fileManager.open(fileBrowser.getCurrentFile());
+					//rightPanel.load(shapeList);
+					rightPanel.load();
 				}
 			}
 		});
@@ -52,6 +53,7 @@ public class MenuBar extends JMenuBar{
 		NewSpace.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
 				//do something
+				Model.getRightTabbedPane().addWorkingAreaTab();
 			}
 		});
 		menuBar.add(NewSpace);

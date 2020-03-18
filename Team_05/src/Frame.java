@@ -23,7 +23,7 @@ public class Frame extends JFrame{
 	private static final String title = "ProjectTwo-Team 5";
 	private static final Color lBackground = new Color(255, 255, 240);
 	//private static final Color rBackground = new Color(240, 255, 255);
-	private RightPanel dragArea;
+	private RightTabbedPane dragArea;
 	private LeftPanel btnContainer;
 	 
 	public Frame() {
@@ -32,9 +32,8 @@ public class Frame extends JFrame{
 		this.setResizable(false);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getContentPane().setLayout(null);
-		dragArea = new RightPanel();
+		dragArea = new RightTabbedPane();
 		btnContainer = new LeftPanel();
-		dragArea.setFrame(this);
 		this.getContentPane().add(createLeftPanel());
 		this.getContentPane().add(createRightPanel());
 		this.pack();
@@ -58,7 +57,7 @@ public class Frame extends JFrame{
 		return scrollPane;
 	}
 	
-	private JPanel createRightPanel() {
+	private RightTabbedPane createRightPanel() {
 		dragArea.setLocation(200, 0);
 		dragArea.setSize(600, 500);
 		dragArea.setBackground(Color.white);		
