@@ -5,11 +5,11 @@ import javax.swing.JButton;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+/**
+ * @author Kairui Hsu
+ **/
 
 public class MenuBar extends JMenuBar{
-	/**
-	 * @author Kairui Hsu
-	 */
 	private static final long serialVersionUID = 1L;
 	private FileBrowser fileBrowser;
 	private FileManager fileManager;
@@ -59,7 +59,8 @@ public class MenuBar extends JMenuBar{
 		Compiler.setBorder(null);
 		Compiler.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
-				//do something
+				Compile compiler = new Compile();
+				compiler.start();
 			}
 		});
 		menuBar.add(Compiler);
