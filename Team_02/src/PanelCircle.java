@@ -1,3 +1,10 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Shape;
@@ -21,6 +28,7 @@ public class PanelCircle extends JPanel {
 		JPanel objCirclePane = new JPanel();
 		repaint();
 		objCirclePane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		objCirclePane.setSize(100,100);
 		objCirclePane.setLayout(null);
 	}
 

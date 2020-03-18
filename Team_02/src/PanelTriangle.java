@@ -1,3 +1,10 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.MouseAdapter;
@@ -27,6 +34,7 @@ public class PanelTriangle extends JPanel {
 		repaint();
 		objTrianglePane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		objTrianglePane.setLayout(null);
+		objTrianglePane.setSize(100,100);
 	}
 
 	@Override
