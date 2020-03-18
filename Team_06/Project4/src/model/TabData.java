@@ -9,11 +9,11 @@ public class TabData {
 	private ArrayList<ShapeData> shapeData;
 	private int shapeCount;
 	private ArrayList<Line> lines;
+	
 	private ArrayList<Shape> shapes = new ArrayList<Shape>();
+	private int openVertex;
+	private int closeVertex;
 	
-	
-	
-
 	public TabData() {
 		this.shapeNumber = 0;
 		this.openParaFlag = false;
@@ -120,5 +120,21 @@ public class TabData {
 	
 	public void addShape(Shape shape) {
 		this.shapes.add(shape);
+	}
+	
+	public int getOpenVertex() {
+		return openVertex;
+	}
+
+	public void setOpenVertex(int openVertex) {
+		this.openVertex = openVertex;
+	}
+
+	public int getCloseVertex() {
+		return closeVertex;
+	}
+
+	public void setCloseVertex(int closeVertex) {
+		this.closeVertex = closeVertex;
 	}
 }

@@ -48,6 +48,7 @@ public class SelectShape {
 								shape = new OpenParanthesis(e.getX(), e.getY(), true);
 								TabData tabData = Data.getInstance().getTab(tabNumber);
 								tabData.setOpenParaFlag(true);
+								tabData.setOpenVertex(tabData.getShapeCount() + 1);
 								Data.getInstance().setTab(tabNumber, tabData);
 							}
 							break;
@@ -55,6 +56,7 @@ public class SelectShape {
 								shape = new CloseParanthesis(e.getX(), e.getY(), true);
 								TabData tabData = Data.getInstance().getTab(tabNumber);
 								tabData.setCloseParaFlag(true);
+								tabData.setCloseVertex(tabData.getShapeCount() + 1);
 								Data.getInstance().setTab(tabNumber, tabData);
 							}
 							break;

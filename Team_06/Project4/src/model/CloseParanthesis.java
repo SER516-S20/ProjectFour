@@ -17,7 +17,7 @@ public class CloseParanthesis extends Shape{
 			
 			this.connectors.add(leftMiddle);
 			this.add(leftMiddle);
-			
+			System.out.println("");
 			new Drag(this);
 
 		}
