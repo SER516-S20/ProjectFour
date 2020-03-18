@@ -12,11 +12,10 @@ public class ValuePane extends JOptionPane{
 	}
 	
 	public void setValue(String val) {
-		String m = JOptionPane.showInputDialog("Input a value", val);
-		if(m.isEmpty()) {
-			m = " ";
+		String input = JOptionPane.showInputDialog("Input a value", val);
+		if(input == null || input.isEmpty()) {
+			input = " ";
 		}
-		value = m;
-		
+		value = input;
 	}
 }
