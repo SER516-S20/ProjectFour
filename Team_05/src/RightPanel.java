@@ -140,6 +140,7 @@ public class RightPanel extends JPanel implements ActionListener, MouseListener,
 			this.remove(e.getComponent());
 			connections.removeIf(n->(n.getSourceButton()==e.getComponent().hashCode()));
 			connections.removeIf(n->(n.getDestButton()==e.getComponent().hashCode()));
+			shapes.remove(e.getComponent().hashCode());
 			this.repaint();
 		}
 	}
