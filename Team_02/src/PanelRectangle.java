@@ -1,3 +1,10 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
@@ -25,6 +32,7 @@ public class PanelRectangle extends JPanel {
 		JPanel objRectanglePane = new JPanel();
 		repaint();
 		objRectanglePane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		objRectanglePane.setSize(100,100);
 		objRectanglePane.setLayout(null);
 	}
 
