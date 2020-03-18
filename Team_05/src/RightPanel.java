@@ -32,14 +32,23 @@ public class RightPanel extends JPanel implements ActionListener, MouseListener,
 		connections = model.getConnectionCollection();
 	}
 	
-	public void addButton(String btnCommand, int x, int y) {
+	public void addButton(int id,String btnCommand, int x, int y) {
 		System.out.println("get in to the panel...." + btnCommand);
 		ButtonBox btn = ButtonBoxFactory.buildButtonBox(btnCommand);
 		addActionAndMouseMotionListener(btn);
 		this.add(btn);
 		this.autoLocation(btn,x - btn.getPreferredSize().width / 2,y - btn.getPreferredSize().height / 2);
 		btn.setToolTipText(btnCommand);
-		shapes.put(btn.hashCode(),btn);
+		if(id == 0) {
+			shapes.put(btn.hashCode(),btn);
+			btn.setId(btn.hashCode());
+			System.out.print("add button hashcode"+ btn.hashCode());
+		}else {
+			shapes.put(id,btn);
+			btn.setId(id);
+			System.out.print("add button hashcode"+ id);
+		}
+
 		model.setshapes(shapes);
 		this.repaint();
 	}
@@ -119,7 +128,7 @@ public class RightPanel extends JPanel implements ActionListener, MouseListener,
 			if(instance.getText() == null) {
 				return;
 			}
-			addButton(instance.getText(),e.getX(),e.getY());
+			addButton(0,instance.getText(),e.getX(),e.getY());
 			System.out.println("====" + this.getComponentCount());
 		}else {
 			if (e.getClickCount() == 2) {
@@ -139,10 +148,16 @@ public class RightPanel extends JPanel implements ActionListener, MouseListener,
 		}
 		if(e.getButton() == MouseEvent.BUTTON3) {
 			this.remove(e.getComponent());
-			connections.removeIf(n->(n.getSourceButton()==e.getComponent().hashCode()));
-			connections.removeIf(n->(n.getDestButton()==e.getComponent().hashCode()));
-			shapes.remove(e.getComponent().hashCode());
+			//System.out.print("get source button = " + n.getSourceButton());
+			Object source = e.getComponent();
+			if(source instanceof JPanel){
+				ButtonBox btn = (ButtonBox) source;
+				System.out.print("get component = " + btn.getId());
+				connections.removeIf(n->(n.getSourceButton()==btn.getId()));
+				connections.removeIf(n->(n.getDestButton()==btn.getId()));
+				shapes.remove(btn.getId());
 			this.repaint();
+			}
 		}
 	}
 
@@ -188,7 +203,7 @@ public class RightPanel extends JPanel implements ActionListener, MouseListener,
     public void load(ShapeInfo[] shapeinfo) {
 		this.clear();
     	for(int i = 0; i < shapeinfo.length; i++) {
-    		addButton(shapeinfo[i].getType(),shapeinfo[i].getPosition().x,shapeinfo[i].getPosition().y);
+    		addButton(shapeinfo[i].getId(),shapeinfo[i].getType(),shapeinfo[i].getPosition().x,shapeinfo[i].getPosition().y);
     	}
     }
 }
