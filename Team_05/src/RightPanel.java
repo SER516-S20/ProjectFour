@@ -121,8 +121,6 @@ public class RightPanel extends JPanel implements ActionListener, MouseListener,
 			}
 			addButton(instance.getText(),e.getX(),e.getY());
 			System.out.println("====" + this.getComponentCount());
-			System.out.println("e.getX() " + e.getX());
-			System.out.println("e.getY() " + e.getY());
 		}else {
 			if (e.getClickCount() == 2) {
 				Object source = e.getComponent();
