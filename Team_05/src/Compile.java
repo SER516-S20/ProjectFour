@@ -64,6 +64,8 @@ public class Compile extends Thread {
            			break;
            		}
            	}
+            //rule3: check loop
+            //do something
            	if(checkValid == true) JOptionPane.showMessageDialog(null,"Compile Successfully!");
             System.out.println ("Thread " + Thread.currentThread().getId() + " is finished"); 
         } 

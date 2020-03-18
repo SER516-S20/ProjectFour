@@ -61,7 +61,7 @@ public abstract class ButtonBox extends JPanel{
 	}
 	public ValuePane createJOptionPane() {
 		vDialog =  new ValuePane();
-		vDialog.setValue("");
+		vDialog.setValue(" ");
 		return vDialog;
 	}
 	abstract public void drawContent();

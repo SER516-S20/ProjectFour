@@ -130,7 +130,8 @@ public class RightPanel extends JPanel implements ActionListener, MouseListener,
 						vPane = panelPressed.createJOptionPane();
 						panelPressed.setTitle(vPane.getvalue());
 					}else {
-						vPane.setValue(panelPressed.getTitle());
+						String val = panelPressed.getTitle();
+						vPane.setValue(val);
 						panelPressed.setTitle(vPane.getvalue());
 					}
 				}
