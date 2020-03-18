@@ -31,9 +31,6 @@ public class Compile extends Thread {
             		dotNumber = shapes.get(shapeKey).getBtnDots().length;
             		for(int j = 0 ; j < this.connections.size(); j++) {
             			Connection finishedconnection = connections.get(j);
-            			//System.out.println("source button: " + finishedconnection.getSourceButton());
-            			//System.out.println("des button: " + finishedconnection.getDestButton());
-            			//System.out.println("shape hashcode: " + shapeKey);
             			if(finishedconnection.getSourceButton().equals(shapeKey) || finishedconnection.getDestButton().equals(shapeKey)) {
             				dotNumber--;
             				if(dotNumber == 0) {
