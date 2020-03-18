@@ -49,9 +49,7 @@ public class Compile extends Thread {
             			break;
             		}
             	}
-            	if(checkValid == true && dotNumber == 0) {
-            		JOptionPane.showMessageDialog(null,"Compile Successfully!");
-            	}
+            	if(checkValid == true) JOptionPane.showMessageDialog(null,"Compile Successfully!");
             }
             System.out.println ("Thread " + Thread.currentThread().getId() + " is finished"); 
         } 
