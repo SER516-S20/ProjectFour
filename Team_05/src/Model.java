@@ -45,25 +45,7 @@ public class Model {
 		
 		return btnBox;
 	}
-	
-	/*
-	 * this method is used to add a new connection to the collection
-	 */
-	public void addConnection(Connection conn) {
-		connections.add(conn);
-	}
-	
-	public boolean updateConnectionList() {
-		return true;
-	}
-	
-	/*
-	 * get all the connections 
-	 */
-	public List<Connection> getConnectionCollection(){
-		return connections;
-	}
-	
+
 	public boolean isDotUsed(Point aDot) {
 		return true;
 	}

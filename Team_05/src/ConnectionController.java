@@ -11,7 +11,7 @@ public class ConnectionController implements MouseListener {
 	private ButtonBox buttonBox;
 	public ConnectionController(ButtonBox buttonBox) {
 		this.buttonBox = buttonBox;
-		connections = model.getConnectionCollection();
+		connections =Model.getTabs().get(Model.getRightTabbedPane().getCurrentTabName()).getConnectionCollection();
 	}
 	@Override
 	public void mouseClicked(MouseEvent e) {
