@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 
 /**
  * @author Sarvansh
@@ -73,23 +74,23 @@ public class Shapes implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		
 		if (e.getSource() == openParanthesis) {
-			System.out.println("This is button 1");
+			JOptionPane.showMessageDialog(null, "Clicked openParanthesis");
 		} else if (e.getSource() == closedParanthesis) {
-			
+			JOptionPane.showMessageDialog(null, "Clicked closedParanthesis");
  
 		} else if (e.getSource() == lessThanOperator) {
-
+			JOptionPane.showMessageDialog(null, "Clicked lessThanOperator");
 		} else if (e.getSource() == greaterThanOperator) {
-	
+			JOptionPane.showMessageDialog(null, "Clicked greaterThanOperator");
 		}
 		else if (e.getSource() == atTheRateOperator) {
-
+			JOptionPane.showMessageDialog(null, "Clicked atTheRateOperator");
 		}
 		else if (e.getSource() == barOperator) {
-
+			JOptionPane.showMessageDialog(null, "Clicked barOperator");
 		}
 		else if (e.getSource() == dashOperator) {
-
+			JOptionPane.showMessageDialog(null, "Clicked dashOperator");
 		}
 		
 	}

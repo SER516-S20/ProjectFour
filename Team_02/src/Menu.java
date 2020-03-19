@@ -46,6 +46,7 @@ public class Menu extends JPanel implements ActionListener {
 	JButton restoreBtn = new JButton("Restore");
 	JButton quitBtn = new JButton("Quit");
 	JButton newTabBtn = new JButton("NewTab");
+	JButton compileBtn = new JButton("Compile");
 	 List<Point> circlePoint = new ArrayList<Point>();
 	 List<Point> trianglePoint = new ArrayList<Point>();
 	 List<Point> squarePoint = new ArrayList<Point>();
@@ -67,8 +68,10 @@ public class Menu extends JPanel implements ActionListener {
 		
 		newTabBtn.addActionListener(this);
 		pan.add(newTabBtn);
+		compileBtn.addActionListener(this);
+		pan.add(compileBtn);
 		//add("North", pan);
-		pan.setSize(400, 100);
+		pan.setSize(500, 50);
 		return pan;
 
 	}
@@ -151,6 +154,9 @@ public class Menu extends JPanel implements ActionListener {
 		}
 		else if (e.getSource() == newTabBtn) {
 		objTab.AddPanel();
+		}
+		else if (e.getSource() == compileBtn) {
+			
 		}
 		
 	}

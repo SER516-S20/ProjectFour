@@ -50,7 +50,7 @@ public class MainWindow  {
 		  JPanel panel = new JPanel();
 		  panel.add(objMenu.CreateMenu());
 		 // panel.setSize(100, 100);
-		  panel.setBounds(0, 0, 400, 50);
+		  panel.setBounds(0, 0, 500, 50);
 		  JPanel panelToolKit = new JPanel();
 		 // panelToolKit.setLocation(0, 100);
 		 // panelToolKit.setSize(100,100);
