@@ -1,13 +1,17 @@
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JButton;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
+/**
+ *
+ * @author Kartik Mathpal
+ * @version 1.0
+ */
 
 public class MenuBar extends JMenuBar {
 
@@ -18,7 +22,7 @@ public class MenuBar extends JMenuBar {
 	private final String SAVE = "Save";
 	private final String LOAD = "Load";
 	private final String MENU = "Menu";
-	private final String COMPILE = "compile";
+	private final String COMPILE = "Compile";
 
 	MenuBar() {
 		menu = new JMenu(MENU);
@@ -48,7 +52,7 @@ public class MenuBar extends JMenuBar {
 				}
 			}
 		});
-		menuBar.add(NewTab);
+//		menuBar.add(NewTab);
 		JButton Compiler = new JButton("  Compile  ");
 		Compiler.setBorder(border);
 		Compiler.addActionListener(new ActionListener(){
@@ -56,7 +60,7 @@ public class MenuBar extends JMenuBar {
 				//TO DO: write action to compile
 			}
 		});
-		menuBar.add(Compiler);
+//		menuBar.add(Compiler);
 		this.add(menuBar);
 	}
 

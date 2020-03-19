@@ -2,6 +2,11 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.*;
+/**
+ *
+ * @author Kartik Mathpal
+ * @version 1.0
+ */
 
 public class CompileFile extends JMenuItem implements ActionListener {
     public CompileFile(String label) {
@@ -68,7 +73,6 @@ public class CompileFile extends JMenuItem implements ActionListener {
             infoBox("Compilation successful", "Done");
             return;
         }
-
 
     }
 
