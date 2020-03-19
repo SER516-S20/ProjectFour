@@ -39,11 +39,14 @@ public class Model {
 	public void addConnection(Connection conn) {
 		connections.add(conn);
 	}
-	
+
 	public boolean updateConnectionList() {
 		return true;
 	}
 	
+	public void clearConnection() {
+		connections.clear();
+	}
 	/*
 	 * get all the connections 
 	 */

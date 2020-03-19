@@ -43,11 +43,9 @@ public class RightPanel extends JPanel implements ActionListener, MouseListener,
 		if(id == 0) {
 			shapes.put(btn.hashCode(),btn);
 			btn.setId(btn.hashCode());
-			System.out.print("add button hashcode"+ btn.hashCode());
 		}else {
 			shapes.put(id,btn);
 			btn.setId(id);
-			System.out.print("add button hashcode"+ id);
 		}
 		model.setshapes(shapes);
 		this.repaint();
@@ -110,7 +108,7 @@ public class RightPanel extends JPanel implements ActionListener, MouseListener,
 					finishedconnection.setSourceX(finishedconnection.getSourceX()+e.getX());
 					finishedconnection.setSourceY(finishedconnection.getSourceY()+e.getY());
 				}
-				else if(finishedconnection.getDestButton() == btn.getId()) {
+				 else if(finishedconnection.getDestButton() == btn.getId()) {
 					finishedconnection.setDestX(finishedconnection.getDestX()+e.getX());
 					finishedconnection.setDestY(finishedconnection.getDestY()+e.getY());
 				}
