@@ -2,15 +2,17 @@ import java.awt.Point;
 
 /**
  * @author Yijian Hu
+ * @modified by Kairui Hsu
  */
 public class ShapeInfo {
 	private int id;
-	private String type;
+	private String type, title;
 	private Point position;
 	
-	ShapeInfo(int id, String type, Point position){
+	ShapeInfo(int id, String type, String title, Point position){
 		this.id = id;
 		this.type = type;
+		this.title = title;
 		this.position = position;
 	}
 	
@@ -20,6 +22,10 @@ public class ShapeInfo {
 	
 	public String getType(){
 		return type;
+	}
+	
+	public String getTitle(){
+		return title;
 	}
 	
 	public Point getPosition(){

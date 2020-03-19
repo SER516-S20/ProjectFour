@@ -13,7 +13,7 @@ import javax.swing.JPanel;
 
 /**
  * @author Yijian Hu
- * @modified by Hongqi Zhang 
+ * @modified by Hongqi Zhang, Kairui Hsu
  */
 public class RightPanel extends JPanel implements ActionListener, MouseListener, MouseMotionListener{
 	private static final long serialVersionUID = 1L;
@@ -32,14 +32,23 @@ public class RightPanel extends JPanel implements ActionListener, MouseListener,
 		connections = model.getConnectionCollection();
 	}
 	
-	public void addButton(String btnCommand, int x, int y) {
+	public void addButton(int id,String btnCommand,String title, int x, int y) {
 		System.out.println("get in to the panel...." + btnCommand);
 		ButtonBox btn = ButtonBoxFactory.buildButtonBox(btnCommand);
 		addActionAndMouseMotionListener(btn);
 		this.add(btn);
 		this.autoLocation(btn,x - btn.getPreferredSize().width / 2,y - btn.getPreferredSize().height / 2);
 		btn.setToolTipText(btnCommand);
-		shapes.put(btn.hashCode(),btn);
+		btn.setTitle(title);
+		if(id == 0) {
+			shapes.put(btn.hashCode(),btn);
+			btn.setId(btn.hashCode());
+			System.out.print("add button hashcode"+ btn.hashCode());
+		}else {
+			shapes.put(id,btn);
+			btn.setId(id);
+			System.out.print("add button hashcode"+ id);
+		}
 		model.setshapes(shapes);
 		this.repaint();
 	}
@@ -94,14 +103,18 @@ public class RightPanel extends JPanel implements ActionListener, MouseListener,
 				 e.getY() + e.getComponent().getY());
 		for(int i = 0; i < this.connections.size(); i++) {
         	Connection finishedconnection = connections.get(i);
-        	if(finishedconnection.getSourceButton() == e.getComponent().hashCode()) {
-        		finishedconnection.setSourceX(finishedconnection.getSourceX()+e.getX());
-        		finishedconnection.setSourceY(finishedconnection.getSourceY()+e.getY());
-        	}
-        	else if(finishedconnection.getDestButton() == e.getComponent().hashCode()) {
-        		finishedconnection.setDestX(finishedconnection.getDestX()+e.getX());
-        		finishedconnection.setDestY(finishedconnection.getDestY()+e.getY());
-        	}
+        	Object obj = e.getComponent();
+			if(obj instanceof JPanel){
+				ButtonBox btn = (ButtonBox) obj;
+				if(finishedconnection.getSourceButton() == btn.getId()) {
+					finishedconnection.setSourceX(finishedconnection.getSourceX()+e.getX());
+					finishedconnection.setSourceY(finishedconnection.getSourceY()+e.getY());
+				}
+				else if(finishedconnection.getDestButton() == btn.getId()) {
+					finishedconnection.setDestX(finishedconnection.getDestX()+e.getX());
+					finishedconnection.setDestY(finishedconnection.getDestY()+e.getY());
+				}
+			}
         }
 		this.repaint();
 	}
@@ -119,7 +132,7 @@ public class RightPanel extends JPanel implements ActionListener, MouseListener,
 			if(instance.getText() == null) {
 				return;
 			}
-			addButton(instance.getText(),e.getX(),e.getY());
+			addButton(0,instance.getText()," ",e.getX(),e.getY());
 			System.out.println("====" + this.getComponentCount());
 		}else {
 			if (e.getClickCount() == 2) {
@@ -139,10 +152,14 @@ public class RightPanel extends JPanel implements ActionListener, MouseListener,
 		}
 		if(e.getButton() == MouseEvent.BUTTON3) {
 			this.remove(e.getComponent());
-			connections.removeIf(n->(n.getSourceButton()==e.getComponent().hashCode()));
-			connections.removeIf(n->(n.getDestButton()==e.getComponent().hashCode()));
-			shapes.remove(e.getComponent().hashCode());
-			this.repaint();
+			Object source = e.getComponent();
+			if(source instanceof JPanel){
+				ButtonBox btn = (ButtonBox) source;
+				connections.removeIf(n->(n.getSourceButton()==btn.getId()));
+				connections.removeIf(n->(n.getDestButton()==btn.getId()));
+				shapes.remove(btn.getId());
+				this.repaint();
+			}
 		}
 	}
 
@@ -188,7 +205,7 @@ public class RightPanel extends JPanel implements ActionListener, MouseListener,
     public void load(ShapeInfo[] shapeinfo) {
 		this.clear();
     	for(int i = 0; i < shapeinfo.length; i++) {
-    		addButton(shapeinfo[i].getType(),shapeinfo[i].getPosition().x,shapeinfo[i].getPosition().y);
+    		addButton(shapeinfo[i].getId(),shapeinfo[i].getType(),shapeinfo[i].getTitle(),shapeinfo[i].getPosition().x,shapeinfo[i].getPosition().y);
     	}
     }
 }

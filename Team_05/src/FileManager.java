@@ -1,6 +1,9 @@
 import java.awt.Point;
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Hashtable;
+import java.util.List;
+
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
@@ -17,41 +20,58 @@ import org.w3c.dom.NodeList;
 
 /**
  * @author Yijian Hu
+ * @modified by Kairui Hsu
  */
 public class FileManager {
+	private List<Connection> connections;
+	private Model model = new Model();
+	private int sourceButton, destButton;
 	
-	public void save(File file, Hashtable<Integer, ButtonBox> shapes) {
+	public void save(File file) {
 		try {
 			DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
 			Document doc = docBuilder.newDocument();
 			Element rootElement = doc.createElement("shapes");
 			doc.appendChild(rootElement);
-			for(int key:shapes.keySet()) {
-				Element shape = doc.createElement("shape");
-				rootElement.appendChild(shape);
-				shape.setAttribute("id",Integer.toString(key));
-				ButtonBox theShape = shapes.get(key);
-				Element type = doc.createElement("type");
-				type.appendChild(doc.createTextNode(theShape.getToolTipText()));
-				Element position = doc.createElement("position");
-				position.appendChild(doc.createTextNode((theShape.getLocation().x + theShape.getPreferredSize().width / 2) + "," + (theShape.getLocation().y + theShape.getHeight() / 2)));
-				shape.appendChild(type);
-				shape.appendChild(position);
-				/*
-				if(theShape instanceof RoundButton) {
-					type.appendChild(doc.createTextNode("round"));
+			if(model.getshapes() != null) {
+				for(int key:model.getshapes().keySet()) {
+					Element shape = doc.createElement("shape");
+					rootElement.appendChild(shape);
+					shape.setAttribute("id",Integer.toString(key));
+					ButtonBox theShape = model.getshapes().get(key);
+					Element type = doc.createElement("type");
+					type.appendChild(doc.createTextNode(theShape.getToolTipText()));
+					Element title = doc.createElement("title");
+					title.appendChild(doc.createTextNode(theShape.getTitle()));
+					Element position = doc.createElement("position");
+					position.appendChild(doc.createTextNode((theShape.getLocation().x + theShape.getPreferredSize().width / 2) + "," + (theShape.getLocation().y + theShape.getHeight() / 2)));
+					shape.appendChild(type);
+					shape.appendChild(title);
+					shape.appendChild(position);
 				}
-				else if(theShape instanceof RectangleButton) {
-					type.appendChild(doc.createTextNode("rectangle"));
+			}
+			if(model.getConnectionCollection() != null) {
+				connections = model.getConnectionCollection();
+				for(int j = 0 ; j < this.connections.size(); j++) {
+					Connection finishedconnection = connections.get(j);
+					Element conn = doc.createElement("conn");
+					rootElement.appendChild(conn);
+					sourceButton = finishedconnection.getSourceButton();
+					destButton = finishedconnection.getDestButton();
+					Element sourceId = doc.createElement("sourceId");
+					sourceId.appendChild(doc.createTextNode(Integer.toString(sourceButton)));
+					Element destId = doc.createElement("destId");
+					destId.appendChild(doc.createTextNode(Integer.toString(destButton)));
+					Element position = doc.createElement("position");
+					position.appendChild(doc.createTextNode((finishedconnection.getSourceX() + "," + 
+															 finishedconnection.getSourceY() + "," +
+															 finishedconnection.getDestX() + "," + 
+															 finishedconnection.getDestY())));
+					conn.appendChild(sourceId);
+					conn.appendChild(destId);
+					conn.appendChild(position);
 				}
-				else { //TriangleButton
-					type.appendChild(doc.createTextNode("triangle"));
-				}
-				Element position = doc.createElement("position");
-				position.appendChild(doc.createTextNode(theShape.getLocation().x + ","+theShape.getLocation().y));
-				shape.appendChild(type);
-				shape.appendChild(position);*/
 			}
 			TransformerFactory transformerFactory = TransformerFactory.newInstance();
 			Transformer transformer = transformerFactory.newTransformer();
@@ -80,7 +100,27 @@ public class FileManager {
 					String points[] = shapeElement.getElementsByTagName("position").item(0).getTextContent().split(",");
 					Point position = new Point(Integer.parseInt(points[0]),Integer.parseInt(points[1]));
 					String type = shapeElement.getElementsByTagName("type").item(0).getTextContent();
-					shapes[i]=new ShapeInfo(id,type,position);
+					String title = shapeElement.getElementsByTagName("title").item(0).getTextContent();
+					shapes[i]=new ShapeInfo(id,type,title,position);
+				}
+			}
+			NodeList connList = doc.getElementsByTagName("conn");
+			
+			for(int i = 0;i < connList.getLength();i++) {
+				Node conn = connList.item(i);
+				if (conn.getNodeType() == Node.ELEMENT_NODE) {  
+					Element connElement = (Element) conn;
+					String points[] = connElement.getElementsByTagName("position").item(0).getTextContent().split(",");
+					String sourceId = connElement.getElementsByTagName("sourceId").item(0).getTextContent();
+					String destId = connElement.getElementsByTagName("destId").item(0).getTextContent();
+					Connection newConn = new Connection();
+					newConn.setSourceButton(Integer.parseInt(sourceId));
+					newConn.setSourceX(Integer.parseInt(points[0]));
+					newConn.setSourceY(Integer.parseInt(points[1]));
+					newConn.setDestButton(Integer.parseInt(destId));
+					newConn.setDestX(Integer.parseInt(points[2]));
+					newConn.setDestY(Integer.parseInt(points[3]));
+					model.addConnection(newConn);
 				}
 			}
 			return shapes;
