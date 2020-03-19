@@ -51,7 +51,12 @@ public class RightTabbedPane extends JTabbedPane{
 	
 	public String getCurrentTabName()
 	{
-		return ((WorkingAreaTab)getSelectedComponent()).getName();
+		return ((RightPanel)getSelectedComponent()).getName();
+	}
+	
+	public RightPanel getCurrentTab()
+	{
+		return (RightPanel)getSelectedComponent();
 	}
 	
 }

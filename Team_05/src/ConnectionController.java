@@ -81,7 +81,8 @@ public class ConnectionController implements MouseListener {
 			System.out.print("=============\n"+tempconnection.getSourceY()+"\n");
 			
 			model.addConnection(tempconnection);
-			this.rightpanel.updateConnection();
+			//this.rightpanel.updateConnection();
+			Model.getRightTabbedPane().getCurrentTab().updateConnection();
 			System.out.print("==============="+connections.get(0).getSourceX()+"\n");
 			tempconnection = null;
 			e.getComponent().getParent().getParent().repaint();
