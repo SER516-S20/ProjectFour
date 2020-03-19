@@ -53,6 +53,7 @@ public class RightPanel extends JPanel implements ActionListener, MouseListener,
 		shapes = model.getTabs().get(name).getshapes();
 		addMouseListener(this);
 		connections = model.getTabs().get(name).getConnectionCollection();
+		this.setLayout(null);
 	}
 	
 	public void addButton(String btnCommand, int x, int y) {
