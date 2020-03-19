@@ -1,15 +1,20 @@
 import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.Panel;
-import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
 
-import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
+/**
+ * @author Sarvansh
+ * @created on 03-18-2020
+ * @version 1.0
+ * @author Rohit
+ * @modified on 03-18-2020
+ * @version 2.0
+ */
 public class Shapes implements ActionListener{
 	JButton openParanthesis = new JButton();
 	JButton closedParanthesis = new JButton();
@@ -21,13 +26,6 @@ public class Shapes implements ActionListener{
 	
 	public Panel CreateShapes() {
 		Panel pan = new Panel();
-//		shape1.setText("(");
-//		shape2.setText(")");
-//		shape3.setText("<");
-//		shape4.setText(">");
-//		shape5.setText("@");
-//		shape6.setText("||");
-//		shape7.setText("-");
 		
 		openParanthesis.addActionListener(this);
 		openParanthesis.setPreferredSize(new Dimension(180,70));
