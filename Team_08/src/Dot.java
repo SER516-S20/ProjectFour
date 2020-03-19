@@ -7,8 +7,6 @@ import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.awt.geom.Rectangle2D;
 import java.io.Serializable;
-import java.util.Iterator;
-import java.util.ListIterator;
 
 /**
  * @author Amudhan Manisekaran
@@ -140,7 +138,6 @@ public class Dot extends Shapes implements MouseListener, MouseMotionListener, S
 						Cursor cursor = new Cursor(Cursor.DEFAULT_CURSOR);
 						Frame.rightPanel.setCursor(cursor);
 						Frame.rightPanel.setVisible(true);
-						//populate compile shape Hashmap
 						updateHashMap(firstShape, secondShape);
 
 						if (CompileFile.trackShapes.containsKey(firstShape))
