@@ -1,3 +1,6 @@
+import java.awt.*;
+import java.awt.geom.Line2D;
+
 /**
  * @author Sandya Manoharan
  * @version 1.1
@@ -61,6 +64,21 @@ public class Line {
 
 	public void setDestShape(boolean isDestShape) {
 		this.isDestShape = isDestShape;
+	}
+
+	private void drawArrowHead(Graphics2D g2, Point tip, Point tail) {
+		int length = 10;
+		double phi = Math.toRadians(30);
+		double dy = tip.y - tail.y;
+		double dx = tip.x - tail.x;
+		double theta = Math.atan2(dy, dx);
+		double x, y, rho = theta + phi;
+		for(int i = 0; i < 2; i++) {
+			x = tip.x - length * Math.cos(rho);
+			y = tip.y - length * Math.sin(rho);
+			g2.draw(new Line2D.Double(tip.x, tip.y, x, y));
+			rho = theta - phi;
+		}
 	}
 
 }
