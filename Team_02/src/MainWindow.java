@@ -37,6 +37,7 @@ public class MainWindow  {
 	public static void main(String[] args) {
 
 		Menu objMenu = new Menu();
+		Shapes shapes = new Shapes();
 		 frame = new JFrame("Main Window");
 		frame.setVisible(true);
 		frame.setSize(1000, 1000);
@@ -55,6 +56,7 @@ public class MainWindow  {
 		 // panelToolKit.setSize(100,100);
 		  panelToolKit.setBounds(0,50,1350,100);
 		  panelToolKit.setBackground(Color.red);
+		  panelToolKit.add(shapes.CreateShapes());
 		  frame.add(panel);
 		  frame.add(panelToolKit);
 		  obj.createAndShowGUI();

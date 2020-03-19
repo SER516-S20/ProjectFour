@@ -6,7 +6,7 @@ import java.awt.*;
 
 /**
  * @author Sandya Manoharan
- * @version 1.0
+ * @version 1.1
  */
 public class Hyphen extends Shapes implements Serializable {
 
@@ -38,7 +38,6 @@ public class Hyphen extends Shapes implements Serializable {
 
         g2.draw(hyphen);
 
-
     }
 
     @Override
@@ -66,15 +65,6 @@ public class Hyphen extends Shapes implements Serializable {
 
         this.y = y + 50;
     }
-    public Shapes getDot1() {
-
-        return dot1;
-    }
-
-    public Shapes getDot2() {
-
-        return dot2;
-    }
 
     public boolean isLineDrawnDot1() {
 
@@ -92,6 +82,14 @@ public class Hyphen extends Shapes implements Serializable {
 
         this.isLineDrawnDot2 = isLineDrawnDot2;
     }
+    public Shapes getDot1() {
 
+        return dot1;
+    }
+
+    public Shapes getDot2() {
+
+        return dot2;
+    }
 
 }

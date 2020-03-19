@@ -37,12 +37,12 @@ public class ConnectionController implements MouseListener {
 					tempconnection = new Connection();
 					tempconnection.setSourceX(tempx);
 					tempconnection.setSourceY(tempy);
-					tempconnection.setSourceButton(obj.hashCode());
+					tempconnection.setSourceButton(obj.getId());
 				}
-				else if(tempconnection != null && tempconnection.getSourceButton() == null && tempconnection.getDestButton() != obj.hashCode()){
+				else if(tempconnection != null && tempconnection.getSourceButton() == null && tempconnection.getDestButton() != obj.getId()){		
 					tempconnection.setSourceX(tempx);
 					tempconnection.setSourceY(tempy);
-					tempconnection.setSourceButton(obj.hashCode());
+					tempconnection.setSourceButton(obj.getId());
 				}
 				else {
 					tempconnection = null;
@@ -64,12 +64,12 @@ public class ConnectionController implements MouseListener {
 					tempconnection = new Connection();
 					tempconnection.setDestX(tempx);
 					tempconnection.setDestY(tempy);
-					tempconnection.setDestButton(obj.hashCode());
+					tempconnection.setDestButton(obj.getId());
 				}
-				else if(tempconnection != null && tempconnection.getDestButton() == null && tempconnection.getSourceButton() != obj.hashCode()){
+				else if(tempconnection != null && tempconnection.getDestButton() == null && tempconnection.getSourceButton() != obj.getId()){
 					tempconnection.setDestX(tempx);
 					tempconnection.setDestY(tempy);
-					tempconnection.setDestButton(obj.hashCode());
+					tempconnection.setDestButton(obj.getId());
 				}
 				else {
 					tempconnection = null;

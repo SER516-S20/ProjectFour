@@ -6,7 +6,7 @@ import java.awt.*;
 
 /**
  * @author Amudhan Manisekaran
- * @version 1.0
+ * @version 1.1
  */
 public class GreaterThan extends Shapes implements Serializable {
 
@@ -23,7 +23,6 @@ public class GreaterThan extends Shapes implements Serializable {
 
     @Override
     public void drawShape(Graphics graphic) {
-
         greaterthan = new Rectangle2D.Double(x, y, 200, 100);
         Graphics2D g2 = (Graphics2D) graphic;
         dot1 = new Dot(x, y);
@@ -33,14 +32,10 @@ public class GreaterThan extends Shapes implements Serializable {
         dot2.drawShape(g2);
         dot3 = new Dot(x + 165, y + 50);
         dot3.drawShape(g2);
-
         Font font = new Font("Serif", Font.PLAIN, 40);
         g2.setFont(font);
         g2.drawString(">", x + 95, y + 65);
-
         g2.draw(greaterthan);
-
-
     }
 
     @Override

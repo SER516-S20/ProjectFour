@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  *
  * @author Sandya Manoharan
- * @version 1.0
+ * @version 1.1
  */
 
 public class TwoBars extends Shapes implements Serializable {
@@ -54,7 +54,9 @@ public class TwoBars extends Shapes implements Serializable {
     }
 
     @Override
-    public int getY() { return y; }
+    public int getY() {
+        return y;
+    }
 
     @Override
     public void setY(int y) {

@@ -9,7 +9,7 @@ import java.io.Serializable;
 
 /**
  * @author Amudhan Manisekaran
- * @version 1.0
+ * @version 1.1
  */
 
 public class VerticalBar extends Shapes implements MouseListener, MouseMotionListener, Serializable {

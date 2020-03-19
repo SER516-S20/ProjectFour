@@ -20,7 +20,7 @@ import org.w3c.dom.NodeList;
 
 /**
  * @author Yijian Hu
- * @modified Kairui Hsu
+ * @modified by Kairui Hsu
  */
 public class FileManager {
 	private List<Connection> connections;
@@ -42,9 +42,12 @@ public class FileManager {
 					ButtonBox theShape = model.getshapes().get(key);
 					Element type = doc.createElement("type");
 					type.appendChild(doc.createTextNode(theShape.getToolTipText()));
+					Element title = doc.createElement("title");
+					title.appendChild(doc.createTextNode(theShape.getTitle()));
 					Element position = doc.createElement("position");
 					position.appendChild(doc.createTextNode((theShape.getLocation().x + theShape.getPreferredSize().width / 2) + "," + (theShape.getLocation().y + theShape.getHeight() / 2)));
 					shape.appendChild(type);
+					shape.appendChild(title);
 					shape.appendChild(position);
 				}
 			}
@@ -97,10 +100,12 @@ public class FileManager {
 					String points[] = shapeElement.getElementsByTagName("position").item(0).getTextContent().split(",");
 					Point position = new Point(Integer.parseInt(points[0]),Integer.parseInt(points[1]));
 					String type = shapeElement.getElementsByTagName("type").item(0).getTextContent();
-					shapes[i]=new ShapeInfo(id,type,position);
+					String title = shapeElement.getElementsByTagName("title").item(0).getTextContent();
+					shapes[i]=new ShapeInfo(id,type,title,position);
 				}
 			}
 			NodeList connList = doc.getElementsByTagName("conn");
+			model.clearConnection();
 			for(int i = 0;i < connList.getLength();i++) {
 				Node conn = connList.item(i);
 				if (conn.getNodeType() == Node.ELEMENT_NODE) {  
