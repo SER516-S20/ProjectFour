@@ -155,7 +155,6 @@ public class RightPanel extends JPanel implements ActionListener, MouseListener,
 			Object source = e.getComponent();
 			if(source instanceof JPanel){
 				ButtonBox btn = (ButtonBox) source;
-				System.out.print("get component = " + btn.getId());
 				connections.removeIf(n->(n.getSourceButton()==btn.getId()));
 				connections.removeIf(n->(n.getDestButton()==btn.getId()));
 				shapes.remove(btn.getId());

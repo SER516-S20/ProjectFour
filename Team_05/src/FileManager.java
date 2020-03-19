@@ -105,6 +105,7 @@ public class FileManager {
 				}
 			}
 			NodeList connList = doc.getElementsByTagName("conn");
+			
 			for(int i = 0;i < connList.getLength();i++) {
 				Node conn = connList.item(i);
 				if (conn.getNodeType() == Node.ELEMENT_NODE) {  
