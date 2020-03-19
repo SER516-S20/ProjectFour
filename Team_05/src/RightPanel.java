@@ -191,10 +191,7 @@ public class RightPanel extends JPanel implements ActionListener, MouseListener,
 		// TODO Auto-generated method stub
 		
 	}
-	//Author:ShihYu Chang
-	public void updateConnection() {
-		connections = model.getTabs().get(name).getConnectionCollection();
-	}
+
 
 	//Author:ShihYu Chang
     public void paint(Graphics g) {
