@@ -20,6 +20,9 @@ import javax.swing.JPanel;
 
 import model.AtSymbol;
 import model.CloseParanthesis;
+import model.Connector;
+import model.ConnectorBar;
+import model.ConnectorDot;
 import model.Data;
 import model.GreaterSymbol;
 import model.LesserSymbol;
@@ -29,6 +32,7 @@ import model.OpenParanthesis;
 import model.OrSymbol;
 import model.Shape;
 import model.TabData;
+import model.Shape.type;
 import view.RightPanel;
 import model.ShapeData;
 
@@ -67,8 +71,9 @@ public class FileManager {
 	                	fw.write("-----" + 	System.lineSeparator());
 	                	for(TabData tab : Data.getInstance().getTabList()){
 	                		for(Line l : tab.getLines()) {
-	                			fw.write(Data.getInstance().getTabList().indexOf(tab) + ";" + l.startDot.getShapeIndex() + ";" +
-                					l.x1 + ";" + l.y1 + ";" + l.endDot.getShapeIndex() + ";" + l.x2 + ";" + l.y2 + ";" + System.lineSeparator());
+	                			fw.write(Data.getInstance().getTabList().indexOf(tab) + ";" + l.startShape.getShapeIndex() + ";" +  l.startConnectorIndex + ";"+
+                					l.x1 + ";" + l.y1 + ";" + l.endShape.getShapeIndex() + ";" + l.endConnectorIndex + ";"+ + l.x2 + ";" + l.y2 + ";"
+                					+ System.lineSeparator());
 	                		}
 	                	}
 	                	fw.close();
@@ -148,9 +153,11 @@ public class FileManager {
 		            		switch(shapeNumber) {
 		            			case 1: shape = new OpenParanthesis(x, y, true);
 		            					tabData.setOpenParaFlag(true);
+		            					tabData.setOpenVertex(shapeIndex);
 		            					break;
 		            			case 2: shape = new CloseParanthesis(x, y, true);
 		            					tabData.setCloseParaFlag(true);
+		            					tabData.setCloseVertex(shapeIndex);
 		            					break;
 		            			case 3: shape = new LesserSymbol(x, y, true);
 		            					break;
@@ -163,12 +170,15 @@ public class FileManager {
 		            			case 7: shape = new MinusSymbol(x, y, true);
 		            					break;
 		            		}
+		            		shape.setShapeIndex(shapeIndex);
 		            		if(userIp.equals("null")) {
 		            			shape.setUserInput("");
 		            		}
 		            		else {
 		            			shape.setUserInput(userIp);
 		            		}
+		            		tabData.setShapeCount();
+		            		tabData.addShape(shape);
 		            		tabData.addShapeInstance(shapeIndex, shape);
 		            		panel.add(shape);
 		            		panel.repaint();
@@ -178,16 +188,48 @@ public class FileManager {
 		            		System.out.println(line);
 		            		String[] lineInfo = line.split(";");
 		            		int tabNumber = Integer.parseInt(lineInfo[0]);
+		            		tabData = Data.getInstance().getTab(tabNumber);
 		            		
-		            		Shape startDot = Data.getInstance().getTab(tabNumber).getShapeInstance(Integer.parseInt(lineInfo[1]));
-		            		int x1 = Integer.parseInt(lineInfo[2]);
-		            		int y1 = Integer.parseInt(lineInfo[3]);
+		            		Shape startShape = tabData.getShapeInstance(Integer.parseInt(lineInfo[1]));
+		            		int startConnectorIndex = Integer.parseInt(lineInfo[2]);
+		            		Connector tempStartDot = startShape.getConnectors().get(startConnectorIndex);
+		            		int x1 = Integer.parseInt(lineInfo[3]);
+		            		int y1 = Integer.parseInt(lineInfo[4]);
 		            		
-		            		Shape endDot = Data.getInstance().getTab(tabNumber).getShapeInstance(Integer.parseInt(lineInfo[4]));
-		            		int x2 = Integer.parseInt(lineInfo[5]);
-		            		int y2 = Integer.parseInt(lineInfo[6]);
+		            		Shape endShape = Data.getInstance().getTab(tabNumber).getShapeInstance(Integer.parseInt(lineInfo[5]));
+		            		int endConnectorIndex = Integer.parseInt(lineInfo[6]);
+		            		Connector dot = endShape.getConnectors().get(endConnectorIndex);
+		            		int x2 = Integer.parseInt(lineInfo[7]);
+		            		int y2 = Integer.parseInt(lineInfo[8]);
 		            		
-		            		Data.getInstance().getTab(tabNumber).addLines(new Line(startDot,endDot,x1,y1,x2,y2));
+		            		Data.getInstance().getTab(tabNumber).addLines(new Line(startShape,endShape,startConnectorIndex, endConnectorIndex, x1,y1,x2,y2));
+		            		
+		            		
+		            		if (dot.type == type.INPUT) {
+								if (tempStartDot instanceof ConnectorDot) {
+									((ConnectorDot) tempStartDot).setToConnector(dot);
+								}else {
+									ArrayList <Connector> toConnector =  ((ConnectorBar) tempStartDot).getToConnector();
+									toConnector.add(dot);
+									((ConnectorBar) tempStartDot).setToConnector(toConnector);
+								}
+								
+							}else {
+								
+								if (dot instanceof ConnectorDot) {
+									((ConnectorDot) dot).setToConnector(tempStartDot);
+								}else {
+									ArrayList <Connector> toConnector =  ((ConnectorBar) dot).getToConnector();
+									toConnector.add(tempStartDot);
+									((ConnectorBar) dot).setToConnector(toConnector);
+								}
+							}
+							
+							
+							tempStartDot.lineFlag = true;
+							dot.lineFlag = true;
+		            		
+		            		
 		            	}
 		            	panel.repaint();
 		            	line = reader.readLine();

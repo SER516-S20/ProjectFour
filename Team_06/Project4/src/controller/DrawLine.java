@@ -54,7 +54,14 @@ public class DrawLine{
 				}else if(tabbedPanel.selected && (dot instanceof ConnectorDot && !dot.lineFlag) || dot instanceof ConnectorBar) {
 					System.out.println("Second Click");
 					if(tabbedPanel.tempStartDot.type != dot.type) {
-						Data.getInstance().getTab(NewTab.selectedTab()).addLines(new Line((Shape)tabbedPanel.tempStartDot.getParent(), (Shape)dot.getParent(), tabbedPanel.tempStartDot.getX(),tabbedPanel.tempStartDot.getY(), dot.getX(), dot.getY()));
+						
+						Shape startShape = (Shape)tabbedPanel.tempStartDot.getParent();
+						Shape endShape = (Shape)dot.getParent();
+						int startConnectorIndex = startShape.getConnectors().indexOf(tabbedPanel.tempStartDot);
+						int endConnectorIndex = endShape.getConnectors().indexOf(dot);
+						
+						Data.getInstance().getTab(NewTab.selectedTab()).addLines(new Line(startShape, endShape, startConnectorIndex, endConnectorIndex, 
+								tabbedPanel.tempStartDot.getX(),tabbedPanel.tempStartDot.getY(), dot.getX(), dot.getY()));
 						
 						
 						if (dot.type == type.INPUT) {

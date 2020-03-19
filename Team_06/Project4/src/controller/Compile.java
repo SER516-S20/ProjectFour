@@ -75,6 +75,7 @@ public class Compile {
 	    	if (!allConnected) {
 	    		break;
 	    	}
+	    	
 	    	for(int to : toShapes) {
 	    		graph.addEdge(fromIndex, to);
 	    	}
@@ -83,7 +84,7 @@ public class Compile {
 	    if(!allConnected) {
 	    	return "Every Dot/Bar should be connected to atleast one other Dot/Bar";
 	    }
-	    
+	    System.out.println(tabData.getOpenVertex());
 	    if (!graph.checkConnection(tabData.getOpenVertex())) {
 	    	return "Disconnected circuit present";
 	    }

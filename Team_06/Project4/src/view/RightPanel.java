@@ -57,10 +57,10 @@ public class RightPanel extends JPanel{
 //        	System.out.println("y1 - " + l.y1);
 //        	System.out.println("y2 - " + l.startDot.getParent().getY());
         	
-	        	int x1 = l.x1 + l.startDot.getX(); 
-	        	int y1 = l.y1 + l.startDot.getY(); 
-	        	int x2 = l.x2 + l.endDot.getX();
-	        	int y2 = l.y2 + l.endDot.getY();
+	        	int x1 = l.x1 + l.startShape.getX(); 
+	        	int y1 = l.y1 + l.startShape.getY(); 
+	        	int x2 = l.x2 + l.endShape.getX();
+	        	int y2 = l.y2 + l.endShape.getY();
 	        	g.drawLine(x1, y1, x2, y2);
         }
         
