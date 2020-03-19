@@ -1,5 +1,6 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Hashtable;
 
 import javax.swing.JButton;
 import javax.swing.JMenu;
@@ -15,6 +16,7 @@ public class MenuBar extends JMenuBar{
 	private FileManager fileManager;
 	private RightTabbedPane rightPanel;
 	private Model model;
+	private static Hashtable<String, TabInfo> tabs;
 	
 	MenuBar(RightTabbedPane rightPanel) {
 		model = new Model();
@@ -61,7 +63,11 @@ public class MenuBar extends JMenuBar{
 		Compiler.setBorder(null);
 		Compiler.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
-				//do something
+				tabs = Model.getTabs();
+				for(String key:tabs.keySet()) {
+					new Compilation(key).start();
+					System.out.print(key);
+				}
 			}
 		});
 		menuBar.add(Compiler);

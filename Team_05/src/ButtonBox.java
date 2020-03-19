@@ -10,7 +10,7 @@ public abstract class ButtonBox extends JPanel{
 	private final Color LIGHTBLUE = new Color(117, 218, 255);
 	private final int labelWidth = 20;
 	private final int labelHeight =20;
-	private String title;
+	private String title, symbol;
 	private int id;
 	private JLabel description;
 	private ValuePane vDialog;
@@ -26,6 +26,7 @@ public abstract class ButtonBox extends JPanel{
 		this.setPreferredSize(new Dimension(120, 60));
 		this.setBackground(LIGHTBLUE);
 		addDescription(symbol);
+		this.setSymbol(symbol);
 		generateBtnDot(num);
 		this.setTitle(" ");
 		this.setLayout(null);
@@ -36,6 +37,12 @@ public abstract class ButtonBox extends JPanel{
 	}
 	public String getTitle() {
 		return this.title;
+	}
+	public void setSymbol(String symbol) {
+		this.symbol = symbol;
+	}
+	public String getSymbol() {
+		return this.symbol;
 	}
 	private void addDescription(String symbol) {
 		Dimension size = this.getPreferredSize();
