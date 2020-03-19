@@ -45,11 +45,6 @@ public class AtTheRate extends Shapes implements Serializable {
     }
 
     @Override
-    public boolean containsPoint(int x, int y) {
-
-        return attherate.contains(x, y);
-    }
-    @Override
     public int getX() {
 
         return x;
@@ -67,20 +62,6 @@ public class AtTheRate extends Shapes implements Serializable {
     @Override
     public void setY(int y) {
         this.y = y + 50;
-    }
-    public Shapes getDot1() {
-
-        return dot1;
-    }
-
-    public Shapes getDot2() {
-
-        return dot2;
-    }
-
-    public Shapes getDot3() {
-
-        return dot3;
     }
 
     public boolean isLineDrawnDot1() {
@@ -106,6 +87,25 @@ public class AtTheRate extends Shapes implements Serializable {
     public void setLineDrawnDot3(boolean isLineDrawnDot3) {
 
         this.isLineDrawnDot3 = isLineDrawnDot3;
+    }
+    @Override
+    public boolean containsPoint(int x, int y) {
+
+        return attherate.contains(x, y);
+    }
+    public Shapes getDot1() {
+
+        return dot1;
+    }
+
+    public Shapes getDot2() {
+
+        return dot2;
+    }
+
+    public Shapes getDot3() {
+
+        return dot3;
     }
 
 }
