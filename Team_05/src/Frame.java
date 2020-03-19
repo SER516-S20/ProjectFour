@@ -27,6 +27,8 @@ public class Frame extends JFrame{
 	private LeftPanel btnContainer;
 	 
 	public Frame() {
+		Model model = new Model();
+		model.setFrame(this);
 		this.setTitle(title);
 		this.setMinimumSize(new Dimension(800, 500));
 		this.setResizable(false);

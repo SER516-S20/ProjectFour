@@ -16,7 +16,7 @@ public class RightTabbedPane extends JTabbedPane{
 		
 	}
 	
-	public boolean addWorkingAreaTab(WorkingAreaTab tab)
+	public boolean addWorkingAreaTab(RightPanel tab)
 	{
 		boolean added = false;
 		if(tab.getName() == null)
@@ -28,7 +28,9 @@ public class RightTabbedPane extends JTabbedPane{
 			Model.getTabs().put(tab.getName(), new TabInfo(tab));
 			added = true;
 			add(tab.getName(),tab);
+			tab.init();
 		}
+		System.out.println(added?"Tab added":"Tab not added");
 		return added;
 	}
 	
@@ -42,7 +44,8 @@ public class RightTabbedPane extends JTabbedPane{
 			name = init_name + Integer.toString(count);
 			count++;
 		}
-		WorkingAreaTab tab = new WorkingAreaTab(name);
+		//WorkingAreaTab tab = new WorkingAreaTab(name);
+		RightPanel tab = new RightPanel(name);
 		addWorkingAreaTab(tab);
 	}
 	

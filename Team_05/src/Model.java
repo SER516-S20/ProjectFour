@@ -4,16 +4,29 @@ import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
 
+import javax.swing.JFrame;
+
 public class Model {
 	private static List<Connection> connections = new ArrayList<Connection>();
 	private static RightTabbedPane rightTabbedPane;
 	private static Hashtable<String, TabInfo> tabs;
 	//private static Hashtable<String, Hashtable<Integer, ButtonBox>> shapes
 	private static Hashtable<Integer, ButtonBox> shapes;
+	private static Frame frame;
 	
 	
 	public Model() {
 		//shapes = new Hashtable<Integer, ButtonBox>();
+	}
+	
+	public void setFrame(Frame frame)
+	{
+		this.frame = frame;
+	}
+	
+	public Frame getFrame()
+	{
+		return frame;
 	}
 	
 	public void setshapes( Hashtable<Integer, ButtonBox> inshapes) {
