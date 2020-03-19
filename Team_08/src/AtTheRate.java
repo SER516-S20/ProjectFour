@@ -6,7 +6,7 @@ import java.awt.*;
 
 /**
  * @author Sandya Manoharan
- * @version 1.0
+ * @version 1.1
  */
 
 public class AtTheRate extends Shapes implements Serializable {

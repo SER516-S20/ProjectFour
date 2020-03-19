@@ -6,7 +6,7 @@ import java.awt.*;
 
 /**
  * @author Sandya Manoharan
- * @version 1.0
+ * @version 1.1
  */
 public class Hyphen extends Shapes implements Serializable {
 
@@ -37,7 +37,6 @@ public class Hyphen extends Shapes implements Serializable {
         g2.drawString("-", x + 95, y + 65);
 
         g2.draw(hyphen);
-
 
     }
 
