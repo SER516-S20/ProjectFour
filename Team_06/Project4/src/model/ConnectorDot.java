@@ -22,7 +22,7 @@ public class ConnectorDot extends Connector {
 	
 	ConnectorDot(int x, int y, type t) {
 		super(t);
-		setBounds(x, y, 10, 10);
+		setBounds(x, y, 15, 15);
 	    setBorder(new EmptyBorder(10, 10, 0, 0));
 	    
 	    new DrawLine(this);
@@ -41,7 +41,7 @@ public class ConnectorDot extends Connector {
 	@Override
     protected void paintComponent(Graphics g) {
         if (getModel().isArmed()) {
-            g.setColor(Color.BLACK);
+            g.setColor(Color.LIGHT_GRAY);
         } 
         else{
             g.setColor(Color.BLACK);

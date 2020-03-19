@@ -44,7 +44,7 @@ public class OrSymbol extends Shape{
     {
         g.setColor(getForeground());
         g.drawRect(0, 0, getSize().width, getSize().height);
-        g.fillRect(getSize().width - 20, getSize().height * 1 / 4, 10, 80);
-        g.fillRect(20, getSize().height * 1 / 4, 10, 80);
+        g.fillRect(getSize().width - 20, getSize().height * 1 / 4, 10, 40);
+        g.fillRect(20, getSize().height * 1 / 4, 10, 40);
     }
 }
