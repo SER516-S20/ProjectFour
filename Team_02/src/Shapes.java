@@ -3,6 +3,7 @@ import java.awt.Image;
 import java.awt.Panel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -16,77 +17,49 @@ import javax.swing.JButton;
  * @version 2.0
  */
 public class Shapes implements ActionListener{
-	JButton openParanthesis = new JButton();
-	JButton closedParanthesis = new JButton();
-	JButton lessThanOperator = new JButton();
-	JButton greaterThanOperator = new JButton();
-	JButton atTheRateOperator = new JButton();
-	JButton barOperator = new JButton();	
-	JButton dashOperator = new JButton();
+	
+	private JButton openParanthesis = new JButton();
+	private JButton closedParanthesis = new JButton();
+	private JButton lessThanOperator = new JButton();
+	private JButton greaterThanOperator = new JButton();
+	private JButton atTheRateOperator = new JButton();
+	private JButton barOperator = new JButton();	
+	private JButton dashOperator = new JButton();
+	
+	private java.util.List<JButton> buttons = new ArrayList<JButton>();
+	
+	String[] images = new String[] {"images/shape1.png","images/shape2.png",
+									"images/shape3.png","images/shape4.png",
+									"images/shape5.png","images/shape6.png",
+									"images/shape7.png"};
+	private Panel panel;
 	
 	public Panel CreateShapes() {
-		Panel pan = new Panel();
 		
-		openParanthesis.addActionListener(this);
-		openParanthesis.setPreferredSize(new Dimension(180,70));
-		openParanthesis.setIcon(new ImageIcon(new javax.swing.ImageIcon(getClass().getResource("images/shape1.png")).
-				getImage().getScaledInstance
-				(190, 70, Image.SCALE_SMOOTH)));
-		pan.add(openParanthesis);
-		
-		
-		closedParanthesis.addActionListener(this);
-		closedParanthesis.setPreferredSize(new Dimension(180,70));
-		closedParanthesis.setIcon(new ImageIcon(new javax.swing.ImageIcon(getClass().getResource("images/shape2.png")).
-				getImage().getScaledInstance
-				(190, 70, Image.SCALE_SMOOTH)));
-		pan.add(closedParanthesis);
-		
-		lessThanOperator.addActionListener(this);
-		lessThanOperator.setPreferredSize(new Dimension(180,70));
-		lessThanOperator.setIcon(new ImageIcon(new javax.swing.ImageIcon(getClass().getResource("images/shape3.png")).
-				getImage().getScaledInstance
-				(190, 70, Image.SCALE_SMOOTH)));
-		pan.add(lessThanOperator);
-		
-		greaterThanOperator.addActionListener(this);
-		greaterThanOperator.setPreferredSize(new Dimension(180,70));
-		greaterThanOperator.setIcon(new ImageIcon(new javax.swing.ImageIcon(getClass().getResource("images/shape4.png")).
-				getImage().getScaledInstance
-				(190, 70, Image.SCALE_SMOOTH)));
-		pan.add(greaterThanOperator);
-		
-		atTheRateOperator.addActionListener(this);
-		atTheRateOperator.setPreferredSize(new Dimension(180,70));
-		atTheRateOperator.setIcon(new ImageIcon(new javax.swing.ImageIcon(getClass().getResource("images/shape5.png")).
-				getImage().getScaledInstance
-				(190, 70, Image.SCALE_SMOOTH)));
-		pan.add(atTheRateOperator);
-		
-		barOperator.addActionListener(this);
-		barOperator.setPreferredSize(new Dimension(180,70));
-		barOperator.setIcon(new ImageIcon(new javax.swing.ImageIcon(getClass().getResource("images/shape6.png")).
-				getImage().getScaledInstance
-				(190, 70, Image.SCALE_SMOOTH)));
-		pan.add(barOperator);
-		
-		dashOperator.addActionListener(this);
-		dashOperator.setPreferredSize(new Dimension(180,70));
-		dashOperator.setIcon(new ImageIcon(new javax.swing.ImageIcon(getClass().getResource("images/shape7.png")).
-				getImage().getScaledInstance
-				(190, 70, Image.SCALE_SMOOTH)));
-		pan.add(dashOperator);
-		
-		pan.setSize(400, 100);
-		return pan;
+		panel = new Panel();
+		setUpButtons();
+		addButtons();
+		panel.setSize(400, 100);
+		return panel;
 
+	}
+	
+	
+	private void setUpButtons() {
+		buttons.add(openParanthesis);
+		buttons.add(closedParanthesis);
+		buttons.add(lessThanOperator);
+		buttons.add(greaterThanOperator);
+		buttons.add(atTheRateOperator);
+		buttons.add(barOperator);
+		buttons.add(dashOperator);
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
 		if (e.getSource() == openParanthesis) {
-	
+			System.out.println("This is button 1");
 		} else if (e.getSource() == closedParanthesis) {
 			
  
