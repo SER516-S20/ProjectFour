@@ -44,6 +44,20 @@ public class Shapes implements ActionListener{
 
 	}
 	
+	private void addButtons() {
+		
+		for(int i=0;i<buttons.size();i++) {
+			
+			JButton button = buttons.get(i);
+			button.addActionListener(this);
+			button.setPreferredSize(new Dimension(180,70));
+			button.setIcon(new ImageIcon(new javax.swing.ImageIcon(getClass().getResource(images[i])).
+					getImage().getScaledInstance
+					(190, 70, Image.SCALE_SMOOTH)));
+			panel.add(button);
+		}
+		
+	}
 	
 	private void setUpButtons() {
 		buttons.add(openParanthesis);
