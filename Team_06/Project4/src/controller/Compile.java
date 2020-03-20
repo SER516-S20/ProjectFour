@@ -17,6 +17,12 @@ import model.Shape;
 import model.Shape.type;
 import model.TabData;
 
+/**
+ * 
+ * @author Dhananjay, Suyog
+ * @since 02-28-2020
+ * @Description: This controller class is used add new tab in right panel whenever new space button is clicked.
+ */
 public class Compile {
 	public Compile(JMenu compile){
 		compile.addMouseListener(new MouseAdapter() { 

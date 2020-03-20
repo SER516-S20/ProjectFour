@@ -17,7 +17,12 @@ import javax.swing.event.ChangeListener;
 import model.Data;
 import view.RightPanel;
 
-
+/**
+ * 
+ * @author Dhananjay
+ * @since 02-28-2020
+ * @Description: This controller class is used add new tab in right panel whenever new space button is clicked.
+ */
 public class Tab {
 	private static Tab TabObj = null;
 	static int CountOfTabs = 1;

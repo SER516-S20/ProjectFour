@@ -12,6 +12,7 @@ import view.RightPanel;
  * 
  * @author Dananjay
  * @since 02-28-2020
+ * @Description: This controller class is handling to functionality of dragging shapes.
  */
 
 public class Drag{

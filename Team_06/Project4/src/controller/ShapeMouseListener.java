@@ -12,10 +12,10 @@ import model.Shape;
 
 /**
  * 
- * @author Dhananjay
+ * @author Sheran, Dhananjay
  * @since 02-28-2020
+ * @Description: This controller class is used to handle different mouse click listener events.
  */
-
 public class ShapeMouseListener{
 	
 	int screenX = 0; 
