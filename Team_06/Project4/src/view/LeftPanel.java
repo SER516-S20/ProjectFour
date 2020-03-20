@@ -10,7 +10,7 @@ import javax.swing.JPanel;
 import controller.SelectShape;
 /**
  * 
- * @author Suyog
+ * @author Suyog, Rahul, Sheran
  * @since 01-29-2020
  */
 public class LeftPanel extends JPanel{
