@@ -16,6 +16,7 @@ public class RightPanelMouseListener implements MouseListener, MouseMotionListen
 
 	private Shapes selectedShape;
 	private List<Line> linesList = new ArrayList<Line>();
+	private TextBox textBox = new TextBox();
 
 	@Override
 	public void mouseDragged(MouseEvent e) {
@@ -44,6 +45,16 @@ public class RightPanelMouseListener implements MouseListener, MouseMotionListen
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
+		if(Dot.isDotClicked && e.getClickCount() == 2 && !e.isConsumed() ){
+			if(textBox.getTextValue()==""||textBox.getTextValue()==null){
+				String input = textBox.getUserInput();
+				textBox.setTextValue(input);
+				System.out.println('\n'+"User Input --> " + textBox.getTextValue());
+			}else{
+				System.out.println('\n'+"User Already Input --> " + textBox.getTextValue());
+			}
+
+		}
 		if (!Dot.isDotClicked && !RightPanel.isMoved() && !Dot.isBarClicked) {
 			int x = e.getX();
 			int y = e.getY();
