@@ -11,7 +11,7 @@ public class ShapeClosedParan extends Icon{
 	public ShapeClosedParan(int x, int y) {
 		this.setCenterX(x);
 		this.setCenterY(y);
-		this.setRightDot(new Dot(x, y, false, true));
+		this.setLeftDot(new Dot(x, y, false, true));
 		
 		
 		// call paint component from here, repaint ?!
@@ -21,11 +21,11 @@ public class ShapeClosedParan extends Icon{
 	// Implement repaint using centerX, centerY, text, rightDot values.
 	
 
-	public Dot getRightDot() {
+	public Dot getLeftDot() {
 		return leftDot;
 	}
 
-	public void setRightDot(Dot leftDot) {
+	public void setLeftDot(Dot leftDot) {
 		this.leftDot = leftDot;
 	}
 
