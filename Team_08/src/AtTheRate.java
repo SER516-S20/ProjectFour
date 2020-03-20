@@ -64,6 +64,7 @@ public class AtTheRate extends Shapes implements Serializable {
         this.y = y + 50;
     }
 
+
     public boolean isLineDrawnDot1() {
 
         return isLineDrawnDot1;

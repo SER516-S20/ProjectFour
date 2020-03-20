@@ -59,6 +59,9 @@ public class LessThan extends Shapes implements Serializable {
     public void setY(int y) {
         this.y = y + 50;
     }
+
+
+
     public Shapes getDot1() {
         return dot1;
     }

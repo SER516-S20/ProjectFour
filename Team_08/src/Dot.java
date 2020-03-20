@@ -66,6 +66,8 @@ public class Dot extends Shapes implements MouseListener, MouseMotionListener, S
         this.y = y;
     }
 
+
+
     @Override
     public void mouseClicked(MouseEvent e) {
 
@@ -111,8 +113,6 @@ public class Dot extends Shapes implements MouseListener, MouseMotionListener, S
             RightPanel.setSelected(true);
 
         } else if (RightPanel.isSelected() && isDotClicked) {
-
-            System.out.print("Size as of now " + CompileFile.trackShapes.size());
             if (!RightPanel.getOriginShape().containsPoint(e.getX(), e.getY())) {
                 for (Shapes shape : RightPanel.getRightPanelShapes()) {
                     if (shape.containsPoint(e.getX(), e.getY()) && !getIsLineDrawn(shape, e.getX(), e.getY())
@@ -144,7 +144,6 @@ public class Dot extends Shapes implements MouseListener, MouseMotionListener, S
                         if (CompileFile.trackShapes.containsKey(secondShape))
                             CompileFile.removeConnectedShapesFromMap(secondShape);
 
-                        System.out.print("Size after joining" + CompileFile.trackShapes.size());
                         RightPanel.setSelected(false);
                         break;
                     }

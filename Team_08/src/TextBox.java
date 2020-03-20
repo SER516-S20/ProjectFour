@@ -1,21 +1,30 @@
 import javax.swing.*;
+import java.util.HashMap;
+
+/*
+ * Author: Kartik Mathpal
+ * */
 
 public class TextBox extends JOptionPane {
-    String textValue = "";
+    public static HashMap<Shapes, String> objectMessageMap = new HashMap<>();
 
-    public String getTextValue() {
-        return textValue;
+
+    public void setTextValue(String textValue, Shapes shape) {
+        objectMessageMap.put(shape, textValue);
     }
 
-    public void setTextValue(String textValue) {
-        this.textValue = textValue;
+    public String getUserInput() {
+        return JOptionPane.showInputDialog(null, "Enter Value");
     }
 
-    public String getUserInput(){
-        return JOptionPane.showInputDialog(null,"Enter Value");
+    public void showUserInput(Shapes shape) {
+        JOptionPane.showMessageDialog(null, objectMessageMap.get(shape));
     }
 
-    public void showUserInput(){
-        JOptionPane.showMessageDialog(null, textValue);
+    public Boolean isPresentInMap(Shapes s) {
+        if (objectMessageMap.containsKey(s))
+            return true;
+        else
+            return false;
     }
 }

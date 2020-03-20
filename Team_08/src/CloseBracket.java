@@ -74,6 +74,8 @@ public class CloseBracket extends Shapes implements Serializable {
         this.y = y - OFFSET;
     }
 
+
+
     public boolean isLineDrawn() {
         return isLineDrawn;
     }
