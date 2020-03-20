@@ -114,7 +114,6 @@ public class Compilation extends Thread {
 			return false;
         }
         else {
-            System.out.println( "graph contains cycle" );
             return true;
         }
 	}

@@ -58,13 +58,13 @@ public class RightPanel extends JPanel implements ActionListener, MouseListener,
 		btn.setId(btn.hashCode());
 		shapes.put(btn.hashCode(),btn);
 		//
-//		if(id == 0) {
-//			shapes.put(btn.hashCode(),btn);
-//			btn.setId(btn.hashCode());
-//		}else {
-//			shapes.put(id,btn);
-//			btn.setId(id);
-//		}
+		if(id == 0) {
+			shapes.put(btn.hashCode(),btn);
+			btn.setId(btn.hashCode());
+		}else {
+			shapes.put(id,btn);
+			btn.setId(id);
+		}
 		Model.getTabs().get(name).setshapes(shapes);
 		this.repaint();
 	}
