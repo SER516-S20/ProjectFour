@@ -15,6 +15,7 @@ public class OpenBracket extends Shapes implements Serializable {
     private Shape openbracket = null;
     private Shapes dot = null;
     private boolean isLineDrawn = false;
+    public  String  usrInput = "";
     public OpenBracket(){
 
     }
@@ -73,6 +74,8 @@ public class OpenBracket extends Shapes implements Serializable {
         this.y = y - OFFSET;
     }
 
+
+
     public boolean isLineDrawn() {
         return isLineDrawn;
     }
@@ -80,5 +83,7 @@ public class OpenBracket extends Shapes implements Serializable {
     public void setLineDrawn(boolean isLineDrawn) {
         this.isLineDrawn = isLineDrawn;
     }
+
+
 
 }

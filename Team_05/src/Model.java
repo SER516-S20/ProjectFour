@@ -5,7 +5,6 @@ import java.util.Hashtable;
 import java.util.List;
 
 public class Model {
-	private static List<Connection> connections = new ArrayList<Connection>();
 	private static RightTabbedPane rightTabbedPane;
 	private static Hashtable<String, TabInfo> tabs;
 	//private static Hashtable<String, Hashtable<Integer, ButtonBox>> shapes
@@ -46,7 +45,6 @@ public class Model {
 	 * clicking the mouse right button
 	 */
 	public Component removeComponent(Component btnBox) {
-		
 		return btnBox;
 	}
 	

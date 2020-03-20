@@ -1,13 +1,13 @@
+/**
+ * @author ShihYu Chang
+ */
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.util.ArrayList;
 import java.util.List;
 
 public class ConnectionController implements MouseListener {
 	private static Connection tempconnection;
 	private List<Connection> connections;
-	private Model  model = new Model();
-	private RightPanel rightpanel = new RightPanel();
 	private ButtonBox buttonBox;
 	public ConnectionController(ButtonBox buttonBox) {
 		this.buttonBox = buttonBox;
@@ -85,21 +85,17 @@ public class ConnectionController implements MouseListener {
 	@Override
 	public void mouseEntered(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
 	}
 	@Override
 	public void mouseExited(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
 	}
 	@Override
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
 	}
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
 	}
 }

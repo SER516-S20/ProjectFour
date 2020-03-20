@@ -3,7 +3,6 @@ import java.awt.geom.Rectangle2D;
 import java.io.Serializable;
 
 /**
- *
  * @author Sandya Manoharan
  * @version 1.1
  */
@@ -62,6 +61,7 @@ public class TwoBars extends Shapes implements Serializable {
     public void setY(int y) {
         this.y = y - OFFSET;
     }
+
 
     public Shapes getLeftBar() {
         return leftBar;
