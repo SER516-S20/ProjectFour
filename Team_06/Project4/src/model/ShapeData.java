@@ -1,10 +1,11 @@
 package model;
-
 import javax.swing.JButton;
+
 /**
  * 
- * @author Somesh, Dhananjay
- * @since 01-29-2020
+ * @Author: Somesh, Dhananjay
+ * @Since: 01-29-2020
+ * @Description: This abstract class is used to hold the data for the shapes.
  */
 
 public class ShapeData{
