@@ -1,17 +1,13 @@
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.Hashtable;
 import java.util.List;
 import java.util.Set;
-import javax.swing.JOptionPane;
-
 /**
  * @author Kairui Hsu
 **/
 public class Compilation extends Thread {
 	private List<Connection> connections;
 	private Hashtable<Integer, ButtonBox> shapes;
-	Set<Integer> mySet = new HashSet<>();
 	private boolean checkValid = true;
 	private int dotNumber,leftParenthesisCnt, rightParenthesisCnt, LoopButtonCnt;
 	String tabName, dialogMessage;
