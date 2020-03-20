@@ -11,7 +11,7 @@ import controller.SelectShape;
 /**
  * 
  * @author Suyog
- *@since 01-29-2020
+ * @since 01-29-2020
  */
 public class LeftPanel extends JPanel{
 	
