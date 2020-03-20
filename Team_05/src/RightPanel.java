@@ -55,9 +55,6 @@ public class RightPanel extends JPanel implements ActionListener, MouseListener,
 		this.autoLocation(btn,x - btn.getPreferredSize().width / 2,y - btn.getPreferredSize().height / 2);
 		btn.setToolTipText(btnCommand);
 		btn.setTitle(title);
-		btn.setId(btn.hashCode());
-		shapes.put(btn.hashCode(),btn);
-		//
 		if(id == 0) {
 			shapes.put(btn.hashCode(),btn);
 			btn.setId(btn.hashCode());
