@@ -54,5 +54,3 @@ public class ShapeDash extends Icon{
 	}
 
 }
-
-}
