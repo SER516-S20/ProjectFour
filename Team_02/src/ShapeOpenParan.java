@@ -2,38 +2,58 @@
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Shape;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.geom.Ellipse2D;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-public class ShapeOpenParan extends JButton{
+public class ShapeOpenParan extends Icon{
+	
 	
 	private static final long serialVersionUID = 1L;
-
-	public ShapeOpenParan() {
+	private int centerX;
+	private int centerY;
+	private static String text = "(";
+	private Dot rightDot;
+	
+	public ShapeOpenParan(int x, int y) {
+		this.setCenterX(x);
+		this.setCenterY(y);
+		this.setRightDot(new Dot(x, y, false, true));
 		
-		JPanel objCirclePane = new JPanel();
-		repaint();
-		objCirclePane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		objCirclePane.setSize(100,100);
-		objCirclePane.setLayout(null);
+		
+		// call paint component from here, repaint ?!
+	}
+	
+	// On top of parent class Icon,
+	// Implement repaint using centerX, centerY, text, rightDot values.
+	
+
+	public Dot getRightDot() {
+		return rightDot;
 	}
 
-	@Override
-	public void paintComponent(Graphics objGraphics) {
+	public void setRightDot(Dot rightDot) {
+		this.rightDot = rightDot;
+	}
 
-		try {
-			Graphics2D obj2D = (Graphics2D) objGraphics;
-			Shape objCircle = new Ellipse2D.Double(105, 60, 80, 80);
-			obj2D.draw(objCircle);
-			obj2D.fillOval(105 + 40 - 3, 60 + 40 - 3, 6, 6);
-			// Connections c = new Connections();
-			// c.DotToBarConnection(obj2D, 100, 120, 180, 200);
-		} catch (Exception ex) {
-			System.out.println(ex.getMessage());
-		}
+	public int getCenterX() {
+		return centerX;
+	}
+
+	public void setCenterX(int centerX) {
+		this.centerX = centerX;
+	}
+
+	public int getCenterY() {
+		return centerY;
+	}
+
+	public void setCenterY(int centerY) {
+		this.centerY = centerY;
 	}
 
 }
