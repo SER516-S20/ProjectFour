@@ -11,7 +11,7 @@ public class ConnectionController implements MouseListener {
 	private ButtonBox buttonBox;
 	public ConnectionController(ButtonBox buttonBox) {
 		this.buttonBox = buttonBox;
-		connections = model.getConnectionCollection();
+		connections =Model.getTabs().get(Model.getRightTabbedPane().getCurrentTabName()).getConnectionCollection();
 	}
 	@Override
 	public void mouseClicked(MouseEvent e) {
@@ -79,9 +79,9 @@ public class ConnectionController implements MouseListener {
 		if(tempconnection != null && tempconnection.getSourceButton() != null && tempconnection.getDestButton() != null) {
 			System.out.print("=============\n"+tempconnection.getSourceX()+"\n");
 			System.out.print("=============\n"+tempconnection.getSourceY()+"\n");
-			
-			model.addConnection(tempconnection);
-			this.rightpanel.updateConnection();
+			Model.getTabs().get(Model.getRightTabbedPane().getCurrentTabName()).addConnection(tempconnection);
+			//model.addConnection(tempconnection);
+			//this.rightpanel.updateConnection();
 			System.out.print("==============="+connections.get(0).getSourceX()+"\n");
 			tempconnection = null;
 			e.getComponent().getParent().getParent().repaint();

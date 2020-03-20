@@ -17,19 +17,41 @@ import javax.swing.JPanel;
  */
 public class RightPanel extends JPanel implements ActionListener, MouseListener, MouseMotionListener{
 	private static final long serialVersionUID = 1L;
+	private String name;
 	private Hashtable<Integer, ButtonBox> shapes;
 	private Frame frame;
 	protected List<Connection> connections;
 	private Model model;
 	private ValuePane vPane;
-	
 	boolean isAlreadyOneClick = false;
-	public RightPanel() {
-		this.setBackground(Color.red);
-		shapes = new Hashtable<Integer, ButtonBox>();
+	
+	RightPanel() {
+		//init();
+	}
+	
+	RightPanel(String name)
+	{
+		this.name = name;
+	}
+	
+	public void setName(String name)
+	{
+		this.name = name;
+	}
+	
+	public String getName()
+	{
+		return name;
+	}
+	
+	public void init() {
+		//this.setBackground(Color.red);
+		//shapes = new Hashtable<Integer, ButtonBox>();	
 		model = new Model();
+		shapes = model.getTabs().get(name).getshapes();
 		addMouseListener(this);
-		connections = model.getConnectionCollection();
+		connections = model.getTabs().get(name).getConnectionCollection();
+		this.setLayout(null);
 	}
 	
 	public void addButton(int id,String btnCommand,String title, int x, int y) {
@@ -40,14 +62,17 @@ public class RightPanel extends JPanel implements ActionListener, MouseListener,
 		this.autoLocation(btn,x - btn.getPreferredSize().width / 2,y - btn.getPreferredSize().height / 2);
 		btn.setToolTipText(btnCommand);
 		btn.setTitle(title);
-		if(id == 0) {
-			shapes.put(btn.hashCode(),btn);
-			btn.setId(btn.hashCode());
-		}else {
-			shapes.put(id,btn);
-			btn.setId(id);
-		}
-		model.setshapes(shapes);
+		btn.setId(btn.hashCode());
+		shapes.put(btn.hashCode(),btn);
+		//以下註解先保留
+//		if(id == 0) {
+//			shapes.put(btn.hashCode(),btn);
+//			btn.setId(btn.hashCode());
+//		}else {
+//			shapes.put(id,btn);
+//			btn.setId(id);
+//		}
+		Model.getTabs().get(name).setshapes(shapes);
 		this.repaint();
 	}
 	
@@ -63,7 +88,7 @@ public class RightPanel extends JPanel implements ActionListener, MouseListener,
 	
 	public void setShapeLocation(int hashCode, int x, int y) {
 		shapes.get(hashCode).setLocation(x,y);
-		frame.contentRepaint();
+		model.getFrame().contentRepaint();
 	}
 	
 	public Hashtable<Integer, ButtonBox> getShapes() {
@@ -183,9 +208,9 @@ public class RightPanel extends JPanel implements ActionListener, MouseListener,
 		
 	}
 	//Author:ShihYu Chang
-	public void updateConnection() {
-		connections = model.getConnectionCollection();
-	}
+//	public void updateConnection() {
+//		connections = model.getConnectionCollection();
+//	}
 
 	//Author:ShihYu Chang
     public void paint(Graphics g) {

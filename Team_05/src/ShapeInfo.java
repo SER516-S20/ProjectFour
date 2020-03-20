@@ -31,4 +31,9 @@ public class ShapeInfo {
 	public Point getPosition(){
 		return position;
 	}
+	
+	public void setPosition(Point position)
+	{
+		this.position = position;
+	}
 }

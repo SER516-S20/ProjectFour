@@ -8,7 +8,7 @@ import controller.FileManager;
 import controller.NewTab;
 /**
  * 
- * @author Suyog
+ * @author Sheran
  * @since 02-18-2020
  */
 public class Menu extends JMenuBar{

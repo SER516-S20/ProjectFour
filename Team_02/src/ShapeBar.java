@@ -3,22 +3,20 @@ import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.Shape;
 
-public class ShapeGreaterThan extends Icon{
-
+public class ShapeBar extends Icon{
+	
 	private static final long serialVersionUID = 1L;
 	private int centerX;
 	private int centerY;
-	private static String text = ">";
-	private Dot rightDot;
-	private Dot leftUpperDot, leftLowerDot;
+	private static String text = "||";
+	private Dot leftUpperDot,leftLowerDot;
+	private Dot rightUpperDot, rightLowerDot;
 	
-	public ShapeGreaterThan(int x, int y) {
+	public ShapeBar(int x, int y) {
 		this.centerX = x;
 		this.centerY = y;
 		setUpPoints();
 		repaint();
-			
-		// call paint component from here, repaint ?!
 	}
 	
 	@Override
@@ -31,9 +29,10 @@ public class ShapeGreaterThan extends Icon{
 			obj2D.drawString(text, getMiddlePointX(), getMiddlePointY());
 			
 			
-			obj2D.fillOval(rightDot.getX(), rightDot.getY(), dotSize, dotSize);
-			obj2D.fillOval(leftUpperDot.getX(), leftUpperDot.getY(), dotSize, dotSize);
-			obj2D.fillOval(leftLowerDot.getX(), leftLowerDot.getY(), dotSize, dotSize);
+			obj2D.drawLine(rightUpperDot.getX(), rightUpperDot.getY(), rightLowerDot.getX(), rightLowerDot.getY());
+			obj2D.drawLine(leftUpperDot.getX(), leftUpperDot.getY(), leftLowerDot.getX(), leftLowerDot.getY());
+			
+			
 			
 			
 		} catch (Exception ex) {
@@ -53,10 +52,17 @@ public class ShapeGreaterThan extends Icon{
 	
 	@Override
 	public void setUpPoints() {
-		int x = centerX+width-dotMargin-(dotSize/2);
-		int y = centerY+(height/2)-(dotSize/2);
-		Dot right = new Dot(x, y, false, true);
-		setRightDot(right);
+		
+        int x11 = centerX+width-dotMargin-(dotSize/2);
+		
+		int y11 = centerY+(dotMargin)-(dotSize/2);
+		int y21 = centerY+(height)-dotMargin-(dotSize/2);
+		
+		Dot rightUpDot = new Dot(x11, y11, false, true);
+		setRightUpperDot(rightUpDot);
+		
+		Dot rightLoUDot = new Dot(x11, y21, false, true);
+		setRightLowerDot(rightLoUDot);
 		
 		int x1 = centerX+dotMargin-(dotSize/2);
 		int y1 = centerY+(dotMargin)-(dotSize/2);
@@ -73,14 +79,23 @@ public class ShapeGreaterThan extends Icon{
 	// On top of parent class Icon,
 	// Implement repaint using centerX, centerY, text, rightDot values.
 	
-	public Dot getRightDot() {
-		return rightDot;
+
+	public Dot getRightUpperDot() {
+		return rightUpperDot;
 	}
 
-	public void setRightDot(Dot rightDot) {
-		this.rightDot = rightDot;
+	public void setRightUpperDot(Dot rightUpperDot) {
+		this.rightUpperDot = rightUpperDot;
 	}
 
+	public Dot getRightLowerDot() {
+		return rightLowerDot;
+	}
+
+	public void setRightLowerDot(Dot rightLowerDot) {
+		this.rightLowerDot = rightLowerDot;
+	}
+	
 	public Dot getLeftUpperDot() {
 		return leftUpperDot;
 	}
@@ -96,5 +111,7 @@ public class ShapeGreaterThan extends Icon{
 	public void setLeftLowerDot(Dot leftLowerDot) {
 		this.leftLowerDot = leftLowerDot;
 	}
+	
+	
 
 }

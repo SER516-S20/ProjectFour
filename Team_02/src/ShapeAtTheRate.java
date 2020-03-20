@@ -1,3 +1,7 @@
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Rectangle;
+import java.awt.Shape;
 
 public class ShapeAtTheRate extends Icon{
 
@@ -9,11 +13,66 @@ public class ShapeAtTheRate extends Icon{
 	private Dot rightUpperDot, rightLowerDot;
 	
 	public ShapeAtTheRate(int x, int y) {
-		this.setCenterX(x);
-		this.setCenterY(y);
-//		this.setLeftDot(new Dot(x, y, false, true));
+		this.centerX = x;
+		this.centerY = y;
+		setUpPoints();
+		repaint();
+	}
+	
+	@Override
+	public void paintComponent(Graphics objGraphics) {
+
+		try {
+			Graphics2D obj2D = (Graphics2D) objGraphics;
+			Shape objRectangle = new Rectangle(this.centerX, this.centerY, width, height);
+			obj2D.draw(objRectangle);
+			obj2D.drawString(text, getMiddlePointX(), getMiddlePointY());
 			
-		// call paint component from here, repaint ?!
+			obj2D.fillOval(rightUpperDot.getX(), rightUpperDot.getY(), dotSize, dotSize);
+			obj2D.fillOval(rightLowerDot.getX(), rightLowerDot.getY(), dotSize, dotSize);
+			obj2D.fillOval(leftUpperDot.getX(), leftUpperDot.getY(), dotSize, dotSize);
+			obj2D.fillOval(leftLowerDot.getX(), leftLowerDot.getY(), dotSize, dotSize);
+			
+			
+		} catch (Exception ex) {
+			System.out.println(ex.getMessage());
+		}
+	}
+	
+	
+	public int getMiddlePointX() {
+		return centerX+(width/2);
+	}
+	
+	public int getMiddlePointY() {
+		return centerY+(height/2)+3;
+	}
+	
+	
+	@Override
+	public void setUpPoints() {
+		
+        int x11 = centerX+width-dotMargin-(dotSize/2);
+		
+		int y11 = centerY+(dotMargin)-(dotSize/2);
+		int y21 = centerY+(height)-dotMargin-(dotSize/2);
+		
+		Dot rightUpDot = new Dot(x11, y11, false, true);
+		setRightUpperDot(rightUpDot);
+		
+		Dot rightLoUDot = new Dot(x11, y21, false, true);
+		setRightLowerDot(rightLoUDot);
+		
+		int x1 = centerX+dotMargin-(dotSize/2);
+		int y1 = centerY+(dotMargin)-(dotSize/2);
+		int y2 = centerY+(height)-dotMargin-(dotSize/2);
+		
+		Dot lefttUpDot = new Dot(x1, y1, true, false);
+		setLeftUpperDot(lefttUpDot);
+		
+		Dot lefttLoUDot = new Dot(x1, y2, true, false);
+		setLeftLowerDot(lefttLoUDot);
+		
 	}
 	
 	// On top of parent class Icon,
@@ -52,20 +111,5 @@ public class ShapeAtTheRate extends Icon{
 		this.leftLowerDot = leftLowerDot;
 	}
 	
-	public int getCenterX() {
-		return centerX;
-	}
 	
-	public void setCenterX(int centerX) {
-		this.centerX = centerX;
-	}
-
-	public int getCenterY() {
-		return centerY;
-	}
-
-	public void setCenterY(int centerY) {
-		this.centerY = centerY;
-	}
-
 }

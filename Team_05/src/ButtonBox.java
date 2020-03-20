@@ -29,6 +29,7 @@ public abstract class ButtonBox extends JPanel{
 		this.setSymbol(symbol);
 		generateBtnDot(num);
 		this.setTitle(" ");
+		this.setLayout(null);
 	}
 	public void setTitle(String text) {
 		this.title = text;
