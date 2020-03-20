@@ -36,11 +36,11 @@ public class Compile {
 	    System.out.println("Compiling "+tabNumber+" th tab");
 	    
 	    if(!tabData.isOpenParaFlag()) {
-	    	return "Open Paranthesis Shape Missing";
+	    	return "Compile Failed : \nOpen Paranthesis Shape Missing";
 	    }
 	    
 	    if(!tabData.isCloseParaFlag()) {
-	    	return "Close Paranthesis Shape Missing";
+	    	return "Compile Failed : \nClose Paranthesis Shape Missing";
 	    }
 	    
 	    ArrayList<Shape> shapes = tabData.getShapes();
@@ -82,11 +82,11 @@ public class Compile {
 	    }
 	    
 	    if(!allConnected) {
-	    	return "Every Dot/Bar should be connected to atleast one other Dot/Bar";
+	    	return "Compile Failed : \nEvery Dot/Bar should be connected to atleast one other Dot/Bar";
 	    }
 	    System.out.println(tabData.getOpenVertex());
 	    if (!graph.checkConnection(tabData.getOpenVertex())) {
-	    	return "Disconnected circuit present";
+	    	return "Compile Failed : \nDisconnected circuit present";
 	    }
 	    return "Compiled Successfully";
 	}

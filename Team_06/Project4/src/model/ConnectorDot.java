@@ -41,7 +41,7 @@ public class ConnectorDot extends Connector {
 	@Override
     protected void paintComponent(Graphics g) {
         if (getModel().isArmed()) {
-            g.setColor(Color.darkGray);
+            g.setColor(Color.LIGHT_GRAY);
         } 
         else{
             g.setColor(Color.BLACK);

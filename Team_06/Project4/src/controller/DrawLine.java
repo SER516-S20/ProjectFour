@@ -1,5 +1,7 @@
 package controller;
 
+import static javax.swing.JOptionPane.showMessageDialog;
+
 import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.event.MouseEvent;
@@ -49,6 +51,9 @@ public class DrawLine{
 						System.out.println("First Click");
 						tabbedPanel.selected = !tabbedPanel.selected;
 						tabbedPanel.tempStartDot = dot;
+					}else {
+						String msg = "Warning : \nYou can not draw more than 1 line from Connector Dot.";
+			        	 showMessageDialog(null, msg);
 					}
 					
 				}else if(tabbedPanel.selected && (dot instanceof ConnectorDot && !dot.lineFlag) || dot instanceof ConnectorBar) {
@@ -88,11 +93,16 @@ public class DrawLine{
 						tabbedPanel.tempStartDot.lineFlag = true;
 						dot.lineFlag = true;
 						
+					}else {
+						String msg = "Warning : \nYou can not draw line from : \n1. An Input to Input Connector. \n2. An Output to Output Connector .";
+			        	 showMessageDialog(null, msg);
 					}
 					tabbedPanel.selected = !tabbedPanel.selected;
 					tabbedPanel.tempStartDot = null;
 					tabbedPanel.repaint();
 				}else {
+					String msg = "Warning : \nYou can not draw more than 1 line from Connector Dot.";
+		        	showMessageDialog(null, msg);				
 					tabbedPanel.selected = false;
 					tabbedPanel.tempStartDot = null;
 					tabbedPanel.repaint();
