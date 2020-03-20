@@ -29,6 +29,7 @@ public abstract class ButtonBox extends JPanel{
 		this.setSymbol(symbol);
 		generateBtnDot(num);
 		this.setTitle(" ");
+		this.setLayout(null);
 	}
 	public void setTitle(String text) {
 		this.title = text;
@@ -66,13 +67,11 @@ public abstract class ButtonBox extends JPanel{
 	}
 	abstract public void drawContent();
 	
-	public int getId()
-	{
+	public int getId() {
 		return id;
 	}
 	
-	public void setId(int id)
-	{
+	public void setId(int id) {
 		this.id = id;
 	}
 }

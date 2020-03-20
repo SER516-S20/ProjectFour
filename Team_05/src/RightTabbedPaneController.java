@@ -21,7 +21,7 @@ public class RightTabbedPaneController implements ActionListener, MouseListener,
 		tabs = Model.getTabs();
 	}
 	
-	public boolean addWorkingAreaTab(WorkingAreaTab tab)
+	public boolean addWorkingAreaTab(RightPanel tab)
 	{
 		boolean added = false;
 		if(tabs == null)
@@ -56,7 +56,7 @@ public class RightTabbedPaneController implements ActionListener, MouseListener,
 			name = init_name + Integer.toString(count);
 			count++;
 		}
-		WorkingAreaTab tab = new WorkingAreaTab(name);
+		RightPanel tab = new RightPanel(name);
 		addWorkingAreaTab(tab);
 	}
 	

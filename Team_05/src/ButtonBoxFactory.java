@@ -26,6 +26,5 @@ public class ButtonBoxFactory {
 			break;
 		}
 		return button;
-		
 	}
 }

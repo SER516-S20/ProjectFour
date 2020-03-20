@@ -21,7 +21,6 @@ public class Connection {
 	public void setSourceX(int sourceX) {
 		this.sourceX = sourceX;
 	}
-	
 	public int getSourceY() {
 		return sourceY;
 	}

@@ -9,11 +9,11 @@ import java.util.List;
  */
 public class TabInfo {
 	private String name;
-	private WorkingAreaTab workingAreaTab;
+	private RightPanel workingAreaTab;
 	private Hashtable<Integer, ButtonBox> shapes;
 	private List<Connection> connections;
 	
-	TabInfo(WorkingAreaTab workingAreaTab)
+	TabInfo(RightPanel workingAreaTab)
 	{
 		this.workingAreaTab = workingAreaTab;
 		this.name = workingAreaTab.getName();
@@ -37,7 +37,7 @@ public class TabInfo {
 		return connections;
 	}
 	
-	public WorkingAreaTab getTab()
+	public RightPanel getTab()
 	{
 		return workingAreaTab;
 	}

@@ -1,7 +1,12 @@
 package model;
-
 import java.util.ArrayList;
 
+/**
+ * 
+ * @Author: Dhananjay, Sheran
+ * @Since: 01-29-2020
+ * @Description: This model class is used to hold the data for multiple tabs.
+ */
 public class Data {
 	private static Data dataObj;
 	private ArrayList<TabData> tabList;

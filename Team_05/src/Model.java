@@ -10,10 +10,19 @@ public class Model {
 	private static Hashtable<String, TabInfo> tabs;
 	//private static Hashtable<String, Hashtable<Integer, ButtonBox>> shapes
 	private static Hashtable<Integer, ButtonBox> shapes;
-	
+	private static Frame frame;
+	private static String dialogMessage;
 	
 	public Model() {
 		//shapes = new Hashtable<Integer, ButtonBox>();
+	}
+	
+	public void setFrame(Frame frame) {
+		this.frame = frame;
+	}
+	
+	public Frame getFrame() {
+		return frame;
 	}
 	
 	public void setshapes( Hashtable<Integer, ButtonBox> inshapes) {
@@ -24,6 +33,14 @@ public class Model {
 		return shapes;
 	}
 	
+	public static void setMessage(String message) {
+		dialogMessage = message;
+	}
+	
+	public static String getMessage() {
+		return dialogMessage;
+	}
+	
 	/*
 	 * this method is used to remove the existed button by
 	 * clicking the mouse right button
@@ -31,27 +48,6 @@ public class Model {
 	public Component removeComponent(Component btnBox) {
 		
 		return btnBox;
-	}
-	
-	/*
-	 * this method is used to add a new connection to the collection
-	 */
-	public void addConnection(Connection conn) {
-		connections.add(conn);
-	}
-
-	public boolean updateConnectionList() {
-		return true;
-	}
-	
-	public void clearConnection() {
-		connections.clear();
-	}
-	/*
-	 * get all the connections 
-	 */
-	public List<Connection> getConnectionCollection(){
-		return connections;
 	}
 	
 	public boolean isDotUsed(Point aDot) {

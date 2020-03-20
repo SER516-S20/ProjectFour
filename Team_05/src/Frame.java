@@ -22,19 +22,20 @@ public class Frame extends JFrame{
 	private static final long serialVersionUID = 1L;
 	private static final String title = "ProjectTwo-Team 5";
 	private static final Color lBackground = new Color(255, 255, 240);
-	//private static final Color rBackground = new Color(240, 255, 255);
-	private RightPanel dragArea;
+	private RightTabbedPane dragArea;
 	private LeftPanel btnContainer;
 	 
 	public Frame() {
+		Model model = new Model();
+		model.setFrame(this);
 		this.setTitle(title);
 		this.setMinimumSize(new Dimension(800, 500));
 		this.setResizable(false);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getContentPane().setLayout(null);
-		dragArea = new RightPanel();
+		dragArea = new RightTabbedPane();
 		btnContainer = new LeftPanel();
-		dragArea.setFrame(this);
+		//dragArea.setFrame(this);
 		this.getContentPane().add(createLeftPanel());
 		this.getContentPane().add(createRightPanel());
 		this.pack();
@@ -49,16 +50,13 @@ public class Frame extends JFrame{
 		btnContainer.setPreferredSize(new  Dimension(200, 600));
 		btnContainer.setLocation(0, 0);
 		btnContainer.setBackground(lBackground);
-		//btnContainer.setRoundButtonMouseAdapter(new LeftPanelMouse(dragArea));
-		//btnContainer.setTriangleButtonMouseAdapter(new LeftPanelMouse(dragArea));
-		//btnContainer.setRectangleButtonMouseAdapter(new LeftPanelMouse(dragArea));
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setViewportView(btnContainer);
         scrollPane.setBounds(0, 0, 200, 480);
 		return scrollPane;
 	}
 	
-	private JPanel createRightPanel() {
+	private RightTabbedPane createRightPanel() {
 		dragArea.setLocation(200, 0);
 		dragArea.setSize(600, 500);
 		dragArea.setBackground(Color.white);		

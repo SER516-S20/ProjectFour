@@ -2,27 +2,29 @@ import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
 import java.util.Set;
-
 import javax.swing.JOptionPane;
 
 /**
  * @author Kairui Hsu
 **/
-public class Compile extends Thread {
+public class Compilation extends Thread {
 	private List<Connection> connections;
-	private Hashtable<Integer, ButtonBox> shapes;;
-	private Model model = new Model();
-	private boolean checkValid = false;
+	private Hashtable<Integer, ButtonBox> shapes;
+	private boolean checkValid = true;
 	private int dotNumber,leftParenthesisCnt, rightParenthesisCnt;
+	String tabName, dialogMessage;
 
+	public Compilation(String tabName) {
+	    this.tabName = tabName;
+	}
+	 
 	public void run() { 
         try { 
             System.out.println ("Thread " + Thread.currentThread().getId() + " is running"); 
-            if(model.getConnectionCollection() != null && model.getshapes() == null) {
-            	return;
-            }
-            connections = model.getConnectionCollection();
-            shapes = model.getshapes();
+            if(Model.getTabs().get(tabName).getConnectionCollection() != null && Model.getTabs().get(tabName).getshapes() == null) return;
+            dialogMessage = Model.getMessage();
+            shapes = Model.getTabs().get(tabName).getshapes();
+            connections = Model.getTabs().get(tabName).getConnectionCollection();
            	//rule1: Only allow one left Parenthesis and one right Parenthesis
            	leftParenthesisCnt = 0;
            	rightParenthesisCnt = 0;
@@ -40,10 +42,19 @@ public class Compile extends Thread {
            		}
            	}
            	if(leftParenthesisCnt > 1 || rightParenthesisCnt > 1) {
-       			JOptionPane.showMessageDialog(null,"Compile Error! More than one left parenthesis or right parenthesis");
+       			dialogMessage = dialogMessage + tabName + ": Error! More than one left parenthesis or right parenthesis" + "\n";
+       			Model.setMessage(dialogMessage);
+       			return;
+           	}else if(leftParenthesisCnt == 0) {
+           		dialogMessage = dialogMessage + tabName + ": Error! Open Paranthesis Shape Missing" + "\n";
+           		Model.setMessage(dialogMessage);
+       			return;
+           	}else if(rightParenthesisCnt == 0) {
+           		dialogMessage = dialogMessage + tabName + ": Error! Close Paranthesis Shape Missing" + "\n";
+           		Model.setMessage(dialogMessage);
        			return;
            	}
-            //rule2: All dots in one shape need to be connected with a line.
+            //rule2: Each Bar/Dot needs be connected to at least one another Bar/Dot.
             Set<Integer> keys = shapes.keySet();
             for(Integer shapeKey : keys) {
             	dotNumber = shapes.get(shapeKey).getBtnDots().length;
@@ -60,14 +71,18 @@ public class Compile extends Thread {
            			}
            		}
            		if(checkValid == false || dotNumber > 0) {
-           			JOptionPane.showMessageDialog(null,"Compile Error!");
-           			break;
+           			dialogMessage = dialogMessage + tabName + ": Error! Each Bar/Dot needs be connected to at least one another Bar/Dot" + "\n";
+           			Model.setMessage(dialogMessage);
+           			return;
            		}
            	}
             //rule3: check loop
-            //do something
-           	if(checkValid == true) JOptionPane.showMessageDialog(null,"Compile Successfully!");
-            System.out.println ("Thread " + Thread.currentThread().getId() + " is finished"); 
+            
+           	if(checkValid == true) {
+           		dialogMessage = dialogMessage + tabName + ": Compiled Successfully!" + "\n";
+           	}
+            Model.setMessage(dialogMessage);
+           	System.out.println ("Thread " + Thread.currentThread().getId() + " is finished");
         } 
         catch (Exception e) { 
             System.out.println ("Exception is caught"); 

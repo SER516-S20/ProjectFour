@@ -22,7 +22,7 @@ import model.TabData;
 
 
 /**
- * @author: Suyog
+ * @author: Rahul
  * @Date: 01/28/2020
  * @Description: Right Panel will have different shapes added which are selected in left panel.
  */

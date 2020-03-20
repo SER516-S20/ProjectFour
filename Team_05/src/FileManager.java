@@ -50,9 +50,9 @@ public class FileManager {
 					shape.appendChild(title);
 					shape.appendChild(position);
 				}
-			}
+			}/*
 			if(model.getConnectionCollection() != null) {
-				connections = model.getConnectionCollection();
+				//connections = model.getConnectionCollection();
 				for(int j = 0 ; j < this.connections.size(); j++) {
 					Connection finishedconnection = connections.get(j);
 					Element conn = doc.createElement("conn");
@@ -72,7 +72,7 @@ public class FileManager {
 					conn.appendChild(destId);
 					conn.appendChild(position);
 				}
-			}
+			}*/
 			TransformerFactory transformerFactory = TransformerFactory.newInstance();
 			Transformer transformer = transformerFactory.newTransformer();
 			DOMSource source = new DOMSource(doc);
@@ -105,7 +105,7 @@ public class FileManager {
 				}
 			}
 			NodeList connList = doc.getElementsByTagName("conn");
-			model.clearConnection();
+			//model.clearConnection();
 			for(int i = 0;i < connList.getLength();i++) {
 				Node conn = connList.item(i);
 				if (conn.getNodeType() == Node.ELEMENT_NODE) {  
@@ -120,7 +120,7 @@ public class FileManager {
 					newConn.setDestButton(Integer.parseInt(destId));
 					newConn.setDestX(Integer.parseInt(points[2]));
 					newConn.setDestY(Integer.parseInt(points[3]));
-					model.addConnection(newConn);
+					//model.addConnection(newConn);
 				}
 			}
 			return shapes;

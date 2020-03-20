@@ -17,37 +17,54 @@ import javax.swing.JPanel;
  */
 public class RightPanel extends JPanel implements ActionListener, MouseListener, MouseMotionListener{
 	private static final long serialVersionUID = 1L;
+	private String name;
 	private Hashtable<Integer, ButtonBox> shapes;
 	private Frame frame;
 	protected List<Connection> connections;
 	private Model model;
 	private ValuePane vPane;
-	
 	boolean isAlreadyOneClick = false;
-	public RightPanel() {
-		this.setBackground(Color.red);
-		shapes = new Hashtable<Integer, ButtonBox>();
+	
+	RightPanel() {}
+	
+	RightPanel(String name) {
+		this.name = name;
+	}
+	
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	public String getName() {
+		return name;
+	}
+	
+	public void init() {
 		model = new Model();
+		shapes = model.getTabs().get(name).getshapes();
 		addMouseListener(this);
-		connections = model.getConnectionCollection();
+		connections = model.getTabs().get(name).getConnectionCollection();
+		this.setLayout(null);
 	}
 	
 	public void addButton(int id,String btnCommand,String title, int x, int y) {
-		System.out.println("get in to the panel...." + btnCommand);
 		ButtonBox btn = ButtonBoxFactory.buildButtonBox(btnCommand);
 		addActionAndMouseMotionListener(btn);
 		this.add(btn);
 		this.autoLocation(btn,x - btn.getPreferredSize().width / 2,y - btn.getPreferredSize().height / 2);
 		btn.setToolTipText(btnCommand);
 		btn.setTitle(title);
-		if(id == 0) {
-			shapes.put(btn.hashCode(),btn);
-			btn.setId(btn.hashCode());
-		}else {
-			shapes.put(id,btn);
-			btn.setId(id);
-		}
-		model.setshapes(shapes);
+		btn.setId(btn.hashCode());
+		shapes.put(btn.hashCode(),btn);
+		//以下註解先保留
+//		if(id == 0) {
+//			shapes.put(btn.hashCode(),btn);
+//			btn.setId(btn.hashCode());
+//		}else {
+//			shapes.put(id,btn);
+//			btn.setId(id);
+//		}
+		Model.getTabs().get(name).setshapes(shapes);
 		this.repaint();
 	}
 	
@@ -63,7 +80,7 @@ public class RightPanel extends JPanel implements ActionListener, MouseListener,
 	
 	public void setShapeLocation(int hashCode, int x, int y) {
 		shapes.get(hashCode).setLocation(x,y);
-		frame.contentRepaint();
+		model.getFrame().contentRepaint();
 	}
 	
 	public Hashtable<Integer, ButtonBox> getShapes() {
@@ -81,20 +98,10 @@ public class RightPanel extends JPanel implements ActionListener, MouseListener,
 		button.setSize(button.getPreferredSize());
 		button.setLocation(x, y);
 	}
-	/*
-	private void updateHashCode(){
-		Hashtable<Integer, JButton> update = new Hashtable<Integer, JButton>();
-		for(JButton shape:shapes.values()) {
-			update.put(shape.hashCode(), shape);
-		}
-		shapes = update;
-	}*/
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		//System.out.println("....."+e.getSource());
 	}
-	//Author:ShihYu Chang
 	@Override
 	public void mouseDragged(MouseEvent e) {
 		e.getComponent().setLocation(e.getX() + e.getComponent().getX(), 
@@ -131,7 +138,6 @@ public class RightPanel extends JPanel implements ActionListener, MouseListener,
 				return;
 			}
 			addButton(0,instance.getText()," ",e.getX(),e.getY());
-			System.out.println("====" + this.getComponentCount());
 		}else {
 			if (e.getClickCount() == 2) {
 				Object source = e.getComponent();
@@ -153,8 +159,8 @@ public class RightPanel extends JPanel implements ActionListener, MouseListener,
 			Object source = e.getComponent();
 			if(source instanceof JPanel){
 				ButtonBox btn = (ButtonBox) source;
-				connections.removeIf(n->(n.getSourceButton()==btn.getId()));
-				connections.removeIf(n->(n.getDestButton()==btn.getId()));
+				connections.removeIf(n->(n.getSourceButton() == btn.getId()));
+				connections.removeIf(n->(n.getDestButton() == btn.getId()));
 				shapes.remove(btn.getId());
 				this.repaint();
 			}
@@ -182,15 +188,9 @@ public class RightPanel extends JPanel implements ActionListener, MouseListener,
 		// TODO Auto-generated method stub
 		
 	}
-	//Author:ShihYu Chang
-	public void updateConnection() {
-		connections = model.getConnectionCollection();
-	}
 
-	//Author:ShihYu Chang
     public void paint(Graphics g) {
     	super.paint(g);
-    	//System.out.println("======get into the right panel paint method=====");
         for(int i = 0; i < this.connections.size(); i++) {
         	Connection finishedconnection = connections.get(i);
         	Line line = new Line();
@@ -203,7 +203,8 @@ public class RightPanel extends JPanel implements ActionListener, MouseListener,
     public void load(ShapeInfo[] shapeinfo) {
 		this.clear();
     	for(int i = 0; i < shapeinfo.length; i++) {
-    		addButton(shapeinfo[i].getId(),shapeinfo[i].getType(),shapeinfo[i].getTitle(),shapeinfo[i].getPosition().x,shapeinfo[i].getPosition().y);
+    		addButton(shapeinfo[i].getId(),shapeinfo[i].getType(),shapeinfo[i].getTitle(),
+    					shapeinfo[i].getPosition().x,shapeinfo[i].getPosition().y);
     	}
     }
 }

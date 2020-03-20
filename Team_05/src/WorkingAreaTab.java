@@ -3,19 +3,16 @@ import javax.swing.JPanel;
 public class WorkingAreaTab extends JPanel{
 	private String name;
 	
-	WorkingAreaTab()
-	{
+	WorkingAreaTab() {
 		this.setLayout(null);
 	}
 	
-	WorkingAreaTab(String name)
-	{
+	WorkingAreaTab(String name) {
 		this.name = name;
 		this.setLayout(null);
 	}
 	
-	public String getName()
-	{
+	public String getName() {
 		return name;
 	}
 }

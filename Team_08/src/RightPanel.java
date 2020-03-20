@@ -1,11 +1,14 @@
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.geom.Line2D;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.BorderFactory;
 import javax.swing.JPanel;
+import javax.swing.border.Border;
 
 /**
  * This class is used to create the panel on the right side
@@ -107,11 +110,19 @@ public class RightPanel extends JPanel {
 	private Dot dot = new Dot();
 
 	public RightPanel() {
+//		this.setPreferredSize(new Dimension(800, 800));
+//		this.setVisible(true);
+		
 		this.setBackground(Color.WHITE);
 		addMouseListener(rightPanelMouseListener);
 		addMouseMotionListener(rightPanelMouseListener);
 		addMouseListener(dot);
 		addMouseMotionListener(dot);
+		
+		setVisible(true);
+		Border blackline = BorderFactory.createLineBorder(Color.black);
+		setBorder(blackline);
+		setSize(400, 400);
 	}
 
 	/**
