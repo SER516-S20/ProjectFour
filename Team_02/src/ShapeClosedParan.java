@@ -1,4 +1,14 @@
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Rectangle;
+import java.awt.Shape;
+import java.awt.geom.Ellipse2D;
 
+/**
+ * @author Rohit
+ * @created 02-18-2020
+ * @version 1.0
+ */
 public class ShapeClosedParan extends Icon{
 	
 	
@@ -9,13 +19,17 @@ public class ShapeClosedParan extends Icon{
 	private Dot leftDot;
 	
 	public ShapeClosedParan(int x, int y) {
-		this.setCenterX(x);
-		this.setCenterY(y);
-		this.setLeftDot(new Dot(x, y, false, true));
+		this.centerX = x;
+		this.centerY = y;
 		
+		setUpPoints();
+		repaint();
 		
 		// call paint component from here, repaint ?!
 	}
+	
+	
+	
 	
 	// On top of parent class Icon,
 	// Implement repaint using centerX, centerY, text, rightDot values.
@@ -27,22 +41,6 @@ public class ShapeClosedParan extends Icon{
 
 	public void setLeftDot(Dot leftDot) {
 		this.leftDot = leftDot;
-	}
-
-	public int getCenterX() {
-		return centerX;
-	}
-
-	public void setCenterX(int centerX) {
-		this.centerX = centerX;
-	}
-
-	public int getCenterY() {
-		return centerY;
-	}
-
-	public void setCenterY(int centerY) {
-		this.centerY = centerY;
 	}
 
 }
