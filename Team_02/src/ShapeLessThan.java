@@ -11,9 +11,8 @@ public class ShapeLessThan extends Icon{
 	public ShapeLessThan(int x, int y) {
 		this.setCenterX(x);
 		this.setCenterY(y);
-//		this.setRightDot(new Dot(x, y, false, true));
-		
-		
+		this.setLeftDot(new Dot(x, y, false, true));
+			
 		// call paint component from here, repaint ?!
 	}
 	
@@ -21,16 +20,14 @@ public class ShapeLessThan extends Icon{
 	// Implement repaint using centerX, centerY, text, rightDot values.
 	
 
-	public Dot getLeftUpperDot() {
+	public Dot getLeftDot() {
 		return leftDot;
 	}
-
 	
-	public int getCenterX() {
-		return centerX;
+	public void setLeftDot(Dot leftDot) {
+		this.leftDot = leftDot;
 	}
 
-	
 	public Dot getRightUpperDot() {
 		return rightUpperDot;
 	}
@@ -45,6 +42,10 @@ public class ShapeLessThan extends Icon{
 
 	public void setRightLowerDot(Dot rightLowerDot) {
 		this.rightLowerDot = rightLowerDot;
+	}
+	
+	public int getCenterX() {
+		return centerX;
 	}
 	
 	public void setCenterX(int centerX) {
