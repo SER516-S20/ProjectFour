@@ -1,3 +1,7 @@
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Rectangle;
+import java.awt.Shape;
 
 public class ShapeAtTheRate extends Icon{
 
@@ -9,12 +13,13 @@ public class ShapeAtTheRate extends Icon{
 	private Dot rightUpperDot, rightLowerDot;
 	
 	public ShapeAtTheRate(int x, int y) {
-		this.setCenterX(x);
-		this.setCenterY(y);
-//		this.setLeftDot(new Dot(x, y, false, true));
-			
-		// call paint component from here, repaint ?!
+		this.centerX = x;
+		this.centerY = y;
+		setUpPoints();
+		repaint();
 	}
+	
+	
 	
 	// On top of parent class Icon,
 	// Implement repaint using centerX, centerY, text, rightDot values.
@@ -52,20 +57,5 @@ public class ShapeAtTheRate extends Icon{
 		this.leftLowerDot = leftLowerDot;
 	}
 	
-	public int getCenterX() {
-		return centerX;
-	}
 	
-	public void setCenterX(int centerX) {
-		this.centerX = centerX;
-	}
-
-	public int getCenterY() {
-		return centerY;
-	}
-
-	public void setCenterY(int centerY) {
-		this.centerY = centerY;
-	}
-
 }
