@@ -51,6 +51,7 @@ public class RightPanelMouseListener implements MouseListener, MouseMotionListen
 				textBox.setTextValue(input);
 				System.out.println('\n'+"User Input --> " + textBox.getTextValue());
 			}else{
+				textBox.showUserInput();
 				System.out.println('\n'+"User Already Input --> " + textBox.getTextValue());
 			}
 

@@ -14,4 +14,8 @@ public class TextBox extends JOptionPane {
     public String getUserInput(){
         return JOptionPane.showInputDialog(null,"Enter Value");
     }
+
+    public void showUserInput(){
+        JOptionPane.showMessageDialog(null, textValue);
+    }
 }
