@@ -1,9 +1,6 @@
 import javax.swing.JButton;
 
 public class BarButtonBox extends ButtonBox {
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private JButton []dots; 
 	public BarButtonBox() {
@@ -24,5 +21,4 @@ public class BarButtonBox extends ButtonBox {
 			this.add(dots[i]);
 		}
 	}
-
 }

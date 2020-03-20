@@ -12,6 +12,7 @@ public class LeftPanel extends JPanel implements ActionListener{
 	private static final long serialVersionUID = 1L;
 	private final int N = 7;
 	private JButton []btns;
+	
 	public LeftPanel() {
 		initButton();
 	}
@@ -32,8 +33,7 @@ public class LeftPanel extends JPanel implements ActionListener{
 		for(int i = 0; i < btns.length; i++) {
 			this.add(btns[i]);
 		}
-		this.setLayout(new GridLayout(N + 1, 1, 0, 10));
-		
+		this.setLayout(new GridLayout(N + 1, 1, 0, 10));	
 	}
 
 	@Override
@@ -41,6 +41,5 @@ public class LeftPanel extends JPanel implements ActionListener{
 		String text  = e.getActionCommand();
 		Box instance = Box.getInstance();
 		instance.setText(text);
-		System.out.println("the pressed button is: " + text);
 	}
 }

@@ -1,9 +1,6 @@
 import javax.swing.JButton;
 
 public class LoopButtonBox extends ButtonBox {
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private JButton []dots; 
 	public LoopButtonBox() {
@@ -13,7 +10,6 @@ public class LoopButtonBox extends ButtonBox {
 	
 	@Override
 	public void drawContent() {
-		// TODO Auto-generated method stub
 		int width = this.getPreferredSize().width;
 		int height = this.getPreferredSize().height / 5;
 		dots = getBtnDots();
@@ -25,5 +21,4 @@ public class LoopButtonBox extends ButtonBox {
 			this.add(dots[i]);
 		}
 	}
-
 }

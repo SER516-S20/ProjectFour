@@ -78,7 +78,9 @@ public class Compilation extends Thread {
            	}
             //rule3: check loop
             
-           	if(checkValid == true) dialogMessage = dialogMessage + tabName + ": Compiled Successfully!" + "\n";
+           	if(checkValid == true) {
+           		dialogMessage = dialogMessage + tabName + ": Compiled Successfully!" + "\n";
+           	}
             Model.setMessage(dialogMessage);
            	System.out.println ("Thread " + Thread.currentThread().getId() + " is finished");
         } 

@@ -13,7 +13,6 @@ public class LButtonBox extends ButtonBox {
 	
 	@Override
 	public void drawContent() {
-		// TODO Auto-generated method stub
 		int width = this.getPreferredSize().width;
 		int height = this.getPreferredSize().height / 5;
 		dots = getBtnDots();
@@ -24,5 +23,4 @@ public class LButtonBox extends ButtonBox {
 			this.add(dots[i]);
 		}
 	}
-
 }

@@ -22,7 +22,6 @@ public class Frame extends JFrame{
 	private static final long serialVersionUID = 1L;
 	private static final String title = "ProjectTwo-Team 5";
 	private static final Color lBackground = new Color(255, 255, 240);
-	//private static final Color rBackground = new Color(240, 255, 255);
 	private RightTabbedPane dragArea;
 	private LeftPanel btnContainer;
 	 
@@ -51,9 +50,6 @@ public class Frame extends JFrame{
 		btnContainer.setPreferredSize(new  Dimension(200, 600));
 		btnContainer.setLocation(0, 0);
 		btnContainer.setBackground(lBackground);
-		//btnContainer.setRoundButtonMouseAdapter(new LeftPanelMouse(dragArea));
-		//btnContainer.setTriangleButtonMouseAdapter(new LeftPanelMouse(dragArea));
-		//btnContainer.setRectangleButtonMouseAdapter(new LeftPanelMouse(dragArea));
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setViewportView(btnContainer);
         scrollPane.setBounds(0, 0, 200, 480);

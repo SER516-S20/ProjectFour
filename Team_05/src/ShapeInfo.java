@@ -9,31 +9,30 @@ public class ShapeInfo {
 	private String type, title;
 	private Point position;
 	
-	ShapeInfo(int id, String type, String title, Point position){
+	ShapeInfo(int id, String type, String title, Point position) {
 		this.id = id;
 		this.type = type;
 		this.title = title;
 		this.position = position;
 	}
 	
-	public int getId(){
+	public int getId() {
 		return id;
 	}
 	
-	public String getType(){
+	public String getType() {
 		return type;
 	}
 	
-	public String getTitle(){
+	public String getTitle() {
 		return title;
 	}
 	
-	public Point getPosition(){
+	public Point getPosition() {
 		return position;
 	}
 	
-	public void setPosition(Point position)
-	{
+	public void setPosition(Point position) {
 		this.position = position;
 	}
 }
