@@ -23,6 +23,7 @@ public class Shape extends JButton{
 	    //setBounds(x, y, size.width, size.height);
 	    setBounds(x, y, (int)(size.width * 2.5), size.height);
 	    setBorder(new EmptyBorder(x, y, 5, 5));
+	    setLayout(null);
 	}
 	
 	public String getUserInput() {
