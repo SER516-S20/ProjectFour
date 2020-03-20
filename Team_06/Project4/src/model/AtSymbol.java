@@ -6,7 +6,11 @@ import java.util.ArrayList;
 import controller.Drag;
 import controller.ShapeMouseListener;
 import controller.UserInput;
-
+/**
+ * 
+ * @author Sheran
+ * @since 01-29-2020
+ */
 public class AtSymbol extends Shape{
 //	private ArrayList <ConnectorDot> connectors = new ArrayList<ConnectorDot>();
 
