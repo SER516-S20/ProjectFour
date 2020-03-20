@@ -36,7 +36,7 @@ public class RightTabbedPane extends JTabbedPane{
 	
 	public void addWorkingAreaTab()
 	{
-		String init_name = "unnamedTab";
+		String init_name = "Tab";
 		String name = init_name;
 		int count = 1;
 		while(Model.getTabs().containsKey(name))
