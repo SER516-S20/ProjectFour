@@ -117,9 +117,9 @@ public class FileManager {
 		            JPanel panel = new JPanel();
 		            
 		            Data.getInstance().clearTabList();
-					NewTab.getInstance().jTabbedPane.removeAll();
-					NewTab.getInstance().CountOfTabs = 1;
-					NewTab.getInstance().tabNumber = 0;
+					Tab.getInstance().jTabbedPane.removeAll();
+					Tab.getInstance().CountOfTabs = 1;
+					Tab.getInstance().tabNumber = 0;
 					boolean isLine = false;
 					
 		            while(line != null) {
@@ -140,7 +140,7 @@ public class FileManager {
 		            			int tabNumber = Integer.parseInt(line);
 		            			data.addTabData();
 			            		tabData = data.getTab(tabNumber);
-			            		panel = NewTab.getInstance().createTab();
+			            		panel = Tab.getInstance().createTab();
 			            		temp = tabNumber;
 			            		line = reader.readLine();
 			            		continue;
@@ -158,7 +158,7 @@ public class FileManager {
 			            	if(temp < tabNumber) {
 			            		data.addTabData();
 			            		tabData = data.getTab(tabNumber);
-			            		panel = NewTab.getInstance().createTab();
+			            		panel = Tab.getInstance().createTab();
 			            		temp = tabNumber;
 			            	}
 			

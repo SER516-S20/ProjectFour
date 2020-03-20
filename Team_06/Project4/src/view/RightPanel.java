@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-import controller.NewTab;
+import controller.Tab;
 import controller.SelectShape;
 import model.Connector;
 import model.Data;
@@ -45,7 +45,7 @@ public class RightPanel extends JPanel{
         super.paintComponent(g);
         g.setColor(Color.BLACK);
         
-        int tabNumber = NewTab.selectedTab();
+        int tabNumber = Tab.selectedTab();
         TabData tabData = Data.getInstance().getTab(tabNumber);
         ArrayList<Shape> shapes = tabData.getShapes();
         ArrayList<Line> lines = tabData.getLines();

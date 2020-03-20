@@ -5,7 +5,7 @@ import javax.swing.JMenuItem;
 
 import controller.Compile;
 import controller.FileManager;
-import controller.NewTab;
+import controller.Tab;
 /**
  * 
  * @author Sheran
@@ -22,7 +22,7 @@ public class Menu extends JMenuBar{
 		
 		new Compile(compile);
 		new FileManager(save, open);
-		NewTab.getInstance().initialize(newTab, rightPanel);
+		Tab.getInstance().initialize(newTab, rightPanel);
 		
 		this.add(menu);
 		menu.add(save); 

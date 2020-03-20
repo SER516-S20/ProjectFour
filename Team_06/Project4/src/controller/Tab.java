@@ -18,8 +18,8 @@ import model.Data;
 import view.RightPanel;
 
 
-public class NewTab {
-	private static NewTab newTabObj = null;
+public class Tab {
+	private static Tab TabObj = null;
 	static int CountOfTabs = 1;
 	public int tabNumber = 0;
 	boolean DefaultStartTab = true;
@@ -28,14 +28,14 @@ public class NewTab {
 	Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 
 
-	private NewTab() {
+	private Tab() {
 		
 	}
-	public static NewTab getInstance() {
-		if (newTabObj == null) {
-			newTabObj = new NewTab();
+	public static Tab getInstance() {
+		if (TabObj == null) {
+			TabObj = new Tab();
 		}
-		return newTabObj;
+		return TabObj;
 	}
 	public void initialize(JMenu NewTab, RightPanel rightPanel) {
 		rightPanel.setLayout(null);

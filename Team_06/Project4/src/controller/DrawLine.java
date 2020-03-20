@@ -65,7 +65,7 @@ public class DrawLine{
 						int startConnectorIndex = startShape.getConnectors().indexOf(tabbedPanel.tempStartDot);
 						int endConnectorIndex = endShape.getConnectors().indexOf(dot);
 						
-						Data.getInstance().getTab(NewTab.selectedTab()).addLines(new Line(startShape, endShape, startConnectorIndex, endConnectorIndex, 
+						Data.getInstance().getTab(Tab.selectedTab()).addLines(new Line(startShape, endShape, startConnectorIndex, endConnectorIndex, 
 								tabbedPanel.tempStartDot.getX(),tabbedPanel.tempStartDot.getY(), dot.getX(), dot.getY()));
 						
 						

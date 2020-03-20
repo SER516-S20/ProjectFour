@@ -4,6 +4,6 @@ import model.Data;
 
 public class Compiler {
 	public Compiler() {
-		int tabNumber = NewTab.selectedTab();
+		int tabNumber = Tab.selectedTab();
 	}
 }

@@ -85,7 +85,7 @@ public class ShapeMouseListener{
 				int deltaY = e.getYOnScreen() - screenY;
 				
 				shape.setLocation(mouseX + deltaX, mouseY + deltaY);
-				int tabNumber = NewTab.selectedTab();
+				int tabNumber = Tab.selectedTab();
 				Data.getInstance().getTab(tabNumber).editShapeData(shape.getShapeIndex(), mouseX + deltaX, mouseY + deltaY);
 			}
 			

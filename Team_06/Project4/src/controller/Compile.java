@@ -7,8 +7,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 import javax.swing.JMenu;
-
-import com.sun.java.swing.plaf.windows.resources.windows;
 import static javax.swing.JOptionPane.showMessageDialog;
 
 import model.Connector;
@@ -31,7 +29,7 @@ public class Compile {
 	
 	public String compileTab() {
 		System.out.println("Inside Compile Method");
-		int tabNumber = NewTab.selectedTab();
+		int tabNumber = Tab.selectedTab();
 	    TabData tabData = Data.getInstance().getTab(tabNumber);
 	    System.out.println("Compiling "+tabNumber+" th tab");
 	    

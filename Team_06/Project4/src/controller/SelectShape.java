@@ -28,7 +28,7 @@ public class SelectShape {
 			@Override
 			public void actionPerformed(ActionEvent e){
 		        if (shape.isEnabled()){
-		        	int tabNumber = NewTab.selectedTab();
+		        	int tabNumber = Tab.selectedTab();
 		        	TabData tabData = Data.getInstance().getTab(tabNumber);
 		        	tabData.setShapeNumber(shapeNumber);
 		        	Data.getInstance().setTab(tabNumber, tabData);
