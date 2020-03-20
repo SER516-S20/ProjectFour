@@ -216,7 +216,7 @@ public class FileManager {
 		            		int x2 = Integer.parseInt(lineInfo[7]);
 		            		int y2 = Integer.parseInt(lineInfo[8]);
 		            		
-		            		Data.getInstance().getTab(tabNumber).addLines(new Line(startShape,endShape,startConnectorIndex, endConnectorIndex, x1,y1,x2,y2,null,null));
+		            		Data.getInstance().getTab(tabNumber).addLines(new Line(startShape,endShape,startConnectorIndex, endConnectorIndex, x1,y1,x2,y2));
 		            		
 		            		
 		            		if (dot.type == type.INPUT) {
