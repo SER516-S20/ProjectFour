@@ -5,6 +5,11 @@ import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.border.EmptyBorder;
 
+/**
+ * 
+ * @author Somesh, Dhananjay
+ * @since 01-29-2020
+ */
 public class Shape extends JButton{
 	protected String userInput;
 	public enum type {INPUT, OUTPUT};
