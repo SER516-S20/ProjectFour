@@ -30,8 +30,7 @@ public class Drag{
 			}
 
 			@Override
-			public void mousePressed(MouseEvent e) 
-			{
+			public void mousePressed(MouseEvent e){
 				screenX = e.getXOnScreen();
 				screenY = e.getYOnScreen();
 				mouseX = shape.getX();
@@ -41,14 +40,6 @@ public class Drag{
 
 			@Override
 			public void mouseReleased(MouseEvent e){
-//				System.out.println("Released");
-//				RightPanel rightPanel = (RightPanel) e.getComponent().getParent();
-//				for (Line l : rightPanel.lines) {
-//		        	System.out.println(l.startDot.getX()+" RL "+ l.startDot.getY());
-//		        	System.out.println(l.endDot.getX() +" "+ l.endDot.getY());
-//					
-//					
-//				}
 			}
 
 			@Override
@@ -73,8 +64,6 @@ public class Drag{
 				rightPanel.repaint();
 				
 			}
-			
-
 			@Override
 			public void mouseMoved(MouseEvent e){
 				

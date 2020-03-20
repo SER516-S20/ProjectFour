@@ -255,9 +255,6 @@ public class FileManager {
 		            e1.printStackTrace();
 		        }
 		    }
-		});
-		
-		
-		 
+		});		 
 	}
 }

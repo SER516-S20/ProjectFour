@@ -18,11 +18,9 @@ class Graph {
 			adj[i] = new LinkedList(); 
 	} 
 
-	 
 	void addEdge(int v,int w){ 
 		adj[v].add(w); 
 	} 
-
 	
 	public boolean checkConnection(int s){ 
 		boolean visited[] = new boolean[V]; 
@@ -34,9 +32,7 @@ class Graph {
 
 		while (queue.size() != 0) { 
 			
-			s = queue.poll(); 
-			//System.out.print(s+" "); 
-			
+			s = queue.poll(); 			
 			Iterator<Integer> i = adj[s].listIterator(); 
 			while (i.hasNext()) 
 			{ 
@@ -47,8 +43,7 @@ class Graph {
 					queue.add(n); 
 				} 
 			} 
-		} 
-		
+		} 		
 		for(boolean flag: visited) {
 			if (!flag) {
 				return false;

@@ -32,10 +32,9 @@ public class Tab {
     SelectShape selectShape = new SelectShape();
 	Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 
-
 	private Tab() {
-		
 	}
+	
 	public static Tab getInstance() {
 		if (TabObj == null) {
 			TabObj = new Tab();
@@ -46,21 +45,18 @@ public class Tab {
 		rightPanel.setLayout(null);
 	    jTabbedPane.setBounds(0,0,screenSize.width*5/6,screenSize.height); 
 
-
 	    if(DefaultStartTab) {
 	    	createTab();
 		    DefaultStartTab = false;
 	    }
-	    
-	    
-			NewTab.addMouseListener(new MouseAdapter() { 
-		          public void mousePressed(MouseEvent e) {
-		        	 createTab();
-		          	}
-				});
+	        
+		NewTab.addMouseListener(new MouseAdapter() { 
+		     public void mousePressed(MouseEvent e) {
+		        createTab();
+		     }
+		});
 
-		    rightPanel.add(jTabbedPane);
-	
+		rightPanel.add(jTabbedPane);	
 	}
 	
 	public JPanel createTab() {
