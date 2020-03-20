@@ -34,8 +34,9 @@ public class FileManager {
 			Document doc = docBuilder.newDocument();
 			Element rootTab = doc.createElement("tabs");
 			doc.appendChild(rootTab);
-			for(String name:Model.getTabs().keySet())
+			for(int index = 0;index<Model.getTabs().size();index++)
 			{
+				String name = ((RightPanel)Model.getRightTabbedPane().getComponentAt(index)).getName();
 				TabInfo tab = Model.getTabs().get(name);
 				Element tabElement = doc.createElement("tab");
 				tabElement.setAttribute("name", name);
