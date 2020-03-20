@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Hashtable;
 import java.util.List;
 import java.util.Set;
@@ -10,8 +11,9 @@ import javax.swing.JOptionPane;
 public class Compilation extends Thread {
 	private List<Connection> connections;
 	private Hashtable<Integer, ButtonBox> shapes;
+	Set<Integer> mySet = new HashSet<>();
 	private boolean checkValid = true;
-	private int dotNumber,leftParenthesisCnt, rightParenthesisCnt;
+	private int dotNumber,leftParenthesisCnt, rightParenthesisCnt, LoopButtonCnt;
 	String tabName, dialogMessage;
 
 	public Compilation(String tabName) {
@@ -25,11 +27,10 @@ public class Compilation extends Thread {
             dialogMessage = Model.getMessage();
             shapes = Model.getTabs().get(tabName).getshapes();
             connections = Model.getTabs().get(tabName).getConnectionCollection();
-            if(rule1() && rule2()) {
+            if(rule1() && rule2() && rule3()) {
             	dialogMessage = dialogMessage + tabName + ": Compiled Successfully!" + "\n";
             	Model.setMessage(dialogMessage);
             }
-            rule3();
            	System.out.println ("Thread " + Thread.currentThread().getId() + " is finished");
         } 
         catch (Exception e) { 
@@ -49,6 +50,8 @@ public class Compilation extends Thread {
    				case ")":
    					rightParenthesisCnt++;
    					break;
+   				case "@":
+   					LoopButtonCnt++;
    				default:
    					break;
 			}
@@ -95,29 +98,24 @@ public class Compilation extends Thread {
 		}
 		return checkValid;
 	}
-    //rule3: check loop
+    //rule3: check if there is a circle inside the graph
 	public boolean rule3() {
         int V = shapes.size(), E = connections.size(); 
-        //int V = 3, E = 2; 
         Graph graph = new Graph(V, E); 
-        // add edge 0-1 
         for(int i = 0 ; i < E ; i++) {
-        	Connection finishedconnection = connections.get(i);
-        	graph.edge[i].src = finishedconnection.getSourceButton().intValue(); 
-        	graph.edge[i].dest = finishedconnection.getDestButton().intValue(); 
+        	Connection conn = connections.get(i);
+        	graph.edge[i].src = new ArrayList<>(shapes.keySet()).indexOf(conn.getSourceButton());//array.get(conn.getSourceButton()).intValue(); 
+        	graph.edge[i].dest = new ArrayList<>(shapes.keySet()).indexOf(conn.getDestButton());;//array.get(conn.getDestButton()).intValue(); 
         }
-        // add edge 1-2 
-        //graph.edge[1].src = 1; 
-        //graph.edge[1].dest = 2; 
-  
-        // add edge 0-2 
-        //graph.edge[2].src = 0; 
-        //graph.edge[2].dest = 2;
-		//new Graph();
-        if (graph.isCycle(graph)==1) 
-            System.out.println( "graph contains cycle" ); 
-        else
+        if (LoopButtonCnt > 0 && graph.isCycle(graph) == 0) {
+			dialogMessage = dialogMessage + tabName + ": Error! LoopButton should have a loop connection" + "\n";
+			Model.setMessage(dialogMessage);
             System.out.println( "graph doesn't contain cycle" ); 
-		return false;
+			return false;
+        }
+        else {
+            System.out.println( "graph contains cycle" );
+            return true;
+        }
 	}
 }
