@@ -40,6 +40,7 @@ public class RightPanel extends JPanel implements ActionListener, MouseListener,
 	}
 	
 	public void init() {
+		System.out.println("init tab");
 		model = new Model();
 		shapes = model.getTabs().get(name).getshapes();
 		addMouseListener(this);
@@ -56,7 +57,7 @@ public class RightPanel extends JPanel implements ActionListener, MouseListener,
 		btn.setTitle(title);
 		btn.setId(btn.hashCode());
 		shapes.put(btn.hashCode(),btn);
-		//以下註解先保留
+		//
 //		if(id == 0) {
 //			shapes.put(btn.hashCode(),btn);
 //			btn.setId(btn.hashCode());
@@ -88,9 +89,10 @@ public class RightPanel extends JPanel implements ActionListener, MouseListener,
 	}
 	
 	public void clear() {
-		for(ButtonBox shape:shapes.values()) {
-			this.remove(shape);
-		}
+//		for(ButtonBox shape:shapes.values()) {
+//			this.remove(shape);
+//		}
+		this.removeAll();
 		shapes.clear();
 	}
 	
@@ -202,6 +204,7 @@ public class RightPanel extends JPanel implements ActionListener, MouseListener,
     
     public void load(ShapeInfo[] shapeinfo) {
 		this.clear();
+		System.out.println(shapeinfo.toString());
     	for(int i = 0; i < shapeinfo.length; i++) {
     		addButton(shapeinfo[i].getId(),shapeinfo[i].getType(),shapeinfo[i].getTitle(),
     					shapeinfo[i].getPosition().x,shapeinfo[i].getPosition().y);

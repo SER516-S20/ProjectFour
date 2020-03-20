@@ -35,4 +35,9 @@ public class ShapeInfo {
 	public void setPosition(Point position) {
 		this.position = position;
 	}
+	
+	public String toString()
+	{
+		return id + " " + type + " " + title + " " + position.toString();
+	}
 }

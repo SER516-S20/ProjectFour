@@ -43,7 +43,8 @@ public class MenuBar extends JMenuBar{
 		itemOpen.addActionListener(new ActionListener(){
 		public void actionPerformed(ActionEvent e) {
 			if(fileBrowser.browser("Open file")) {
-					ShapeInfo[] shapeList = fileManager.open(fileBrowser.getCurrentFile());
+					//ShapeInfo[] shapeList = fileManager.open(fileBrowser.getCurrentFile());
+				fileManager.open(fileBrowser.getCurrentFile());
 					//rightPanel.load(shapeList);
 					//rightPanel.updateConnection();
 				}

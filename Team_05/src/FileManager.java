@@ -60,7 +60,7 @@ public class FileManager {
 					}
 				}
 				if(tab.getConnectionCollection() != null) {
-					//connections = model.getConnectionCollection();
+					connections = tab.getConnectionCollection();
 					for(int j = 0 ; j < this.connections.size(); j++) {
 						Connection finishedconnection = connections.get(j);
 						Element conn = doc.createElement("conn");
@@ -94,58 +94,73 @@ public class FileManager {
 		}
 	}
 	
-	public ShapeInfo[] open(File file) {
+	public void open(File file) {
 		try {
 			DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
 			Document doc = docBuilder.parse(file);
 			doc.getDocumentElement().normalize();
 			RightTabbedPane pane = Model.getRightTabbedPane();
-			Hashtable<String, TabInfo> tabs = new Hashtable<String, TabInfo>();
+			Hashtable<String, TabInfo> tabs = Model.getTabs();
 			tabs.clear();
 			pane.removeAll();
 			NodeList nodeList = doc.getElementsByTagName("tab");
-			ShapeInfo[] shapes = new ShapeInfo[nodeList.getLength()];
+			
 			for(int i = 0;i < nodeList.getLength();i++) {
 				Node node = nodeList.item(i);
 				if (node.getNodeType() == Node.ELEMENT_NODE) {  
 					Element tabElement = (Element) node;
 					String name = node.getAttributes().getNamedItem("name").getNodeValue();
 					RightPanel tab = new RightPanel(name);
+					System.out.println(tab.getName());
 					pane.addWorkingAreaTab(tab);
 					TabInfo tabInfo = tabs.get(name);
-					int id = Integer.parseInt(node.getAttributes().getNamedItem("id").getNodeValue());
-					String points[] = tabElement.getElementsByTagName("position").item(0).getTextContent().split(",");
-					Point position = new Point(Integer.parseInt(points[0]),Integer.parseInt(points[1]));
-					String type = tabElement.getElementsByTagName("type").item(0).getTextContent();
-					String title = tabElement.getElementsByTagName("title").item(0).getTextContent();
-					shapes[i]=new ShapeInfo(id,type,title,position);
+					NodeList shapeList = tabElement.getElementsByTagName("shape");
+					ShapeInfo[] shapes = new ShapeInfo[shapeList.getLength()];
+					for(int j=0;j<shapeList.getLength();j++)
+					{
+						Node shapeNode = shapeList.item(j);
+						if(shapeNode.getNodeType() == Node.ELEMENT_NODE)
+						{
+							Element shapeElement = (Element) shapeNode;
+							int id = Integer.parseInt(shapeNode.getAttributes().getNamedItem("id").getNodeValue());
+							String points[] = shapeElement.getElementsByTagName("position").item(0).getTextContent().split(",");
+							Point position = new Point(Integer.parseInt(points[0]),Integer.parseInt(points[1]));
+							String type = shapeElement.getElementsByTagName("type").item(0).getTextContent();
+							String title = shapeElement.getElementsByTagName("title").item(0).getTextContent();
+							shapes[j]=new ShapeInfo(id,type,title,position);
+						}
+					}
+					System.out.println(shapes.length);
+					for(ShapeInfo si: shapes)
+						System.out.println(si.toString());
+					tab.load(shapes);
+					NodeList connList = tabElement.getElementsByTagName("conn");
+					//model.clearConnection();
+					for(int j = 0;j < connList.getLength();j++) {
+						Node conn = connList.item(j);
+						if (conn.getNodeType() == Node.ELEMENT_NODE) {  
+							Element connElement = (Element) conn;
+							String points[] = connElement.getElementsByTagName("position").item(0).getTextContent().split(",");
+							String sourceId = connElement.getElementsByTagName("sourceId").item(0).getTextContent();
+							String destId = connElement.getElementsByTagName("destId").item(0).getTextContent();
+							Connection newConn = new Connection();
+							newConn.setSourceButton(Integer.parseInt(sourceId));
+							newConn.setSourceX(Integer.parseInt(points[0]));
+							newConn.setSourceY(Integer.parseInt(points[1]));
+							newConn.setDestButton(Integer.parseInt(destId));
+							newConn.setDestX(Integer.parseInt(points[2]));
+							newConn.setDestY(Integer.parseInt(points[3]));
+							//model.addConnection(newConn);
+							tabInfo.addConnection(newConn);
+						}
+					}
+
 				}
 			}
-			NodeList connList = doc.getElementsByTagName("conn");
-			//model.clearConnection();
-			for(int i = 0;i < connList.getLength();i++) {
-				Node conn = connList.item(i);
-				if (conn.getNodeType() == Node.ELEMENT_NODE) {  
-					Element connElement = (Element) conn;
-					String points[] = connElement.getElementsByTagName("position").item(0).getTextContent().split(",");
-					String sourceId = connElement.getElementsByTagName("sourceId").item(0).getTextContent();
-					String destId = connElement.getElementsByTagName("destId").item(0).getTextContent();
-					Connection newConn = new Connection();
-					newConn.setSourceButton(Integer.parseInt(sourceId));
-					newConn.setSourceX(Integer.parseInt(points[0]));
-					newConn.setSourceY(Integer.parseInt(points[1]));
-					newConn.setDestButton(Integer.parseInt(destId));
-					newConn.setDestX(Integer.parseInt(points[2]));
-					newConn.setDestY(Integer.parseInt(points[3]));
-					//model.addConnection(newConn);
-				}
-			}
-			return shapes;
 		}
 		catch(Exception e) {
 			e.printStackTrace();
-			return null;
 		}
 	}
 
