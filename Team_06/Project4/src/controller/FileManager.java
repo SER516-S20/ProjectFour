@@ -63,6 +63,7 @@ public class FileManager {
 	                // set the label to the path of the selected file  
 	                try(FileWriter fw = new FileWriter(fileChooser.getSelectedFile()+".txt")) {
 	                	for(TabData tab : Data.getInstance().getTabList()){
+	                		if(tab.getShapeData().size() == 0) fw.write(Data.getInstance().getTabList().indexOf(tab)+ System.lineSeparator());
 	                		for(ShapeData shape : tab.getShapeData()) {
 	                			fw.write(Data.getInstance().getTabList().indexOf(tab) +";"+ shape.getIndex() +";"+shape.getShapeNumber()+";"
 	                					        + shape.getX() + ";" + shape.getY() + ";"+ shape.getUserIp() +";" + System.lineSeparator());
@@ -132,13 +133,26 @@ public class FileManager {
 		            	
 		            	if(!isLine) {
 		            		String[] shapeInfo = line.split(";");
-			            	int tabNumber = Integer.parseInt(shapeInfo[0]);
+		            		Data data = Data.getInstance();
+		            		
+		            		if(shapeInfo.length == 1) {
+		            			System.out.println(line);
+		            			int tabNumber = Integer.parseInt(line);
+		            			data.addTabData();
+			            		tabData = data.getTab(tabNumber);
+			            		panel = NewTab.getInstance().createTab();
+			            		temp = tabNumber;
+			            		line = reader.readLine();
+			            		continue;
+		            		}
+
+		            		int tabNumber = Integer.parseInt(shapeInfo[0]);
 			            	int shapeIndex = Integer.parseInt(shapeInfo[1]);
 			            	int shapeNumber = Integer.parseInt(shapeInfo[2]);
 			            	int x = Integer.parseInt(shapeInfo[3]);
 			            	int y = Integer.parseInt(shapeInfo[4]);
 			            	String userIp = shapeInfo[5];
-			            	Data data = Data.getInstance();
+			            	
 			            	Shape shape = new Shape("",0,0);
 			            	
 			            	if(temp < tabNumber) {
@@ -185,7 +199,7 @@ public class FileManager {
 		            		
 		            	}
 		            	else {
-		            		System.out.println(line);
+		            		if(line == null) continue;
 		            		String[] lineInfo = line.split(";");
 		            		int tabNumber = Integer.parseInt(lineInfo[0]);
 		            		tabData = Data.getInstance().getTab(tabNumber);
@@ -202,7 +216,7 @@ public class FileManager {
 		            		int x2 = Integer.parseInt(lineInfo[7]);
 		            		int y2 = Integer.parseInt(lineInfo[8]);
 		            		
-		            		Data.getInstance().getTab(tabNumber).addLines(new Line(startShape,endShape,startConnectorIndex, endConnectorIndex, x1,y1,x2,y2));
+		            		Data.getInstance().getTab(tabNumber).addLines(new Line(startShape,endShape,startConnectorIndex, endConnectorIndex, x1,y1,x2,y2,null,null));
 		            		
 		            		
 		            		if (dot.type == type.INPUT) {
