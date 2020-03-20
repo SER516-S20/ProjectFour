@@ -32,47 +32,57 @@ public class FileManager {
 			DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
 			Document doc = docBuilder.newDocument();
-			Element rootElement = doc.createElement("shapes");
-			doc.appendChild(rootElement);
-			if(model.getshapes() != null) {
-				for(int key:model.getshapes().keySet()) {
-					Element shape = doc.createElement("shape");
-					rootElement.appendChild(shape);
-					shape.setAttribute("id",Integer.toString(key));
-					ButtonBox theShape = model.getshapes().get(key);
-					Element type = doc.createElement("type");
-					type.appendChild(doc.createTextNode(theShape.getToolTipText()));
-					Element title = doc.createElement("title");
-					title.appendChild(doc.createTextNode(theShape.getTitle()));
-					Element position = doc.createElement("position");
-					position.appendChild(doc.createTextNode((theShape.getLocation().x + theShape.getPreferredSize().width / 2) + "," + (theShape.getLocation().y + theShape.getHeight() / 2)));
-					shape.appendChild(type);
-					shape.appendChild(title);
-					shape.appendChild(position);
+			Element rootTab = doc.createElement("tabs");
+			doc.appendChild(rootTab);
+			for(String name:Model.getTabs().keySet())
+			{
+				TabInfo tab = Model.getTabs().get(name);
+				Element tabElement = doc.createElement("tab");
+				tabElement.setAttribute("name", name);
+				rootTab.appendChild(tabElement);
+				Element rootShape = doc.createElement("shapes");
+				tabElement.appendChild(rootShape);
+				if(tab.getshapes() != null) {
+					for(int key:tab.getshapes().keySet()) {
+						Element shape = doc.createElement("shape");
+						rootShape.appendChild(shape);
+						shape.setAttribute("id",Integer.toString(key));
+						ButtonBox theShape = tab.getshapes().get(key);
+						Element type = doc.createElement("type");
+						type.appendChild(doc.createTextNode(theShape.getToolTipText()));
+						Element title = doc.createElement("title");
+						title.appendChild(doc.createTextNode(theShape.getTitle()));
+						Element position = doc.createElement("position");
+						position.appendChild(doc.createTextNode((theShape.getLocation().x + theShape.getPreferredSize().width / 2) + "," + (theShape.getLocation().y + theShape.getHeight() / 2)));
+						shape.appendChild(type);
+						shape.appendChild(title);
+						shape.appendChild(position);
+					}
 				}
-			}/*
-			if(model.getConnectionCollection() != null) {
-				//connections = model.getConnectionCollection();
-				for(int j = 0 ; j < this.connections.size(); j++) {
-					Connection finishedconnection = connections.get(j);
-					Element conn = doc.createElement("conn");
-					rootElement.appendChild(conn);
-					sourceButton = finishedconnection.getSourceButton();
-					destButton = finishedconnection.getDestButton();
-					Element sourceId = doc.createElement("sourceId");
-					sourceId.appendChild(doc.createTextNode(Integer.toString(sourceButton)));
-					Element destId = doc.createElement("destId");
-					destId.appendChild(doc.createTextNode(Integer.toString(destButton)));
-					Element position = doc.createElement("position");
-					position.appendChild(doc.createTextNode((finishedconnection.getSourceX() + "," + 
-															 finishedconnection.getSourceY() + "," +
-															 finishedconnection.getDestX() + "," + 
-															 finishedconnection.getDestY())));
-					conn.appendChild(sourceId);
-					conn.appendChild(destId);
-					conn.appendChild(position);
+				if(tab.getConnectionCollection() != null) {
+					//connections = model.getConnectionCollection();
+					for(int j = 0 ; j < this.connections.size(); j++) {
+						Connection finishedconnection = connections.get(j);
+						Element conn = doc.createElement("conn");
+						tabElement.appendChild(conn);
+						sourceButton = finishedconnection.getSourceButton();
+						destButton = finishedconnection.getDestButton();
+						Element sourceId = doc.createElement("sourceId");
+						sourceId.appendChild(doc.createTextNode(Integer.toString(sourceButton)));
+						Element destId = doc.createElement("destId");
+						destId.appendChild(doc.createTextNode(Integer.toString(destButton)));
+						Element position = doc.createElement("position");
+						position.appendChild(doc.createTextNode((finishedconnection.getSourceX() + "," + 
+																 finishedconnection.getSourceY() + "," +
+																 finishedconnection.getDestX() + "," + 
+																 finishedconnection.getDestY())));
+						conn.appendChild(sourceId);
+						conn.appendChild(destId);
+						conn.appendChild(position);
+					}
 				}
-			}*/
+				
+			}
 			TransformerFactory transformerFactory = TransformerFactory.newInstance();
 			Transformer transformer = transformerFactory.newTransformer();
 			DOMSource source = new DOMSource(doc);
@@ -89,18 +99,26 @@ public class FileManager {
 			DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
 			Document doc = docBuilder.parse(file);
-			doc.getDocumentElement().normalize();   
-			NodeList nodeList = doc.getElementsByTagName("shape");
+			doc.getDocumentElement().normalize();
+			RightTabbedPane pane = Model.getRightTabbedPane();
+			Hashtable<String, TabInfo> tabs = new Hashtable<String, TabInfo>();
+			tabs.clear();
+			pane.removeAll();
+			NodeList nodeList = doc.getElementsByTagName("tab");
 			ShapeInfo[] shapes = new ShapeInfo[nodeList.getLength()];
 			for(int i = 0;i < nodeList.getLength();i++) {
 				Node node = nodeList.item(i);
 				if (node.getNodeType() == Node.ELEMENT_NODE) {  
-					Element shapeElement = (Element) node;
+					Element tabElement = (Element) node;
+					String name = node.getAttributes().getNamedItem("name").getNodeValue();
+					RightPanel tab = new RightPanel(name);
+					pane.addWorkingAreaTab(tab);
+					TabInfo tabInfo = tabs.get(name);
 					int id = Integer.parseInt(node.getAttributes().getNamedItem("id").getNodeValue());
-					String points[] = shapeElement.getElementsByTagName("position").item(0).getTextContent().split(",");
+					String points[] = tabElement.getElementsByTagName("position").item(0).getTextContent().split(",");
 					Point position = new Point(Integer.parseInt(points[0]),Integer.parseInt(points[1]));
-					String type = shapeElement.getElementsByTagName("type").item(0).getTextContent();
-					String title = shapeElement.getElementsByTagName("title").item(0).getTextContent();
+					String type = tabElement.getElementsByTagName("type").item(0).getTextContent();
+					String title = tabElement.getElementsByTagName("title").item(0).getTextContent();
 					shapes[i]=new ShapeInfo(id,type,title,position);
 				}
 			}
