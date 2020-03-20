@@ -6,6 +6,7 @@ import javax.swing.JButton;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 
 public class MenuBar extends JMenuBar{
 	/**
@@ -63,11 +64,24 @@ public class MenuBar extends JMenuBar{
 		Compiler.setBorder(null);
 		Compiler.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
+				Model.setMessage(" ");
 				tabs = Model.getTabs();
+				Thread myThreads[] = new Thread[tabs.size()];
+				int i = 0;
 				for(String key:tabs.keySet()) {
-					new Compilation(key).start();
-					System.out.print(key);
+				    myThreads[i] = new Thread(new Compilation(key));
+				    myThreads[i].start();
+					i++;
 				}
+		        try {
+					for(int j = 0 ; j < tabs.size();j++) {
+						myThreads[j].join(20000);
+					}
+		        } catch (InterruptedException t) {
+		            t.printStackTrace();
+		        }
+				String dialogMessage = Model.getMessage();
+				JOptionPane.showMessageDialog(null,dialogMessage);
 			}
 		});
 		menuBar.add(Compiler);

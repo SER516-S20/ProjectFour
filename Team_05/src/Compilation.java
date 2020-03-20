@@ -2,7 +2,6 @@ import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
 import java.util.Set;
-
 import javax.swing.JOptionPane;
 
 /**
@@ -11,11 +10,9 @@ import javax.swing.JOptionPane;
 public class Compilation extends Thread {
 	private List<Connection> connections;
 	private Hashtable<Integer, ButtonBox> shapes;
-	private static Hashtable<String, TabInfo> tabs;
-	private Model model = new Model();
-	private boolean checkValid = false;
+	private boolean checkValid = true;
 	private int dotNumber,leftParenthesisCnt, rightParenthesisCnt;
-	String tabName;
+	String tabName, dialogMessage;
 
 	public Compilation(String tabName) {
 	    this.tabName = tabName;
@@ -24,11 +21,10 @@ public class Compilation extends Thread {
 	public void run() { 
         try { 
             System.out.println ("Thread " + Thread.currentThread().getId() + " is running"); 
-            if(Model.getTabs().get(tabName).getConnectionCollection() != null && Model.getTabs().get(tabName).getshapes() == null) {
-            	return;
-            }
-            connections = Model.getTabs().get(tabName).getConnectionCollection();
+            if(Model.getTabs().get(tabName).getConnectionCollection() != null && Model.getTabs().get(tabName).getshapes() == null) return;
+            dialogMessage = Model.getMessage();
             shapes = Model.getTabs().get(tabName).getshapes();
+            connections = Model.getTabs().get(tabName).getConnectionCollection();
            	//rule1: Only allow one left Parenthesis and one right Parenthesis
            	leftParenthesisCnt = 0;
            	rightParenthesisCnt = 0;
@@ -46,16 +42,19 @@ public class Compilation extends Thread {
            		}
            	}
            	if(leftParenthesisCnt > 1 || rightParenthesisCnt > 1) {
-       			JOptionPane.showMessageDialog(null,tabName + ": Compile Error! More than one left parenthesis or right parenthesis");
+       			dialogMessage = dialogMessage + tabName + ": Error! More than one left parenthesis or right parenthesis" + "\n";
+       			Model.setMessage(dialogMessage);
        			return;
            	}else if(leftParenthesisCnt == 0) {
-           		JOptionPane.showMessageDialog(null,tabName + ": Compile Error! Open Paranthesis Shape Missing");
-           		return;
+           		dialogMessage = dialogMessage + tabName + ": Error! Open Paranthesis Shape Missing" + "\n";
+           		Model.setMessage(dialogMessage);
+       			return;
            	}else if(rightParenthesisCnt == 0) {
-           		JOptionPane.showMessageDialog(null,tabName + ": Compile Error! Close Paranthesis Shape Missing");
-           		return;
+           		dialogMessage = dialogMessage + tabName + ": Error! Close Paranthesis Shape Missing" + "\n";
+           		Model.setMessage(dialogMessage);
+       			return;
            	}
-            //rule2: All dots in one shape need to be connected with a line.
+            //rule2: Each Bar/Dot needs be connected to at least one another Bar/Dot.
             Set<Integer> keys = shapes.keySet();
             for(Integer shapeKey : keys) {
             	dotNumber = shapes.get(shapeKey).getBtnDots().length;
@@ -72,14 +71,16 @@ public class Compilation extends Thread {
            			}
            		}
            		if(checkValid == false || dotNumber > 0) {
-           			JOptionPane.showMessageDialog(null,tabName + ": Compile Error! Each Bar/Dot needs be connected to at least one another Bar/Dot");
-           			break;
+           			dialogMessage = dialogMessage + tabName + ": Error! Each Bar/Dot needs be connected to at least one another Bar/Dot" + "\n";
+           			Model.setMessage(dialogMessage);
+           			return;
            		}
            	}
             //rule3: check loop
-            //do something
-           	if(checkValid == true) JOptionPane.showMessageDialog(null,tabName + ": Compile Successfully!");
-            System.out.println ("Thread " + Thread.currentThread().getId() + " is finished"); 
+            
+           	if(checkValid == true) dialogMessage = dialogMessage + tabName + ": Compiled Successfully!" + "\n";
+            Model.setMessage(dialogMessage);
+           	System.out.println ("Thread " + Thread.currentThread().getId() + " is finished");
         } 
         catch (Exception e) { 
             System.out.println ("Exception is caught"); 

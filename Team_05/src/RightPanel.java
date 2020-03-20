@@ -64,7 +64,8 @@ public class RightPanel extends JPanel implements ActionListener, MouseListener,
 		this.autoLocation(btn,x - btn.getPreferredSize().width / 2,y - btn.getPreferredSize().height / 2);
 		btn.setToolTipText(btnCommand);
 		shapes.put(btn.hashCode(),btn);
-		model.getTabs().get(name).setshapes(shapes);
+		btn.setId(btn.hashCode());
+		Model.getTabs().get(name).setshapes(shapes);
 		this.repaint();
 	}
 	
@@ -164,9 +165,14 @@ public class RightPanel extends JPanel implements ActionListener, MouseListener,
 		}
 		if(e.getButton() == MouseEvent.BUTTON3) {
 			this.remove(e.getComponent());
-			connections.removeIf(n->(n.getSourceButton()==e.getComponent().hashCode()));
-			connections.removeIf(n->(n.getDestButton()==e.getComponent().hashCode()));
-			this.repaint();
+			Object source = e.getComponent();
+			if(source instanceof JPanel){
+				ButtonBox btn = (ButtonBox) source;
+				connections.removeIf(n->(n.getSourceButton()==btn.getId()));
+				connections.removeIf(n->(n.getDestButton()==btn.getId()));
+				shapes.remove(btn.getId());
+				this.repaint();
+			}
 		}
 	}
 

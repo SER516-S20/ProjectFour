@@ -13,19 +13,18 @@ public class Model {
 	//private static Hashtable<String, Hashtable<Integer, ButtonBox>> shapes
 	private static Hashtable<Integer, ButtonBox> shapes;
 	private static Frame frame;
+	private static String dialogMessage;
 	
 	
 	public Model() {
 		//shapes = new Hashtable<Integer, ButtonBox>();
 	}
 	
-	public void setFrame(Frame frame)
-	{
+	public void setFrame(Frame frame) {
 		this.frame = frame;
 	}
 	
-	public Frame getFrame()
-	{
+	public Frame getFrame() {
 		return frame;
 	}
 	
@@ -35,6 +34,14 @@ public class Model {
 	
 	public Hashtable<Integer, ButtonBox> getshapes() {
 		return shapes;
+	}
+	
+	public static void setMessage(String message) {
+		dialogMessage = message;
+	}
+	
+	public static String getMessage() {
+		return dialogMessage;
 	}
 	
 	/*
