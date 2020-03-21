@@ -119,6 +119,7 @@ public class DrawingArea extends JPanel implements Serializable {
 				Frame.mapDrawingAreas.put(inc, obj);
 				ois_file.close();
 				fis_file.close();
+				inc = inc+1;
 			}
 		} catch (IOException ioe) {
 			ioe.printStackTrace();
