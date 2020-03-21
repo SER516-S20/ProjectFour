@@ -1,6 +1,7 @@
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JTabbedPane;
@@ -46,7 +47,6 @@ public class Frame extends JFrame {
         try {
 
             tabbedPane.setBounds(screenSize.width / 6, 0, 4 * screenSize.width / 4, screenSize.height);
-            // Add Dashboard Tab
             rightPanel = new RightPanel();
             tabbedPane.addTab("New Tab", rightPanel);
             addButtonToTab(tabbedPane);
@@ -69,7 +69,6 @@ public class Frame extends JFrame {
         System.out.println("New Tab has been clicked");
     }
 });
-
 
         }
 

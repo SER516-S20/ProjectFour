@@ -1,12 +1,16 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
-import java.util.ArrayList;
+
 import javax.swing.JFileChooser;
 import javax.swing.JMenuItem;
 import javax.swing.filechooser.FileNameExtensionFilter;
+
+import java.util.ArrayList;
+
 
 /**
  * This class consists of adding load file
@@ -32,6 +36,7 @@ public class LoadDocument extends JMenuItem implements ActionListener {
 			FileNameExtensionFilter filter = new FileNameExtensionFilter(".ser", "ser");
 			chosenFile.setFileFilter(filter);
 			int showOpenDialog = chosenFile.showOpenDialog(null);
+			
 			if (showOpenDialog == JFileChooser.APPROVE_OPTION) {
 				String fileName = chosenFile.getSelectedFile().getAbsolutePath();
 				fileIn = new FileInputStream(fileName);

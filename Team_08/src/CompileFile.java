@@ -1,6 +1,8 @@
 import javax.swing.*;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import java.util.*;
 /**
  * This class consists of rules to compile the shapes present in canvas.
