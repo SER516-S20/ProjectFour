@@ -3,9 +3,7 @@ import java.util.Hashtable;
 import java.util.List;
 
 /**
- * 
  * @author Yijian Hu
- *
  */
 public class TabInfo {
 	private String name;
@@ -13,16 +11,14 @@ public class TabInfo {
 	private Hashtable<Integer, ButtonBox> shapes;
 	private List<Connection> connections;
 	
-	TabInfo(RightPanel workingAreaTab)
-	{
+	TabInfo(RightPanel workingAreaTab) {
 		this.workingAreaTab = workingAreaTab;
 		this.name = workingAreaTab.getName();
 		shapes = new Hashtable<Integer, ButtonBox>();
 		connections = new ArrayList<Connection>();
 	}
 	
-	public String getName()
-	{
+	public String getName() {
 		return name;
 	}
 	
@@ -42,8 +38,7 @@ public class TabInfo {
 		return connections;
 	}
 	
-	public RightPanel getTab()
-	{
+	public RightPanel getTab() {
 		return workingAreaTab;
 	}
 }
