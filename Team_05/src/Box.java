@@ -1,5 +1,7 @@
 import java.awt.Point;
-
+/**
+ * @author Hongqi Zhang
+ */
 public class Box {
 	private static Box instance = null;
 	private String text;

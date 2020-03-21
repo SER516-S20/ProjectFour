@@ -1,22 +1,23 @@
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.geom.Rectangle2D;
-import java.io.Serializable;
 import java.awt.*;
 
-/**
- * @author Sandya Manoharan
- * @version 1.1
- */
+import java.io.Serializable;
 
+/**
+ * This class consists of AtTheRate shape with two input and two output dots.
+ *
+ * @author Sandya
+ * @version 1.0
+ */
 public class AtTheRate extends Shapes implements Serializable {
 
     private static final long serialVersionUID = 1L;
     private int x, y;
-    private Shapes dot1 = null, dot2 = null, dot3 = null, dot4 = null;
+    private Shapes dot1 = null, dot2 = null, dot3= null, dot4= null;
     private Shape attherate = null;
     private boolean isLineDrawnDot1 = false, isLineDrawnDot2 = false, isLineDrawnDot3 = false, isLineDrawnDot4 = false;
-
     public AtTheRate(int x, int y) {
         int OFFSET = 50;
         this.x = x - OFFSET;
@@ -44,7 +45,6 @@ public class AtTheRate extends Shapes implements Serializable {
 
         g2.draw(attherate);
 
-
     }
 
     @Override
@@ -56,7 +56,7 @@ public class AtTheRate extends Shapes implements Serializable {
     @Override
     public void setX(int x) {
 
-        this.x = x - 50;
+        this.x = x -50 ;
     }
 
     @Override
@@ -69,7 +69,6 @@ public class AtTheRate extends Shapes implements Serializable {
     public void setY(int y) {
         this.y = y + 50;
     }
-
 
     public boolean isLineDrawnDot1() {
 
@@ -116,7 +115,7 @@ public class AtTheRate extends Shapes implements Serializable {
 
         return attherate.contains(x, y);
     }
-
+    
     public Shapes getDot1() {
 
         return dot1;

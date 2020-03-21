@@ -17,8 +17,7 @@ public class FileBrowser {
 		int selection;
 		if(title.equals("Save file")){
 			selection = fileChooser.showSaveDialog(parentFrame);
-		}
-		else{
+		}else{
 			selection = fileChooser.showOpenDialog(parentFrame);
 		}
 		if(selection == JFileChooser.APPROVE_OPTION) {

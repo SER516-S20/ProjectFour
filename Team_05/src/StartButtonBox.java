@@ -1,5 +1,7 @@
 import javax.swing.JButton;
-
+/**
+ * @author Hongqi Zhang
+ */
 public class StartButtonBox extends ButtonBox {
 	private static final long serialVersionUID = 1L;
 	private JButton []dots; 
@@ -10,7 +12,6 @@ public class StartButtonBox extends ButtonBox {
 
 	@Override
 	public void drawContent() {
-		// TODO Auto-generated method stub
 		int width = this.getPreferredSize().width;
 		int height = this.getPreferredSize().height / 5;
 		dots = getBtnDots();

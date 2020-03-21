@@ -1,12 +1,13 @@
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JTabbedPane;
 
 /**
- * Creates a Frame and adds two JPanels two the frame.
+ * This class creates a Frame and adds two JPanels to the frame.
  *
  * @author Kartik Mathpal
  * @version 1.0
@@ -16,8 +17,7 @@ public class Frame extends JFrame {
     protected static RightPanel rightPanel;
     private Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
     static JTabbedPane tabbedPane = new JTabbedPane();
-    static Integer tabCount = 1;
-
+    
 
     public Frame() {
         setExtendedState(getExtendedState() | JFrame.MAXIMIZED_BOTH);
@@ -56,21 +56,21 @@ public class Frame extends JFrame {
             e.printStackTrace();
         }
     }
-
+    
     public static void addButtonToTab(final JTabbedPane tabEntity) {
-        JButton newTabButton = new JButton("  New Tab  ");
-        tabEntity.setTabComponentAt(tabEntity.getTabCount() - 1, newTabButton);
-        newTabButton.addActionListener(e -> {
-            if (e.getActionCommand().equals("  New Tab  ")) {
-                rightPanel = new RightPanel();
-                tabbedPane.add("Tab " + tabCount, rightPanel);
-                tabCount++;
-                System.out.println("New Tab has been clicked");
-            }
-        });
+    	JButton newTabButton = new JButton("  New Tab  ");
+    	tabEntity.setTabComponentAt(tabEntity.getTabCount() - 1, newTabButton);
+    	newTabButton.addActionListener(e -> {
 
+    if (e.getActionCommand().equals("  New Tab  ")) {
+            rightPanel = new RightPanel();
+            tabbedPane.add("New Tab", rightPanel);
 
+        System.out.println("New Tab has been clicked");
     }
+});
+
+        }
 
     public void createMenu() {
         this.setJMenuBar(new MenuBar());

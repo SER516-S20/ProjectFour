@@ -99,6 +99,7 @@ public class RightPanelMouseListener implements MouseListener, MouseMotionListen
                 drawline.setLine(line);
                 drawline.setSourceShape(true);
                 linesList.add(drawline);
+                
             } else if (line.getDestShape().equals(selectedShape)) {
                 Line drawline = new Line();
                 drawline.setLineX(line.getDestX());

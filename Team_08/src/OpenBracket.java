@@ -1,8 +1,11 @@
 import java.awt.*;
 import java.awt.geom.Rectangle2D;
+
 import java.io.Serializable;
 
 /**
+ * This class consists of AtTheRate shape with one output dot.
+ *
  * @author Anusha Singh
  * @version 1.0
  */
@@ -31,6 +34,7 @@ public class OpenBracket extends Shapes implements Serializable {
         Graphics2D graphics2 = (Graphics2D) graphic;
         dot = new Dot(x + 165, y + 100 - 50);
         dot.drawShape(graphics2);
+        
         Font font = new Font("Serif", Font.PLAIN, 40);
         graphics2.setFont(font);
         graphics2.drawString("(", x + 105, y + 60);

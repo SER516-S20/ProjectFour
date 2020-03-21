@@ -5,6 +5,8 @@ import java.io.Serializable;
 import java.awt.*;
 
 /**
+ * This class consists of Less than shape with one input and two output dots.
+ *
  * @author Amudhan Manisekaran
  * @version 1.1
  */
@@ -13,7 +15,7 @@ public class LessThan extends Shapes implements Serializable {
 
     private static final long serialVersionUID = 1L;
     private int x, y;
-    private Shapes dot1 = null, dot2 = null, dot3 = null;
+    private Shapes dot1 = null, dot2 = null, dot3= null;
     private Shape lessthan = null;
     private boolean isLineDrawnDot1 = false, isLineDrawnDot2 = false, isLineDrawnDot3 = false;
 
@@ -26,6 +28,7 @@ public class LessThan extends Shapes implements Serializable {
     @Override
     public void drawShape(Graphics graphic) {
         lessthan = new Rectangle2D.Double(x, y, 200, 100);
+
         Graphics2D g2 = (Graphics2D) graphic;
         dot1 = new Dot(x, y);
         dot1 = new Dot(x + 30, y + 50);
@@ -34,6 +37,7 @@ public class LessThan extends Shapes implements Serializable {
         dot2.drawShape(g2);
         dot3 = new Dot(x + 165, y + 80);
         dot3.drawShape(g2);
+
         Font font = new Font("Serif", Font.PLAIN, 40);
         g2.setFont(font);
         g2.drawString("<", x + 95, y + 65);
@@ -52,7 +56,7 @@ public class LessThan extends Shapes implements Serializable {
 
     @Override
     public void setX(int x) {
-        this.x = x - 50;
+        this.x = x -50 ;
     }
 
     @Override
@@ -65,7 +69,6 @@ public class LessThan extends Shapes implements Serializable {
         this.y = y + 50;
     }
 
-
     public Shapes getDot1() {
         return dot1;
     }
@@ -77,7 +80,7 @@ public class LessThan extends Shapes implements Serializable {
     public Shapes getDot3() {
         return dot3;
     }
-
+    
     public boolean isLineDrawnDot1() {
         return isLineDrawnDot1;
     }

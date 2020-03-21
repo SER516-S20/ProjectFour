@@ -5,6 +5,8 @@ import java.io.Serializable;
 import java.awt.*;
 
 /**
+ * This class consists of Greater than shape with two input and one output dots.
+ *
  * @author Amudhan Manisekaran
  * @version 1.1
  */
@@ -12,10 +14,9 @@ public class GreaterThan extends Shapes implements Serializable {
 
     private static final long serialVersionUID = 1L;
     private int x, y;
-    private Shapes dot1 = null, dot2 = null, dot3 = null;
+    private Shapes dot1 = null, dot2 = null, dot3= null;
     private Shape greaterthan = null;
     private boolean isLineDrawnDot1 = false, isLineDrawnDot2 = false, isLineDrawnDot3 = false;
-
     public GreaterThan(int x, int y) {
         int OFFSET = 50;
         this.x = x - OFFSET;
@@ -51,19 +52,18 @@ public class GreaterThan extends Shapes implements Serializable {
 
     @Override
     public void setX(int x) {
-        this.x = x - 50;
+        this.x = x -50 ;
     }
 
     @Override
     public int getY() {
         return y;
     }
-
+    
     @Override
     public void setY(int y) {
         this.y = y + 50;
     }
-
 
     public Shapes getDot1() {
         return dot1;

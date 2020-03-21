@@ -1,8 +1,11 @@
 import java.awt.*;
 import java.awt.geom.Rectangle2D;
+
 import java.io.Serializable;
 
 /**
+ * This class consists of CloseBracket shape with one input dot.
+ *
  * @author Anusha Singh
  * @version 1.0
  */

@@ -5,6 +5,8 @@ import java.io.Serializable;
 import java.awt.*;
 
 /**
+ * This class consists of Hyphen shape with one input and one output dots.
+ *
  * @author Sandya Manoharan
  * @version 1.1
  */

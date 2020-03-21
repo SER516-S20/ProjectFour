@@ -1,6 +1,8 @@
 import java.io.Serializable;
 
 /**
+ * This class defines connections between any two shapes.
+ *
  * @author Sandya Manoharan
  * @version 1.1
  */
