@@ -17,6 +17,7 @@ public class Frame extends JFrame {
     protected static RightPanel rightPanel;
     private Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
     static JTabbedPane tabbedPane = new JTabbedPane();
+    static int tabCount=1;
     
 
     public Frame() {
@@ -64,8 +65,8 @@ public class Frame extends JFrame {
 
     if (e.getActionCommand().equals("  New Tab  ")) {
             rightPanel = new RightPanel();
-            tabbedPane.add("New Tab", rightPanel);
-
+            tabbedPane.add("Tab "+tabCount, rightPanel);
+            tabCount++;
         System.out.println("New Tab has been clicked");
     }
 });
