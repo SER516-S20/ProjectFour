@@ -66,7 +66,7 @@ public class CompileFile extends JMenuItem implements ActionListener {
             infoBox("Compilation Failed!!!", "Compilation Failed");
             return;
         }
-        if (charMap.containsKey('@') && charMap.get('@') != 3) {
+        if (charMap.containsKey('@') && charMap.get('@') != 4) {
             infoBox("Compilation Failed!!!", "Compilation Failed");
             return;
         } else {
