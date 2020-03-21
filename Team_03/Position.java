@@ -3,7 +3,7 @@ import java.io.Serializable;
 /**
  * Position.java - a class for storing x,y cordintes of a shape
  * 
- * @author Nachiappan Lakshmanan
+ * @author Chandan Yadav
  * @version 1.0
  * 
  */
