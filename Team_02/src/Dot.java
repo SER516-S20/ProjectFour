@@ -25,8 +25,8 @@ public class Dot {
 			return false;
 		} else if (obj instanceof Dot) {
 			Dot newDot = (Dot) obj;
-			if (newDot.getX() >= this.getX() - 20 && newDot.getY() >= this.getY() - 10
-					&& newDot.getX() <= this.getX() + 20 && newDot.getY() <= this.getY() + 10) {
+			if (newDot.getX() >= this.getX() - 20 && newDot.getY() >= this.getY() - 20
+					&& newDot.getX() <= this.getX() + 20 && newDot.getY() <= this.getY() + 20) {
 				return true;
 			}
 		}
