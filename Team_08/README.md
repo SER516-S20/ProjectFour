@@ -1,4 +1,7 @@
-Team 8 work here
+Team 8 Workspace
+
+Burndown for Project 4:
+![burndown](Burndown_Chart.PNG)
 
 Required: JDK 1.8 version installed.
 
