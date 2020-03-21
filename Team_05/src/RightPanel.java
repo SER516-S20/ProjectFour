@@ -33,7 +33,6 @@ public class RightPanel extends JPanel implements MouseListener, MouseMotionList
 	}
 	
 	public void init() {
-		System.out.println("init tab");
 		model = new Model();
 		shapes = model.getTabs().get(name).getshapes();
 		addMouseListener(this);

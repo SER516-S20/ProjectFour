@@ -18,7 +18,6 @@ public class Compilation extends Thread {
 	
 	public void run() { 
         try { 
-            System.out.println ("Thread " + Thread.currentThread().getId() + " is running"); 
             if(Model.getTabs().get(tabName).getConnectionCollection() != null && Model.getTabs().get(tabName).getshapes() == null) return;
             dialogMessage = Model.getMessage();
             shapes = Model.getTabs().get(tabName).getshapes();
@@ -27,7 +26,6 @@ public class Compilation extends Thread {
             	dialogMessage = dialogMessage + tabName + ": Compiled Successfully!" + "\n";
             	Model.setMessage(dialogMessage);
             }
-           	System.out.println ("Thread " + Thread.currentThread().getId() + " is finished");
         } 
         catch (Exception e) { 
             System.out.println ("Exception is caught"); 

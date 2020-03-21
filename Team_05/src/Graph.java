@@ -1,3 +1,6 @@
+/**
+ * @author Kairui Hsu
+**/
 public class Graph {
     int V, E; 
     Edge edge[];

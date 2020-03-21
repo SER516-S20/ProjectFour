@@ -22,16 +22,13 @@ public class Line extends JPanel{
 	
 	public void draw(Graphics g) {
 		Graphics2D g2 = (Graphics2D)g;
-		/* make the line or text smooth */
 		g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING,RenderingHints.VALUE_ANTIALIAS_ON);
 		g2.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
 		g2.drawLine(sourceX,sourceY,destX,destY);
 		drawArrowHead(g2,new Point(destX, destY), new Point(sourceX, sourceY));
 	}
 	
-	/*
-	 * this method is used to draw arrow head in the tip of a line
-	 */
+
     private void drawArrowHead(Graphics2D g2, Point tip, Point tail) {
     	int length = 10;
     	double phi = Math.toRadians(30);
