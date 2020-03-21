@@ -26,13 +26,11 @@ import model.Shape.type;
 /** 
  * @author somesh
  * @since 02-28-2020
+ * @Desciption: This controller class is used to draw lines between dots/bars.
  */
 
 public class DrawLine{
-	int mouseX = 0;
-	int mouseY = 0;
-	
-	
+	int mouseX = 0, mouseY = 0;
 	static boolean selected = false;
 	
 	public DrawLine(Connector dot){
@@ -41,7 +39,6 @@ public class DrawLine{
 			public void mouseClicked(MouseEvent e){
 
 				System.out.println("Dot Clicked");
-				//JPanel tabbedPanel = (JPanel) e.getComponent().getParent().getParent();
 				RightPanel tabbedPanel = (RightPanel) e.getComponent().getParent().getParent();
 				
 				

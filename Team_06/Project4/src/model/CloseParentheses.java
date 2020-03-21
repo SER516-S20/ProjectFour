@@ -11,9 +11,9 @@ import model.Shape.type;
  * @Since: 01-29-2020
  * @Description: This model class defines the ')' button, which inherits the Shape abstract class, which is used in the left and right panels of the application.
  */
-public class CloseParanthesis extends Shape{
+public class CloseParentheses extends Shape{
 	
-	public CloseParanthesis(int x, int y, boolean rightPanel){
+	public CloseParentheses(int x, int y, boolean rightPanel){
 		super(")",x,y);
 		
 		if(rightPanel) {

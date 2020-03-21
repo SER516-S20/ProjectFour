@@ -19,7 +19,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 
 import model.AtSymbol;
-import model.CloseParanthesis;
+import model.CloseParentheses;
 import model.Connector;
 import model.ConnectorBar;
 import model.ConnectorDot;
@@ -28,7 +28,7 @@ import model.GreaterSymbol;
 import model.LesserSymbol;
 import model.Line;
 import model.MinusSymbol;
-import model.OpenParanthesis;
+import model.OpenParentheses;
 import model.OrSymbol;
 import model.Shape;
 import model.TabData;
@@ -40,6 +40,7 @@ import model.ShapeData;
  * 
  * @author Suyog
  * @Since 02-16-2020
+ * @Description: This controller class is used to handle save and load operations 
  */
 public class FileManager {
 	
@@ -165,11 +166,11 @@ public class FileManager {
 		            		tabData.addShapeData(shapeNumber, shapeIndex, x, y);
 		            		
 		            		switch(shapeNumber) {
-		            			case 1: shape = new OpenParanthesis(x, y, true);
+		            			case 1: shape = new OpenParentheses(x, y, true);
 		            					tabData.setOpenParaFlag(true);
 		            					tabData.setOpenVertex(shapeIndex);
 		            					break;
-		            			case 2: shape = new CloseParanthesis(x, y, true);
+		            			case 2: shape = new CloseParentheses(x, y, true);
 		            					tabData.setCloseParaFlag(true);
 		            					tabData.setCloseVertex(shapeIndex);
 		            					break;
@@ -254,9 +255,6 @@ public class FileManager {
 		            e1.printStackTrace();
 		        }
 		    }
-		});
-		
-		
-		 
+		});		 
 	}
 }

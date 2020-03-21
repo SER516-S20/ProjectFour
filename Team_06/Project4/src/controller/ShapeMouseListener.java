@@ -12,17 +12,13 @@ import model.Shape;
 
 /**
  * 
- * @author Dhananjay
+ * @author Sheran, Dhananjay
  * @since 02-28-2020
+ * @Description: This controller class is used to handle different mouse click listener events.
  */
-
 public class ShapeMouseListener{
 	
-	int screenX = 0; 
-	int screenY = 0;
-	
-	int mouseX = 0;
-	int mouseY = 0;
+	int screenX = 0, screenY = 0, mouseX = 0, mouseY = 0;
 	
 	public ShapeMouseListener(Shape shape){
 		shape.addMouseListener(new MouseListener(){
@@ -58,14 +54,6 @@ public class ShapeMouseListener{
 
 			@Override
 			public void mouseReleased(MouseEvent e){
-//				System.out.println("Released");
-//				RightPanel rightPanel = (RightPanel) e.getComponent().getParent();
-//				for (Line l : rightPanel.lines) {
-//		        	System.out.println(l.startDot.getX()+" RL "+ l.startDot.getY());
-//		        	System.out.println(l.endDot.getX() +" "+ l.endDot.getY());
-//					
-//					
-//				}
 			}
 
 			@Override
@@ -88,8 +76,6 @@ public class ShapeMouseListener{
 				int tabNumber = Tab.selectedTab();
 				Data.getInstance().getTab(tabNumber).editShapeData(shape.getShapeIndex(), mouseX + deltaX, mouseY + deltaY);
 			}
-			
-
 			@Override
 			public void mouseMoved(MouseEvent e){
 				

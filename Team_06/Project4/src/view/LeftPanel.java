@@ -16,7 +16,7 @@ import controller.SelectShape;
 public class LeftPanel extends JPanel{
 	
 	 private String[] shapeNames = {
-		      "OpenParanthesis", "CloseParanthesis", 
+		      "OpenParentheses", "CloseParentheses", 
 		      "LesserSymbol", "GreaterSymbol",
 		      "AtSymbol", "OrSymbol",
 		      "MinusSymbol"
