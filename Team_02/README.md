@@ -1,4 +1,8 @@
 # Project Four
 ## Team 2 works here
-BurnDown Chart
+### BurnDown Chart
 <p align="center"><img width ="800" height="350" src="https://user-images.githubusercontent.com/11274840/77221809-577ee380-6b0a-11ea-807f-e4d019cc7642.jpeg"></p>
+
+
+### Class Diagram
+![Class](https://github.com/SER516-S20/ProjectFour/blob/master/Team_02/classDiagram.png)
