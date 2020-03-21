@@ -3,7 +3,7 @@ import java.awt.*;
 /**
  * Operator "<"
  *
- * @author Aravind Thillai Villalan
+ * @author Arvind
  * @author Karandeep Singh Grewal
  * @since March 13, 2020
  */

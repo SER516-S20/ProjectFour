@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  * Operator
  *
- * @author Aravind Thillai Villalan
+ * @author Arvind
  * @author Karandeep Singh Grewal
  * @since March 13, 2020
  */
