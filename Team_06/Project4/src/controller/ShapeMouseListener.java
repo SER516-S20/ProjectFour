@@ -47,7 +47,6 @@ public class ShapeMouseListener{
 				screenY = e.getYOnScreen();
 				mouseX = shape.getX();
 				mouseY = shape.getY();
-				System.out.println(mouseX + " YTU " + mouseY);
 			}
 
 			@Override

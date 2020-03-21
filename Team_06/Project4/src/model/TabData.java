@@ -82,8 +82,6 @@ public class TabData {
 		sd.setX(x);
 		sd.setY(y);
 		shapeData.set(index,sd);
-		System.out.println(index);
-		System.out.println("shape count - " + this.shapeCount);
 	}
 	
 
