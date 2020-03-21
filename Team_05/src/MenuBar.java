@@ -9,7 +9,6 @@ import javax.swing.JOptionPane;
 /**
  * @author Kairui Hsu
  **/
-
 public class MenuBar extends JMenuBar{
 	private static final long serialVersionUID = 1L;
 	private FileBrowser fileBrowser;
@@ -42,10 +41,7 @@ public class MenuBar extends JMenuBar{
 		itemOpen.addActionListener(new ActionListener(){
 		public void actionPerformed(ActionEvent e) {
 			if(fileBrowser.browser("Open file")) {
-					//ShapeInfo[] shapeList = fileManager.open(fileBrowser.getCurrentFile());
 				fileManager.open(fileBrowser.getCurrentFile());
-					//rightPanel.load(shapeList);
-					//rightPanel.updateConnection();
 				}
 			}
 		});

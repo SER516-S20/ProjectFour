@@ -1,13 +1,14 @@
 import javax.swing.*;
 import java.util.HashMap;
 
-/*
- * Author: Kartik Mathpal
- * */
+/**
+ *
+ * @author Kartik Mathpal
+ * @version 1.0
+ */
 
 public class TextBox extends JOptionPane {
     public static HashMap<Shapes, String> objectMessageMap = new HashMap<>();
-
 
     public void setTextValue(String textValue, Shapes shape) {
         objectMessageMap.put(shape, textValue);
@@ -22,9 +23,6 @@ public class TextBox extends JOptionPane {
     }
 
     public Boolean isPresentInMap(Shapes s) {
-        if (objectMessageMap.containsKey(s))
-            return true;
-        else
-            return false;
+        return objectMessageMap.containsKey(s);
     }
 }
