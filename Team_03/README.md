@@ -1,7 +1,8 @@
 # ProjectFour
 ## Team 3 works here
 
-This folder holds all the work that was accomplished in Project 4.
+This folder holds all the work that was accomplished in Project 4.<br />
+
 **Sprint 1:** 03/09/2020 – 03/14/2020 
 **Sprint 2:** 03/15/2020 – 03/20/2020  
 
