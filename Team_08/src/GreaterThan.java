@@ -5,6 +5,8 @@ import java.io.Serializable;
 import java.awt.*;
 
 /**
+ * This class consists of Greater than shape with two input and one output dots.
+ *
  * @author Amudhan Manisekaran
  * @version 1.1
  */
