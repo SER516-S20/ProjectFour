@@ -8,7 +8,8 @@ import javax.swing.JFileChooser;
 import javax.swing.JMenuItem;
 
 /**
- * Adding Save file functionality to save the shapes and connections in a file
+ * This class adds save file functionality to
+ * save the file from canvas.
  *
  * @author Kartik Mathpal
  * @version 1.0
