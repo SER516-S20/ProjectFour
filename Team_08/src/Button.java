@@ -1,7 +1,9 @@
 import javax.swing.*;
+
 import java.awt.*;
 
 /**
+ * This class consists of GUI for the shapes in left panel.
  * @author Amudhan Manisekaran
  * @version 1.0
  */
@@ -23,7 +25,6 @@ public class Button {
         closeButton.setFont(new Font("Arial", Font.PLAIN, 30));
         closeButton.addActionListener(e -> {
             closeButton.setName("closeButton");
-//                closeButton.setText("close bracket clicked");
             resetButtonClicked(closeButton);
         });
         panel.add(closeButton);
@@ -33,7 +34,6 @@ public class Button {
         lessThanButton.setFont(new Font("Arial", Font.PLAIN, 30));
         lessThanButton.addActionListener(e -> {
             lessThanButton.setName("lessThanButton");
-//                lessThanButton.setText("lessThanButton");
             resetButtonClicked(lessThanButton);
         });
         panel.add(lessThanButton);

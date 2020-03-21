@@ -5,9 +5,12 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.awt.geom.Rectangle2D;
+
 import java.io.Serializable;
 
 /**
+ * This class consists of Vertical bars that are given as
+ * input and output to the TwoBars shape.
  * @author Amudhan Manisekaran
  * @version 1.1
  */

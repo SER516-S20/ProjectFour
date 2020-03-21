@@ -1,14 +1,16 @@
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.geom.Rectangle2D;
-import java.io.Serializable;
 import java.awt.*;
 
-/**
- * @author Sandya Manoharan
- * @version 1.1
- */
+import java.io.Serializable;
 
+/**
+ * This class consists of AtTheRate shape with two input and two output dots.
+ *
+ * @author Sandya
+ * @version 1.0
+ */
 public class AtTheRate extends Shapes implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -43,7 +45,6 @@ public class AtTheRate extends Shapes implements Serializable {
 
         g2.draw(attherate);
 
-
     }
 
     @Override
@@ -51,59 +52,70 @@ public class AtTheRate extends Shapes implements Serializable {
 
         return x;
     }
+
     @Override
     public void setX(int x) {
 
         this.x = x -50 ;
     }
+
     @Override
     public int getY() {
 
         return y;
     }
+
     @Override
     public void setY(int y) {
         this.y = y + 50;
     }
 
-
     public boolean isLineDrawnDot1() {
 
         return isLineDrawnDot1;
     }
+
     public void setLineDrawnDot1(boolean isLineDrawnDot1) {
 
         this.isLineDrawnDot1 = isLineDrawnDot1;
     }
+
     public boolean isLineDrawnDot2() {
 
         return isLineDrawnDot2;
     }
+
     public void setLineDrawnDot2(boolean isLineDrawnDot2) {
 
         this.isLineDrawnDot2 = isLineDrawnDot2;
     }
+
     public boolean isLineDrawnDot3() {
 
         return isLineDrawnDot3;
     }
+
     public void setLineDrawnDot3(boolean isLineDrawnDot3) {
 
         this.isLineDrawnDot3 = isLineDrawnDot3;
     }
+
     public boolean isLineDrawnDot4() {
 
         return isLineDrawnDot4;
     }
+
     public void setLineDrawnDot4(boolean isLineDrawnDot3) {
 
         this.isLineDrawnDot4 = isLineDrawnDot4;
     }
+
     @Override
     public boolean containsPoint(int x, int y) {
 
         return attherate.contains(x, y);
     }
+    
     public Shapes getDot1() {
 
         return dot1;

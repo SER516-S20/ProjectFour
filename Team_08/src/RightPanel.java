@@ -1,12 +1,14 @@
+import javax.swing.BorderFactory;
+import javax.swing.JPanel;
+import javax.swing.border.Border;
+
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.geom.Line2D;
+
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.BorderFactory;
-import javax.swing.JPanel;
-import javax.swing.border.Border;
 
 /**
  * This class is used to create the panel on the right side
@@ -24,6 +26,7 @@ public class RightPanel extends JPanel {
 	private static int originX, originY, destinationX, destinationY;
 	private static boolean isSelected = false;
 	private static boolean isMoved = false;
+
 	public static List<Shapes> getRightPanelShapes() {
 		return rightPanelShapes;
 	}
@@ -90,6 +93,7 @@ public class RightPanel extends JPanel {
 		RightPanelMouseListener rightPanelMouseListener = new RightPanelMouseListener();
 		addMouseListener(rightPanelMouseListener);
 		addMouseMotionListener(rightPanelMouseListener);
+		
 		Dot dot = new Dot();
 		addMouseListener(dot);
 		addMouseMotionListener(dot);

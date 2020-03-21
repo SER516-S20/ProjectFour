@@ -1,14 +1,15 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JFileChooser;
+import javax.swing.JMenuItem;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
-import javax.swing.JFileChooser;
-import javax.swing.JMenuItem;
 
 /**
- * Adding Save file functionality to save the shapes and connections in a file
+ * This class adds save file functionality to
+ * save the file from canvas.
  *
  * @author Kartik Mathpal
  * @version 1.0
@@ -27,6 +28,7 @@ public class SaveDocument extends JMenuItem implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         FileOutputStream fileOut = null;
         ObjectOutputStream out = null;
+        
         try {
             JFileChooser chosenFile = new JFileChooser();
             int showSaveDialog = chosenFile.showSaveDialog(null);

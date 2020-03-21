@@ -1,12 +1,13 @@
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JTabbedPane;
 
 /**
- * Creates a Frame and adds two JPanels two the frame.
+ * This class creates a Frame and adds two JPanels to the frame.
  *
  * @author Kartik Mathpal
  * @version 1.0
@@ -46,7 +47,6 @@ public class Frame extends JFrame {
         try {
 
             tabbedPane.setBounds(screenSize.width / 6, 0, 4 * screenSize.width / 4, screenSize.height);
-            // Add Dashboard Tab
             rightPanel = new RightPanel();
             tabbedPane.addTab("New Tab", rightPanel);
             addButtonToTab(tabbedPane);
@@ -61,7 +61,7 @@ public class Frame extends JFrame {
     	JButton newTabButton = new JButton("  New Tab  ");
     	tabEntity.setTabComponentAt(tabEntity.getTabCount() - 1, newTabButton);
     	newTabButton.addActionListener(e -> {
-    //TO DO: write action to create new tab
+
     if (e.getActionCommand().equals("  New Tab  ")) {
             rightPanel = new RightPanel();
             tabbedPane.add("New Tab", rightPanel);
@@ -69,7 +69,6 @@ public class Frame extends JFrame {
         System.out.println("New Tab has been clicked");
     }
 });
-
 
         }
 

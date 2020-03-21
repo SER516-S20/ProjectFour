@@ -1,11 +1,12 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import javax.swing.JComponent;
 import javax.swing.JMenuItem;
 import javax.swing.JTabbedPane;
 
 /**
- * Creates a Frame and adds two JPanels two the frame.
+ * This class creates a New tab in the canvas.
  *
  * @author Sayali Tanawade
  * @version 1.0

@@ -1,4 +1,6 @@
 /**
+ * This class consists of constants for the shapes.
+ *
  * @author Anusha Singh
  * @version 1.0
  */
