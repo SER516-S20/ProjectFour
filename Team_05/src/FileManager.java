@@ -149,7 +149,6 @@ public class FileManager {
 							newConn.setDestButton(Integer.parseInt(destId));
 							newConn.setDestX(Integer.parseInt(points[2]));
 							newConn.setDestY(Integer.parseInt(points[3]));
-							//model.addConnection(newConn);
 							tabInfo.addConnection(newConn);
 						}
 					}
