@@ -1,11 +1,9 @@
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.geom.Line2D;
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
@@ -19,8 +17,8 @@ import javax.swing.border.Border;
  */
 public class RightPanel extends JPanel {
 	private static final long serialVersionUID = 1L;
-	private static List<Shapes> rightPanelShapes = new ArrayList<Shapes>();
-	private static List<Connections> lines = new ArrayList<Connections>();
+	private static List<Shapes> rightPanelShapes = new ArrayList<>();
+	private static List<Connections> lines = new ArrayList<>();
 	private static Shapes originShape;
 	private static Shapes destShape;
 	private static int originX, originY, destinationX, destinationY;
@@ -54,36 +52,16 @@ public class RightPanel extends JPanel {
 		return destShape;
 	}
 
-	public static void setDestShape(Shapes destShape) {
-		RightPanel.destShape = destShape;
-	}
-
-	public static int getOriginX() {
-		return originX;
-	}
-
 	public static void setOriginX(int originX) {
 		RightPanel.originX = originX;
-	}
-
-	public static int getOriginY() {
-		return originY;
 	}
 
 	public static void setOriginY(int originY) {
 		RightPanel.originY = originY;
 	}
 
-	public static int getDestinationX() {
-		return destinationX;
-	}
-
 	public static void setDestinationX(int destinationX) {
 		RightPanel.destinationX = destinationX;
-	}
-
-	public static int getDestinationY() {
-		return destinationY;
 	}
 
 	public static void setDestinationY(int destinationY) {
@@ -106,16 +84,13 @@ public class RightPanel extends JPanel {
 		RightPanel.isMoved = isMoved;
 	}
 
-	private RightPanelMouseListener rightPanelMouseListener = new RightPanelMouseListener();
-	private Dot dot = new Dot();
-
 	public RightPanel() {
-//		this.setPreferredSize(new Dimension(800, 800));
-//		this.setVisible(true);
-		
+
 		this.setBackground(Color.WHITE);
+		RightPanelMouseListener rightPanelMouseListener = new RightPanelMouseListener();
 		addMouseListener(rightPanelMouseListener);
 		addMouseMotionListener(rightPanelMouseListener);
+		Dot dot = new Dot();
 		addMouseListener(dot);
 		addMouseMotionListener(dot);
 		
@@ -125,17 +100,11 @@ public class RightPanel extends JPanel {
 		setSize(400, 400);
 	}
 
-	/**
-	 * Uses graphics to draw different shape components
-	 * 
-	 * @param graphics
-	 */
 	public void paintComponent(Graphics graphics) {
 		super.paintComponent(graphics);
 
 		for (Shapes s : rightPanelShapes) {
 			s.drawShape(graphics);
-			//CompileFile.setTrackShapes(s,1);
 		}
 
 		for (Connections l : lines) {
