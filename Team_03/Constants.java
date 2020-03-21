@@ -2,7 +2,7 @@ import java.awt.Color;
 import java.awt.Font;
 
 /**
- * BarShape.java - a class for creating Bar shape Block at a particular position
+ * Constants.java - a class for all the constants value.
  * 
  * @author Chandan Yadav
  * @version 1.0
