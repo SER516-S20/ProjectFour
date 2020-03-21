@@ -7,7 +7,7 @@ import java.util.Map;
  * Dot.java - a class for creating Dot at a particular position for
  * Connecting two different shapes
  * 
- * @author Nachiappan Lakshmanan
+ * @author Chandan Yadav
  * @version 1.0
  * 
  */
