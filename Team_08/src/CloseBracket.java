@@ -10,16 +10,11 @@ import java.io.Serializable;
 public class CloseBracket extends Shapes implements Serializable {
     private static final long serialVersionUID = 1L;
     private final int OFFSET = 50;
-//    private double x, y;
     private int x, y;
     private Shape closebracket = null;
     private Shapes dot = null;
     private boolean isLineDrawn = false;
-    public CloseBracket(){
 
-    }
-
-//    public CloseBracket(double x, double y) {
     public CloseBracket(int x, int y) {
         this.x = x - OFFSET;
         this.y = y - OFFSET;
@@ -28,10 +23,6 @@ public class CloseBracket extends Shapes implements Serializable {
 
     public Shapes getDot() {
         return dot;
-    }
-
-    public void setDot(Shapes dot) {
-        this.dot = dot;
     }
 
     @Override
@@ -56,7 +47,7 @@ public class CloseBracket extends Shapes implements Serializable {
 
     @Override
     public int getX() {
-        return (int) x;
+        return x;
     }
 
     @Override
@@ -66,15 +57,13 @@ public class CloseBracket extends Shapes implements Serializable {
 
     @Override
     public int getY() {
-        return (int) y;
+        return y;
     }
 
     @Override
     public void setY(int y) {
         this.y = y - OFFSET;
     }
-
-
 
     public boolean isLineDrawn() {
         return isLineDrawn;
