@@ -13,9 +13,10 @@ public class LessThan extends Shapes implements Serializable {
 
     private static final long serialVersionUID = 1L;
     private int x, y;
-    private Shapes dot1 = null, dot2 = null, dot3= null;
+    private Shapes dot1 = null, dot2 = null, dot3 = null;
     private Shape lessthan = null;
     private boolean isLineDrawnDot1 = false, isLineDrawnDot2 = false, isLineDrawnDot3 = false;
+
     public LessThan(int x, int y) {
         int OFFSET = 50;
         this.x = x - OFFSET;
@@ -43,23 +44,26 @@ public class LessThan extends Shapes implements Serializable {
     public boolean containsPoint(int x, int y) {
         return lessthan.contains(x, y);
     }
+
     @Override
     public int getX() {
         return x;
     }
+
     @Override
     public void setX(int x) {
-        this.x = x -50 ;
+        this.x = x - 50;
     }
+
     @Override
     public int getY() {
         return y;
     }
+
     @Override
     public void setY(int y) {
         this.y = y + 50;
     }
-
 
 
     public Shapes getDot1() {
@@ -77,18 +81,23 @@ public class LessThan extends Shapes implements Serializable {
     public boolean isLineDrawnDot1() {
         return isLineDrawnDot1;
     }
+
     public void setLineDrawnDot1(boolean isLineDrawnDot1) {
         this.isLineDrawnDot1 = isLineDrawnDot1;
     }
+
     public boolean isLineDrawnDot2() {
         return isLineDrawnDot2;
     }
+
     public void setLineDrawnDot2(boolean isLineDrawnDot2) {
         this.isLineDrawnDot2 = isLineDrawnDot2;
     }
+
     public boolean isLineDrawnDot3() {
         return isLineDrawnDot3;
     }
+
     public void setLineDrawnDot3(boolean isLineDrawnDot3) {
         this.isLineDrawnDot3 = isLineDrawnDot3;
     }

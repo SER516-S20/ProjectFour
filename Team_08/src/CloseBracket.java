@@ -32,11 +32,9 @@ public class CloseBracket extends Shapes implements Serializable {
         Graphics2D graphics2 = (Graphics2D) graphic;
         dot = new Dot(x + 100 - 70, y + 100 - 50);
         dot.drawShape(graphics2);
-
         Font font = new Font("Serif", Font.PLAIN, 40);
         graphics2.setFont(font);
         graphics2.drawString(")", x + 105, y + 60);
-
         graphics2.draw(closebracket);
 
     }

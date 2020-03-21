@@ -2,8 +2,8 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.*;
+
 /**
- *
  * @author Kartik Mathpal
  * @version 1.0
  */
@@ -44,9 +44,6 @@ public class CompileFile extends JMenuItem implements ActionListener {
             return;
         }
 
-        //This will be further updated, is just a stub.
-        //When there is an unconnected shape left on canvas
-        //check for unprocessed shapes
         for (Shapes shp : trackShapes.keySet()) {
             if (trackShapes.containsKey(shp)) {
                 if (trackShapes.get(shp) == 1) {
@@ -79,7 +76,7 @@ public class CompileFile extends JMenuItem implements ActionListener {
 
         for (Shapes s : RightPanel.getRightPanelShapes()) {
             if (!trackShapes.containsKey(s))
-                trackShapes.put(s, 1); //every shape will have a unique obj Id.
+                trackShapes.put(s, 1);
         }
 
     }

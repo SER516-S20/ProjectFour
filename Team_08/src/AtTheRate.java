@@ -13,9 +13,10 @@ public class AtTheRate extends Shapes implements Serializable {
 
     private static final long serialVersionUID = 1L;
     private int x, y;
-    private Shapes dot1 = null, dot2 = null, dot3= null, dot4= null;
+    private Shapes dot1 = null, dot2 = null, dot3 = null, dot4 = null;
     private Shape attherate = null;
     private boolean isLineDrawnDot1 = false, isLineDrawnDot2 = false, isLineDrawnDot3 = false, isLineDrawnDot4 = false;
+
     public AtTheRate(int x, int y) {
         int OFFSET = 50;
         this.x = x - OFFSET;
@@ -51,16 +52,19 @@ public class AtTheRate extends Shapes implements Serializable {
 
         return x;
     }
+
     @Override
     public void setX(int x) {
 
-        this.x = x -50 ;
+        this.x = x - 50;
     }
+
     @Override
     public int getY() {
 
         return y;
     }
+
     @Override
     public void setY(int y) {
         this.y = y + 50;
@@ -71,39 +75,48 @@ public class AtTheRate extends Shapes implements Serializable {
 
         return isLineDrawnDot1;
     }
+
     public void setLineDrawnDot1(boolean isLineDrawnDot1) {
 
         this.isLineDrawnDot1 = isLineDrawnDot1;
     }
+
     public boolean isLineDrawnDot2() {
 
         return isLineDrawnDot2;
     }
+
     public void setLineDrawnDot2(boolean isLineDrawnDot2) {
 
         this.isLineDrawnDot2 = isLineDrawnDot2;
     }
+
     public boolean isLineDrawnDot3() {
 
         return isLineDrawnDot3;
     }
+
     public void setLineDrawnDot3(boolean isLineDrawnDot3) {
 
         this.isLineDrawnDot3 = isLineDrawnDot3;
     }
+
     public boolean isLineDrawnDot4() {
 
         return isLineDrawnDot4;
     }
+
     public void setLineDrawnDot4(boolean isLineDrawnDot3) {
 
         this.isLineDrawnDot4 = isLineDrawnDot4;
     }
+
     @Override
     public boolean containsPoint(int x, int y) {
 
         return attherate.contains(x, y);
     }
+
     public Shapes getDot1() {
 
         return dot1;

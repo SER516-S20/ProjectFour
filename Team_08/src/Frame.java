@@ -16,7 +16,8 @@ public class Frame extends JFrame {
     protected static RightPanel rightPanel;
     private Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
     static JTabbedPane tabbedPane = new JTabbedPane();
-    
+    static Integer tabCount = 1;
+
 
     public Frame() {
         setExtendedState(getExtendedState() | JFrame.MAXIMIZED_BOTH);
@@ -46,7 +47,6 @@ public class Frame extends JFrame {
         try {
 
             tabbedPane.setBounds(screenSize.width / 6, 0, 4 * screenSize.width / 4, screenSize.height);
-            // Add Dashboard Tab
             rightPanel = new RightPanel();
             tabbedPane.addTab("New Tab", rightPanel);
             addButtonToTab(tabbedPane);
@@ -56,22 +56,21 @@ public class Frame extends JFrame {
             e.printStackTrace();
         }
     }
-    
+
     public static void addButtonToTab(final JTabbedPane tabEntity) {
-    	JButton newTabButton = new JButton("  New Tab  ");
-    	tabEntity.setTabComponentAt(tabEntity.getTabCount() - 1, newTabButton);
-    	newTabButton.addActionListener(e -> {
-    //TO DO: write action to create new tab
-    if (e.getActionCommand().equals("  New Tab  ")) {
-            rightPanel = new RightPanel();
-            tabbedPane.add("New Tab", rightPanel);
+        JButton newTabButton = new JButton("  New Tab  ");
+        tabEntity.setTabComponentAt(tabEntity.getTabCount() - 1, newTabButton);
+        newTabButton.addActionListener(e -> {
+            if (e.getActionCommand().equals("  New Tab  ")) {
+                rightPanel = new RightPanel();
+                tabbedPane.add("Tab " + tabCount, rightPanel);
+                tabCount++;
+                System.out.println("New Tab has been clicked");
+            }
+        });
 
-        System.out.println("New Tab has been clicked");
+
     }
-});
-
-
-        }
 
     public void createMenu() {
         this.setJMenuBar(new MenuBar());
