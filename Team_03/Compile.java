@@ -34,13 +34,10 @@ public class Compile {
 	}
 
 	public void validate() {
-
 		Map<String, String> mapCompiledAnswers = new HashMap<>();
 		Map<Integer, DrawingArea> mapDrawingAreas = new HashMap<>();
 		mapDrawingAreas = Frame.mapDrawingAreas;
-
 		for (Integer key : mapDrawingAreas.keySet()) {
-
 			boolean isValid = true;
 			if (!buildSparseMatrix(mapDrawingAreas.get(key))) {
 				isValid = false;
@@ -64,7 +61,6 @@ public class Compile {
 		}
 		new InputDialog(Main.frame, Constants.DIALOG_BOX_INPUT, true,
 				new Point(Constants.FIRST_INDEX, Constants.FIRST_INDEX), mapCompiledAnswers.toString());
-
 	}
 
 	public void depthFirstSearch(int start, Stack<String> stack) {
@@ -87,45 +83,36 @@ public class Compile {
 					} else {
 						stack.add(toAdd);
 					}
-					
 				}
 				if (!isEnd) {
 					depthFirstSearch(i, stack);
 				}
-
 			}
 		}
 	}
 
 	public boolean traverseSparseMatrix() {
-
 		for (Integer start : begin) {
 			stack = new Stack<>();
 			stack.add(specialShapes.get(shapeNames.get(start).split(Constants.FOR_LOOP_CHAR)[Constants.FIRST_INDEX]));
-
 			isEnd = false;
 			depthFirstSearch(start, stack);
 			if (stack.size() > 0) {
 				return false;
 			}
-
 		}
 		return true;
 	}
 
 	public boolean buildSparseMatrix(DrawingArea drawingArea) {
-
 		mapShapesToNumbers = new HashMap<>();
 		shapeNames = new ArrayList<>();
 		begin = new ArrayList<>();
 		end = new HashMap<>();
-
 		List<Shape> listOfShapes = drawingArea.listOfShapes;
-
 		int increment = 0;
 		for (int i = 0; i < listOfShapes.size(); i++) {
 			Shape shape = listOfShapes.get(i);
-
 			String shapeName = shape.toString();
 			if (!shapeName.contains(Constants.LINE_NAME) && !shapeName.contains(Constants.DOT_NAME)) {
 				if (!shapeName.contains(Constants.FUNCTION_BLOCK_END_NAME) && shape.getConnectedShapes().size() == 0) {
@@ -142,10 +129,7 @@ public class Compile {
 				}
 			}
 		}
-
-
 		grid = new int[mapShapesToNumbers.size()][mapShapesToNumbers.size()];
-
 		for (int i = 0; i < listOfShapes.size(); i++) {
 			Shape shape = listOfShapes.get(i);
 			if (mapShapesToNumbers.containsKey(shape.toString())) {
@@ -159,8 +143,6 @@ public class Compile {
 				}
 			}
 		}
-		
-
 		return true;
 	}
 

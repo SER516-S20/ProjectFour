@@ -68,30 +68,25 @@ public class BarShape implements Shape, Serializable {
 	}
 
 	public void updateDotCoordinates(Dot dot, boolean status, String dotName, Graphics graphics) {
-
 		dot.setPosition(helper.getXCordinate(), helper.getYCordinate());
 		dot.draw(graphics);
 		Position position = new Position();
 		position.setCoordinateX(helper.getXCordinate());
 		position.setCoordinateY(helper.getYCordinate());
 		mapUpdatedDotCordinates.put(dotName, position);
-
 		dot.setStart(status);
 		dot.setDotName(dotName);
 	}
 
 	public void drawDots(Graphics graphics) {
-
 		helper.calculateCenterLeftDotPosition(this.getCoordinateX(), this.getCoordinateY(), Constants.DOT_HEIGHT,
 				Constants.DOT_WIDTH);
 		centerLeftDot = new Dot();
 		updateDotCoordinates(centerLeftDot, false, "centerLeft", graphics);
-
 		helper.calculateCenterRightDotPosition(this.getCoordinateX(), this.getCoordinateY(), Constants.DOT_HEIGHT,
 				Constants.DOT_WIDTH);
 		centerRightDot = new Dot();
 		updateDotCoordinates(centerRightDot, true, "centerRight", graphics);
-
 	}
 
 	@Override
@@ -101,7 +96,6 @@ public class BarShape implements Shape, Serializable {
 		helper.calculateCharacterPosition(this.getCoordinateX(), this.getCoordinateY());
 		draw.drawCharacter(graphics, helper, Constants.BAR_CHAR);
 		drawDots(graphics);
-
 	}
 
 	@Override

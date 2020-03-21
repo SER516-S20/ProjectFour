@@ -60,6 +60,7 @@ public class Dot implements Shape,Serializable {
 
 	@Override
 	public void setPosition(int x, int y, int x1, int y1) {
+		//Empty Function
 	}
 
 	@Override
@@ -89,6 +90,7 @@ public class Dot implements Shape,Serializable {
 
 	@Override
 	public void setMessage(String message) {
+		//Empty Function
 	}
 
 	

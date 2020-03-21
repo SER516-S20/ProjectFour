@@ -61,20 +61,17 @@ public class FunctionBlockEnd implements Shape, Serializable {
 	}
 
 	public void updateDotCoordinates(Dot dot, boolean status, String dotName, Graphics graphics) {
-
 		dot.setPosition(helper.getXCordinate(), helper.getYCordinate());
 		dot.draw(graphics);
 		Position position = new Position();
 		position.setCoordinateX(helper.getXCordinate());
 		position.setCoordinateY(helper.getYCordinate());
 		mapUpdatedDotCordinates.put(dotName, position);
-
 		dot.setStart(status);
 		dot.setDotName(dotName);
 	}
 
 	public void drawDots(Graphics graphics) {
-
 		helper.calculateCenterLeftDotPosition(this.getCoordinateX(), this.getCoordinateY(), Constants.DOT_HEIGHT,
 				Constants.DOT_WIDTH);
 		centerLeftDot = new Dot();
@@ -89,7 +86,6 @@ public class FunctionBlockEnd implements Shape, Serializable {
 		helper.calculateCharacterPosition(this.getCoordinateX(), this.getCoordinateY());
 		draw.drawCharacter(graphics, helper, Constants.FUNCTION_BLOCK_END_CHAR);
 		drawDots(graphics);
-
 	}
 
 	@Override

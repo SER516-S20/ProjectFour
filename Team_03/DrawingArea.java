@@ -42,7 +42,6 @@ public class DrawingArea extends JPanel implements Serializable {
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
-
 		for (int i = 0; i < listOfShapes.size(); i++) {
 			Object object = listOfShapes.get(i);
 			if (object instanceof FunctionBlockBegin) {
@@ -71,17 +70,14 @@ public class DrawingArea extends JPanel implements Serializable {
 				line.draw(g);
 			}
 		}
-
 	}
 
 	public void save() {
-
 		try {
 			int temp = Frame.currentTab;
 			tabs.add(temp);
 			FileOutputStream fos = new FileOutputStream("listData" + temp);
 			ObjectOutputStream oos = new ObjectOutputStream(fos);
-
 			DrawingArea temp1 = Frame.mapDrawingAreas.get(Frame.currentTab);
 			System.out.println(temp1.listOfShapes.size());
 			ArrayList<Shape> list_temp = new ArrayList<>();
@@ -97,11 +93,9 @@ public class DrawingArea extends JPanel implements Serializable {
 		} catch (IOException ioe) {
 			ioe.printStackTrace();
 		}
-
 	}
 
 	public void load(JTabbedPane tabbedPane) {
-
 		System.out.println("Loaded");
 		try {
 			FileInputStream fis = new FileInputStream("tab_data");
@@ -109,16 +103,13 @@ public class DrawingArea extends JPanel implements Serializable {
 			tabs = (ArrayList) ois.readObject();
 			ois.close();
 			fis.close();
-
 			for (Integer i : tabs) {
 				System.out.println(i);
 			}
-
 			int inc = 0;
 			for (Integer i : tabs) {
 				String temp = "Tab" + i;
 				System.out.println(temp);
-				// DrawingArea drawingArea = Frame.mapDrawingAreas.get(Frame.currentTab);
 				DrawingArea obj = new DrawingArea();
 				tabbedPane.addTab(temp, obj);
 				FileInputStream fis_file = new FileInputStream("listData" + i);
@@ -139,51 +130,42 @@ public class DrawingArea extends JPanel implements Serializable {
 			c.printStackTrace();
 			return;
 		}
-
 		repaint();
-
 	}
 
 	void addFunctionBlockBegin(FunctionBlockBegin square) {
 		listOfShapes.add(square);
 		repaint();
-
 	}
 
 	void addFunctionBlockEnd(FunctionBlockEnd square) {
 		listOfShapes.add(square);
 		repaint();
-
 	}
 
 	void addIfBlockBegin(IfBlockBegin square) {
 		listOfShapes.add(square);
 		repaint();
-
 	}
 
 	void addIfBlockEnd(IfBlockEnd square) {
 		listOfShapes.add(square);
 		repaint();
-
 	}
 
 	void addForLoop(ForLoop square) {
 		listOfShapes.add(square);
 		repaint();
-
 	}
 
 	void addBarShape(BarShape square) {
 		listOfShapes.add(square);
 		repaint();
-
 	}
 
 	void addValueHolderBlock(ValueHolderBlock square) {
 		listOfShapes.add(square);
 		repaint();
-
 	}
 
 	void addLine(Line line) {

@@ -174,25 +174,27 @@ class MouseListener extends MouseInputAdapter {
 		int coordinateX = event.getX();
 		int coordinateY = event.getY();
 
-		if (activateDrag) {
+		if (activateDrag && selectedShape != null) {
 			Map<String, Map<Line, Integer>> mapLinesToCordinates = selectedShape.getLinesDrawn();
 			selectedShape.setPosition(coordinateX, coordinateY);
 			for (String dotName : mapLinesToCordinates.keySet()) {
 				Map<Line, Integer> mapLinesDrawn = mapLinesToCordinates.get(dotName);
 				Position position = selectedShape.getUpdatedDotCordinates().get(dotName);
-				int updatedCoordinateX = position.getCoordinateX();
-				int updatedCoordinateY = position.getCoordinateY();
+				if(position != null) {
+					int updatedCoordinateX = position.getCoordinateX();
+					int updatedCoordinateY = position.getCoordinateY();
 
-				for (Line line : mapLinesDrawn.keySet()) {
+					for (Line line : mapLinesDrawn.keySet()) {
 
-					if (mapLinesDrawn.get(line) == 0) {
-						line.setPosition(updatedCoordinateX, updatedCoordinateY, line.getCoordinateX2(),
-								line.getCoordinateY2());
-					} else {
+						if (mapLinesDrawn.get(line) == 0) {
+							line.setPosition(updatedCoordinateX, updatedCoordinateY, line.getCoordinateX2(),
+									line.getCoordinateY2());
+						} else {
 
-						line.setPosition(line.getCoordinateX1(), line.getCoordinateY1(), updatedCoordinateX,
-								updatedCoordinateY);
+							line.setPosition(line.getCoordinateX1(), line.getCoordinateY1(), updatedCoordinateX,
+									updatedCoordinateY);
 
+						}
 					}
 				}
 

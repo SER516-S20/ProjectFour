@@ -30,7 +30,6 @@ public class IfBlockEnd implements Shape, Serializable {
 		isLineDrawn.put(Constants.CENTER_RIGHT, false);
 		isLineDrawn.put(Constants.TOP_LEFT, false);
 		isLineDrawn.put(Constants.BOTTOM_LEFT, false);
-
 	}
 
 	public String getMessage() {
@@ -80,35 +79,29 @@ public class IfBlockEnd implements Shape, Serializable {
 	}
 
 	public void updateDotCoordinates(Dot dot, boolean status, String dotName, Graphics graphics) {
-
 		dot.setPosition(helper.getXCordinate(), helper.getYCordinate());
 		dot.draw(graphics);
 		Position position = new Position();
 		position.setCoordinateX(helper.getXCordinate());
 		position.setCoordinateY(helper.getYCordinate());
 		mapUpdatedDotCordinates.put(dotName, position);
-
 		dot.setStart(status);
 		dot.setDotName(dotName);
 	}
 
 	public void drawDots(Graphics graphics) {
-
 		helper.calculateCenterRightDotPosition(this.getCoordinateX(), this.getCoordinateY(), Constants.DOT_HEIGHT,
 				Constants.DOT_WIDTH);
 		centerRightDot = new Dot();
 		updateDotCoordinates(centerRightDot, true, Constants.CENTER_RIGHT, graphics);
-
 		helper.calculateTopLeftDotPosition(this.getCoordinateX(), this.getCoordinateY(), Constants.DOT_HEIGHT,
 				Constants.DOT_WIDTH);
 		topLeftDot = new Dot();
 		updateDotCoordinates(topLeftDot, false, Constants.TOP_LEFT, graphics);
-
 		helper.calculateBottomLeftDotPosition(this.getCoordinateX(), this.getCoordinateY(), Constants.DOT_HEIGHT,
 				Constants.DOT_WIDTH);
 		bottomLeftDot = new Dot();
 		updateDotCoordinates(bottomLeftDot, false, Constants.BOTTOM_LEFT, graphics);
-
 	}
 
 	@Override
@@ -118,7 +111,6 @@ public class IfBlockEnd implements Shape, Serializable {
 		helper.calculateCharacterPosition(this.getCoordinateX(), this.getCoordinateY());
 		draw.drawCharacter(graphics, helper, Constants.IF_BLOCK_END_CHAR);
 		drawDots(graphics);
-
 	}
 
 	@Override
