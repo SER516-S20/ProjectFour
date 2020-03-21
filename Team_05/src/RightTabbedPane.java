@@ -1,5 +1,8 @@
 import javax.swing.JTabbedPane;
 
+/**
+ * @author Yijian Hu
+ */
 public class RightTabbedPane extends JTabbedPane{
 	private static final long serialVersionUID = 1L;
 

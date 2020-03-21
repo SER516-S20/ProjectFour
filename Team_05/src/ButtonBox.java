@@ -4,7 +4,9 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-
+/**
+ * @author Hongqi Zhang
+ */
 public abstract class ButtonBox extends JPanel{
 	private static final long serialVersionUID = 1L;
 	private final Color LIGHTBLUE = new Color(117, 218, 255);
