@@ -1,32 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-
-import java.awt.BorderLayout;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.Panel;
 import java.awt.Point;
-import java.awt.RenderingHints;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.geom.Rectangle2D;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Vector;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -38,6 +18,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  * @version 1.0
  */
 public class Menu extends JPanel implements ActionListener {
+	private static final long serialVersionUID = 1L;
 	java.util.List<Point> displayList = new ArrayList<Point>();
 	String pathName = "";
 	JButton clearBtn = new JButton("Clear");
@@ -47,13 +28,13 @@ public class Menu extends JPanel implements ActionListener {
 	JButton quitBtn = new JButton("Quit");
 	JButton newTabBtn = new JButton("NewTab");
 	JButton compileBtn = new JButton("Compile");
-	 List<Point> circlePoint = new ArrayList<Point>();
-	 List<Point> trianglePoint = new ArrayList<Point>();
-	 List<Point> squarePoint = new ArrayList<Point>();
-	 List<Point> pointsPoint = new ArrayList<Point>();
-     List<Point> squareBar = new ArrayList<Point>();
-	 List<Lineconnection> LinePoint = new ArrayList<Lineconnection>();
-     ArrayList<List<Point>> list;
+	List<Point> circlePoint = new ArrayList<Point>();
+	List<Point> trianglePoint = new ArrayList<Point>();
+	List<Point> squarePoint = new ArrayList<Point>();
+	List<Point> pointsPoint = new ArrayList<Point>();
+	List<Point> squareBar = new ArrayList<Point>();
+	//List<Lineconnection> LinePoint = new ArrayList<Lineconnection>();
+	ArrayList<List<Point>> list;
 
 	public Panel CreateMenu() {
 		Panel pan = new Panel();
@@ -65,7 +46,7 @@ public class Menu extends JPanel implements ActionListener {
 		pan.add(restoreBtn);
 		quitBtn.addActionListener(this);
 		pan.add(quitBtn);
-		
+
 		newTabBtn.addActionListener(this);
 		pan.add(newTabBtn);
 		compileBtn.addActionListener(this);
@@ -73,7 +54,6 @@ public class Menu extends JPanel implements ActionListener {
 		//add("North", pan);
 		pan.setSize(500, 50);
 		return pan;
-
 	}
 
 	public void LoadFileChooser() {
@@ -85,18 +65,15 @@ public class Menu extends JPanel implements ActionListener {
 			selectFile.showOpenDialog(null);
 			File f = selectFile.getSelectedFile();
 			if (f.exists()) {
-
 				if (!getFileExtension(f).equals("dat")) {
 					JOptionPane.showMessageDialog(null, "Invalid File format");
 				} else {
 					pathName = f.getAbsolutePath();
 					JOptionPane.showMessageDialog(null, "File Loaded Successfully");
 				}
-
 			} else {
 
 			}
-
 		} catch (Exception ex) {
 		}
 	}
@@ -104,7 +81,6 @@ public class Menu extends JPanel implements ActionListener {
 	public void SaveFileChooser() {
 		try {
 			JFileChooser selectFile = new JFileChooser();
-
 			selectFile.setDialogTitle("Save As");
 			selectFile.setAcceptAllFileFilterUsed(false);
 			FileNameExtensionFilter filter = new FileNameExtensionFilter("dat", "dat");
@@ -118,7 +94,6 @@ public class Menu extends JPanel implements ActionListener {
 					pathName = f.getAbsolutePath();
 					JOptionPane.showMessageDialog(null, "File Saved Successfully");
 				}
-
 			}
 		} catch (Exception ex) {
 
@@ -135,54 +110,54 @@ public class Menu extends JPanel implements ActionListener {
 	}
 
 	public void actionPerformed(ActionEvent e) {
-		 list = new ArrayList<List<Point>>();
-                 SystemFileManager objSFM = new SystemFileManager();
-                 CreateJTabbedPaneExample objTab = new CreateJTabbedPaneExample();
+		list = new ArrayList<List<Point>>();
+		SystemFileManager objSFM = new SystemFileManager();
+		//  CreateJTabbedPaneExample objTab = new CreateJTabbedPaneExample();
 		if (e.getSource() == clearBtn) {
 			clearDrawingBoard();
 		} else if (e.getSource() == saveBtn) {
-                    SaveFileChooser();
+			SaveFileChooser();
 			objSFM.saveShape(pathName,circlePoint,trianglePoint,
-                                        squarePoint,pointsPoint, squareBar,list );
+					squarePoint,pointsPoint, squareBar,list );
 		} else if (e.getSource() == restoreBtn) {
-                    LoadFileChooser();
-			objSFM.restoreShape(pathName,circlePoint,trianglePoint,
-                                squarePoint,pointsPoint, squareBar,list);
-			MainWindow.drawingBoardPanel.repaint();
+			LoadFileChooser();
+			objSFM.restoreShape(pathName);
+			//MainWindow.drawingBoardPanel.repaint();
 		} else if (e.getSource() == quitBtn) {
 			MainWindow.CloseApplication();	
 		}
 		else if (e.getSource() == newTabBtn) {
-		objTab.AddPanel();
+			System.out.println("In action listener");
+			//DrawBoardPanel objDrawboard = new DrawBoardPanel();
+			//MainWindow.obj.add("tab",objDrawboard);
+			//objDrawboard.repaint();
+			MainWindow.obj.AddPanel();
 		}
 		else if (e.getSource() == compileBtn) {
-			
+
 		}
-		
 	}
-       
-        public void clearDrawingBoard()
-        {
-            try{
-                ShapeLocation.circlePoint.clear();
-			ShapeLocation.trianglePoint.clear();
-			ShapeLocation.squarePoint.clear();
-			ShapeLocation.pointsPoint.clear();
-			ShapeLocation.LinePoint.clear();
-			ShapeLocation.squarebarpoints.clear();
-			circlePoint.clear();
-			trianglePoint.clear();
-			squarePoint.clear();
-			pointsPoint.clear();
-			LinePoint.clear();
-             MainWindow.drawingBoardPanel.repaint();
+
+	public void clearDrawingBoard()
+	{
+		try{
+			//          ShapeLocation.circlePoint.clear();
+			//			ShapeLocation.trianglePoint.clear();
+			//			ShapeLocation.squarePoint.clear();
+			//			ShapeLocation.pointsPoint.clear();
+			//			ShapeLocation.LinePoint.clear();
+			//			ShapeLocation.squarebarpoints.clear();
+			//			circlePoint.clear();
+			//			trianglePoint.clear();
+			//			squarePoint.clear();
+			//			pointsPoint.clear();
+			//			LinePoint.clear();
+			//  MainWindow.drawingBoardPanel.repaint();
 			//new DrawShapeOnMouseClick().restore();
-            }
-            catch(Exception ex)
-            {
-                System.out.println(ex);
-            }
-        }
-     
-       
+		}
+		catch(Exception ex)
+		{
+			System.out.println(ex);
+		}
+	}
 }
