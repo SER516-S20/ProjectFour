@@ -1,9 +1,8 @@
-import java.util.Hashtable;
-
 import javax.swing.JTabbedPane;
 
 public class RightTabbedPane extends JTabbedPane{
-	
+	private static final long serialVersionUID = 1L;
+
 	RightTabbedPane()
 	{
 		if(Model.getTabs().size()==0)
