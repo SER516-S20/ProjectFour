@@ -20,24 +20,23 @@ import model.TabData;
 /**
  * 
  * @author Dhananjay, Suyog
- * @since 02-28-2020
- * @Description: This controller class is used add new tab in right panel whenever new space button is clicked.
+ * @since 03-12-2020
+ * @Description: This controller class is used to compile the drawn diagram against some rules 
+ * when user clicks on compile button.
  */
 public class Compile {
-	public Compile(JMenu compile){
+	public Compile(JMenu compile) {
 		compile.addMouseListener(new MouseAdapter() { 
 	          public void mousePressed(MouseEvent e) {
 	        	 String msg = compileTab();
 	        	 showMessageDialog(null, msg);
-	          	}
-			});
+	          }
+		});
 	}
 	
-	public String compileTab() {
-		System.out.println("Inside Compile Method");
+	public String compileTab(){
 		int tabNumber = Tab.selectedTab();
 	    TabData tabData = Data.getInstance().getTab(tabNumber);
-	    System.out.println("Compiling "+tabNumber+" th tab");
 	    
 	    if(!tabData.isOpenParaFlag()) {
 	    	return "Compile Failed : \nOpen Paranthesis Shape Missing";
@@ -47,14 +46,10 @@ public class Compile {
 	    	return "Compile Failed : \nClose Paranthesis Shape Missing";
 	    }
 	    
-	    ArrayList<Shape> shapes = tabData.getShapes();
-	    
+	    ArrayList<Shape> shapes = tabData.getShapes();	    
 	    boolean allConnected = true;	    
-	    int numberOfNodes =  shapes.size();
-	    
-	    Graph graph = new Graph(numberOfNodes);
-	   
-	    
+	    int numberOfNodes =  shapes.size();	    
+	    Graph graph = new Graph(numberOfNodes);	    
 	    
 	    for (Shape shape : shapes) {	
 	    	int fromIndex = shapes.indexOf(shape);
@@ -71,10 +66,8 @@ public class Compile {
 		    			for (Connector con: ((ConnectorBar) connector).getToConnector()) {
 		    				toShapes.add(((Shape) con.getParent()).getShapeIndex());
 		    			}
-		    			
 		    		}
 	    		}
-	    		
 	    	}	    	
 	    	if (!allConnected) {
 	    		break;
@@ -88,10 +81,12 @@ public class Compile {
 	    if(!allConnected) {
 	    	return "Compile Failed : \nEvery Dot/Bar should be connected to atleast one other Dot/Bar";
 	    }
-	    System.out.println(tabData.getOpenVertex());
+	    
 	    if (!graph.checkConnection(tabData.getOpenVertex())) {
 	    	return "Compile Failed : \nDisconnected circuit present";
 	    }
+	    
 	    return "Compiled Successfully";
 	}
+	
 }

@@ -1,35 +1,19 @@
 import java.awt.Component;
 import java.awt.Point;
-import java.util.ArrayList;
 import java.util.Hashtable;
-import java.util.List;
 
 public class Model {
 	private static RightTabbedPane rightTabbedPane;
 	private static Hashtable<String, TabInfo> tabs;
-	//private static Hashtable<String, Hashtable<Integer, ButtonBox>> shapes
-	private static Hashtable<Integer, ButtonBox> shapes;
 	private static Frame frame;
 	private static String dialogMessage;
 	
-	public Model() {
-		//shapes = new Hashtable<Integer, ButtonBox>();
-	}
-	
-	public void setFrame(Frame frame) {
-		this.frame = frame;
+	public void setFrame(Frame theFrame) {
+		frame = theFrame;
 	}
 	
 	public Frame getFrame() {
 		return frame;
-	}
-	
-	public void setshapes( Hashtable<Integer, ButtonBox> inshapes) {
-		this.shapes = inshapes;
-	}
-	
-	public Hashtable<Integer, ButtonBox> getshapes() {
-		return shapes;
 	}
 	
 	public static void setMessage(String message) {

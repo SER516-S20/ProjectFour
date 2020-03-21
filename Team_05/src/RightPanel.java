@@ -13,7 +13,7 @@ import javax.swing.JPanel;
 
 /**
  * @author Yijian Hu
- * @modified by Hongqi Zhang, Kairui Hsu
+ * @modified by Hongqi Zhang, Kairui Hsu, ShihYu Chang
  */
 public class RightPanel extends JPanel implements ActionListener, MouseListener, MouseMotionListener{
 	private static final long serialVersionUID = 1L;
@@ -24,8 +24,6 @@ public class RightPanel extends JPanel implements ActionListener, MouseListener,
 	private Model model;
 	private ValuePane vPane;
 	boolean isAlreadyOneClick = false;
-	
-	RightPanel() {}
 	
 	RightPanel(String name) {
 		this.name = name;
@@ -69,7 +67,6 @@ public class RightPanel extends JPanel implements ActionListener, MouseListener,
 	private void addActionAndMouseMotionListener(ButtonBox button) {
 		button.addMouseMotionListener(this);
 		button.addMouseListener(this);
-		
 	}
 	
 	public void setFrame(Frame frame) {
@@ -86,9 +83,6 @@ public class RightPanel extends JPanel implements ActionListener, MouseListener,
 	}
 	
 	public void clear() {
-//		for(ButtonBox shape:shapes.values()) {
-//			this.remove(shape);
-//		}
 		this.removeAll();
 		shapes.clear();
 	}
@@ -101,6 +95,7 @@ public class RightPanel extends JPanel implements ActionListener, MouseListener,
 	@Override
 	public void actionPerformed(ActionEvent e) {
 	}
+	
 	@Override
 	public void mouseDragged(MouseEvent e) {
 		e.getComponent().setLocation(e.getX() + e.getComponent().getX(), 
@@ -179,13 +174,11 @@ public class RightPanel extends JPanel implements ActionListener, MouseListener,
 	@Override
 	public void mouseEntered(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	public void mouseExited(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
 	}
 
     public void paint(Graphics g) {

@@ -8,14 +8,17 @@ import javax.swing.JPanel;
 public class Line extends JPanel{
 	private static final long serialVersionUID = 1L;
 	private static int sourceX, sourceY, destX, destY;
+	
 	public void setSource(int tsourceX, int tsourceY) {
 		sourceX = tsourceX;
 		sourceY = tsourceY;
 	}
+	
 	public void setDest(int tdestX, int tdestY) {
 		destX = tdestX;
 		destY = tdestY;
 	}
+	
 	public void draw(Graphics g) {
 		Graphics2D g2 = (Graphics2D)g;
 		/* make the line or text smooth */
@@ -24,6 +27,7 @@ public class Line extends JPanel{
 		g2.drawLine(sourceX,sourceY,destX,destY);
 		drawArrowHead(g2,new Point(destX, destY), new Point(sourceX, sourceY));
 	}
+	
 	/*
 	 * this method is used to draw arrow head in the tip of a line
 	 */

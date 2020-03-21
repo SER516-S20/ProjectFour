@@ -1,18 +1,21 @@
-/**
- * @author ShihYu Chang
- */
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.List;
+
+/**
+ * @author ShihYu Chang
+ */
 
 public class ConnectionController implements MouseListener {
 	private static Connection tempconnection;
 	private List<Connection> connections;
 	private ButtonBox buttonBox;
+	
 	public ConnectionController(ButtonBox buttonBox) {
 		this.buttonBox = buttonBox;
 		connections =Model.getTabs().get(Model.getRightTabbedPane().getCurrentTabName()).getConnectionCollection();
 	}
+	
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		ButtonBox obj = (ButtonBox)e.getComponent().getParent();
@@ -21,7 +24,6 @@ public class ConnectionController implements MouseListener {
 		int tempx = e.getComponent().getParent().getLocation().x + e.getComponent().getLocation().x+5;
 		int tempy = e.getComponent().getParent().getLocation().y + e.getComponent().getLocation().y+5;
 		boolean selected = false;
-		
 		if(buttonx > width) {
 			if(!obj.getClass().toString().equalsIgnoreCase("class BarButtonBox")) {
 				for(int i=0; i < connections.size(); i++) {
@@ -82,18 +84,22 @@ public class ConnectionController implements MouseListener {
 			e.getComponent().getParent().getParent().repaint();
 		}
 	}
+	
 	@Override
 	public void mouseEntered(MouseEvent e) {
 		// TODO Auto-generated method stub
 	}
+	
 	@Override
 	public void mouseExited(MouseEvent e) {
 		// TODO Auto-generated method stub
 	}
+	
 	@Override
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
 	}
+	
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		// TODO Auto-generated method stub
