@@ -231,6 +231,9 @@ public class Dot extends Shapes implements MouseListener, MouseMotionListener, S
             } else if (atTheRate.getDot3().containsPoint(x, y)) {
                 atTheRate.setLineDrawnDot3(true);
             }
+            else if (atTheRate.getDot4().containsPoint(x, y)) {
+                atTheRate.setLineDrawnDot4(true);
+            }
         } else if (shape instanceof Hyphen) {
             Hyphen hyphen = (Hyphen) shape;
             if (hyphen.getDot1().containsPoint(x, y)) {
@@ -275,6 +278,9 @@ public class Dot extends Shapes implements MouseListener, MouseMotionListener, S
             } else if (atTheRate.getDot3().containsPoint(x, y)) {
                 return atTheRate.isLineDrawnDot3();
             }
+            else if (atTheRate.getDot4().containsPoint(x, y)) {
+                return atTheRate.isLineDrawnDot4();
+            }
         } else if (shape instanceof Hyphen) {
             Hyphen hyphen = (Hyphen) shape;
             if (hyphen.getDot1().containsPoint(x, y)) {
@@ -308,7 +314,8 @@ public class Dot extends Shapes implements MouseListener, MouseMotionListener, S
                     break;
                 } else if (sh instanceof AtTheRate && (((AtTheRate) sh).getDot1().containsPoint(e.getX(), e.getY())
                         || ((AtTheRate) sh).getDot2().containsPoint(e.getX(), e.getY())
-                        || ((AtTheRate) sh).getDot3().containsPoint(e.getX(), e.getY()))) {
+                        || ((AtTheRate) sh).getDot3().containsPoint(e.getX(), e.getY())
+                        || ((AtTheRate) sh).getDot4().containsPoint(e.getX(), e.getY()))) {
                     isDotClicked = true;
                     break;
                 } else if (sh instanceof Hyphen && (((Hyphen) sh).getDot1().containsPoint(e.getX(), e.getY())
