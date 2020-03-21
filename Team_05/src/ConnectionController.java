@@ -37,18 +37,15 @@ public class ConnectionController implements MouseListener {
 					tempconnection.setSourceX(tempx);
 					tempconnection.setSourceY(tempy);
 					tempconnection.setSourceButton(obj.getId());
-				}
-				else if(tempconnection != null && tempconnection.getSourceButton() == null && tempconnection.getDestButton() != obj.getId()){		
+				}else if(tempconnection != null && tempconnection.getSourceButton() == null && tempconnection.getDestButton() != obj.getId()){		
 					tempconnection.setSourceX(tempx);
 					tempconnection.setSourceY(tempy);
 					tempconnection.setSourceButton(obj.getId());
-				}
-				else {
+				}else {
 					tempconnection = null;
 				}
 			}
-		}
-		else{
+		}else {
 			if(!obj.getClass().toString().equalsIgnoreCase("class BarButtonBox")) {
 				for(int i=0; i < connections.size(); i++) {
 					Connection c = connections.get(i);
@@ -64,13 +61,11 @@ public class ConnectionController implements MouseListener {
 					tempconnection.setDestX(tempx);
 					tempconnection.setDestY(tempy);
 					tempconnection.setDestButton(obj.getId());
-				}
-				else if(tempconnection != null && tempconnection.getDestButton() == null && tempconnection.getSourceButton() != obj.getId()){
+				}else if(tempconnection != null && tempconnection.getDestButton() == null && tempconnection.getSourceButton() != obj.getId()){
 					tempconnection.setDestX(tempx);
 					tempconnection.setDestY(tempy);
 					tempconnection.setDestButton(obj.getId());
-				}
-				else {
+				}else {
 					tempconnection = null;
 				}
 			}
