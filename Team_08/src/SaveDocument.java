@@ -14,10 +14,10 @@ import javax.swing.JMenuItem;
  * @version 1.0
  */
 
-public class SaveFile extends JMenuItem implements ActionListener {
+public class SaveDocument extends JMenuItem implements ActionListener {
     private static final long serialVersionUID = 1L;
 
-    public SaveFile(String label) {
+    public SaveDocument(String label) {
         super(label);
     }
 

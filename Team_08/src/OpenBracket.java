@@ -3,6 +3,8 @@ import java.awt.geom.Rectangle2D;
 import java.io.Serializable;
 
 /**
+ * This class consists of AtTheRate shape with one output dot.
+ *
  * @author Anusha Singh
  * @version 1.0
  */

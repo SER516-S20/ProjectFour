@@ -1,9 +1,10 @@
-/**
- * @author ShihYu Chang
- */
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.List;
+
+/**
+ * @author ShihYu Chang
+ */
 
 public class ConnectionController implements MouseListener {
 	private static Connection tempconnection;

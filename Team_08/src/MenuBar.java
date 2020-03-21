@@ -15,20 +15,20 @@ public class MenuBar extends JMenuBar {
 	private static final long serialVersionUID = 1L;
 
 	MenuBar() {
-		String MENU = "Menu";
+		String MENU = "| MENU |";
 		JMenu menu = new JMenu(MENU);
 		JMenuBar menuBar = new JMenuBar();
-		String SAVE = "Save";
-		SaveFile saveFile = new SaveFile(SAVE);
-		saveFile.addActionListener(saveFile);
-		String LOAD = "Load";
-		LoadFile loadFile = new LoadFile(LOAD);
-		loadFile.addActionListener(loadFile);
-		String COMPILE = "Compile";
+		String SAVE = "Save Document";
+		SaveDocument saveDocument = new SaveDocument(SAVE);
+		saveDocument.addActionListener(saveDocument);
+		String LOAD = "Load Document";
+		LoadDocument loadDocument = new LoadDocument(LOAD);
+		loadDocument.addActionListener(loadDocument);
+		String COMPILE = "Compile Document";
 		CompileFile compileFile = new CompileFile(COMPILE);
 		compileFile.addActionListener(compileFile);
-		menu.add(saveFile);
-		menu.add(loadFile);
+		menu.add(saveDocument);
+		menu.add(loadDocument);
 		menu.add(compileFile);
 		menuBar.add(menu);
 
@@ -36,7 +36,6 @@ public class MenuBar extends JMenuBar {
 		Border border = new LineBorder(Color.BLACK, 1);
 		NewTab.setBorder(border);
 		NewTab.addActionListener(e -> {
-			//TO DO: write action to create new tab
 			if (e.getActionCommand().equals("  New Tab  ")) {
 				System.out.println("New Tab has been clicked");
 			}
