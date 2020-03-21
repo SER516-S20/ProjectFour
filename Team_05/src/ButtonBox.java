@@ -65,6 +65,9 @@ public abstract class ButtonBox extends JPanel{
 		vDialog.setValue(" ");
 		return vDialog;
 	}
+	/*
+	 * this method is used to re-draw the dot button in the Button Box
+	 */
 	abstract public void drawContent();
 	
 	public int getId() {

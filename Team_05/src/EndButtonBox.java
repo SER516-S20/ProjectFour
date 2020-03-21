@@ -18,5 +18,4 @@ public class EndButtonBox extends ButtonBox {
 			this.add(dots[i]);
 		}
 	}
-
 }

@@ -3,18 +3,20 @@ import java.awt.Point;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
-
+/**
+ * this class is used to store the button box information and the connection
+ * information, it is viewed as a data source.
+ * @author hzhan193
+ * @modified by Shihyu Chang
+ */
 public class Model {
 	private static RightTabbedPane rightTabbedPane;
 	private static Hashtable<String, TabInfo> tabs;
-	//private static Hashtable<String, Hashtable<Integer, ButtonBox>> shapes
 	private static Hashtable<Integer, ButtonBox> shapes;
 	private static Frame frame;
 	private static String dialogMessage;
 	
-	public Model() {
-		//shapes = new Hashtable<Integer, ButtonBox>();
-	}
+	public Model() {}
 	
 	public void setFrame(Frame frame) {
 		this.frame = frame;
@@ -40,7 +42,7 @@ public class Model {
 		return dialogMessage;
 	}
 	
-	/*
+	/**
 	 * this method is used to remove the existed button by
 	 * clicking the mouse right button
 	 */
@@ -52,25 +54,21 @@ public class Model {
 		return true;
 	}
 	
-	public static void setRightTabbedPane(RightTabbedPane tabbedPane)
-	{
+	public static void setRightTabbedPane(RightTabbedPane tabbedPane) {
 		rightTabbedPane = tabbedPane;
 	}
 	
-	public static Hashtable<String, TabInfo> getTabs()
-	{
+	public static Hashtable<String, TabInfo> getTabs() {
 		if(tabs == null)
 			tabs = new Hashtable<String, TabInfo>();
 		return tabs;
 	}
 	
-	public static void setTabs(Hashtable<String, TabInfo> tabTable)
-	{
+	public static void setTabs(Hashtable<String, TabInfo> tabTable) {
 		tabs = tabTable;
 	}
 	
-	public static RightTabbedPane getRightTabbedPane()
-	{
+	public static RightTabbedPane getRightTabbedPane() {
 		return rightTabbedPane;
 	}
 }

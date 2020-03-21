@@ -1,4 +1,7 @@
-
+/**
+ * this class implement the factory design pattern
+ * @author Hongqi Zhang
+ */
 public class ButtonBoxFactory {
 	public static ButtonBox buildButtonBox(String btnCommand) {
 		ButtonBox button = null;

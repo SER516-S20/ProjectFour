@@ -8,9 +8,7 @@ import java.util.List;
 public class ConnectionController implements MouseListener {
 	private static Connection tempconnection;
 	private List<Connection> connections;
-	private ButtonBox buttonBox;
 	public ConnectionController(ButtonBox buttonBox) {
-		this.buttonBox = buttonBox;
 		connections =Model.getTabs().get(Model.getRightTabbedPane().getCurrentTabName()).getConnectionCollection();
 	}
 	@Override

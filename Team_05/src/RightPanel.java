@@ -86,9 +86,6 @@ public class RightPanel extends JPanel implements ActionListener, MouseListener,
 	}
 	
 	public void clear() {
-//		for(ButtonBox shape:shapes.values()) {
-//			this.remove(shape);
-//		}
 		this.removeAll();
 		shapes.clear();
 	}
@@ -100,6 +97,7 @@ public class RightPanel extends JPanel implements ActionListener, MouseListener,
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
 	}
 	@Override
 	public void mouseDragged(MouseEvent e) {
@@ -111,12 +109,11 @@ public class RightPanel extends JPanel implements ActionListener, MouseListener,
 			if(obj instanceof JPanel){
 				ButtonBox btn = (ButtonBox) obj;
 				if(finishedconnection.getSourceButton() == btn.getId()) {
-					finishedconnection.setSourceX(finishedconnection.getSourceX()+e.getX());
-					finishedconnection.setSourceY(finishedconnection.getSourceY()+e.getY());
-				}
-				 else if(finishedconnection.getDestButton() == btn.getId()) {
-					finishedconnection.setDestX(finishedconnection.getDestX()+e.getX());
-					finishedconnection.setDestY(finishedconnection.getDestY()+e.getY());
+					finishedconnection.setSourceX(finishedconnection.getSourceX() + e.getX());
+					finishedconnection.setSourceY(finishedconnection.getSourceY() + e.getY());
+				}else if(finishedconnection.getDestButton() == btn.getId()) {
+					finishedconnection.setDestX(finishedconnection.getDestX() + e.getX());
+					finishedconnection.setDestY(finishedconnection.getDestY() + e.getY());
 				}
 			}
         }
@@ -136,7 +133,7 @@ public class RightPanel extends JPanel implements ActionListener, MouseListener,
 			if(instance.getText() == null) {
 				return;
 			}
-			addButton(0,instance.getText()," ",e.getX(),e.getY());
+			addButton(0, instance.getText(), " ", e.getX(), e.getY());
 		}else {
 			if (e.getClickCount() == 2) {
 				Object source = e.getComponent();
@@ -203,7 +200,7 @@ public class RightPanel extends JPanel implements ActionListener, MouseListener,
 		this.clear();
 		System.out.println(shapeinfo.toString());
     	for(int i = 0; i < shapeinfo.length; i++) {
-    		addButton(shapeinfo[i].getId(),shapeinfo[i].getType(),shapeinfo[i].getTitle(),
+    		addButton(shapeinfo[i].getId(), shapeinfo[i].getType(),shapeinfo[i].getTitle(),
     					shapeinfo[i].getPosition().x,shapeinfo[i].getPosition().y);
     	}
     }

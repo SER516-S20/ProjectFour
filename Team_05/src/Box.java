@@ -43,5 +43,4 @@ public class Box {
 	public void setConn(Connection conn) {
 		this.conn = conn;
 	}
-	
 }
