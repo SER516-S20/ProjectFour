@@ -46,7 +46,7 @@ public class RightPanelMouseListener implements MouseListener, MouseMotionListen
     @Override
     public void mouseClicked(MouseEvent e) {
 
-        if (Dot.isDotClicked && e.getClickCount() == 2 && !e.isConsumed()) {
+        if ((Dot.isDotClicked ||Dot.isBarClicked)&& e.getClickCount() == 2 && !e.isConsumed()) {
 			Shapes currentshape = null;
             for (Shapes shape : RightPanel.getRightPanelShapes()) {
                 if (shape.containsPoint(e.getX(), e.getY())) {
