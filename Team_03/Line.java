@@ -5,7 +5,7 @@ import java.util.Map;
 /**
  * InputDialog.java - a class for connecting two different shapes using aline
  * 
- * @author Nachiappan Lakshmanan
+ * @author Chandan Yadav
  * @version 1.0
  * 
  */
