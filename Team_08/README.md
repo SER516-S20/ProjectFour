@@ -1,4 +1,4 @@
-#Team 8 Workspace
+**Team 8 Workspace**
 
 **Project 4 update:**
 - New shapes added as per requirement
@@ -12,5 +12,5 @@
 Required: JDK 1.8 version installed.
 
 **How to run:**
-Step 1: Import project folder Team_08 in your IDE.
-Step 2: Run SourcePanel.java
+- Import project folder Team_08 in your IDE.
+- Run SourcePanel.java
