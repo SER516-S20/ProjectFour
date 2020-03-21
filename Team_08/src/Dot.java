@@ -7,8 +7,6 @@ import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.awt.geom.Rectangle2D;
 import java.io.Serializable;
-import java.util.Iterator;
-import java.util.ListIterator;
 
 /**
  * @author Amudhan Manisekaran
@@ -71,14 +69,14 @@ public class Dot extends Shapes implements MouseListener, MouseMotionListener, S
     @Override
     public void mouseClicked(MouseEvent e) {
 
-        CompileFile.setTrackShapes(RightPanel.getRightPanelShapes(), 1);
+        CompileFile.setTrackShapes();
 
         int destinationX;
         int destinationY;
         Shapes secondShape;
         if (!RightPanel.isSelected() && isDotClicked) {
             for (Shapes shape : RightPanel.getRightPanelShapes()) {
-                if (shape.containsPoint(e.getX(), e.getY()) && !getIsLineDrawn(shape, e.getX(), e.getY())) {
+                if (shape.containsPoint(e.getX(), e.getY()) && getIsLineDrawn(shape, e.getX(), e.getY())) {
                     RightPanel.setOriginShape(shape);
                     firstShape = shape;
                     sourceX = e.getX();
@@ -96,7 +94,7 @@ public class Dot extends Shapes implements MouseListener, MouseMotionListener, S
 
         } else if (!RightPanel.isSelected() && isBarClicked) {
             for (Shapes shape : RightPanel.getRightPanelShapes()) {
-                if (shape.containsPoint(e.getX(), e.getY()) && !getIsLineDrawn(shape, e.getX(), e.getY())) {
+                if (shape.containsPoint(e.getX(), e.getY()) && getIsLineDrawn(shape, e.getX(), e.getY())) {
                     RightPanel.setOriginShape(shape);
                     firstShape = shape;
                     sourceX = e.getX();
@@ -115,8 +113,8 @@ public class Dot extends Shapes implements MouseListener, MouseMotionListener, S
         } else if (RightPanel.isSelected() && isDotClicked) {
             if (!RightPanel.getOriginShape().containsPoint(e.getX(), e.getY())) {
                 for (Shapes shape : RightPanel.getRightPanelShapes()) {
-                    if (shape.containsPoint(e.getX(), e.getY()) && !getIsLineDrawn(shape, e.getX(), e.getY())
-                            && !getIsLineDrawn(firstShape, e.getX(), e.getY())) {
+                    if (shape.containsPoint(e.getX(), e.getY()) && getIsLineDrawn(shape, e.getX(), e.getY())
+                            && getIsLineDrawn(firstShape, e.getX(), e.getY())) {
                         destinationX = e.getX();
                         destinationY = e.getY();
 
@@ -156,7 +154,7 @@ public class Dot extends Shapes implements MouseListener, MouseMotionListener, S
         } else if (RightPanel.isSelected() && isBarClicked) {
             if (!RightPanel.getOriginShape().containsPoint(e.getX(), e.getY())) {
                 for (Shapes shape : RightPanel.getRightPanelShapes()) {
-                    if (shape.containsPoint(e.getX(), e.getY()) && !getIsLineDrawn(firstShape, e.getX(), e.getY())) {
+                    if (shape.containsPoint(e.getX(), e.getY()) && getIsLineDrawn(firstShape, e.getX(), e.getY())) {
                         destinationX = e.getX();
                         destinationY = e.getY();
                         secondShape = shape;
@@ -247,49 +245,49 @@ public class Dot extends Shapes implements MouseListener, MouseMotionListener, S
     private boolean getIsLineDrawn(Shapes shape, int x, int y) {
         if (shape instanceof OpenBracket) {
             OpenBracket openbracket = (OpenBracket) shape;
-            return openbracket.isLineDrawn();
+            return !openbracket.isLineDrawn();
         } else if (shape instanceof CloseBracket) {
             CloseBracket closebracket = (CloseBracket) shape;
-            return closebracket.isLineDrawn();
+            return !closebracket.isLineDrawn();
         } else if (shape instanceof LessThan) {
             LessThan lessThan = (LessThan) shape;
             if (lessThan.getDot1().containsPoint(x, y)) {
-                return lessThan.isLineDrawnDot1();
+                return !lessThan.isLineDrawnDot1();
             } else if (lessThan.getDot2().containsPoint(x, y)) {
-                return lessThan.isLineDrawnDot2();
+                return !lessThan.isLineDrawnDot2();
             } else if (lessThan.getDot3().containsPoint(x, y)) {
-                return lessThan.isLineDrawnDot3();
+                return !lessThan.isLineDrawnDot3();
             }
         } else if (shape instanceof GreaterThan) {
             GreaterThan greaterThan = (GreaterThan) shape;
             if (greaterThan.getDot1().containsPoint(x, y)) {
-                return greaterThan.isLineDrawnDot1();
+                return !greaterThan.isLineDrawnDot1();
             } else if (greaterThan.getDot2().containsPoint(x, y)) {
-                return greaterThan.isLineDrawnDot2();
+                return !greaterThan.isLineDrawnDot2();
             } else if (greaterThan.getDot3().containsPoint(x, y)) {
-                return greaterThan.isLineDrawnDot3();
+                return !greaterThan.isLineDrawnDot3();
             }
         } else if (shape instanceof AtTheRate) {
             AtTheRate atTheRate = (AtTheRate) shape;
             if (atTheRate.getDot1().containsPoint(x, y)) {
-                return atTheRate.isLineDrawnDot1();
+                return !atTheRate.isLineDrawnDot1();
             } else if (atTheRate.getDot2().containsPoint(x, y)) {
-                return atTheRate.isLineDrawnDot2();
+                return !atTheRate.isLineDrawnDot2();
             } else if (atTheRate.getDot3().containsPoint(x, y)) {
-                return atTheRate.isLineDrawnDot3();
+                return !atTheRate.isLineDrawnDot3();
             }
             else if (atTheRate.getDot4().containsPoint(x, y)) {
-                return atTheRate.isLineDrawnDot4();
+                return !atTheRate.isLineDrawnDot4();
             }
         } else if (shape instanceof Hyphen) {
             Hyphen hyphen = (Hyphen) shape;
             if (hyphen.getDot1().containsPoint(x, y)) {
-                return hyphen.isLineDrawnDot1();
+                return !hyphen.isLineDrawnDot1();
             } else if (hyphen.getDot2().containsPoint(x, y)) {
-                return hyphen.isLineDrawnDot2();
+                return !hyphen.isLineDrawnDot2();
             }
         }
-        return false;
+        return true;
     }
 
     @Override

@@ -44,13 +44,10 @@ public class CompileFile extends JMenuItem implements ActionListener {
             return;
         }
 
-
         //This will be further updated, is just a stub.
         //When there is an unconnected shape left on canvas
         //check for unprocessed shapes
-        Iterator<Shapes> iterator = trackShapes.keySet().iterator();
-        while (iterator.hasNext()) {
-            Shapes shp = iterator.next();
+        for (Shapes shp : trackShapes.keySet()) {
             if (trackShapes.containsKey(shp)) {
                 if (trackShapes.get(shp) == 1) {
                     infoBox("Compilation Failed!!!", "Compilation Failed");
@@ -58,7 +55,7 @@ public class CompileFile extends JMenuItem implements ActionListener {
                 }
             }
         }
-        if ((charMap.containsKey('(') && charMap.containsKey(')') && !(charMap.get('(') == charMap.get(')')))) {
+        if ((charMap.containsKey('(') && charMap.containsKey(')') && !(charMap.get('(').equals(charMap.get(')'))))) {
             infoBox("Compilation Failed!!!", "Compilation Failed");
             return;
         }
@@ -68,10 +65,8 @@ public class CompileFile extends JMenuItem implements ActionListener {
         }
         if (charMap.containsKey('@') && charMap.get('@') != 4) {
             infoBox("Compilation Failed!!!", "Compilation Failed");
-            return;
         } else {
             infoBox("Compilation successful", "Done");
-            return;
         }
 
     }
@@ -80,11 +75,9 @@ public class CompileFile extends JMenuItem implements ActionListener {
         JOptionPane.showMessageDialog(null, infoMessage, "InfoBox: " + titleBar, JOptionPane.INFORMATION_MESSAGE);
     }
 
-    public static void setTrackShapes(List<Shapes> shapes, Integer count) {
-        Iterator<Shapes> shapeIterator = RightPanel.getRightPanelShapes().iterator();
+    public static void setTrackShapes() {
 
-        while (shapeIterator.hasNext()) {
-            Shapes s = shapeIterator.next();
+        for (Shapes s : RightPanel.getRightPanelShapes()) {
             if (!trackShapes.containsKey(s))
                 trackShapes.put(s, 1); //every shape will have a unique obj Id.
         }
