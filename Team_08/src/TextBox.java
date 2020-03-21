@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.util.HashMap;
 
 /**
+ * This class consists of the Double click feature to input text.
  *
  * @author Kartik Mathpal
  * @version 1.0

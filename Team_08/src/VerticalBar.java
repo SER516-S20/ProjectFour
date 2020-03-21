@@ -8,6 +8,8 @@ import java.awt.geom.Rectangle2D;
 import java.io.Serializable;
 
 /**
+ * This class consists of Vertical bars that are given as
+ * input and output to the TwoBars shape.
  * @author Amudhan Manisekaran
  * @version 1.1
  */

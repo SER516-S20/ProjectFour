@@ -1,7 +1,7 @@
 import java.awt.Graphics;
 
 /**
- * This class consists of
+ * This is an abstract class where all the shapes are declared.
  *
  * @author Anusha Singh
  * @version 1.0
