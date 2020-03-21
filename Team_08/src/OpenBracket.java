@@ -1,5 +1,6 @@
 import java.awt.*;
 import java.awt.geom.Rectangle2D;
+
 import java.io.Serializable;
 
 /**
@@ -33,6 +34,7 @@ public class OpenBracket extends Shapes implements Serializable {
         Graphics2D graphics2 = (Graphics2D) graphic;
         dot = new Dot(x + 165, y + 100 - 50);
         dot.drawShape(graphics2);
+        
         Font font = new Font("Serif", Font.PLAIN, 40);
         graphics2.setFont(font);
         graphics2.drawString("(", x + 105, y + 60);

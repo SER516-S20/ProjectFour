@@ -1,4 +1,5 @@
 import javax.swing.*;
+
 import java.awt.*;
 
 /**
@@ -33,7 +34,6 @@ public class Button {
         lessThanButton.setFont(new Font("Arial", Font.PLAIN, 30));
         lessThanButton.addActionListener(e -> {
             lessThanButton.setName("lessThanButton");
-//                lessThanButton.setText("lessThanButton");
             resetButtonClicked(lessThanButton);
         });
         panel.add(lessThanButton);

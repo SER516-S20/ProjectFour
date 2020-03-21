@@ -1,4 +1,5 @@
 import java.awt.Color;
+
 import javax.swing.JButton;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -18,15 +19,19 @@ public class MenuBar extends JMenuBar {
 		String MENU = "| MENU |";
 		JMenu menu = new JMenu(MENU);
 		JMenuBar menuBar = new JMenuBar();
+
 		String SAVE = "Save Document";
 		SaveDocument saveDocument = new SaveDocument(SAVE);
 		saveDocument.addActionListener(saveDocument);
+
 		String LOAD = "Load Document";
 		LoadDocument loadDocument = new LoadDocument(LOAD);
 		loadDocument.addActionListener(loadDocument);
+
 		String COMPILE = "Compile Document";
 		CompileFile compileFile = new CompileFile(COMPILE);
 		compileFile.addActionListener(compileFile);
+		
 		menu.add(saveDocument);
 		menu.add(loadDocument);
 		menu.add(compileFile);
