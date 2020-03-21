@@ -13,7 +13,7 @@ import javax.swing.JPanel;
 
 /**
  * @author Yijian Hu
- * @modified by Hongqi Zhang, Kairui Hsu
+ * @modified by Hongqi Zhang, Kairui Hsu, ShihYu Chang
  */
 public class RightPanel extends JPanel implements ActionListener, MouseListener, MouseMotionListener{
 	private static final long serialVersionUID = 1L;

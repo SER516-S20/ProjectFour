@@ -1,7 +1,11 @@
+/**
+ * @author ShihYu Chang
+ */
 public class Connection {
 	private int sourceX, sourceY, destX, destY;
 	private Integer sourceButton;
 	private Integer destButton;
+	
 	public void setSourceButton(int sourceButton2) {
 		sourceButton = sourceButton2;
 	}

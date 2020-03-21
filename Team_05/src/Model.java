@@ -7,7 +7,6 @@ import java.util.List;
 public class Model {
 	private static RightTabbedPane rightTabbedPane;
 	private static Hashtable<String, TabInfo> tabs;
-	//private static Hashtable<String, Hashtable<Integer, ButtonBox>> shapes
 	private static Hashtable<Integer, ButtonBox> shapes;
 	private static Frame frame;
 	private static String dialogMessage;
