@@ -4,6 +4,10 @@
 ```sh
 $ cd Team_07/src ; javac MainFrame.java ; java MainFrame
 ```
+## Burndown Chart
+<img src="Burndown Chart.png"
+     alt="Burndown Chart"
+     style="float: left; margin-right: 10px;" />
 
 ## Sprint Review
 - What did we do?
