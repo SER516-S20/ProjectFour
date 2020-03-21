@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
+ * This class consists of GUI for the shapes in left panel.
  * @author Amudhan Manisekaran
  * @version 1.0
  */

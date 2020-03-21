@@ -6,7 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JTabbedPane;
 
 /**
- * Creates a Frame and adds two JPanels two the frame.
+ * This class creates a Frame and adds two JPanels to the frame.
  *
  * @author Kartik Mathpal
  * @version 1.0

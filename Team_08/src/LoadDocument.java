@@ -9,7 +9,8 @@ import javax.swing.JMenuItem;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
- * Adding Load file functionality to load the saved file into the application
+ * This class consists of adding load file
+ * functionality to load the saved file into the application.
  * 
  * @author Kartik Mathpal
  * @version 1.0
