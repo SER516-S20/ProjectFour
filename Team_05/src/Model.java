@@ -1,8 +1,6 @@
 import java.awt.Component;
 import java.awt.Point;
-import java.util.ArrayList;
 import java.util.Hashtable;
-import java.util.List;
 /**
  * this class is used to store the button box information and the connection
  * information, it is viewed as a data source.
