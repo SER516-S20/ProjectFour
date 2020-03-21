@@ -61,7 +61,7 @@ public class Frame extends JFrame {
     	JButton newTabButton = new JButton("  New Tab  ");
     	tabEntity.setTabComponentAt(tabEntity.getTabCount() - 1, newTabButton);
     	newTabButton.addActionListener(e -> {
-    //TO DO: write action to create new tab
+
     if (e.getActionCommand().equals("  New Tab  ")) {
             rightPanel = new RightPanel();
             tabbedPane.add("New Tab", rightPanel);

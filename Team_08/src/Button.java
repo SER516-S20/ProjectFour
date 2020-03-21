@@ -24,7 +24,6 @@ public class Button {
         closeButton.setFont(new Font("Arial", Font.PLAIN, 30));
         closeButton.addActionListener(e -> {
             closeButton.setName("closeButton");
-//                closeButton.setText("close bracket clicked");
             resetButtonClicked(closeButton);
         });
         panel.add(closeButton);
