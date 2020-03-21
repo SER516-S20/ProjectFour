@@ -5,7 +5,7 @@ import javax.swing.JMenuBar;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 /**
- *
+ * This class consists of GUI for the Menu options.
  * @author Kartik Mathpal
  * @version 1.0
  */

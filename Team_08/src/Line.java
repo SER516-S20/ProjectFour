@@ -1,4 +1,6 @@
 /**
+ * This class defines the line drawn between any two shapes.
+ *
  * @author Sandya Manoharan
  * @version 1.1
  */
