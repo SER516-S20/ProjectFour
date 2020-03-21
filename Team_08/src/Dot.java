@@ -17,6 +17,7 @@ import java.io.Serializable;
  */
 
 public class Dot extends Shapes implements MouseListener, MouseMotionListener, Serializable {
+
     private static final long serialVersionUID = 1L;
     private double x, y;
     private Shape square = null;
@@ -68,12 +69,10 @@ public class Dot extends Shapes implements MouseListener, MouseMotionListener, S
     }
 
 
-
     @Override
     public void mouseClicked(MouseEvent e) {
 
         CompileFile.setTrackShapes();
-
         int destinationX;
         int destinationY;
         Shapes secondShape;
@@ -177,11 +176,9 @@ public class Dot extends Shapes implements MouseListener, MouseMotionListener, S
                         Frame.rightPanel.setCursor(cursor);
                         Frame.rightPanel.setVisible(true);
                         updateHashMap(firstShape, secondShape);
-
                         if (CompileFile.trackShapes.containsKey(firstShape))
                             CompileFile.removeConnectedShapesFromMap(firstShape);
                         break;
-
                     }
                 }
                 Frame.rightPanel.repaint();
@@ -231,8 +228,7 @@ public class Dot extends Shapes implements MouseListener, MouseMotionListener, S
                 atTheRate.setLineDrawnDot2(true);
             } else if (atTheRate.getDot3().containsPoint(x, y)) {
                 atTheRate.setLineDrawnDot3(true);
-            }
-            else if (atTheRate.getDot4().containsPoint(x, y)) {
+            } else if (atTheRate.getDot4().containsPoint(x, y)) {
                 atTheRate.setLineDrawnDot4(true);
             }
         } else if (shape instanceof Hyphen) {
@@ -278,8 +274,7 @@ public class Dot extends Shapes implements MouseListener, MouseMotionListener, S
                 return !atTheRate.isLineDrawnDot2();
             } else if (atTheRate.getDot3().containsPoint(x, y)) {
                 return !atTheRate.isLineDrawnDot3();
-            }
-            else if (atTheRate.getDot4().containsPoint(x, y)) {
+            } else if (atTheRate.getDot4().containsPoint(x, y)) {
                 return !atTheRate.isLineDrawnDot4();
             }
         } else if (shape instanceof Hyphen) {
@@ -387,14 +382,14 @@ public class Dot extends Shapes implements MouseListener, MouseMotionListener, S
             compileFile.push('(', 1);
         if (secondShape.toString().contains("LessThan"))
             compileFile.push('<', 1);
-		if (firstShape.toString().contains("TwoBars"))
-			compileFile.push('|', 1);
-		if (secondShape.toString().contains("TwoBars"))
-			compileFile.push('|', 1);
-		if (firstShape.toString().contains("AtTheRate"))
-			compileFile.push('@', 1);
-		if (secondShape.toString().contains("AtTheRate"))
-			compileFile.push('@', 1);
+        if (firstShape.toString().contains("TwoBars"))
+            compileFile.push('|', 1);
+        if (secondShape.toString().contains("TwoBars"))
+            compileFile.push('|', 1);
+        if (firstShape.toString().contains("AtTheRate"))
+            compileFile.push('@', 1);
+        if (secondShape.toString().contains("AtTheRate"))
+            compileFile.push('@', 1);
 
     }
 

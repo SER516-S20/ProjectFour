@@ -9,10 +9,10 @@ import java.awt.*;
  */
 
 public class Button {
-    public void addButtonsToLeftPanel(LeftPanel panel){
+    public void addButtonsToLeftPanel(LeftPanel panel) {
 
         JButton openButton = new JButton(new ImageIcon("Team_08/src/ImageFiles/openbracket.jpg"));
-        openButton.setPreferredSize(new Dimension(200,100));
+        openButton.setPreferredSize(new Dimension(200, 100));
         openButton.setFont(new Font("Arial", Font.PLAIN, 30));
         openButton.addActionListener(e -> {
             openButton.setName("openButton");
@@ -21,7 +21,7 @@ public class Button {
         panel.add(openButton);
 
         JButton closeButton = new JButton(new ImageIcon("Team_08/src/ImageFiles/closebracket.jpg"));
-        closeButton.setPreferredSize(new Dimension(200,100));
+        closeButton.setPreferredSize(new Dimension(200, 100));
         closeButton.setFont(new Font("Arial", Font.PLAIN, 30));
         closeButton.addActionListener(e -> {
             closeButton.setName("closeButton");
@@ -30,7 +30,7 @@ public class Button {
         panel.add(closeButton);
 
         JButton lessThanButton = new JButton(new ImageIcon("Team_08/src/ImageFiles/lessthan.jpg"));
-        lessThanButton.setPreferredSize(new Dimension(200,100));
+        lessThanButton.setPreferredSize(new Dimension(200, 100));
         lessThanButton.setFont(new Font("Arial", Font.PLAIN, 30));
         lessThanButton.addActionListener(e -> {
             lessThanButton.setName("lessThanButton");
@@ -39,7 +39,7 @@ public class Button {
         panel.add(lessThanButton);
 
         JButton greaterThanButton = new JButton(new ImageIcon("Team_08/src/ImageFiles/greaterthan.jpg"));
-        greaterThanButton.setPreferredSize(new Dimension(200,100));
+        greaterThanButton.setPreferredSize(new Dimension(200, 100));
         greaterThanButton.setFont(new Font("Arial", Font.PLAIN, 30));
         greaterThanButton.addActionListener(e -> {
             greaterThanButton.setName("greaterThanButton");
@@ -48,7 +48,7 @@ public class Button {
         panel.add(greaterThanButton);
 
         JButton atTheRateButton = new JButton(new ImageIcon("Team_08/src/ImageFiles/attherate.jpg"));
-        atTheRateButton.setPreferredSize(new Dimension(200,100));
+        atTheRateButton.setPreferredSize(new Dimension(200, 100));
         atTheRateButton.setFont(new Font("Arial", Font.PLAIN, 30));
         atTheRateButton.addActionListener(e -> {
             atTheRateButton.setName("atTheRateButton");
@@ -57,7 +57,7 @@ public class Button {
         panel.add(atTheRateButton);
 
         JButton twoBarButton = new JButton(new ImageIcon("Team_08/src/ImageFiles/twobars.jpg"));
-        twoBarButton.setPreferredSize(new Dimension(200,100));
+        twoBarButton.setPreferredSize(new Dimension(200, 100));
         twoBarButton.setFont(new Font("Arial", Font.PLAIN, 30));
         twoBarButton.addActionListener(e -> {
             twoBarButton.setName("twoBarButton");
@@ -66,7 +66,7 @@ public class Button {
         panel.add(twoBarButton);
 
         JButton hyphenButton = new JButton(new ImageIcon("Team_08/src/ImageFiles/hyphen.jpg"));
-        hyphenButton.setPreferredSize(new Dimension(200,100));
+        hyphenButton.setPreferredSize(new Dimension(200, 100));
         hyphenButton.setFont(new Font("Arial", Font.PLAIN, 30));
         hyphenButton.addActionListener(e -> {
             hyphenButton.setName("hyphenButton");
@@ -75,7 +75,8 @@ public class Button {
         panel.add(hyphenButton);
 
     }
-    private  void resetButtonClicked(JButton button){
+
+    private void resetButtonClicked(JButton button) {
         System.out.println(button.getName() + " clicked by the user!!!");
         switch (button.getName()) {
             case "openButton":
