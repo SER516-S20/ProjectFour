@@ -1,21 +1,16 @@
-import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
-import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
-import javax.swing.JButton;
 import javax.swing.JPanel;
 
 /**
  * @author Yijian Hu
  * @modified by Hongqi Zhang, Kairui Hsu, ShihYu Chang
  */
-public class RightPanel extends JPanel implements ActionListener, MouseListener, MouseMotionListener{
+public class RightPanel extends JPanel implements MouseListener, MouseMotionListener{
 	private static final long serialVersionUID = 1L;
 	private String name;
 	private Hashtable<Integer, ButtonBox> shapes;
@@ -90,11 +85,6 @@ public class RightPanel extends JPanel implements ActionListener, MouseListener,
 	private void autoLocation(ButtonBox button, int x, int y) {
 		button.setSize(button.getPreferredSize());
 		button.setLocation(x, y);
-	}
-
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
 	}
 	
 	@Override
