@@ -4,7 +4,7 @@ import java.awt.Font;
 /**
  * BarShape.java - a class for creating Bar shape Block at a particular position
  * 
- * @author Nachiappan Lakshmanan
+ * @author Chandan Yadav
  * @version 1.0
  * 
  */
