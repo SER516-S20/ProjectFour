@@ -4,6 +4,43 @@
 ```sh
 $ cd Team_07/src ; javac MainFrame.java ; java MainFrame
 ```
+
+## Sprint Review
+- What did we do?
+  - Fixed existing bugs from previous Project/Sprint
+  - Completed all the product backlog items
+  - Finished the basic features ahead of the deadline
+- What could be better?
+  - Application could have been optimized more for better performance
+  - Team communication
+- What will we do?
+  - Extensively test our application for bugs
+  - Fix any bugs if found during testing
+
+## Sprint Retrospective
+- What did we do well?
+  - Worked on the project design and structure before starting to code
+  - GUI looks pretty good
+  - Followed good coding standards
+  - Used appropriate design patterns
+  - Proper code cleaning was done and good coding structure was maintained
+- What should we have done better?
+  - Could have increased the performance of the application
+  - Lack of planning lead to some rework during the sprint
+  - Knowledge acquisition's estimation
+- What should we start doing?
+  - Should start using multithreading for better performance
+  - Assigning related user stories to same person
+  - Assigning user stories depending on the expertise of the person
+  - Better estimation for each task
+- What should we stop doing?
+  - Starting to code before knowledge acquisition
+  - Reworking on the same thing for efficiency too early before integration
+- What should we keep doing?
+  - Code clean up and unit testing after each major task
+  - Applying appropriate design principles 
+  - Try to increase the performance of the application
+
 ## Product Backlog
 |  **No.** | **User Stories** | **Acceptance Criteria** | **Status** | **Effort** | **Author** |
 | --- | --- | --- | --- | --- | --- |
