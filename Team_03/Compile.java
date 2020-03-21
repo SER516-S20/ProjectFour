@@ -72,7 +72,6 @@ public class Compile {
 				}
 				String key = shapeNames.get(i).split("@")[Constants.FIRST_INDEX];
 				if (specialShapes.containsKey(key)) {
-
 					String peek = stack.peek();
 					String toAdd = specialShapes.get(key);
 					if (stack.size() > 0 && peek.equals(Constants.FUNCTION_BLOCK_BEGIN_CHAR)

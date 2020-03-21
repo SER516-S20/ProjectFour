@@ -2,6 +2,7 @@ import java.awt.Graphics;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
+
 /**
  * InputDialog.java - a class for connecting two different shapes using aline
  * 
