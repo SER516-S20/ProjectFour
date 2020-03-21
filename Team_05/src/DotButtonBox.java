@@ -22,5 +22,4 @@ public class DotButtonBox extends ButtonBox {
 			this.add(dots[i]);
 		}
 	}
-
 }
