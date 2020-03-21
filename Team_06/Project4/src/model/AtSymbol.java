@@ -1,17 +1,20 @@
 package model;
 import java.awt.Color;
 import java.awt.Graphics;
-import java.util.ArrayList;
 
 import controller.Drag;
 import controller.ShapeMouseListener;
 /**
  * 
  * @Author: Sheran
- * @Since: 01-29-2020
- * @Description: This model class is used to define the '@' button, which inherits the Shape abstract class, which is used on the left and right panels of the application. 
+ * @Since: 03-07-2020
+ * @Description: This model class is used to define the '@' button, which inherits the Shape abstract class, which is
+ * used on the left and right panels of the application. 
  */
 public class AtSymbol extends Shape{
+	
+	private static final long serialVersionUID = 1L;
+
 	public AtSymbol(int x, int y, boolean rightPanel){
 		super("@",x,y);
 		if(rightPanel) {
@@ -34,19 +37,21 @@ public class AtSymbol extends Shape{
 			new Drag(this);
 		}
 	}
+	
 	// Used to paint the dots in the button
 	@Override
 	protected void paintComponent(Graphics g) {
-	//This condition is so that the dot changes color when clicked by the user.
+		//This condition is so that the dot changes color when clicked by the user.
         if (getModel().isArmed()) {
-            g.setColor(Color.lightGray);
+            g.setColor(Color.LIGHT_GRAY);
         } 
         else {
             g.setColor(getBackground());
         }
-        // This is the funtion to paint the dots in the button.
+        // This is the function to paint the dots in the button.
         super.paintComponent(g);
     }
+	
     // This is used to paint the button
     protected void paintBorder(Graphics g) 
     {
@@ -58,4 +63,5 @@ public class AtSymbol extends Shape{
         g.fillRect(20, getSize().height * 3 / 4, 10, 10);
         g.fillRect(20, getSize().height * 1 / 4, 10, 10);
     }
+    
 }

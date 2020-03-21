@@ -1,12 +1,8 @@
 package controller;
 import java.awt.event.MouseEvent;
-
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
-
-import javax.swing.JButton;
 import javax.swing.JOptionPane;
-
 import model.Data;
 import model.Shape;
 

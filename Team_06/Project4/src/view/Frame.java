@@ -4,10 +4,13 @@ import java.awt.*;
 
 /**
  * @author Suyog
- * @since 02-19-2020
+ * @since 03-07-2020
+ * @Description: Frame is the main application window which is basically divided into 
+ * left and right panel.
  */
-public class Frame extends JFrame
-{
+public class Frame extends JFrame {
+	
+	private static final long serialVersionUID = 1L;
 	LeftPanel leftPanel;
 	RightPanel rightPanel;
 	

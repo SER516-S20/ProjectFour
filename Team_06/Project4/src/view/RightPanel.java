@@ -1,33 +1,23 @@
 package view;
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Point;
-//import java.awt.Shape;
-import java.awt.geom.AffineTransform;
-import java.awt.geom.Line2D;
 import java.util.ArrayList;
-
-import javax.swing.JButton;
 import javax.swing.JPanel;
-
 import controller.Tab;
-import controller.SelectShape;
 import model.Connector;
 import model.Data;
 import model.Line;
-import model.Shape;
-import model.ShapeData;
 import model.TabData;
 
 
 /**
  * @author: Rahul
- * @Date: 01/28/2020
+ * @Date: 03-07-2020
  * @Description: Right Panel will have different shapes added which are selected in left panel.
  */
-public class RightPanel extends JPanel{
-	//public int shapeNumber = 0;
+public class RightPanel extends JPanel  {
+	
+	private static final long serialVersionUID = 1L;
 	private static RightPanel single_instance = null;
 	public boolean selected = false;
 	public Connector tempStartDot;
@@ -45,7 +35,6 @@ public class RightPanel extends JPanel{
         
         int tabNumber = Tab.selectedTab();
         TabData tabData = Data.getInstance().getTab(tabNumber);
-        ArrayList<Shape> shapes = tabData.getShapes();
         ArrayList<Line> lines = tabData.getLines();
         
         for(Line l : lines) {	
@@ -56,4 +45,5 @@ public class RightPanel extends JPanel{
 	        	g.drawLine(x1, y1, x2, y2);
         }        
     }
+	
 }

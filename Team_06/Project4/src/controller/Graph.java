@@ -10,17 +10,18 @@ import java.util.*;
  */
 class Graph { 
 	private int V;
-	private LinkedList<Integer> adj[];
+	private ArrayList<LinkedList<Integer>> adj;
 	
-	Graph(int v){ 
+	Graph(Integer v){ 
 		V = v; 
-		adj = new LinkedList[v]; 
-		for (int i=0; i<v; ++i) 
-			adj[i] = new LinkedList(); 
+		adj = new ArrayList<LinkedList<Integer>>();
+		for (int i=0; i<v; ++i) {
+			adj.add(new LinkedList<Integer>()); 
+		}			
 	} 
 
 	void addEdge(int v,int w){ 
-		adj[v].add(w); 
+		adj.get(v).add(w); 
 	} 
 	
 	public boolean checkConnection(int s){ 
@@ -31,7 +32,7 @@ class Graph {
 
 		while (queue.size() != 0) { 			
 			s = queue.poll(); 			
-			Iterator<Integer> i = adj[s].listIterator(); 
+			Iterator<Integer> i = adj.get(s).listIterator(); 
 			while (i.hasNext()) 
 			{ 
 				int n = i.next(); 

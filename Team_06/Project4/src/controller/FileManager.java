@@ -1,23 +1,17 @@
 package controller;
 
-import java.awt.Point;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-
-import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
-
 import model.AtSymbol;
 import model.CloseParentheses;
 import model.Connector;
@@ -33,7 +27,6 @@ import model.OrSymbol;
 import model.Shape;
 import model.TabData;
 import model.Shape.type;
-import view.RightPanel;
 import model.ShapeData;
 
 /**
@@ -109,11 +102,7 @@ public class FileManager {
 					file.setText("the user cancelled the operation"); 
 				
 				File fileContent = fileChooser.getSelectedFile();
-		        
-				
-				BufferedReader reader;
-				BufferedReader[] readerList;
-				
+				BufferedReader reader;				
 				
 				try {
 					reader = new BufferedReader(new FileReader(fileContent));
@@ -123,8 +112,9 @@ public class FileManager {
 		            JPanel panel = new JPanel();
 		            
 		            Data.getInstance().clearTabList();
-					Tab.getInstance().jTabbedPane.removeAll();
-					Tab.getInstance().CountOfTabs = 1;
+					Tab.getInstance();
+					Tab.jTabbedPane.removeAll();					
+					Tab.CountOfTabs = 1;
 					Tab.getInstance().tabNumber = 0;
 					boolean isLine = false;
 					

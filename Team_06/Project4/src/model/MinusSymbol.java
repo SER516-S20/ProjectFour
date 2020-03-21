@@ -3,15 +3,18 @@ import java.awt.Color;
 import java.awt.Graphics;
 import controller.Drag;
 import controller.ShapeMouseListener;
-import model.Shape.type;
 
 /**
  * 
  * @Author: Somesh
- * @Since: 01-29-2020
- * @Description: This class is used to model '-' button, which inherits the Shape abstract class, and is used in both left and right panels.
+ * @Since: 03-07-2020
+ * @Description: This class is used to model '-' button, which inherits the Shape abstract class, 
+ * and is used in both left and right panels.
  */
 public class MinusSymbol extends Shape{
+	
+	private static final long serialVersionUID = 1L;
+	
 	public MinusSymbol(int x, int y, boolean rightPanel){
 		super("-",x,y);
 		
@@ -29,11 +32,12 @@ public class MinusSymbol extends Shape{
 
 		}
 	}
+	
 	// This method is used to paint the dots.
 	@Override
 	protected void paintComponent(Graphics g) {
         if (getModel().isArmed()) {
-            g.setColor(Color.lightGray);
+            g.setColor(Color.LIGHT_GRAY);
         } 
         else {
             g.setColor(getBackground());
@@ -41,6 +45,7 @@ public class MinusSymbol extends Shape{
         // This is the function used to paint the dots.
         super.paintComponent(g);
     }
+	
     // This is the method used to paint the button.
     protected void paintBorder(Graphics g) 
     {
@@ -49,4 +54,5 @@ public class MinusSymbol extends Shape{
         g.fillRect(20, getSize().height / 2, 10, 10);
         g.fillRect(getSize().width - 20, getSize().height/2, 10, 10);
     }
+    
 }

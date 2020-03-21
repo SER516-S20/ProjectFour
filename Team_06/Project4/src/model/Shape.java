@@ -7,10 +7,12 @@ import javax.swing.border.EmptyBorder;
 /**
  * 
  * @Author: Somesh, Dhananjay
- * @Since: 01-29-2020
- * @Description: This is the abstract class which all the buttons use to model.
+ * @Since: 03-07-2020
+ * @Description: This is the class which all the buttons use to model.
  */
 public class Shape extends JButton{
+	
+	private static final long serialVersionUID = 1L;
 	protected String userInput;
 	public enum type {INPUT, OUTPUT};
 	protected int shapeIndex;
@@ -49,4 +51,5 @@ public class Shape extends JButton{
 	public void setConnectors(ArrayList<Connector> connectors) {
 		this.connectors = connectors;
 	}
+	
 }

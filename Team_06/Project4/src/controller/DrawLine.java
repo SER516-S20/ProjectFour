@@ -1,17 +1,9 @@
 package controller;
 
 import static javax.swing.JOptionPane.showMessageDialog;
-
-import java.awt.Graphics;
-import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.awt.event.MouseMotionListener;
 import java.util.ArrayList;
-
-import javax.swing.JButton;
-import javax.swing.JPanel;
-
 import model.Connector;
 import model.ConnectorBar;
 import model.ConnectorDot;
@@ -19,7 +11,6 @@ import model.Data;
 import model.Line;
 import model.Shape;
 import view.RightPanel;
-
 import model.Shape.type;
 
 
@@ -49,7 +40,6 @@ public class DrawLine {
 					}					
 				}else if(tabbedPanel.selected && 
 						(dot instanceof ConnectorDot && !dot.lineFlag) || dot instanceof ConnectorBar) {
-					System.out.println("Second Click");
 					if(tabbedPanel.tempStartDot.type != dot.type) {
 						
 						Shape startShape = (Shape)tabbedPanel.tempStartDot.getParent();

@@ -9,9 +9,13 @@ import controller.Tab;
 /**
  * 
  * @author Sheran
- * @since 02-18-2020
+ * @since 03-08-2020
+ * @Description: Menu will show different options available to users.
  */
-public class Menu extends JMenuBar{
+public class Menu extends JMenuBar {
+	
+	private static final long serialVersionUID = 1L;
+
 	Menu(RightPanel rightPanel){
 		JMenu menu = new JMenu("Menu");
 		JMenu newTab = new JMenu("New Space");
@@ -32,4 +36,5 @@ public class Menu extends JMenuBar{
 		this.add(compile);
  
 	}
+	
 }
