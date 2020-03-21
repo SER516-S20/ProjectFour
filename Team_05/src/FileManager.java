@@ -114,11 +114,9 @@ public class FileManager {
 					TabInfo tabInfo = tabs.get(name);
 					NodeList shapeList = tabElement.getElementsByTagName("shape");
 					ShapeInfo[] shapes = new ShapeInfo[shapeList.getLength()];
-					for(int j=0;j<shapeList.getLength();j++)
-					{
+					for(int j=0;j<shapeList.getLength();j++) {
 						Node shapeNode = shapeList.item(j);
-						if(shapeNode.getNodeType() == Node.ELEMENT_NODE)
-						{
+						if(shapeNode.getNodeType() == Node.ELEMENT_NODE) {
 							Element shapeElement = (Element) shapeNode;
 							int id = Integer.parseInt(shapeNode.getAttributes().getNamedItem("id").getNodeValue());
 							String points[] = shapeElement.getElementsByTagName("position").item(0).getTextContent().split(",");
