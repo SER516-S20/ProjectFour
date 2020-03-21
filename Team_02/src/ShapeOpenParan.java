@@ -1,74 +1,53 @@
-
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.Shape;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.geom.Ellipse2D;
 
-import javax.swing.JButton;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-
+/**
+ * @author Sarvansh
+ * @created on 03-18-2020
+ * @version 1.0
+ * @author abhinaw sarang
+ * @created 03-20-2020
+ * @version 2.0
+ */
 public class ShapeOpenParan extends Icon{
-	
-	
+
 	private static final long serialVersionUID = 1L;
-	
-	private static String text = "(";
+	private static String symbol = "(";
 	private Dot rightDot;
-	
-	
+
 	public ShapeOpenParan(int x, int y) {
-		
-		this.centerX = x;
-		this.centerY = y;
-		
+		this.setCenterX(x);
+		this.setCenterY(y);
 		setUpPoints();
 		repaint();
-		
-		// call paint component from here, repaint ?!
 	}
-	
-	// On top of parent class Icon,
-	// Implement repaint using centerX, centerY, text, rightDot values.
-	
-	
+
 	@Override
 	public void paintComponent(Graphics objGraphics) {
-
 		try {
 			Graphics2D obj2D = (Graphics2D) objGraphics;
-			Shape objRectangle = new Rectangle(this.centerX, this.centerY, width, height);
+			Shape objRectangle = new Rectangle(this.getCenterX(), this.getCenterY(), getWidth(), getHeight());
 			obj2D.draw(objRectangle);
-			obj2D.drawString(text, getMiddlePointX(), getMiddlePointY());
-			obj2D.fillOval(rightDot.getX(), rightDot.getY(), dotSize, dotSize);
-			
-			
+			obj2D.drawString(symbol, getMiddlePointX(), getMiddlePointY());
+			obj2D.fillOval(rightDot.getX(), rightDot.getY(), getDotSize(), getDotSize());
 		} catch (Exception ex) {
 			System.out.println(ex.getMessage());
 		}
 	}
-	
-	
-	public int getMiddlePointX() {
-		return centerX+(width/2);
-	}
-	
-	public int getMiddlePointY() {
-		return centerY+(height/2)+3;
-	}
-	
-		
+
 	@Override
 	public void setUpPoints() {
-		int x = centerX+width-dotMargin-(dotSize/2);
-		int y = centerY+(height/2)-(dotSize/2);
+		int x = this.getCenterX() + getWidth() - getDotMargin() - (getDotSize()/2);
+		int y = this.getCenterY() + (getHeight()/2) - (getDotSize()/2);
 		Dot rightDot = new Dot(x, y, false, true);
+		System.out.println(this.getCenterX());
+		System.out.println(this.getCenterY());
+		System.out.println(x);
+		System.out.println(y);
 		setRightDot(rightDot);
 	}
-	
 
 	public Dot getRightDot() {
 		return rightDot;
@@ -78,6 +57,11 @@ public class ShapeOpenParan extends Icon{
 		this.rightDot = rightDot;
 	}
 
-	
+	public static String getSymbol() {
+		return symbol;
+	}
 
+	public static void setSymbol(String text) {
+		ShapeOpenParan.symbol = text;
+	}
 }
