@@ -1,31 +1,23 @@
-import java.awt.Color;
-
-import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+/**
+ * @author abhinaw sarang
+ * @created 03-15-2020
+ * @version 1.0
+ */
 public class Icon extends JPanel{
 
 	private static final long serialVersionUID = 1L;
-	
-	public int centerX;
-	public int centerY;
-	public int height=60;
-	public int width=200;
-	public int dotSize = 6;
-	public int dotMargin = 10;
+	private int centerX;
+	private int centerY;
+	private String text = null;
+	private int height = 60;
+	private int width = 200;
+	private int dotSize = 6;
+	private int dotMargin = 10;
 
-	Icon() {
-//	    JFrame f= new JFrame("Panel Example");    
-//	    JPanel panel=new JPanel();  
-//	    panel.setBounds(40,80,200,200);    
-//	    panel.setBackground(Color.gray); 
-//	    f.add(panel); 
-//	    f.setSize(400,400);    
-//	    f.setLayout(null);    
-//	    f.setVisible(true);    
-    } 
-	
-	
+	Icon() {  }
+
 	public int getCenterX() {
 		return centerX;
 	}
@@ -41,10 +33,56 @@ public class Icon extends JPanel{
 	public void setCenterY(int centerY) {
 		this.centerY = centerY;
 	}
-	
-	
+
 	public void setUpPoints() {
-		
+
 	}
-	
+
+	public int getMiddlePointX() {
+		return centerX+(width/2);
+	}
+
+	public int getMiddlePointY() {
+		return centerY+(height/2)+3;
+	}
+
+	public int getDotSize() {
+		return dotSize;
+	}
+
+	public void setDotSize(int dotSize) {
+		this.dotSize = dotSize;
+	}
+
+	public int getDotMargin() {
+		return dotMargin;
+	}
+
+	public void setDotMargin(int dotMargin) {
+		this.dotMargin = dotMargin;
+	}
+
+	public int getHeight() {
+		return height;
+	}
+
+	public void setHeight(int height) {
+		this.height = height;
+	}
+
+	public int getWidth() {
+		return width;
+	}
+
+	public void setWidth(int width) {
+		this.width = width;
+	}
+
+	public String getText() {
+		return text;
+	}
+
+	public void setText(String text) {
+		this.text = text;
+	}
 }
