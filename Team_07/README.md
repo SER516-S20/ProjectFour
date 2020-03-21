@@ -2,9 +2,7 @@
 
 ## How to run
 ```sh
-$ cd Team_07/src
-$ javac MainFrame.java
-$ java MainFrame
+$ cd Team_07/src ; javac MainFrame.java ; java MainFrame
 ```
 ## Product Backlog
 |  **No.** | **User Stories** | **Acceptance Criteria** | **Status** | **Effort** | **Author** |
