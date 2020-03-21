@@ -48,6 +48,56 @@ public class RightPanelDataProcessor extends Observable {
 			addNewIcon(x, y);
 		}
 	}
+	
+	public void dragDrop(Dot startPoint, Dot endPoint) {
+		String draggedShape;
+		for(String key: iconMap.keySet()) {
+			for(Icon eachIcon: iconMap.get(key)) {
+				if (isClickedIcon(eachIcon, startPoint.getX(), startPoint.getY())) {
+					draggedShape = key;
+					iconMap.get(key).remove(eachIcon);
+					removeDot(draggedShape, eachIcon);
+					ClickedShape.shapeName = draggedShape;
+					addNewIcon(endPoint.getX(), endPoint.getY());
+					moveLines(draggedShape, eachIcon);
+					break;
+				}
+			}
+		}
+		setChanged();
+		notifyObservers(this);
+	}
+	
+	public void doubleClick(int x, int y, String value) {
+		for(String key: iconMap.keySet()) {
+			for(Icon eachIcon: iconMap.get(key)) {
+				if (isClickedIcon(eachIcon, x, y)) {
+					eachIcon.setText(value);
+					break;
+				}
+			}
+		}
+	}
+
+	public String getTextValue(int x, int y) {
+		for(String key: iconMap.keySet()) {
+			for(Icon eachIcon: iconMap.get(key)) {
+				if (isClickedIcon(eachIcon, x, y)) {
+					return eachIcon.getText();
+				}
+			}
+		}
+		return null;
+	}
+	
+	private void addNewLine(Dot startPoint, Dot endPoint) {
+		Line newLine = new Line(startPoint, endPoint);
+		if (Rules.isValidLine(newLine, getLineList())) {
+			getLineList().add(newLine);
+			setChanged();
+			notifyObservers(this);
+		}
+	}
 
 	private void addNewIcon(int x, int y) {
 
@@ -127,37 +177,6 @@ public class RightPanelDataProcessor extends Observable {
 		notifyObservers(this);
 	}
 
-	private void addNewLine(Dot startPoint, Dot endPoint) {
-		Line newLine = new Line(startPoint, endPoint);
-		if (Rules.isValidLine(newLine, getLineList())) {
-			getLineList().add(newLine);
-			setChanged();
-			notifyObservers(this);
-		}
-	}
-
-	public void dragDrop(Dot startPoint, Dot endPoint) {
-		String draggedShape;
-		for(String key: iconMap.keySet()) {
-			for(Icon eachIcon: iconMap.get(key)) {
-				if (startPoint.getX() >= eachIcon.getMiddlePointX() - 100 &&
-						startPoint.getX() <= eachIcon.getMiddlePointX() + 100 &&
-						startPoint.getY() >= eachIcon.getMiddlePointY() - 30 &&
-						startPoint.getY() <= eachIcon.getMiddlePointY() + 30) {
-					draggedShape = key;
-					iconMap.get(key).remove(eachIcon);
-					removeDot(draggedShape, eachIcon);
-					ClickedShape.shapeName = draggedShape;
-					addNewIcon(endPoint.getX(), endPoint.getY());
-					moveLines(draggedShape, eachIcon);
-					break;
-				}
-			}
-		}
-		setChanged();
-		notifyObservers(this);
-	}
-
 	private void removeDot(String shapeName, Icon icon) {
 		if (shapeName.equalsIgnoreCase("openParanthesis")) {
 			ShapeOpenParan s = (ShapeOpenParan) icon;
@@ -193,50 +212,121 @@ public class RightPanelDataProcessor extends Observable {
 	private void moveLines(String shapeName, Icon icon) {
 		if (shapeName.equalsIgnoreCase("openParanthesis")) {
 			ShapeOpenParan s = (ShapeOpenParan) icon;
+			int newIconIndex = iconMap.get(shapeName).size()-1;
+			ShapeOpenParan newIcon = (ShapeOpenParan) iconMap.get(shapeName).get(newIconIndex);
 			for (Line eachLine: getLineList()) {
 				if (eachLine.getStartDot().equals(s.getRightDot())) {
 					Dot end = eachLine.getEndDot();
 					getLineList().remove(eachLine);
-					int newIconIndex = iconMap.get(shapeName).size()-1;
-					ShapeOpenParan newIcon = (ShapeOpenParan) iconMap.get(shapeName).get(newIconIndex);
 					getLineList().add(new Line(newIcon.getRightDot(), end));
 					break;
 				}
 			}
 		} else if (shapeName.equalsIgnoreCase("closedParanthesis")) {
 			ShapeClosedParan s = (ShapeClosedParan) icon;
+			int newIconIndex = iconMap.get(shapeName).size()-1;
+			ShapeClosedParan newIcon = (ShapeClosedParan) iconMap.get(shapeName).get(newIconIndex);
 			for (Line eachLine: getLineList()) {
 				if (eachLine.getEndDot().equals(s.getLeftDot())) {
 					Dot start = eachLine.getStartDot();
 					getLineList().remove(eachLine);
-					int newIconIndex = iconMap.get(shapeName).size()-1;
-					ShapeClosedParan newIcon = (ShapeClosedParan) iconMap.get(shapeName).get(newIconIndex);
 					getLineList().add(new Line(start, newIcon.getLeftDot()));
 					break;
 				}
 			}
 		} else if (shapeName.equalsIgnoreCase("lessThanOperator")) {
 			ShapeLessThan s = (ShapeLessThan) icon;
-			this.dotList.remove(s.getLeftDot());
-			this.dotList.remove(s.getRightLowerDot());
-			this.dotList.remove(s.getRightUpperDot());
+			int newIconIndex = iconMap.get(shapeName).size()-1;
+			ShapeLessThan newIcon = (ShapeLessThan) iconMap.get(shapeName).get(newIconIndex);
+			for (Line eachLine: getLineList()) {
+				if (eachLine.getStartDot().equals(s.getRightLowerDot())) {
+					Dot end = eachLine.getEndDot();
+					getLineList().remove(eachLine);
+					getLineList().add(new Line(newIcon.getRightLowerDot(), end));
+				} else if (eachLine.getStartDot().equals(s.getRightUpperDot())) {
+					Dot end = eachLine.getEndDot();
+					getLineList().remove(eachLine);
+					getLineList().add(new Line(newIcon.getRightUpperDot(), end));
+				} else if (eachLine.getEndDot().equals(s.getLeftDot())) {
+					Dot start = eachLine.getStartDot();
+					getLineList().remove(eachLine);
+					getLineList().add(new Line(start, newIcon.getLeftDot()));
+					break;
+				}
+			}
 		} else if (shapeName.equalsIgnoreCase("greaterThanOperator")) {
 			ShapeGreaterThan s = (ShapeGreaterThan) icon;
-			this.dotList.remove(s.getRightDot());
-			this.dotList.remove(s.getLeftLowerDot());
-			this.dotList.remove(s.getLeftUpperDot());
+			int newIconIndex = iconMap.get(shapeName).size()-1;
+			ShapeGreaterThan newIcon = (ShapeGreaterThan) iconMap.get(shapeName).get(newIconIndex);
+			for (Line eachLine: getLineList()) {
+				if (eachLine.getStartDot().equals(s.getLeftLowerDot())) {
+					Dot start = eachLine.getStartDot();
+					getLineList().remove(eachLine);
+					getLineList().add(new Line(start, newIcon.getLeftLowerDot()));
+				} else if (eachLine.getStartDot().equals(s.getLeftUpperDot())) {
+					Dot start = eachLine.getStartDot();
+					getLineList().remove(eachLine);
+					getLineList().add(new Line(start, newIcon.getLeftUpperDot()));
+				} else if (eachLine.getEndDot().equals(s.getRightDot())) {
+					Dot end = eachLine.getEndDot();
+					getLineList().remove(eachLine);
+					getLineList().add(new Line(newIcon.getRightDot(), end));
+					break;
+				}
+			}
 		} else if (shapeName.equalsIgnoreCase("atTheRateOperator")) {
 			ShapeAtTheRate s = (ShapeAtTheRate) icon;
-			this.dotList.remove(s.getRightLowerDot());
-			this.dotList.remove(s.getRightUpperDot());
-			this.dotList.remove(s.getLeftLowerDot());
-			this.dotList.remove(s.getLeftUpperDot());
+			int newIconIndex = iconMap.get(shapeName).size()-1;
+			ShapeAtTheRate newIcon = (ShapeAtTheRate) iconMap.get(shapeName).get(newIconIndex);
+			for (Line eachLine: getLineList()) {
+				if (eachLine.getStartDot().equals(s.getLeftLowerDot())) {
+					Dot start = eachLine.getStartDot();
+					getLineList().remove(eachLine);
+					getLineList().add(new Line(start, newIcon.getLeftLowerDot()));
+				} else if (eachLine.getStartDot().equals(s.getLeftUpperDot())) {
+					Dot start = eachLine.getStartDot();
+					getLineList().remove(eachLine);
+					getLineList().add(new Line(start, newIcon.getLeftUpperDot()));
+				} else if (eachLine.getStartDot().equals(s.getRightLowerDot())) {
+					Dot end = eachLine.getEndDot();
+					getLineList().remove(eachLine);
+					getLineList().add(new Line(newIcon.getRightLowerDot(), end));
+				} else if (eachLine.getStartDot().equals(s.getRightUpperDot())) {
+					Dot end = eachLine.getEndDot();
+					getLineList().remove(eachLine);
+					getLineList().add(new Line(newIcon.getRightUpperDot(), end));
+				}
+			}
 		} else if (shapeName.equalsIgnoreCase("barOperator")) {
 			// Implement for Bar
 		} else if (shapeName.equalsIgnoreCase("dashOperator")) {
 			ShapeDash s = (ShapeDash) icon;
-			this.dotList.remove(s.getRightDot());
-			this.dotList.remove(s.getLeftDot());
+			int newIconIndex = iconMap.get(shapeName).size()-1;
+			ShapeDash newIcon = (ShapeDash) iconMap.get(shapeName).get(newIconIndex);
+			for (Line eachLine: getLineList()) {
+				if (eachLine.getStartDot().equals(s.getRightDot())) {
+					Dot end = eachLine.getEndDot();
+					getLineList().remove(eachLine);
+					getLineList().add(new Line(newIcon.getRightDot(), end));
+					break;
+				} else if (eachLine.getEndDot().equals(s.getLeftDot())) {
+					Dot start = eachLine.getStartDot();
+					getLineList().remove(eachLine);
+					getLineList().add(new Line(start, newIcon.getLeftDot()));
+					break;
+				}
+			}
+		}
+	}
+	
+	private boolean isClickedIcon(Icon icon, int x, int y) {
+		if (x >= icon.getMiddlePointX() - 100 &&
+			x <= icon.getMiddlePointX() + 100 &&
+			y >= icon.getMiddlePointY() - 30 &&
+			y <= icon.getMiddlePointY() + 30) {
+			return true;
+		} else {
+			return false;
 		}
 	}
 
@@ -261,33 +351,5 @@ public class RightPanelDataProcessor extends Observable {
 
 	public void setIconMap(HashMap<String, List<Icon>> iconMap) {
 		this.iconMap = iconMap;
-	}
-
-	public void doubleClick(int x, int y, String value) {
-		for(String key: iconMap.keySet()) {
-			for(Icon eachIcon: iconMap.get(key)) {
-				if (x >= eachIcon.getMiddlePointX() - 100 &&
-						x <= eachIcon.getMiddlePointX() + 100 &&
-						y >= eachIcon.getMiddlePointY() - 30 &&
-						y <= eachIcon.getMiddlePointY() + 30) {
-					eachIcon.setText(value);
-					break;
-				}
-			}
-		}
-	}
-
-	public String getTextValue(int x, int y) {
-		for(String key: iconMap.keySet()) {
-			for(Icon eachIcon: iconMap.get(key)) {
-				if (x >= eachIcon.getMiddlePointX() - 100 &&
-						x <= eachIcon.getMiddlePointX() + 100 &&
-						y >= eachIcon.getMiddlePointY() - 30 &&
-						y <= eachIcon.getMiddlePointY() + 30) {
-					return eachIcon.getText();
-				}
-			}
-		}
-		return null;
 	}
 }

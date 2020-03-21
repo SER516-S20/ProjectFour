@@ -44,8 +44,6 @@ public class RightPanelMouseListener extends JPanel {
 					System.out.println("Inside mouse clicked");
 					dataProcessor.onClick(event.getX() - 150, event.getY());
 				}
-				//System.out.println("Inside mouse clicked");
-				//dataProcessor.onClick(event.getX() - 150, event.getY());
 			}
 		}
 

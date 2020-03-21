@@ -23,7 +23,6 @@ import javax.swing.border.Border;
  * @created 03-20-2020
  * @version 2.0
  */
-@SuppressWarnings("deprecation")
 public class RightPanel extends JPanel implements Observer {
 
 	private static final long serialVersionUID = 1L;
@@ -50,15 +49,10 @@ public class RightPanel extends JPanel implements Observer {
 		}
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public void update(Observable o, Object arg) {
-		System.out.println("Data changes observed in Right Panel...call repaint");
-		// Iterate the hash map to call the individual repaing function.
 		RightPanelDataProcessor objProcessor = (RightPanelDataProcessor) arg;
-		// Get the drawn
 		iconLocalMap = (HashMap<String, List<Icon>>) objProcessor.getIconMap().clone();
-		// Get he lines drawn
 		localStoreLine = (ArrayList<Line>) ((ArrayList<Line>) (objProcessor.getLineList())).clone();
 		repaint();
 	}
@@ -173,9 +167,6 @@ public class RightPanel extends JPanel implements Observer {
 		}
 		for (Line eachLine : localStoreLine) {
 			try {
-				//obj2D.drawLine(eachLine.getStartDot().getX(), eachLine.getStartDot().getY(),
-				//		eachLine.getEndDot().getX(), eachLine.getEndDot().getY());
-
 				LineArrow line1 = new LineArrow(eachLine.getStartDot().getX(), eachLine.getStartDot().getY(), eachLine.getEndDot().getX(), eachLine.getEndDot().getY(), Color.BLACK, 3);
 				line1.draw(objGraphics);
 			} catch (Exception ex) {
