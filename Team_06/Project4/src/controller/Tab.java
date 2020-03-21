@@ -20,7 +20,7 @@ import view.RightPanel;
 /**
  * 
  * @author Dhananjay
- * @since 02-28-2020
+ * @since 03-09-2020
  * @Description: This controller class is used add new tab in right panel whenever new space button is clicked.
  */
 public class Tab {
@@ -41,6 +41,7 @@ public class Tab {
 		}
 		return TabObj;
 	}
+	
 	public void initialize(JMenu NewTab, RightPanel rightPanel) {
 		rightPanel.setLayout(null);
 	    jTabbedPane.setBounds(0,0,screenSize.width*5/6,screenSize.height); 

@@ -25,35 +25,30 @@ import model.Shape.type;
 
 /** 
  * @author somesh
- * @since 02-28-2020
+ * @since 03-09-2020
  * @Desciption: This controller class is used to draw lines between dots/bars.
  */
-
-public class DrawLine{
-	int mouseX = 0, mouseY = 0;
+public class DrawLine {
+	int mouseX = 0; 
+	int mouseY = 0;
 	static boolean selected = false;
 	
-	public DrawLine(Connector dot){
-		dot.addMouseListener(new MouseListener(){
+	public DrawLine(Connector dot) {
+		dot.addMouseListener(new MouseListener() {
 			@Override
 			public void mouseClicked(MouseEvent e){
-
-				System.out.println("Dot Clicked");
-				RightPanel tabbedPanel = (RightPanel) e.getComponent().getParent().getParent();
+				RightPanel tabbedPanel = (RightPanel) e.getComponent().getParent().getParent();				
 				
-				
-				if (!tabbedPanel.selected) {
-					
+				if (!tabbedPanel.selected) {					
 					if ((dot instanceof ConnectorDot && !dot.lineFlag) || dot instanceof ConnectorBar) {
-						System.out.println("First Click");
 						tabbedPanel.selected = !tabbedPanel.selected;
 						tabbedPanel.tempStartDot = dot;
 					}else {
 						String msg = "Warning : \nYou can not draw more than 1 line from Connector Dot.";
 			        	 showMessageDialog(null, msg);
-					}
-					
-				}else if(tabbedPanel.selected && (dot instanceof ConnectorDot && !dot.lineFlag) || dot instanceof ConnectorBar) {
+					}					
+				}else if(tabbedPanel.selected && 
+						(dot instanceof ConnectorDot && !dot.lineFlag) || dot instanceof ConnectorBar) {
 					System.out.println("Second Click");
 					if(tabbedPanel.tempStartDot.type != dot.type) {
 						
@@ -62,21 +57,20 @@ public class DrawLine{
 						int startConnectorIndex = startShape.getConnectors().indexOf(tabbedPanel.tempStartDot);
 						int endConnectorIndex = endShape.getConnectors().indexOf(dot);
 						
-						Data.getInstance().getTab(Tab.selectedTab()).addLines(new Line(startShape, endShape, startConnectorIndex, endConnectorIndex, 
-								tabbedPanel.tempStartDot.getX(),tabbedPanel.tempStartDot.getY(), dot.getX(), dot.getY()));
-						
+						Data.getInstance().getTab(Tab.selectedTab()).addLines(new Line(startShape, endShape,
+								startConnectorIndex, endConnectorIndex, tabbedPanel.tempStartDot.getX(),
+								tabbedPanel.tempStartDot.getY(), dot.getX(), dot.getY()));						
 						
 						if (dot.type == type.INPUT) {
 							if (tabbedPanel.tempStartDot instanceof ConnectorDot) {
 								((ConnectorDot) tabbedPanel.tempStartDot).setToConnector(dot);
 							}else {
-								ArrayList <Connector> toConnector =  ((ConnectorBar) tabbedPanel.tempStartDot).getToConnector();
+								ArrayList <Connector> toConnector =  
+										((ConnectorBar) tabbedPanel.tempStartDot).getToConnector();
 								toConnector.add(dot);
 								((ConnectorBar) tabbedPanel.tempStartDot).setToConnector(toConnector);
-							}
-							
-						}else {
-							
+							}							
+						}else {							
 							if (dot instanceof ConnectorDot) {
 								((ConnectorDot) dot).setToConnector(tabbedPanel.tempStartDot);
 							}else {
@@ -84,14 +78,13 @@ public class DrawLine{
 								toConnector.add(tabbedPanel.tempStartDot);
 								((ConnectorBar) dot).setToConnector(toConnector);
 							}
-						}
-						
+						}						
 						
 						tabbedPanel.tempStartDot.lineFlag = true;
-						dot.lineFlag = true;
-						
+						dot.lineFlag = true;						
 					}else {
-						String msg = "Warning : \nYou can not draw line from : \n1. An Input to Input Connector. \n2. An Output to Output Connector .";
+						String msg = "Warning : \nYou can not draw line from : \n1. An Input to Input Connector. "
+								+ "\n2. An Output to Output Connector .";
 			        	 showMessageDialog(null, msg);
 					}
 					tabbedPanel.selected = !tabbedPanel.selected;
@@ -124,4 +117,5 @@ public class DrawLine{
 
 		});
 	}	
+	
 }
