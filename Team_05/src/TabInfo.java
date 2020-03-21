@@ -21,6 +21,11 @@ public class TabInfo {
 		connections = new ArrayList<Connection>();
 	}
 	
+	public String getName()
+	{
+		return name;
+	}
+	
 	public void setshapes( Hashtable<Integer, ButtonBox> inshapes) {
 		this.shapes = inshapes;
 	}

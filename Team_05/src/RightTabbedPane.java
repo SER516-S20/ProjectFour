@@ -1,19 +1,13 @@
-import java.util.Hashtable;
-
 import javax.swing.JTabbedPane;
 
 public class RightTabbedPane extends JTabbedPane{
-	
+	private static final long serialVersionUID = 1L;
+
 	RightTabbedPane()
 	{
 		if(Model.getTabs().size()==0)
 			addWorkingAreaTab();
 		Model.setRightTabbedPane(this);
-	}
-	
-	public void load()
-	{
-		
 	}
 	
 	public boolean addWorkingAreaTab(RightPanel tab)
@@ -30,7 +24,6 @@ public class RightTabbedPane extends JTabbedPane{
 			add(tab.getName(),tab);
 			tab.init();
 		}
-		System.out.println(added?"Tab added":"Tab not added");
 		return added;
 	}
 	
@@ -44,7 +37,6 @@ public class RightTabbedPane extends JTabbedPane{
 			name = init_name + Integer.toString(count);
 			count++;
 		}
-		//WorkingAreaTab tab = new WorkingAreaTab(name);
 		RightPanel tab = new RightPanel(name);
 		addWorkingAreaTab(tab);
 	}

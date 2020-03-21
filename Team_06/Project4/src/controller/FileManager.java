@@ -19,7 +19,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 
 import model.AtSymbol;
-import model.CloseParanthesis;
+import model.CloseParentheses;
 import model.Connector;
 import model.ConnectorBar;
 import model.ConnectorDot;
@@ -28,7 +28,7 @@ import model.GreaterSymbol;
 import model.LesserSymbol;
 import model.Line;
 import model.MinusSymbol;
-import model.OpenParanthesis;
+import model.OpenParentheses;
 import model.OrSymbol;
 import model.Shape;
 import model.TabData;
@@ -39,7 +39,8 @@ import model.ShapeData;
 /**
  * 
  * @author Suyog
- * @Since 02-16-2020
+ * @Since 03-09-2020
+ * @Description: This controller class is used to handle save and load operations 
  */
 public class FileManager {
 	
@@ -63,18 +64,23 @@ public class FileManager {
 	                // set the label to the path of the selected file  
 	                try(FileWriter fw = new FileWriter(fileChooser.getSelectedFile()+".txt")) {
 	                	for(TabData tab : Data.getInstance().getTabList()){
-	                		if(tab.getShapeData().size() == 0) fw.write(Data.getInstance().getTabList().indexOf(tab)+ System.lineSeparator());
+	                		if(tab.getShapeData().size() == 0) {
+	                			fw.write(Data.getInstance().getTabList().indexOf(tab)+ System.lineSeparator());
+	                		}
 	                		for(ShapeData shape : tab.getShapeData()) {
-	                			fw.write(Data.getInstance().getTabList().indexOf(tab) +";"+ shape.getIndex() +";"+shape.getShapeNumber()+";"
-	                					        + shape.getX() + ";" + shape.getY() + ";"+ shape.getUserIp() +";" + System.lineSeparator());
+	                			fw.write(Data.getInstance().getTabList().indexOf(tab) + ";"
+	                					+ shape.getIndex() +";"+shape.getShapeNumber() + ";" + shape.getX() + ";" 
+	                					+ shape.getY() + ";"+ shape.getUserIp() +";" + System.lineSeparator());
 	                		}
 	                    }
 	                	fw.write("-----" + 	System.lineSeparator());
 	                	for(TabData tab : Data.getInstance().getTabList()){
 	                		for(Line l : tab.getLines()) {
-	                			fw.write(Data.getInstance().getTabList().indexOf(tab) + ";" + l.startShape.getShapeIndex() + ";" +  l.startConnectorIndex + ";"+
-                					l.x1 + ";" + l.y1 + ";" + l.endShape.getShapeIndex() + ";" + l.endConnectorIndex + ";"+ + l.x2 + ";" + l.y2 + ";"
-                					+ System.lineSeparator());
+	                			fw.write(Data.getInstance().getTabList().indexOf(tab) + ";" 
+	                					+ l.startShape.getShapeIndex() + ";" +  l.startConnectorIndex + ";"
+	                					+ l.x1 + ";" + l.y1 + ";" + l.endShape.getShapeIndex() + ";" 
+	                					+ l.endConnectorIndex + ";" + + l.x2 + ";" + l.y2 + ";" 
+	                					+ System.lineSeparator());
 	                		}
 	                	}
 	                	fw.close();
@@ -165,11 +171,11 @@ public class FileManager {
 		            		tabData.addShapeData(shapeNumber, shapeIndex, x, y);
 		            		
 		            		switch(shapeNumber) {
-		            			case 1: shape = new OpenParanthesis(x, y, true);
+		            			case 1: shape = new OpenParentheses(x, y, true);
 		            					tabData.setOpenParaFlag(true);
 		            					tabData.setOpenVertex(shapeIndex);
 		            					break;
-		            			case 2: shape = new CloseParanthesis(x, y, true);
+		            			case 2: shape = new CloseParentheses(x, y, true);
 		            					tabData.setCloseParaFlag(true);
 		            					tabData.setCloseVertex(shapeIndex);
 		            					break;
@@ -210,20 +216,21 @@ public class FileManager {
 		            		int x1 = Integer.parseInt(lineInfo[3]);
 		            		int y1 = Integer.parseInt(lineInfo[4]);
 		            		
-		            		Shape endShape = Data.getInstance().getTab(tabNumber).getShapeInstance(Integer.parseInt(lineInfo[5]));
+		            		Shape endShape = Data.getInstance().getTab(tabNumber).
+		            				getShapeInstance(Integer.parseInt(lineInfo[5]));
 		            		int endConnectorIndex = Integer.parseInt(lineInfo[6]);
 		            		Connector dot = endShape.getConnectors().get(endConnectorIndex);
 		            		int x2 = Integer.parseInt(lineInfo[7]);
 		            		int y2 = Integer.parseInt(lineInfo[8]);
 		            		
-		            		Data.getInstance().getTab(tabNumber).addLines(new Line(startShape,endShape,startConnectorIndex, endConnectorIndex, x1,y1,x2,y2));
-		            		
+		            		Data.getInstance().getTab(tabNumber).addLines(
+		            				new Line(startShape,endShape,startConnectorIndex, endConnectorIndex, x1,y1,x2,y2));
 		            		
 		            		if (dot.type == type.INPUT) {
 								if (tempStartDot instanceof ConnectorDot) {
 									((ConnectorDot) tempStartDot).setToConnector(dot);
 								}else {
-									ArrayList <Connector> toConnector =  ((ConnectorBar) tempStartDot).getToConnector();
+									ArrayList <Connector> toConnector = ((ConnectorBar) tempStartDot).getToConnector();
 									toConnector.add(dot);
 									((ConnectorBar) tempStartDot).setToConnector(toConnector);
 								}
@@ -254,9 +261,7 @@ public class FileManager {
 		            e1.printStackTrace();
 		        }
 		    }
-		});
-		
-		
-		 
+		});		 
 	}
+	
 }

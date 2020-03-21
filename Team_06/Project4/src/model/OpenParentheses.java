@@ -11,8 +11,8 @@ import model.Shape.type;
  * @Since: 01-29-2020
  * @Description: This class is used to model '(' button, which inherits the Shape abstract class, and is used in both left and right panels.
  */
-public class OpenParanthesis extends Shape{
-	public OpenParanthesis(int x, int y, boolean rightPanel){
+public class OpenParentheses extends Shape{
+	public OpenParentheses(int x, int y, boolean rightPanel){
 		super("(",x,y);
 		
 		if(rightPanel) {

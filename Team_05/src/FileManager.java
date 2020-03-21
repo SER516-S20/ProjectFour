@@ -82,7 +82,6 @@ public class FileManager {
 						conn.appendChild(position);
 					}
 				}
-				
 			}
 			TransformerFactory transformerFactory = TransformerFactory.newInstance();
 			Transformer transformer = transformerFactory.newTransformer();
@@ -106,7 +105,6 @@ public class FileManager {
 			tabs.clear();
 			pane.removeAll();
 			NodeList nodeList = doc.getElementsByTagName("tab");
-			
 			for(int i = 0;i < nodeList.getLength();i++) {
 				Node node = nodeList.item(i);
 				if (node.getNodeType() == Node.ELEMENT_NODE) {  
@@ -137,7 +135,6 @@ public class FileManager {
 						System.out.println(si.toString());
 					tab.load(shapes);
 					NodeList connList = tabElement.getElementsByTagName("conn");
-					//model.clearConnection();
 					for(int j = 0;j < connList.getLength();j++) {
 						Node conn = connList.item(j);
 						if (conn.getNodeType() == Node.ELEMENT_NODE) {  
@@ -152,11 +149,9 @@ public class FileManager {
 							newConn.setDestButton(Integer.parseInt(destId));
 							newConn.setDestX(Integer.parseInt(points[2]));
 							newConn.setDestY(Integer.parseInt(points[3]));
-							//model.addConnection(newConn);
 							tabInfo.addConnection(newConn);
 						}
 					}
-
 				}
 			}
 		}

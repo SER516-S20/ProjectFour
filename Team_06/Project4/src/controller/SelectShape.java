@@ -7,8 +7,8 @@ import java.awt.event.MouseEvent;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import model.AtSymbol;
-import model.OpenParanthesis;
-import model.CloseParanthesis;
+import model.OpenParentheses;
+import model.CloseParentheses;
 import model.Data;
 import model.LesserSymbol;
 import model.GreaterSymbol;
@@ -18,8 +18,9 @@ import model.TabData;
 import model.MinusSymbol;
 
 /**
- * @author Dananjay
- * @since 02-18-2020
+ * @author somesh
+ * @since 03-08-2020
+ * @Description: This controller class is used to add the selected shape in current tab.
  */
 public class SelectShape {
 	public void select(JButton shape, int shapeNumber) {
@@ -45,7 +46,7 @@ public class SelectShape {
 				
 				switch(shapeNumber) {
 					case 1: if (!Data.getInstance().getTab(tabNumber).isOpenParaFlag()) {
-								shape = new OpenParanthesis(e.getX(), e.getY(), true);
+								shape = new OpenParentheses(e.getX(), e.getY(), true);
 								TabData tabData = Data.getInstance().getTab(tabNumber);
 								tabData.setOpenParaFlag(true);
 								tabData.setOpenVertex(tabData.getShapeCount() + 1);
@@ -53,7 +54,7 @@ public class SelectShape {
 							}
 							break;
 					case 2: if ( !Data.getInstance().getTab(tabNumber).isCloseParaFlag()) {
-								shape = new CloseParanthesis(e.getX(), e.getY(), true);
+								shape = new CloseParentheses(e.getX(), e.getY(), true);
 								TabData tabData = Data.getInstance().getTab(tabNumber);
 								tabData.setCloseParaFlag(true);
 								tabData.setCloseVertex(tabData.getShapeCount() + 1);
@@ -85,4 +86,5 @@ public class SelectShape {
 			}					
 		});
 	}
+	
 }

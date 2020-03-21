@@ -31,8 +31,6 @@ public class RightPanel extends JPanel{
 	private static RightPanel single_instance = null;
 	public boolean selected = false;
 	public Connector tempStartDot;
-
-	//public ArrayList<Line> lines = new ArrayList<Line>();
 	
 	public static RightPanel getInstance(){
 		if (single_instance == null)
@@ -50,21 +48,12 @@ public class RightPanel extends JPanel{
         ArrayList<Shape> shapes = tabData.getShapes();
         ArrayList<Line> lines = tabData.getLines();
         
-        for(Line l : lines) {
-        	
-//        	System.out.println("x1 - " + l.x1);
-//        	System.out.println("x2 - " + l.startDot.getParent().getX());
-//        	System.out.println("y1 - " + l.y1);
-//        	System.out.println("y2 - " + l.startDot.getParent().getY());
-        	
+        for(Line l : lines) {	
 	        	int x1 = l.x1 + l.startShape.getX(); 
 	        	int y1 = l.y1 + l.startShape.getY(); 
 	        	int x2 = l.x2 + l.endShape.getX();
 	        	int y2 = l.y2 + l.endShape.getY();
 	        	g.drawLine(x1, y1, x2, y2);
-        }
-        
-        //g.fillOval(0, 0, getSize().width, getSize().height);
-        
+        }        
     }
 }

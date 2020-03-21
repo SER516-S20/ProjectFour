@@ -10,15 +10,13 @@ import view.RightPanel;
 
 /**
  * 
- * @author Dananjay
- * @since 02-28-2020
+ * @author Dhananjay
+ * @since 03-09-2020
+ * @Description: This controller class is handling to functionality of dragging shapes.
  */
-
-public class Drag{
-	
+public class Drag{	
 	int screenX = 0; 
-	int screenY = 0;
-	
+	int screenY = 0;	
 	int mouseX = 0;
 	int mouseY = 0;
 	
@@ -29,8 +27,7 @@ public class Drag{
 			}
 
 			@Override
-			public void mousePressed(MouseEvent e) 
-			{
+			public void mousePressed(MouseEvent e){
 				screenX = e.getXOnScreen();
 				screenY = e.getYOnScreen();
 				mouseX = shape.getX();
@@ -40,14 +37,6 @@ public class Drag{
 
 			@Override
 			public void mouseReleased(MouseEvent e){
-//				System.out.println("Released");
-//				RightPanel rightPanel = (RightPanel) e.getComponent().getParent();
-//				for (Line l : rightPanel.lines) {
-//		        	System.out.println(l.startDot.getX()+" RL "+ l.startDot.getY());
-//		        	System.out.println(l.endDot.getX() +" "+ l.endDot.getY());
-//					
-//					
-//				}
 			}
 
 			@Override
@@ -72,12 +61,10 @@ public class Drag{
 				rightPanel.repaint();
 				
 			}
-			
-
 			@Override
-			public void mouseMoved(MouseEvent e){
-				
+			public void mouseMoved(MouseEvent e){				
 			}
 		});
 	}
+	
 }

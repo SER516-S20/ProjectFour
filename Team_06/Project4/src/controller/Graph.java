@@ -1,9 +1,14 @@
 package controller;
 
 import java.util.*; 
-
-class Graph 
-{ 
+/**
+ * 
+ * @author Sheran, Dhananjay
+ * @since 03-12-2020
+ * @Description: This class is used to represent the connection between the different diagrams 
+ * and to check whether the diagrams follow the predefined rules. 
+ */
+class Graph { 
 	private int V;
 	private LinkedList<Integer> adj[];
 	
@@ -14,27 +19,18 @@ class Graph
 			adj[i] = new LinkedList(); 
 	} 
 
-	 
 	void addEdge(int v,int w){ 
 		adj[v].add(w); 
 	} 
-
 	
 	public boolean checkConnection(int s){ 
-		boolean visited[] = new boolean[V]; 
-
-		LinkedList<Integer> queue = new LinkedList<Integer>(); 
-
-		 
+		boolean visited[] = new boolean[V];
+		LinkedList<Integer> queue = new LinkedList<Integer>();		 
 		visited[s]=true; 
 		queue.add(s); 
 
-		while (queue.size() != 0) 
-		{ 
-			
-			s = queue.poll(); 
-			//System.out.print(s+" "); 
-			
+		while (queue.size() != 0) { 			
+			s = queue.poll(); 			
 			Iterator<Integer> i = adj[s].listIterator(); 
 			while (i.hasNext()) 
 			{ 
@@ -45,13 +41,15 @@ class Graph
 					queue.add(n); 
 				} 
 			} 
-		} 
+		} 		
 		
 		for(boolean flag: visited) {
 			if (!flag) {
 				return false;
 			}
 		}
+		
 		return true;
 	} 
+	
 }
