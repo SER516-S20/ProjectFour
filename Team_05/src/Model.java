@@ -4,7 +4,7 @@ import java.util.Hashtable;
 /**
  * this class is used to store the button box information and the connection
  * information, it is viewed as a data source.
- * @author hzhan193
+ * @author Hongqi Zhang
  * @modified by Shihyu Chang
  */
 public class Model {

@@ -1,5 +1,7 @@
 import javax.swing.JButton;
-
+/**
+ * @author Hongqi Zhang
+ */
 public class BarButtonBox extends ButtonBox {
 	private static final long serialVersionUID = 1L;
 	private JButton []dots; 
