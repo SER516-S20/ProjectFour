@@ -2,13 +2,11 @@ public class Graph {
     int V, E; 
     Edge edge[];
   
-    class Edge 
-    { 
+    public class Edge { 
         int src, dest; 
     }; 
   
-    Graph(int v,int e) 
-    { 
+    Graph(int v,int e) { 
         V = v; 
         E = e; 
         edge = new Edge[E]; 
@@ -16,24 +14,23 @@ public class Graph {
             edge[i] = new Edge(); 
     } 
   
-    int find(int parent[], int i){ 
+    public int find(int parent[], int i) { 
         if (parent[i] == -1) 
             return i; 
         return find(parent, parent[i]); 
     } 
   
-    void Union(int parent[], int x, int y) { 
+    public void Union(int parent[], int x, int y) { 
         int xset = find(parent, x); 
         int yset = find(parent, y); 
         parent[xset] = yset; 
     } 
     
-    int isCycle( Graph graph) { 
+    public int isCycle( Graph graph) { 
         int parent[] = new int[graph.V]; 
         for (int i=0; i<graph.V; ++i) 
             parent[i]=-1; 
-        for (int i = 0; i < graph.E; ++i) 
-        { 
+        for (int i = 0; i < graph.E; ++i) { 
             int x = graph.find(parent, graph.edge[i].src); 
             int y = graph.find(parent, graph.edge[i].dest); 
             if (x == y) 

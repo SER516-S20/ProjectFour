@@ -3,7 +3,6 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
-
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
@@ -34,8 +33,7 @@ public class FileManager {
 			Document doc = docBuilder.newDocument();
 			Element rootTab = doc.createElement("tabs");
 			doc.appendChild(rootTab);
-			for(int index = 0;index<Model.getTabs().size();index++)
-			{
+			for(int index = 0;index<Model.getTabs().size();index++) {
 				String name = ((RightPanel)Model.getRightTabbedPane().getComponentAt(index)).getName();
 				TabInfo tab = Model.getTabs().get(name);
 				Element tabElement = doc.createElement("tab");
@@ -159,5 +157,4 @@ public class FileManager {
 			e.printStackTrace();
 		}
 	}
-
 }
