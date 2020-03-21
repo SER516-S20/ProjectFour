@@ -1,5 +1,4 @@
 import java.awt.*;
-//import java.awt.geom.Ellipse2D;
 import java.awt.geom.Rectangle2D;
 import java.io.Serializable;
 
@@ -15,23 +14,14 @@ public class OpenBracket extends Shapes implements Serializable {
     private Shape openbracket = null;
     private Shapes dot = null;
     private boolean isLineDrawn = false;
-    public  String  usrInput = "";
-    public OpenBracket(){
-
-    }
 
     public OpenBracket(int x, int y) {
         this.x = x - OFFSET;
         this.y = y - OFFSET;
-
     }
 
     public Shapes getDot() {
         return dot;
-    }
-
-    public void setDot(Shapes dot) {
-        this.dot = dot;
     }
 
     @Override
@@ -41,11 +31,9 @@ public class OpenBracket extends Shapes implements Serializable {
         Graphics2D graphics2 = (Graphics2D) graphic;
         dot = new Dot(x + 165, y + 100 - 50);
         dot.drawShape(graphics2);
-
         Font font = new Font("Serif", Font.PLAIN, 40);
         graphics2.setFont(font);
         graphics2.drawString("(", x + 105, y + 60);
-
         graphics2.draw(openbracket);
 
     }
@@ -74,8 +62,6 @@ public class OpenBracket extends Shapes implements Serializable {
         this.y = y - OFFSET;
     }
 
-
-
     public boolean isLineDrawn() {
         return isLineDrawn;
     }
@@ -83,7 +69,5 @@ public class OpenBracket extends Shapes implements Serializable {
     public void setLineDrawn(boolean isLineDrawn) {
         this.isLineDrawn = isLineDrawn;
     }
-
-
 
 }

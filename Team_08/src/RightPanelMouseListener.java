@@ -3,7 +3,6 @@ import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.ListIterator;
 
 /**
  * Adding mouse listeners for providing mouse click functionality
@@ -15,7 +14,7 @@ import java.util.ListIterator;
 public class RightPanelMouseListener implements MouseListener, MouseMotionListener {
 
     private Shapes selectedShape;
-    private List<Line> linesList = new ArrayList<Line>();
+    private List<Line> linesList = new ArrayList<>();
     private TextBox textBox = new TextBox();
 
     @Override
@@ -24,9 +23,7 @@ public class RightPanelMouseListener implements MouseListener, MouseMotionListen
             selectedShape.setX(e.getX());
             selectedShape.setY(e.getY());
         }
-        ListIterator<Line> linesListIter = linesList.listIterator();
-        while (linesListIter.hasNext()) {
-            Line nextLine = linesListIter.next();
+        for (Line nextLine : linesList) {
             if (nextLine.isSourceShape()) {
                 nextLine.getLine().setSourceX(nextLine.getLineX() - (nextLine.getShapeX() - selectedShape.getX()));
                 nextLine.getLine().setSourceY(nextLine.getLineY() - (nextLine.getShapeY() - selectedShape.getY()));
@@ -86,17 +83,13 @@ public class RightPanelMouseListener implements MouseListener, MouseMotionListen
 
     @Override
     public void mousePressed(MouseEvent e) {
-        ListIterator<Shapes> shapes = RightPanel.getRightPanelShapes().listIterator();
-        while (shapes.hasNext()) {
-            Shapes sh = shapes.next();
+        for (Shapes sh : RightPanel.getRightPanelShapes()) {
             if (sh.containsPoint(e.getX(), e.getY())) {
                 selectedShape = sh;
             }
 
         }
-        ListIterator<Connections> lines = RightPanel.getLines().listIterator();
-        while (lines.hasNext()) {
-            Connections line = lines.next();
+        for (Connections line : RightPanel.getLines()) {
             if (line.getOriginShape().equals(selectedShape)) {
                 Line drawline = new Line();
                 drawline.setLineX(line.getSourceX());
