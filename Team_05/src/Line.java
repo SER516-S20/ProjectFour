@@ -1,9 +1,10 @@
-/**
- * @author ShihYu Chang
- */
 import java.awt.*;
 import java.awt.geom.Line2D;
 import javax.swing.JPanel;
+
+/**
+ * @author ShihYu Chang
+ */
 
 public class Line extends JPanel{
 	private static final long serialVersionUID = 1L;
