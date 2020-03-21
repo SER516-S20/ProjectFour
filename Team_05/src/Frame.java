@@ -13,12 +13,11 @@ import javax.swing.JScrollPane;
 import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
 
-
 /**
  * this class is to show the app
  * @author Hongqi Zhang
  */
-public class Frame extends JFrame{
+public class Frame extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private static final String title = "ProjectTwo-Team 5";
 	private static final Color lBackground = new Color(255, 255, 240);
@@ -35,7 +34,6 @@ public class Frame extends JFrame{
 		getContentPane().setLayout(null);
 		dragArea = new RightTabbedPane();
 		btnContainer = new LeftPanel();
-		//dragArea.setFrame(this);
 		this.getContentPane().add(createLeftPanel());
 		this.getContentPane().add(createRightPanel());
 		this.pack();
