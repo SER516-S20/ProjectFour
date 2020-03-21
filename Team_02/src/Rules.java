@@ -18,6 +18,12 @@ public class Rules {
 			if (newLine.equals(eachLine)) {
 				return false;
 			}
+			if (eachLine.getStartDot().equals(newLine.getStartDot())) {
+				return false;
+			}
+			if (eachLine.getEndDot().equals(newLine.getEndDot())) {
+				return false;
+			}
 		}
 		return true;
 	}
