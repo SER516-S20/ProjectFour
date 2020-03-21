@@ -1,6 +1,5 @@
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.ListIterator;
 
 /**
  * Adding mouse listeners for providing mouse click functionality
@@ -84,9 +83,7 @@ public class LeftPanelMouseListener extends MouseAdapter {
 	public void mouseClicked(MouseEvent mouseEvent) {
 		int x = mouseEvent.getX();
 		int y = mouseEvent.getY();
-		ListIterator<Shapes> iterator = LeftPanel.leftPanelShapes.listIterator();
-		while(iterator.hasNext()) {
-			Shapes next = iterator.next();
+		for (Shapes next : LeftPanel.leftPanelShapes) {
 			if (next instanceof OpenBracket) {
 				if (next.containsPoint(x, y)) {
 					markIsClickedTrue(ShapesEnum.OPENBRACKET);
@@ -99,19 +96,19 @@ public class LeftPanelMouseListener extends MouseAdapter {
 				if (next.containsPoint(x, y)) {
 					markIsClickedTrue(ShapesEnum.LESSTHAN);
 				}
-			}else if (next instanceof GreaterThan) {
+			} else if (next instanceof GreaterThan) {
 				if (next.containsPoint(x, y)) {
 					markIsClickedTrue(ShapesEnum.GREATERTHAN);
 				}
-			}else if (next instanceof AtTheRate) {
+			} else if (next instanceof AtTheRate) {
 				if (next.containsPoint(x, y)) {
 					markIsClickedTrue(ShapesEnum.ATTHERATE);
 				}
-			}else if (next instanceof TwoBars) {
+			} else if (next instanceof TwoBars) {
 				if (next.containsPoint(x, y)) {
 					markIsClickedTrue(ShapesEnum.TWOBARS);
 				}
-			}else if (next instanceof Hyphen) {
+			} else if (next instanceof Hyphen) {
 				if (next.containsPoint(x, y)) {
 					markIsClickedTrue(ShapesEnum.HYPHEN);
 				}
@@ -122,7 +119,6 @@ public class LeftPanelMouseListener extends MouseAdapter {
     /**
 	 * Instantiates or uses the created instance of different shapes' class
 	 * and sets isClicked value as true for the shape which was clicked.
-	 * @param shape
 	 */
 	public static void markIsClickedTrue(ShapesEnum shape) {
 		try {
