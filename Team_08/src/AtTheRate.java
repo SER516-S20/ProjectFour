@@ -5,10 +5,11 @@ import java.io.Serializable;
 import java.awt.*;
 
 /**
- * @author Sandya Manoharan
+ * This class consists of AtTheRate shape with two input and two output dots.
+ *
+ * @author Sandya
  * @version 1.1
  */
-
 public class AtTheRate extends Shapes implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -42,7 +43,6 @@ public class AtTheRate extends Shapes implements Serializable {
         g2.drawString("@", x + 80, y + 65);
 
         g2.draw(attherate);
-
 
     }
 
