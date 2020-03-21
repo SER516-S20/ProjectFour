@@ -8,7 +8,7 @@ import java.awt.*;
  * This class consists of AtTheRate shape with two input and two output dots.
  *
  * @author Sandya
- * @version 1.1
+ * @version 1.0
  */
 public class AtTheRate extends Shapes implements Serializable {
 
