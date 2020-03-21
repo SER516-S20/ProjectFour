@@ -16,7 +16,6 @@ import javax.swing.JMenuItem;
 
 public class SaveFile extends JMenuItem implements ActionListener {
     private static final long serialVersionUID = 1L;
-    private final String FILE_EXT = ".ser";
 
     public SaveFile(String label) {
         super(label);
@@ -32,7 +31,8 @@ public class SaveFile extends JMenuItem implements ActionListener {
             JFileChooser chosenFile = new JFileChooser();
             int showSaveDialog = chosenFile.showSaveDialog(null);
             if (showSaveDialog == JFileChooser.APPROVE_OPTION) {
-                fileName = chosenFile.getSelectedFile().getAbsolutePath().toString() + FILE_EXT;
+                String FILE_EXT = ".ser";
+                fileName = chosenFile.getSelectedFile().getAbsolutePath() + FILE_EXT;
             }
             fileOut = new FileOutputStream(new File(fileName));
             out = new ObjectOutputStream(fileOut);

@@ -22,8 +22,6 @@ public class LoadFile extends JMenuItem implements ActionListener {
 		super(label);
 	}
 
-	private String fileName;
-
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		FileInputStream fileIn = null;
@@ -34,7 +32,7 @@ public class LoadFile extends JMenuItem implements ActionListener {
 			chosenFile.setFileFilter(filter);
 			int showOpenDialog = chosenFile.showOpenDialog(null);
 			if (showOpenDialog == JFileChooser.APPROVE_OPTION) {
-				fileName = chosenFile.getSelectedFile().getAbsolutePath();
+				String fileName = chosenFile.getSelectedFile().getAbsolutePath();
 				fileIn = new FileInputStream(fileName);
 				in = new ObjectInputStream(fileIn);
 				RightPanel.setLines((ArrayList<Connections>) in.readObject());
@@ -43,7 +41,7 @@ public class LoadFile extends JMenuItem implements ActionListener {
 			}
 		} catch (IOException i) {
 			i.printStackTrace();
-		} catch (ClassNotFoundException exception) {
+		} catch (ClassNotFoundException ignored) {
 
 		} finally {
 			if (in != null) {
