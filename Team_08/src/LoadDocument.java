@@ -14,11 +14,11 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  * @author Kartik Mathpal
  * @version 1.0
  */
-public class LoadFile extends JMenuItem implements ActionListener {
+public class LoadDocument extends JMenuItem implements ActionListener {
 
 	private static final long serialVersionUID = 1L;
 
-	public LoadFile(String label) {
+	public LoadDocument(String label) {
 		super(label);
 	}
 
