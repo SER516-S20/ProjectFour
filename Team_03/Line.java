@@ -50,7 +50,6 @@ public class Line implements Shape,Serializable {
 	@Override
 	public void draw(Graphics graphics) {
 		graphics.drawLine(coordinateX1, coordinateY1, coordinateX2, coordinateY2);
-
 	}
 
 	@Override
@@ -59,7 +58,6 @@ public class Line implements Shape,Serializable {
 		this.coordinateY1 = y1;
 		this.coordinateX2 = x2;
 		this.coordinateY2 = y2;
-
 	}
 
 	@Override

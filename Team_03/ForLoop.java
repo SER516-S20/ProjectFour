@@ -26,12 +26,10 @@ public class ForLoop implements Shape, Serializable {
 	Helper helper = new Helper();
 
 	ForLoop() {
-
 		isLineDrawn.put(Constants.TOP_LEFT, false);
 		isLineDrawn.put(Constants.BOTTOM_LEFT, false);
 		isLineDrawn.put(Constants.TOP_RIGHT, false);
 		isLineDrawn.put(Constants.BOTTOM_RIGHT, false);
-
 	}
 
 	public String getMessage() {
@@ -89,40 +87,33 @@ public class ForLoop implements Shape, Serializable {
 	}
 
 	public void updateDotCoordinates(Dot dot, boolean status, String dotName, Graphics graphics) {
-
 		dot.setPosition(helper.getXCordinate(), helper.getYCordinate());
 		dot.draw(graphics);
 		Position position = new Position();
 		position.setCoordinateX(helper.getXCordinate());
 		position.setCoordinateY(helper.getYCordinate());
 		mapUpdatedDotCordinates.put(dotName, position);
-
 		dot.setStart(status);
 		dot.setDotName(dotName);
 	}
 
 	public void drawDots(Graphics graphics) {
-
 		helper.calculateTopRightDotPosition(this.getCoordinateX(), this.getCoordinateY(), Constants.DOT_HEIGHT,
 				Constants.DOT_WIDTH);
 		topRightDot = new Dot();
 		updateDotCoordinates(topRightDot, true, Constants.TOP_RIGHT, graphics);
-
 		helper.calculateBottomRightDotPosition(this.getCoordinateX(), this.getCoordinateY(), Constants.DOT_HEIGHT,
 				Constants.DOT_WIDTH);
 		bottomRightDot = new Dot();
 		updateDotCoordinates(bottomRightDot, true, Constants.BOTTOM_RIGHT, graphics);
-
 		helper.calculateTopLeftDotPosition(this.getCoordinateX(), this.getCoordinateY(), Constants.DOT_HEIGHT,
 				Constants.DOT_WIDTH);
 		topLeftDot = new Dot();
 		updateDotCoordinates(topLeftDot, false, Constants.TOP_LEFT, graphics);
-
 		helper.calculateBottomLeftDotPosition(this.getCoordinateX(), this.getCoordinateY(), Constants.DOT_HEIGHT,
 				Constants.DOT_WIDTH);
 		bottomLeftDot = new Dot();
 		updateDotCoordinates(bottomLeftDot, false, Constants.BOTTOM_LEFT, graphics);
-
 	}
 
 	@Override
@@ -132,11 +123,11 @@ public class ForLoop implements Shape, Serializable {
 		helper.calculateCharacterPosition(this.getCoordinateX(), this.getCoordinateY());
 		draw.drawCharacter(graphics, helper, Constants.FOR_LOOP_CHAR);
 		drawDots(graphics);
-
 	}
 
 	@Override
 	public void setPosition(int x, int y, int x1, int y1) {
+		//Empty Function
 	}
 
 	@Override

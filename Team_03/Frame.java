@@ -34,7 +34,6 @@ public class Frame extends JFrame implements ChangeListener {
 		jlabel.setText("Welcome");
 		this.getContentPane().add(jlabel, BorderLayout.SOUTH);
 		JButton okButton = new JButton(Constants.NEW_SPACE);
-
 		okButton.addActionListener(e -> {
 			DrawingArea obj = new DrawingArea();
 			String temp = Constants.TAB + count;
@@ -46,7 +45,6 @@ public class Frame extends JFrame implements ChangeListener {
 		DrawingArea drawingArea = new DrawingArea();
 		this.getContentPane().add(drawingArea);
 		this.getContentPane().add(new ShapePanel(), BorderLayout.WEST);
-
 		JButton openButton = new JButton(Constants.LOAD);
 		DrawingArea obj1 = new DrawingArea();
 		// Open saved state
@@ -54,7 +52,6 @@ public class Frame extends JFrame implements ChangeListener {
 			obj1.load(tabbedPane);
 			obj1.repaintOnDrag();
 		});
-
 		this.add(tabbedPane, BorderLayout.CENTER);
 		JButton saveButton = new JButton(Constants.SAVE);
 		DrawingArea obj2 = new DrawingArea();
@@ -62,13 +59,11 @@ public class Frame extends JFrame implements ChangeListener {
 			// Save current state
 			obj2.save();
 		});
-
 		JPanel menuPanel = new JPanel();
 		JButton compileButton = new JButton(Constants.COMPILE);
 		compileButton.addActionListener(event -> {
 			// Save current state
 			compile.validate();
-
 		});
 		menuPanel.add(openButton);
 		menuPanel.add(saveButton);
@@ -79,7 +74,6 @@ public class Frame extends JFrame implements ChangeListener {
 
 	@Override
 	public void stateChanged(ChangeEvent e) {
-		// TODO Auto-generated method stub
 		JTabbedPane tabbedPane = (JTabbedPane) e.getSource();
 		currentTab = tabbedPane.getSelectedIndex();
 	}

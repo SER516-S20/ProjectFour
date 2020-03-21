@@ -19,7 +19,6 @@ public class ShapePanel extends JPanel {
 			forLoopButton, barShapeButton, valueHolderButton;
 
 	ShapePanel() {
-
 		this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 		this.add(functionBlockBegin());
 		this.add(functionBlockEnd());
@@ -29,7 +28,6 @@ public class ShapePanel extends JPanel {
 		this.add(valueHolder());
 		this.add(barShape());
 		new JButtonActionListener().addActionListener();
-
 	}
 
 	public JButton createJButton() {
@@ -39,7 +37,6 @@ public class ShapePanel extends JPanel {
 		jButton.setOpaque(true);
 		jButton.setMaximumSize(new Dimension(Integer.MAX_VALUE, Integer.MAX_VALUE));
 		return jButton;
-
 	}
 
 	private JButton functionBlockBegin() {

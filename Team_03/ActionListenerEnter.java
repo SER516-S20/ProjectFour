@@ -16,6 +16,5 @@ public class ActionListenerEnter implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		MouseListener.selectedShape.setMessage(InputDialog.dialogText.getText());
-
 	}
 }

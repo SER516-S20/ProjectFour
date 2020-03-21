@@ -64,29 +64,24 @@ public class ValueHolderBlock implements Shape, Serializable {
 	}
 
 	public void updateBarCoordinates(Bar bar, boolean status, String dotName, Graphics graphics) {
-
 		bar.setPosition(helper.getXCordinate(), helper.getYCordinate());
 		bar.draw(graphics);
 		Position position = new Position();
 		position.setCoordinateX(helper.getXCordinate());
 		position.setCoordinateY(helper.getYCordinate());
 		mapUpdatedBarCordinates.put(dotName, position);
-
 		bar.setDotName(dotName);
 	}
 
 	public void drawBars(Graphics graphics) {
-
 		helper.calculateCenterLeftDotPosition(this.getCoordinateX(), this.getCoordinateY(), Constants.BAR_HEIGHT,
 				Constants.BAR_WIDTH);
 		centerLeftBar = new Bar();
 		updateBarCoordinates(centerLeftBar, false, "centerLeft", graphics);
-
 		helper.calculateCenterRightDotPosition(this.getCoordinateX(), this.getCoordinateY(), Constants.BAR_HEIGHT,
 				Constants.BAR_WIDTH);
 		centerRightBar = new Bar();
 		updateBarCoordinates(centerRightBar, true, "centerRight", graphics);
-
 	}
 
 	@Override
@@ -96,12 +91,11 @@ public class ValueHolderBlock implements Shape, Serializable {
 		helper.calculateCharacterPosition(this.getCoordinateX(), this.getCoordinateY());
 		draw.drawCharacter(graphics, helper, Constants.VALUE_HOLDER_CHAR);
 		drawBars(graphics);
-
 	}
 
 	@Override
 	public void setPosition(int x, int y, int x1, int y1) {
-
+		//Empty Function
 	}
 
 	@Override

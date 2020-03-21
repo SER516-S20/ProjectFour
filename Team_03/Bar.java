@@ -44,11 +44,11 @@ public class Bar implements Shape, Serializable {
 		graphics.setColor(Constants.DOT_COLOR);
 		graphics.drawRect(coordinateX, coordinateY, Constants.BAR_WIDTH, Constants.BAR_HEIGHT);
 		graphics.fillRect(coordinateX, coordinateY, Constants.BAR_WIDTH, Constants.BAR_HEIGHT);
-
 	}
 
 	@Override
 	public void setPosition(int x, int y, int x1, int y1) {
+		//Empty function
 	}
 
 	@Override
@@ -78,7 +78,7 @@ public class Bar implements Shape, Serializable {
 
 	@Override
 	public void setMessage(String message) {
-
+		//Empty function
 	}
 
 }
