@@ -3,69 +3,54 @@ import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.Shape;
 
+/**
+ * @author Sarvansh
+ * @created on 03-18-2020
+ * @version 1.0
+ * @author abhinaw sarang
+ * @created 03-20-2020
+ * @version 2.0
+ */
 public class ShapeDash extends Icon{
 
-	
 	private static final long serialVersionUID = 1L;
-	private int centerX;
-	private int centerY;
-	private static String text = "-";
+	private static String symbol = "-";
 	private Dot leftDot;
 	private Dot rightDot;
-	
-	
+
 	public ShapeDash(int x, int y) {
-		this.centerX = x;
-		this.centerY = y;
+		this.setCenterX(x);
+		this.setCenterY(y);
 		setUpPoints();
 		repaint();
 	}
-	
-	
+
 	@Override
 	public void paintComponent(Graphics objGraphics) {
-
 		try {
 			Graphics2D obj2D = (Graphics2D) objGraphics;
-			Shape objRectangle = new Rectangle(this.centerX, this.centerY, width, height);
+			Shape objRectangle = new Rectangle(this.getCenterX(), this.getCenterY(), getWidth(), getHeight());
 			obj2D.draw(objRectangle);
-			obj2D.drawString(text, getMiddlePointX(), getMiddlePointY());
-			
-			obj2D.fillOval(leftDot.getX(), leftDot.getY(), dotSize, dotSize);
-			obj2D.fillOval(rightDot.getX(), rightDot.getY(), dotSize, dotSize);
-				
+			obj2D.drawString(symbol, getMiddlePointX(), getMiddlePointY());
+			obj2D.fillOval(leftDot.getX(), leftDot.getY(), getDotSize(), getDotSize());
+			obj2D.fillOval(rightDot.getX(), rightDot.getY(), getDotSize(), getDotSize());
 		} catch (Exception ex) {
 			System.out.println(ex.getMessage());
 		}
 	}
-	
-	
-	public int getMiddlePointX() {
-		return centerX+(width/2);
-	}
-	
-	public int getMiddlePointY() {
-		return centerY+(height/2)+3;
-	}
-	
-	
+
 	@Override
 	public void setUpPoints() {
-		int x = centerX+dotMargin-(dotSize/2);
-		int y = centerY+(height/2)-(dotSize/2);
+		int x = getCenterX() + getDotMargin() - (getDotSize()/2);
+		int y = getCenterY() + (getHeight()/2) - (getDotSize()/2);
 		Dot left = new Dot(x, y, true, false);
 		setLeftDot(left);
-		
-		int x1 = centerX+width-dotMargin-(dotSize/2);
-		int y1 = centerY+(height/2)-(dotSize/2);
+		int x1 = getCenterX() + getWidth() - getDotMargin() - (getDotSize()/2);
+		int y1 = getCenterY() + (getHeight()/2) - (getDotSize()/2);
 		Dot right = new Dot(x1, y1, false, true);
 		setRightDot(right);
-		
 	}
-	
-	// On top of parent class Icon,
-	// Implement repaint using centerX, centerY, text, rightDot values.
-	
+
 	public Dot getLeftDot() {
 		return leftDot;
 	}
@@ -81,6 +66,12 @@ public class ShapeDash extends Icon{
 	public void setRightDot(Dot rightDot) {
 		this.rightDot = rightDot;
 	}
-	
 
+	public static String getSymbol() {
+		return symbol;
+	}
+
+	public static void setSymbol(String text) {
+		ShapeDash.symbol = text;
+	}
 }
