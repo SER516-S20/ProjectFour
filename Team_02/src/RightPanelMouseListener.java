@@ -32,7 +32,7 @@ public class RightPanelMouseListener extends JPanel {
 		public void mouseClicked(MouseEvent event) {
 			if (!isDragDropEvent) {
 				if (event.getClickCount() == 2) {
-					int index = dataProcessor.getIconMap().get(ClickedShape.shapeName).size()-1;
+					int index = dataProcessor.getIconMap().get(ClickedShape.shapeName).size() - 1;
 					dataProcessor.getIconMap().get(ClickedShape.shapeName).remove(index);
 					String value = null;
 					String textValue = dataProcessor.getTextValue(event.getX() - 150, event.getY());

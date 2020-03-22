@@ -34,6 +34,7 @@ public class RightPanel extends JPanel implements Observer {
 		ARROW_HEAD.addPoint(-5, -10);
 		ARROW_HEAD.addPoint(5, -10);
 	}
+
 	public RightPanel() {
 		iconLocalMap = new HashMap<String, List<Icon>>();
 		localStoreLine = new ArrayList<Line>();
@@ -135,20 +136,22 @@ public class RightPanel extends JPanel implements Observer {
 					}
 				}
 			} else if (key.equalsIgnoreCase("barOperator")) {
-				// 				 TODO
-				//				  for(Icon each: iconLocalMap.get(key)) {
-				//				  System.out.println("Inside repaint for"); ShapeBar s1 = (ShapeBar) each;
-				//				  System.out.println("Inside paint component...." + s1.getCenterX() + ", " +
-				//				  s1.getCenterY()); try { Shape objRectangle = new
-				//				  Rectangle(s1.getCenterX()-100, s1.getCenterY()-30, 200, 60);
-				//				  obj2D.draw(objRectangle); obj2D.drawString("(", s1.getMiddlePointX()-100,
-				//				  s1.getMiddlePointY()-30);	  
-				//				  obj2D.drawLine(rightUpperDot.getX(), rightUpperDot.getY(),
-				//				  rightLowerDot.getX(), rightLowerDot.getY());
-				//				  obj2D.drawLine(leftUpperDot.getX(), leftUpperDot.getY(), leftLowerDot.getX(),
-				//				  leftLowerDot.getY());	  
-				//			} catch (Exception ex) { System.out.println(ex.getMessage()); } }
-				//
+				for (Icon each : iconLocalMap.get(key)) {
+					ShapeBar s1 = (ShapeBar) each;
+					try {
+						Shape objRectangle = new Rectangle(s1.getMiddlePointX() - 100, s1.getMiddlePointY() - 30, 200,
+								60);
+						obj2D.draw(objRectangle);
+						obj2D.drawString("||", s1.getMiddlePointX(), s1.getMiddlePointY());
+						obj2D.drawLine(s1.getRightUpperDot().getX(), s1.getRightUpperDot().getY(),
+								s1.getRightLowerDot().getX(), s1.getRightLowerDot().getY());
+						obj2D.drawLine(s1.getLeftUpperDot().getX(), s1.getLeftUpperDot().getY(),
+								s1.getLeftLowerDot().getX(), s1.getLeftLowerDot().getY());
+					} catch (Exception ex) {
+						System.out.println(ex.getMessage());
+					}
+				}
+
 			} else if (key.equalsIgnoreCase("dashOperator")) {
 				for (Icon each : iconLocalMap.get(key)) {
 					ShapeDash s1 = (ShapeDash) each;
@@ -167,14 +170,15 @@ public class RightPanel extends JPanel implements Observer {
 		}
 		for (Line eachLine : localStoreLine) {
 			try {
-				LineArrow line1 = new LineArrow(eachLine.getStartDot().getX(), eachLine.getStartDot().getY(), eachLine.getEndDot().getX(), eachLine.getEndDot().getY(), Color.BLACK, 3);
+				LineArrow line1 = new LineArrow(eachLine.getStartDot().getX(), eachLine.getStartDot().getY(),
+						eachLine.getEndDot().getX(), eachLine.getEndDot().getY(), Color.BLACK, 3);
 				line1.draw(objGraphics);
 			} catch (Exception ex) {
 				System.out.println(ex.getMessage());
 			}
 		}
 	}
-	
+
 	public static class LineArrow {
 		private final int x;
 		private final int y;
@@ -182,7 +186,7 @@ public class RightPanel extends JPanel implements Observer {
 		private final int endY;
 		private final Color color;
 		private final int thickness;
-		
+
 		public LineArrow(int x, int y, int x2, int y2, Color color, int thickness) {
 			super();
 			this.x = x;
