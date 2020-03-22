@@ -32,6 +32,8 @@ public class RightPanelMouseListener extends JPanel {
 		public void mouseClicked(MouseEvent event) {
 			if (!isDragDropEvent) {
 				if (event.getClickCount() == 2) {
+					int index = dataProcessor.getIconMap().get(ClickedShape.shapeName).size()-1;
+					dataProcessor.getIconMap().get(ClickedShape.shapeName).remove(index);
 					String value = null;
 					String textValue = dataProcessor.getTextValue(event.getX() - 150, event.getY());
 					if (textValue != null) {
@@ -41,6 +43,11 @@ public class RightPanelMouseListener extends JPanel {
 					}
 					dataProcessor.doubleClick(event.getX() - 150, event.getY(), value);
 				} else {
+					try {
+						Thread.sleep(200); // To wait for double click.
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
 					System.out.println("Inside mouse clicked");
 					dataProcessor.onClick(event.getX() - 150, event.getY());
 				}

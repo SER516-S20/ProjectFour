@@ -7,7 +7,7 @@ import java.util.List;
  */
 public class Rules {
 
-	public static boolean isValidLine(Line newLine, List<Line> existingLines ) {
+	public static boolean isValidLine(Line newLine, List<Line> existingLines, List<Dot> barCenters ) {
 		if (!newLine.getStartDot().getIsOutput()) {
 			return false;
 		}
@@ -18,10 +18,12 @@ public class Rules {
 			if (newLine.equals(eachLine)) {
 				return false;
 			}
-			if (eachLine.getStartDot().equals(newLine.getStartDot())) {
+			if (!barCenters.contains(newLine.getStartDot())
+					&& eachLine.getStartDot().equals(newLine.getStartDot())) {
 				return false;
 			}
-			if (eachLine.getEndDot().equals(newLine.getEndDot())) {
+			if (!barCenters.contains(newLine.getEndDot())
+					&& eachLine.getEndDot().equals(newLine.getEndDot())) {
 				return false;
 			}
 		}

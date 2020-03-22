@@ -17,6 +17,7 @@ public class RightPanelDataProcessor extends Observable {
 	private HashMap<String, List<Icon>> iconMap;
 	private List<Dot> dotList;
 	private List<Line> lineList;
+	private List<Dot> barCenterList;
 	private boolean lineStartPointSelected = false;
 	private Dot lineStartPoint;
 	public static List<Observer> observers = new ArrayList<Observer>();
@@ -25,6 +26,7 @@ public class RightPanelDataProcessor extends Observable {
 		this.iconMap = new HashMap<String, List<Icon>>();
 		this.dotList = new ArrayList<Dot>();
 		this.setLineList(new ArrayList<Line>());
+		this.setBarCenterList(new ArrayList<Dot>());
 		addObs();
 	}
 
@@ -32,7 +34,10 @@ public class RightPanelDataProcessor extends Observable {
 		System.out.println("Inside onClick method");
 		boolean isLineAdded = false;
 		Dot tempDot = new Dot(x, y, false, false);
-		for (Dot eachDot : dotList) {
+		List<Dot> temp = new ArrayList<Dot>();
+		temp.addAll(dotList);
+		temp.addAll(getBarCenterList());
+		for (Dot eachDot : temp) {
 			if (eachDot.equals(tempDot)) {
 				if (lineStartPointSelected) {
 					addNewLine(lineStartPoint, eachDot);
@@ -61,7 +66,6 @@ public class RightPanelDataProcessor extends Observable {
 					removeDot(draggedShape, eachIcon);
 					ClickedShape.shapeName = draggedShape;
 					addNewIcon(endPoint.getX(), endPoint.getY());
-					System.out.println("Calling move lines.......");
 					moveLines(draggedShape, eachIcon);
 					break;
 				}
@@ -95,7 +99,7 @@ public class RightPanelDataProcessor extends Observable {
 	
 	private void addNewLine(Dot startPoint, Dot endPoint) {
 		Line newLine = new Line(startPoint, endPoint);
-		if (Rules.isValidLine(newLine, getLineList())) {
+		if (Rules.isValidLine(newLine, getLineList(), getBarCenterList())) {
 			getLineList().add(newLine);
 		}
 	}
@@ -161,8 +165,13 @@ public class RightPanelDataProcessor extends Observable {
 			if (iconList == null) {
 				iconList = new ArrayList<Icon>();
 			}
+			ShapeBar newShape = new ShapeBar(x, y);
 			iconList.add(new ShapeBar(x, y));
 			iconMap.put(selectedIcon, iconList);
+			barCenterList.add(new Dot(newShape.getLeftLowerDot().getX(),
+					(newShape.getLeftLowerDot().getY() + newShape.getLeftUpperDot().getY())/2,true,false));
+			barCenterList.add(new Dot(newShape.getRightLowerDot().getX(),
+					(newShape.getRightLowerDot().getY() + newShape.getRightUpperDot().getY())/2,false,true));
 		} else if (selectedIcon.equalsIgnoreCase("dashOperator")) {
 			List<Icon> iconList = iconMap.get(selectedIcon);
 			if (iconList == null) {
@@ -200,7 +209,11 @@ public class RightPanelDataProcessor extends Observable {
 			this.dotList.remove(s.getLeftLowerDot());
 			this.dotList.remove(s.getLeftUpperDot());
 		} else if (shapeName.equalsIgnoreCase("barOperator")) {
-			// Implement for Bar
+			ShapeBar s = (ShapeBar) icon;
+			barCenterList.remove(new Dot(s.getLeftLowerDot().getX(),
+					(s.getLeftLowerDot().getY() + s.getLeftUpperDot().getY())/2,true,false));
+			barCenterList.remove(new Dot(s.getRightLowerDot().getX(),
+					(s.getRightLowerDot().getY() + s.getRightUpperDot().getY())/2,false,true));
 		} else if (shapeName.equalsIgnoreCase("dashOperator")) {
 			ShapeDash s = (ShapeDash) icon;
 			this.dotList.remove(s.getRightDot());
@@ -300,7 +313,28 @@ public class RightPanelDataProcessor extends Observable {
 				}
 			}
 		} else if (shapeName.equalsIgnoreCase("barOperator")) {
-			// Implement for Bar
+			ShapeBar s = (ShapeBar) icon;
+			int newIconIndex = iconMap.get(shapeName).size()-1;
+			ShapeBar newIcon = (ShapeBar) iconMap.get(shapeName).get(newIconIndex);
+			Dot oldLDot = new Dot(s.getLeftLowerDot().getX(),
+					(s.getLeftLowerDot().getY() + s.getLeftUpperDot().getY())/2,true,false);
+			Dot oldRDot = new Dot(s.getRightLowerDot().getX(),
+					(s.getRightLowerDot().getY() + s.getRightUpperDot().getY())/2,false,true);
+			Dot newLDot = new Dot(newIcon.getLeftLowerDot().getX(),
+					(newIcon.getLeftLowerDot().getY() + newIcon.getLeftUpperDot().getY())/2,true,false);
+			Dot newRDot = new Dot(newIcon.getRightLowerDot().getX(),
+					(newIcon.getRightLowerDot().getY() + newIcon.getRightUpperDot().getY())/2,false,true);
+			for (Line eachLine: allLines) {
+				if (eachLine.getStartDot().equals(oldRDot)) {
+					Dot end = eachLine.getEndDot();
+					getLineList().remove(eachLine);
+					getLineList().add(new Line(newRDot, end));
+				} else if (eachLine.getEndDot().equals(oldLDot)) {
+					Dot start = eachLine.getStartDot();
+					getLineList().remove(eachLine);
+					getLineList().add(new Line(start, newLDot));
+				}
+			}
 		} else if (shapeName.equalsIgnoreCase("dashOperator")) {
 			ShapeDash s = (ShapeDash) icon;
 			int newIconIndex = iconMap.get(shapeName).size()-1;
@@ -310,7 +344,6 @@ public class RightPanelDataProcessor extends Observable {
 					Dot end = eachLine.getEndDot();
 					getLineList().remove(eachLine);
 					getLineList().add(new Line(newIcon.getRightDot(), end));
-					break;
 				} else if (eachLine.getEndDot().equals(s.getLeftDot())) {
 					Dot start = eachLine.getStartDot();
 					getLineList().remove(eachLine);
@@ -352,5 +385,13 @@ public class RightPanelDataProcessor extends Observable {
 
 	public void setIconMap(HashMap<String, List<Icon>> iconMap) {
 		this.iconMap = iconMap;
+	}
+
+	public List<Dot> getBarCenterList() {
+		return barCenterList;
+	}
+
+	public void setBarCenterList(List<Dot> barCenterList) {
+		this.barCenterList = barCenterList;
 	}
 }
