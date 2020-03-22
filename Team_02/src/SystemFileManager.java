@@ -1,72 +1,104 @@
 import java.awt.Point;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.google.gson.reflect.TypeToken;
 
 /**
  *
  * @author Kunal Sharma
  * @created 02-18-2020
  * @version 1.0
+ * @author abhinaw sarang
+ * @modified 03-21-2020
+ * @version 2.0
  */
 public class SystemFileManager {
 
 	public void restoreShape(String pathName) {
 		try {
+			Gson gson = new Gson();
+			FileReader file = new FileReader(pathName);
+	        BufferedReader bufferreader = new BufferedReader(file);
+            RightPanelDataProcessor dataObject = RightPanelMouseListener.dataProcessor;
+            String line;
+            int lineNumber = 1;
+            while ((line = bufferreader.readLine()) != null) {
+                if (lineNumber == 1) {
+                	List<Dot> temp = new ArrayList<Dot>();
+                    temp = gson.fromJson(line, new TypeToken<List<Dot>>(){}.getType());
+                    dataObject.setDotList(temp);
+                }
+                if (lineNumber == 2) {
+                	List<Line> temp = new ArrayList<Line>();
+                    temp = gson.fromJson(line, new TypeToken<List<Line>>(){}.getType());
+                    dataObject.setLineList(temp);
+                }
+                if (lineNumber == 3) {
+                	List<Dot> temp = new ArrayList<Dot>();
+                    temp = gson.fromJson(line, new TypeToken<List<Dot>>(){}.getType());
+                    dataObject.setBarCenterList(temp);
+                }
+                if (lineNumber == 4) {
+                	JsonObject convertedObject = gson.fromJson(line, JsonObject.class);
+                	for (String each : convertedObject.keySet()) {
+                		ClickedShape.shapeName = each;
+                		JsonObject allIcons = convertedObject.get(each).getAsJsonObject();
+                		for (String x : allIcons.keySet()) {
+                			dataObject.addNewIcon(Integer.valueOf(x),allIcons.get(x).getAsInt());
+                		}
+                	}
 
-//			FileInputStream fis = new FileInputStream(pathName);
-//			ObjectInputStream ois = new ObjectInputStream(fis);
-//			ArrayList<List<Point>> list = (ArrayList<List<Point>>) ois.readObject();
-//
-//			ShapeLocation.circlePoint = list.get(0);
-//			ShapeLocation.trianglePoint = list.get(1);
-//			ShapeLocation.squarePoint = list.get(2);
-//			ShapeLocation.dotPoint = list.get(3);
-//			List<Lineconnection> lineConnection = new ArrayList<Lineconnection>();
-//			List<Point> lines = list.get(5);
-//			for (int i = 0; i <= lines.size() / 2; i = i + 2) {
-//				Lineconnection objLC = new Lineconnection(lines.get(i), lines.get(i + 1));
-//				lineConnection.add(objLC);
-//			}
-//			ShapeLocation.LinePoint = lineConnection;
-//			ShapeLocation.squarebarpoints = list.get(4);
-//			ois.close();
-//			fis.close();
-//
-//			new RightPanelMouseListener().restore();
+                }
+                lineNumber++;
+            }
+            dataObject.customNotify();
 		} catch (Exception ex) {
-			System.out.println("Trouble reading display list vector");
+			System.out.println("Trouble loading file" + ex);
 		}
 	}
 
-	public void saveShape(String pathName, List<Point> circlePoint, List<Point> trianglePoint, List<Point> squarePoint,
-			List<Point> pointsPoint, List<Point> squareBar, ArrayList<List<Point>> list) {
+	public void saveShape(String pathName) {
 		try {
+			RightPanelDataProcessor dataObject = RightPanelMouseListener.dataProcessor;
+			Gson gson = new Gson();
+			JsonObject object = new JsonObject();
+			for (String key: dataObject.getIconMap().keySet()) {
+				JsonObject temp = new JsonObject();
+				for (Icon icon: dataObject.getIconMap().get(key)) {
+					temp.addProperty(Integer.toString(icon.getCenterX()),icon.getCenterY());
+				}
+				object.add(key, temp);
+			}
+			
+			String jsonDotList = gson.toJson(dataObject.getDotList());
+			String jsonLineList = gson.toJson(dataObject.getLineList());
+			String jsonBarList = gson.toJson(dataObject.getBarCenterList());
+			String jsonIconList = gson.toJson(object);
+			FileWriter file = new FileWriter(pathName, true);
+            file.write(jsonDotList);
+            file.write("\n");
+            file.write(jsonLineList);
+            file.write("\n");
+            file.write(jsonBarList);
+            file.write("\n");
+            file.write(jsonIconList);
+            file.flush();
+            file.close();
 
-//			FileOutputStream fos = new FileOutputStream(new File(pathName));
-//			ObjectOutputStream oos = new ObjectOutputStream(fos);
-//
-//			circlePoint = ShapeLocation.circlePoint;
-//			trianglePoint = ShapeLocation.trianglePoint;
-//			squarePoint = ShapeLocation.squarePoint;
-//			pointsPoint = ShapeLocation.dotPoint;
-//			squareBar = ShapeLocation.squarebarpoints;
-//			List<Point> lines = new ArrayList<Point>();
-//			for (Lineconnection line : ShapeLocation.LinePoint) {
-//				lines.add(line.P1);
-//				lines.add(line.P2);
-//			}
-//			list.add(circlePoint);
-//			list.add(trianglePoint);
-//			list.add(squarePoint);
-//			list.add(pointsPoint);
-//			list.add(squareBar);
-//			list.add(lines);
-//			oos.writeObject(list);
-//			oos.flush();
-//			oos.close();
-//			fos.close();
 		} catch (Exception ex) {
-			System.out.println("Trouble writing display list vector");
+			System.out.println("Trouble saving file" +  ex.getMessage());
 		}
 	}
 

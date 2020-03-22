@@ -104,7 +104,7 @@ public class RightPanelDataProcessor extends Observable {
 		}
 	}
 
-	private void addNewIcon(int x, int y) {
+	public void addNewIcon(int x, int y) {
 
 		System.out.println("Adding new ICON" + x + ", " + y);
 		String selectedIcon = ClickedShape.shapeName;
@@ -393,5 +393,18 @@ public class RightPanelDataProcessor extends Observable {
 
 	public void setBarCenterList(List<Dot> barCenterList) {
 		this.barCenterList = barCenterList;
+	}
+
+	public List<Dot> getDotList() {
+		return dotList;
+	}
+
+	public void setDotList(List<Dot> dotList) {
+		this.dotList = dotList;
+	}
+	
+	public void customNotify() {
+		setChanged();
+		notifyObservers(this);
 	}
 }

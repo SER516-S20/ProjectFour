@@ -14,7 +14,7 @@ import javax.swing.JPanel;
 public class RightPanelMouseListener extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-	private RightPanelDataProcessor dataProcessor;
+	public static RightPanelDataProcessor dataProcessor;
 	private boolean isDragDropEvent = false;
 	private Dot startDot;
 
@@ -24,7 +24,7 @@ public class RightPanelMouseListener extends JPanel {
 		addMouseListener(new DrawBoardMouseListener());
 		addMouseMotionListener(new DrawBoardMouseMotion());
 		RightPanelDataProcessor.observers.add((Observer) rp);
-		this.dataProcessor = new RightPanelDataProcessor();
+		dataProcessor = new RightPanelDataProcessor();
 	}
 
 	private class DrawBoardMouseListener extends MouseAdapter {
