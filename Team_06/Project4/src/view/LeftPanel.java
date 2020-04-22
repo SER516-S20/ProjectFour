@@ -19,15 +19,15 @@ public class LeftPanel extends JPanel {
 		      "OpenParentheses", "CloseParentheses", 
 		      "LesserSymbol", "GreaterSymbol",
 		      "AtSymbol", "OrSymbol",
-		      "MinusSymbol"
+		      "MinusSymbol","HashSymbol"
 		  };
 	 
-	 private JButton[] shapes = new JButton[7];
+	 private JButton[] shapes = new JButton[8];
 	 SelectShape ss = new SelectShape();
 	 
 	 LeftPanel(){		
 		this.setBackground(Color.decode("#ffffff"));
-		this.setLayout(new GridLayout(7, 1, 5, 5));
+		this.setLayout(new GridLayout(8, 1, 5, 5));
 		
 		for(int i = 0; i < shapeNames.length; i++) {
 			try {
